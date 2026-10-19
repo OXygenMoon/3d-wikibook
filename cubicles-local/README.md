@@ -1,17 +1,36 @@
 # 格子社区 · 本地班级社区
 
-基于 Three.js 的低多边形多人社区。模型、账号、班级数据与浏览器资源都在本地运行。
+基于 Three.js 的低多边形多人社区。模型、账号、班级数据与浏览器资源都在本地运行；P0 起使用 PostgreSQL（本地默认嵌入式 PGlite）持久化，会话与消息不再因重启丢失。
+
+工程地基、数据库迁移与验收记录见 [工程地基](docs/工程地基.md)。
 
 ## 启动与登录
 
 ```sh
+npm install
 npm start
 ```
 
 打开 [http://127.0.0.1:4173/](http://127.0.0.1:4173/)，也可以双击 `启动 Cubicles.command`。
 默认管理员账号 **lzy**，密码 **123456**。点击顶部“登录”后进入；管理员登录后显示“管理后台”。默认创建“创想一班”，包含 6 列 × 4 行、中心间距 7 米的 24 个工位，管理员拥有第一个工位。
 
-Node.js 20+。依赖已安装；复制到另一台电脑后先执行 `npm install`。
+本地默认使用嵌入式 PGlite，数据位于 `.local-data/pglite/`，无需安装 Docker。首次启动如果数据库为空且存在 `.local-data/community.json`，会自动导入并保留原文件。
+
+### 使用 PostgreSQL / Docker
+
+```sh
+cp .env.example .env
+# 修改 POSTGRES_PASSWORD 与 DEFAULT_ADMIN_PASSWORD
+docker compose up --build
+```
+
+`compose.yaml` 会启动 Postgres 和应用，把 `./.local-data` 挂载为 `/data`，首次启动自动导入旧数据。也可以只启动 Postgres，然后本地执行：
+
+```sh
+DATABASE_URL=postgres://cubicles:cubicles@127.0.0.1:5432/cubicles npm start
+```
+
+Node.js 20.19+。依赖已安装；复制到另一台电脑后先执行 `npm install`。
 
 ## 管理员后台
 
@@ -65,17 +84,24 @@ student02,123456,小雨,创想一班
 
 ## 数据和运行方式
 
-- `.local-data/community.json` 保存账号密码的 scrypt 哈希、班级区域、工位归属、家具、背包、活力、贴纸、昼夜设置、世界布局和模型目录；不保存明文密码。
+- 数据库是唯一事实源：生产使用 PostgreSQL，本地默认使用 `.local-data/pglite/`。`community_state` 保存账号密码的 scrypt 哈希、班级区域、工位归属、家具、背包、活力、贴纸、昼夜设置、世界布局和模型目录；不保存明文密码。
+- `sessions` 表保存登录会话、在线位置和临时状态；`messages` 表保存最近聊天；服务器重启后原 Cookie 仍可继续使用。
+- `.local-data/community.json` 是首次启动的导入种子与兼容备份，不再作为运行时唯一存储。
 - `.local-data/models/` 保存上传的自包含 GLB；第一次升级会自动备份原社区数据到 `before-grid-migration.json`。
-- 登录使用 HttpOnly、SameSite Cookie 与独立访客会话；管理员接口、个人编辑和公共互动均由服务端校验。
-- 在线位置／聊天保存在服务器内存中，约每秒同步。服务器重启后需要重新登录，账号和布置仍保留。
-- 默认只监听 `127.0.0.1`，所有写入均为本地数据。
-- 旧原型的 `world.json` 留在原处作为历史数据；本版本使用独立的 `community.json`。
+- 登录使用 HttpOnly、SameSite=Strict Cookie 与独立访客会话；管理员接口、个人编辑和公共互动均由服务端校验。
+- 默认只监听 `127.0.0.1`；Docker Compose 中监听 `0.0.0.0`。所有写入均为本地或自建数据库。
+- 旧原型的 `world.json` 留在原处作为历史数据；本版本使用 PostgreSQL/PGlite 与 `community.json` 导入种子。
 
 ```sh
-npm test          # 账号权限、导入、区域、家具、公共互动和保存集成测试
-npm run build    # 生成 dist 静态资源
-npm run preview  # 使用 dist + 相同本地 API 预览
+npm run check        # 语法检查 + ESLint
+npm test             # 25 项账号权限、导入、区域、家具、公共互动和持久化测试
+npm run build        # 生成 dist 静态资源
+npm run preview      # 使用 dist + 相同本地 API 预览
+npm run test:e2e     # 5 条 Playwright 浏览器冒烟
+npm run db:backup -- manual
+npm run db:restore-drill
 ```
+
+数据库迁移、备份、回滚与 Docker 验收细节见 [工程地基](docs/工程地基.md)。
 
 这是可本地使用的社区版本。真实课程成绩平台、语音通话和图片贴纸上传未接入；机房任务是本地社区任务。

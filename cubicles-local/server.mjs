@@ -1,104 +1,174 @@
 import http from 'node:http';
-import { readFile, writeFile, mkdir, stat, rename } from 'node:fs/promises';
-import { extname, resolve, sep } from 'node:path';
+import { readFile, stat } from 'node:fs/promises';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { randomUUID, randomBytes, scrypt as scryptCb, timingSafeEqual } from 'node:crypto';
-import { promisify } from 'node:util';
-import {validateGLB} from './lib/validate-glb.mjs';
-import {GRID,zoneRect,zoneBuilding,officeBuilding,defaultBuildings,areaForBuilding,footprint,centerOf,layoutErrors} from './src/grid.js';
-import { seedMessages } from './src/data.js';
-import { DEFAULT_ZONES, DEFAULT_SETTINGS, PUBLIC_AREAS, ITEMS, generateOffices, withinOffice, withinArea, initialFurniture } from './src/community.js';
-const scrypt=promisify(scryptCb);
-const ROOT=fileURLToPath(new URL('.',import.meta.url)), PRODUCTION=process.argv.includes('--production');
-const STATIC=resolve(ROOT,PRODUCTION?'dist':'.'),DATA=process.env.CUBICLES_DATA_DIR||resolve(ROOT,'.local-data');
-const HOST=process.env.HOST||'127.0.0.1',PORT=Number(process.env.PORT||4173);
-const sessions=new Map(), attempts=new Map();
-let messages=[...seedMessages], revision=1;
-await mkdir(DATA,{recursive:true});
-let db={version:2,visitors:0,users:[],zones:structuredClone(DEFAULT_ZONES),settings:{...DEFAULT_SETTINGS},officeStyles:{},stickers:[]};
-try{const saved=JSON.parse(await readFile(resolve(DATA,'community.json'),'utf8'));if(saved.version!==2)throw new Error('不支持的社区数据版本');db=saved;}catch(error){if(error.code!=='ENOENT')throw error;}
-const PUBLIC_TEMPLATES=structuredClone(PUBLIC_AREAS);
-if(!db.buildings){try{await writeFile(resolve(DATA,'before-grid-migration.json'),JSON.stringify(db),{flag:'wx',mode:0o600});}catch(e){if(e.code!=='EEXIST')throw e;}db.buildings=defaultBuildings(PUBLIC_TEMPLATES);}
-db.officePositions||={};db.modelAssets||=[];db.layoutRevision||=1;for(const zone of db.zones){zone.spacing=Math.round(zone.spacing);const r=zoneRect(zone);zone.x=r.gridX+r.width/2;zone.z=r.gridZ+r.depth/2;}
-await mkdir(resolve(DATA,'models'),{recursive:true});
-async function passwordHash(password){const salt=randomBytes(16).toString('hex');return `${salt}:${(await scrypt(password,salt,64)).toString('hex')}`;}
-async function verify(password,hash){const [salt,digest]=hash.split(':');const candidate=await scrypt(password,salt,64);return timingSafeEqual(candidate,Buffer.from(digest,'hex'));}
-if(!db.users.length){db.users.push({id:randomUUID(),username:'lzy',name:'社区管理员',passwordHash:await passwordHash('123456'),role:'admin',classId:1,officeId:1001,avatar:'classic',color:'#a6b79a',inventory:Object.fromEntries(ITEMS.map(i=>[i.id,i.limit])),score:0,createdAt:Date.now()});}
-let writeQueue=Promise.resolve();
-async function save(){const snapshot=JSON.stringify(db);writeQueue=writeQueue.catch(()=>{}).then(async()=>{const file=resolve(DATA,'community.json');await writeFile(file+'.tmp',snapshot,{mode:0o600});await rename(file+'.tmp',file);});await writeQueue;}
-await save();
-const clean=(v,n=240)=>typeof v==='string'?v.trim().slice(0,n):'';
-function fail(status,message){throw Object.assign(new Error(message),{status});}
-function json(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(data));}
-async function body(req){let text='';for await(const chunk of req){text+=chunk;if(Buffer.byteLength(text)>500000)fail(413,'导入内容过大，单次最多 300 个账号。');}try{return text?JSON.parse(text):{};}catch{fail(400,'请求格式不正确。');}}
-function publicUser(u){if(!u)return null;const {passwordHash,...safe}=u;return safe;}
-function userOf(session){return db.users.find(u=>u.id===session?.userId);}
-function tokenOf(req){return req.headers['x-session-token']||req.headers.cookie?.split(';').map(c=>c.trim()).find(c=>c.startsWith('community_session='))?.slice(18);}
-function getSession(req){const s=sessions.get(tokenOf(req));if(!s||Date.now()-s.createdAt>7*86400000)return null;return s;}
-function cookie(res,token,maxAge=604800){res.setHeader('Set-Cookie',`community_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${maxAge}`);}
-function onlineUsers(){return new Set([...sessions.values()].filter(s=>Date.now()-s.seen<12000&&s.userId).map(s=>s.userId));}
-function offices(){const online=onlineUsers();return generateOffices(db.zones,db.officePositions).map(o=>{const owner=db.users.find(u=>u.officeId===o.id);return {...o,...db.officeStyles[o.id],tagline:db.officeStyles[o.id]?.tagline||(owner?'欢迎来到我的学习空间，一起成长。':o.tagline),ownerId:owner?.id||null,owner:owner?.name||'待分配',online:owner?online.has(owner.id):false,name:db.officeStyles[o.id]?.name||(owner?`${owner.name}的工位`:o.name),monogram:db.officeStyles[o.id]?.monogram||(owner?owner.name[0]:'位')};});}
-function worldBuildings(zones=db.zones,positions=db.officePositions,buildings=db.buildings){const desks=generateOffices(zones,positions).map(o=>({...o,name:db.officeStyles[o.id]?.name||(db.users.find(u=>u.officeId===o.id)?db.users.find(u=>u.officeId===o.id).name+'的工位':o.name)}));return [...zones.map(zoneBuilding),...desks.map(officeBuilding),...buildings];}
-function areas(){return db.buildings.filter(b=>b.enabled!==false&&PUBLIC_TEMPLATES.some(a=>a.id===b.id)).map(b=>areaForBuilding(b,PUBLIC_TEMPLATES.find(a=>a.id===b.id)));}
-function worldData(){return {grid:GRID,buildings:worldBuildings(),modelAssets:db.modelAssets,layoutRevision:db.layoutRevision,offices:offices(),neighborhoods:db.zones,zones:db.zones,areas:areas(),settings:db.settings,visitors:db.visitors,revision,stickers:db.stickers,serverTime:Date.now()};}
-function players(exclude){const now=Date.now();return [...sessions.values()].filter(p=>now-p.seen<12000&&p.id!==exclude).map(p=>{const u=userOf(p);return {id:p.id,userId:u?.id,name:u?.name||p.name,x:p.x,z:p.z,rotation:p.rotation,avatar:u?.avatar||p.avatar,color:u?.color||p.color,dancing:p.dancing,reaction:now-p.reactionAt<5000?p.reaction:''};});}
-function requireUser(s){const u=userOf(s);if(!u)fail(401,'请先登录账号。');return u;}
-function requireAdmin(s){const u=requireUser(s);if(u.role!=='admin')fail(403,'只有管理员可以操作。');return u;}
-function freshSession(user,name='访客'){const id=randomUUID(),o=offices().find(o=>o.id===user?.officeId)||offices()[0];const s={id,userId:user?.id,name,createdAt:Date.now(),seen:Date.now(),x:o?.x||0,z:(o?.z||0)+2.5,rotation:0,avatar:'classic',color:'#a6b79a'};sessions.set(id,s);return s;}
-function nearbyArea(s,id){const area=areas().find(a=>a.id===id);if(!area)fail(404,'该公共区域尚未开放。');if(!withinArea(s,area))fail(403,'请先走进对应的公共区域，再按 E 互动。');return area;}
-function editPermission(s,id){const u=requireUser(s),o=offices().find(o=>o.id===id);if(!o)fail(404,'没有找到工位。');if(o.ownerId!==u.id)fail(403,'只能布置自己的工位。');if(!withinOffice(s,o))fail(403,'请先到达自己的工位入口，再打开编辑。');return {u,o};}
-function positionsForZone(zone){const old=db.zones.find(z=>z.id===zone.id),positions=structuredClone(db.officePositions);for(const [id,p]of Object.entries(positions)){if(Math.floor(Number(id)/1000)!==zone.id)continue;if(!old||old.rows!==zone.rows||old.columns!==zone.columns||old.spacing!==zone.spacing)delete positions[id];else{const from=zoneRect(old),to=zoneRect(zone);p.gridX+=to.gridX-from.gridX;p.gridZ+=to.gridZ-from.gridZ;}}return positions;}
-function validateZone(data,id){const number=(key,min,max)=>{const n=Number(data[key]);if(!Number.isFinite(n)||n<min||n>max)fail(400,`${({x:'区域中心 X',z:'区域中心 Z',columns:'每行工位数',rows:'工位行数',spacing:'工位间距'})[key]} 超出范围。`);return n;};const zone={id,name:clean(data.name,24),x:number('x',-60,60),z:number('z',-60,60),columns:number('columns',1,8),rows:number('rows',1,8),spacing:number('spacing',6,10),color:/^#[\da-f]{6}$/i.test(data.color||'')?data.color:'#91ad83'};
- if(!zone.name||!Number.isInteger(zone.columns)||!Number.isInteger(zone.rows)||!Number.isInteger(zone.spacing))fail(400,'请输入班级名称和整数行列、整数网格间距。');if(db.zones.some(z=>z.id!==id&&z.name===zone.name))fail(409,'班级名称已存在。');const r=zoneRect(zone);zone.x=r.gridX+r.width/2;zone.z=r.gridZ+r.depth/2;
- if(db.zones.filter(z=>z.id!==id).reduce((n,z)=>n+z.rows*z.columns,0)+zone.rows*zone.columns>256)fail(400,'当前社区最多配置 256 个工位。');if(db.users.some(u=>u.classId===id&&u.officeId>id*1000+zone.rows*zone.columns))fail(409,'缩减后的区域无法容纳现有工位，请先重新分配用户。');
- const zones=[...db.zones.filter(z=>z.id!==id),zone].sort((a,b)=>a.id-b.id),errors=layoutErrors(worldBuildings(zones,positionsForZone(zone)));if(errors.length)fail(409,errors[0]);return zone;
+import { randomUUID } from 'node:crypto';
+import { config } from './src/server/config.mjs';
+import { logger } from './src/server/logger.mjs';
+import { captureError, monitoringStatus } from './src/server/monitoring.mjs';
+import { getDriver, healthCheck } from './src/server/db.mjs';
+import { getState, getRevision } from './src/server/store.mjs';
+import { initApp, shutdownApp } from './src/server/runtime.mjs';
+import { handleApi } from './src/server/api.mjs';
+import { getSession } from './src/server/auth.mjs';
+import { serveUpload } from './src/server/resources.mjs';
+import {
+  fail,
+  insideRoot,
+  mimeFor,
+  securityHeaders,
+  sendJson,
+} from './src/server/http.mjs';
+
+await initApp();
+
+function healthPayload() {
+  return {
+    ok: true,
+    service: 'cubicles',
+    driver: getDriver(),
+    uptime: Number(process.uptime().toFixed(1)),
+    monitoring: monitoringStatus(),
+    revision: getRevision(),
+    users: getState().users.length,
+    zones: getState().zones.length,
+    time: new Date().toISOString(),
+  };
 }
-function validateWorldLayout(data){if(data.baseRevision!==db.layoutRevision)fail(409,'世界布局已被其他窗口更新，请重新加载布局后再保存。');if(!Array.isArray(data.buildings)||data.buildings.length>400)fail(400,'建筑列表格式不正确或数量过多。');const current=worldBuildings(),known=new Map(current.map(b=>[b.id,b])),seen=new Set(),list=[];
- for(const raw of data.buildings){if(typeof raw.id!=='string'||seen.has(raw.id))fail(400,'建筑编号无效或重复。');seen.add(raw.id);const old=known.get(raw.id);if(!old&&!/^model-[a-z0-9-]{8,64}$/.test(raw.id))fail(400,'新建筑编号无效。');const kind=old?.kind||'custom';const b={id:raw.id,kind,name:clean(raw.name,40)||old?.name||'自定义建筑',gridX:raw.gridX,gridZ:raw.gridZ,width:raw.width,depth:raw.depth,rotation:raw.rotation,enabled:raw.enabled!==false,solid:Boolean(raw.solid),assetId:raw.assetId||null};
- if(kind==='class'||kind==='office'){if(raw.width!==old.width||raw.depth!==old.depth||raw.rotation!==0||!b.enabled)fail(400,'班级与工位的大小请在班级区域设置中调整。');Object.assign(b,{name:old.name,parentId:old.parentId,zoneId:old.zoneId,officeId:old.officeId,assetId:null,solid:false});}
- else{if(!Number.isInteger(b.width)||!Number.isInteger(b.depth)||b.width<1||b.depth<1||b.width>40||b.depth>40)fail(400,'模型占地需要 1–40 格。');if(b.assetId&&!db.modelAssets.some(a=>a.id===b.assetId))fail(400,'模型资源不存在，请先导入。');if(kind==='custom'&&!b.assetId)fail(400,'自定义建筑必须选择一个已导入模型。');if(!b.assetId&&old&&(b.width!==16||b.depth!==(kind==='wall'?12:16)))fail(400,'内置公共建筑尺寸固定，替换自定义模型后可调整占地。');}list.push(b);}
- for(const old of current){if(old.kind!=='custom'&&!seen.has(old.id))fail(400,'不能移除班级或工位；公共建筑可通过关闭显示来收起。');}
- const errors=layoutErrors(list);if(errors.length)fail(409,errors[0]);return list;
-}
-export const server=http.createServer(async(req,res)=>{try{
- const url=new URL(req.url,'http://localhost');
- if(url.pathname.startsWith('/api/')){
-  if(req.headers.origin&&req.headers.origin!==`http://${req.headers.host}`)fail(403,'不允许跨站写入。');
-  const s=getSession(req);
-  if(url.pathname==='/api/world'&&req.method==='GET')return json(res,200,worldData());
-  if(url.pathname==='/api/session'&&req.method==='POST'){const data=await body(req);const old=s||sessions.get(clean(data.token,100));const session=old||freshSession(null);if(!old){db.visitors++;await save();}session.seen=Date.now();cookie(res,session.id);return json(res,old?200:201,{token:session.id,user:publicUser(userOf(session)),visitors:db.visitors,position:{x:session.x,z:session.z}});}
-  if(url.pathname==='/api/login'&&req.method==='POST'){const data=await body(req),username=clean(data.username,32).toLowerCase(),key=`${req.socket.remoteAddress}:${username}`,attempt=attempts.get(key);if(attempt&&attempt.count>=10&&Date.now()-attempt.at<60000)fail(429,'尝试次数过多，请一分钟后再试。');const u=db.users.find(u=>u.username===username);if(!u||typeof data.password!=='string'||!(await verify(data.password,u.passwordHash))){attempts.set(key,{count:(attempt?.count||0)+1,at:Date.now()});fail(401,'账号或密码不正确。');}attempts.delete(key);if(s)sessions.delete(s.id);const next=freshSession(u);cookie(res,next.id);return json(res,200,{token:next.id,user:publicUser(u),position:{x:next.x,z:next.z}});}
-  if(!s)fail(401,'会话已过期，请重新进入社区。');
-  if(url.pathname==='/api/logout'&&req.method==='POST'){sessions.delete(s.id);cookie(res,'',0);return json(res,200,{ok:true});}
-  if(url.pathname==='/api/me'&&req.method==='GET')return json(res,200,{user:publicUser(userOf(s))});
-  if(url.pathname==='/api/me'&&req.method==='PATCH'){const u=requireUser(s),data=await body(req);if(data.name)u.name=clean(data.name,24);if(['classic','smooth'].includes(data.avatar))u.avatar=data.avatar;if(/^#[\da-f]{6}$/i.test(data.color||''))u.color=data.color;await save();revision++;return json(res,200,{user:publicUser(u)});}
-  if(url.pathname==='/api/tick'&&req.method==='POST'){const data=await body(req);s.seen=Date.now();for(const k of ['x','z'])if(Number.isFinite(Number(data[k])))s[k]=Math.min(69,Math.max(-69,Number(data[k])));s.rotation=Number(data.rotation)||0;s.dancing=Boolean(data.dancing);if(!s.userId){if(data.name)s.name=clean(data.name,24);if(['classic','smooth'].includes(data.avatar))s.avatar=data.avatar;if(/^#[\da-f]{6}$/i.test(data.color||''))s.color=data.color;}if(['👋','❤️','✨','☕','🎉','🌿'].includes(data.reaction)){s.reaction=data.reaction;s.reactionAt=Date.now();}return json(res,200,{players:players(s.id),online:players().length,onlineUserIds:[...onlineUsers()],messages:messages.slice(-50),visitors:db.visitors,revision,settings:db.settings,layoutRevision:db.layoutRevision});}
-  if(url.pathname==='/api/messages'&&req.method==='POST'){const data=await body(req),text=clean(data.text);if(!text)fail(400,'请先输入消息。');if(Date.now()-(s.lastMessage||0)<400)fail(429,'发送太快了，请稍等片刻。');const message={id:randomUUID(),name:userOf(s)?.name||s.name,text,time:Date.now(),playerId:s.id};messages.push(message);messages=messages.slice(-100);s.lastMessage=Date.now();return json(res,201,message);}
-  if(/^\/api\/offices\/\d+$/.test(url.pathname)&&req.method==='PATCH'){const id=Number(url.pathname.split('/').pop()),data=await body(req),{u,o}=editPermission(s,id);const change={};if(data.name){change.name=clean(data.name,32);change.monogram=change.name[0];}if(data.tagline)change.tagline=clean(data.tagline,100);if(/^#[\da-f]{6}$/i.test(data.color||''))change.color=data.color;if(data.furniture){if(!Array.isArray(data.furniture)||data.furniture.length>16)fail(400,'家具最多放置 16 件。');const counts={},ids=new Set();change.furniture=data.furniture.map(f=>{const item=ITEMS.find(i=>i.id===f.itemId);if(!item||typeof f.id!=='string'||ids.has(f.id))fail(400,'家具记录无效。');ids.add(f.id);counts[item.id]=(counts[item.id]||0)+1;if(counts[item.id]>(u.inventory[item.id]||0))fail(400,'摆放的家具数量超过背包持有数量。');if(!Number.isFinite(f.x)||!Number.isFinite(f.z)||Math.abs(f.x)>1.55||Math.abs(f.z)>1.5||!Number.isFinite(f.rotation))fail(400,'家具必须摆在工位范围内。');if(item.surface==='floor'){const angle=f.rotation*Math.PI/180,hx=item.id==='desk'?Math.abs(Math.cos(angle))*.82+Math.abs(Math.sin(angle))*.4:item.radius,hz=item.id==='desk'?Math.abs(Math.sin(angle))*.82+Math.abs(Math.cos(angle))*.4:item.radius;if(Math.abs(f.x)+hx>1.7||Math.abs(f.z)+hz>1.65)fail(400,'家具超出工位边界，请向内移动一点。');}return {id:f.id.slice(0,64),itemId:item.id,x:f.x,z:f.z,rotation:((f.rotation%360)+360)%360};});const desk=change.furniture.find(f=>f.itemId==='desk');for(const f of change.furniture){if(ITEMS.find(i=>i.id===f.itemId).surface==='desk'){if(!desk)fail(400,'桌面物品需要先放置书桌。');const rad=-desk.rotation*Math.PI/180,dx=f.x-desk.x,dz=f.z-desk.z;if(Math.abs(dx*Math.cos(rad)+dz*Math.sin(rad))>.78||Math.abs(-dx*Math.sin(rad)+dz*Math.cos(rad))>.48)fail(400,'请把桌面物品摆到书桌上。');}}}
-   db.officeStyles[id]={...db.officeStyles[id],...change};revision++;await save();return json(res,200,offices().find(o=>o.id===id));}
-  if(url.pathname==='/api/admin/models'&&req.method==='POST'){
-   requireAdmin(s);const chunks=[];let length=0;for await(const chunk of req){length+=chunk.length;if(length>20*1024*1024)fail(413,'模型文件不能超过 20 MiB。');chunks.push(chunk);}const buffer=Buffer.concat(chunks),stats=validateGLB(buffer),filename=clean(url.searchParams.get('filename'),128);if(!filename.toLowerCase().endsWith('.glb'))fail(400,'请导出并上传 .glb 文件。');if(db.modelAssets.length>=100)fail(400,'本地模型库最多保存 100 个资源。');
-   const id=randomUUID(),asset={id,name:clean(url.searchParams.get('name'),40)||filename.replace(/\.glb$/i,''),filename,url:`/uploads/${id}.glb`,...stats,createdAt:Date.now()};await writeFile(resolve(DATA,'models',id+'.glb'),buffer,{flag:'wx',mode:0o600});db.modelAssets.push(asset);await save();return json(res,201,{asset});
+
+async function resolveStatic(pathname) {
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathname);
+  } catch {
+    fail(400, '请求地址格式不正确。');
   }
-  if(url.pathname==='/api/admin/layout'&&req.method==='PUT'){requireAdmin(s);const data=await body(req),list=validateWorldLayout(data);const zones=db.zones.map(z=>{const b=list.find(b=>b.id===`class-${z.id}`),c=centerOf(b);return {...z,x:c.x,z:c.z};});const positions={};for(const b of list.filter(b=>b.kind==='office'))positions[b.officeId]={gridX:b.gridX,gridZ:b.gridZ};db.zones=zones;db.officePositions=positions;db.buildings=list.filter(b=>!['class','office'].includes(b.kind));db.layoutRevision++;revision++;await save();return json(res,200,worldData());}
-  if(url.pathname==='/api/admin'&&req.method==='GET'){requireAdmin(s);return json(res,200,{users:db.users.map(publicUser),zones:db.zones,settings:db.settings,buildings:worldBuildings(),modelAssets:db.modelAssets,layoutRevision:db.layoutRevision,grid:GRID});}
-  if(url.pathname==='/api/admin/import'&&req.method==='POST'){requireAdmin(s);const data=await body(req);if(!Array.isArray(data.users)||!data.users.length||data.users.length>300)fail(400,'请导入 1–300 行用户。');const known=new Set(db.users.map(u=>u.username)),occupied=new Set(db.users.map(u=>u.officeId)),seats=generateOffices(db.zones,db.officePositions),pending=[];for(let i=0;i<data.users.length;i++){const row=data.users[i],username=clean(row.username,32).toLowerCase(),password=String(row.password||''),name=clean(row.name,24)||username;const zone=db.zones.find(z=>z.id===Number(row.classId)||z.name===row.className);if(!/^[a-z0-9_.-]{2,32}$/.test(username))fail(400,`第 ${i+1} 行账号格式不正确。`);if(known.has(username))fail(409,`第 ${i+1} 行账号 ${username} 重复，整批未导入。`);if(password.length<6||password.length>128)fail(400,`第 ${i+1} 行密码需要 6–128 位。`);if(!zone)fail(400,`第 ${i+1} 行班级不存在，请先创建区域。`);const office=seats.find(o=>o.zoneId===zone.id&&!occupied.has(o.id));if(!office)fail(409,`${zone.name} 的工位不足，请先增加行列。`);known.add(username);occupied.add(office.id);pending.push({id:randomUUID(),username,name,passwordHash:await passwordHash(password),role:'user',classId:zone.id,officeId:office.id,avatar:'classic',color:'#a6b79a',inventory:Object.fromEntries(ITEMS.map(i=>[i.id,i.limit])),score:0,createdAt:Date.now()});}const currentSeats=new Set(generateOffices(db.zones,db.officePositions).map(o=>o.id));if(pending.some(p=>db.users.some(u=>u.username===p.username||u.officeId===p.officeId)||!currentSeats.has(p.officeId)))fail(409,'处理期间名单或工位已变化，请重新提交本批名单。');db.users.push(...pending);revision++;await save();return json(res,201,{created:pending.length,users:pending.map(publicUser)});}
-  if(url.pathname==='/api/admin/zones'&&req.method==='POST'){requireAdmin(s);const data=await body(req),id=Math.max(0,...db.zones.map(z=>z.id))+1,zone=validateZone(data,id);db.officePositions=positionsForZone(zone);db.zones.push(zone);db.layoutRevision++;revision++;await save();return json(res,201,worldData());}
-  if(/^\/api\/admin\/zones\/\d+$/.test(url.pathname)&&req.method==='PATCH'){requireAdmin(s);const id=Number(url.pathname.split('/').pop()),index=db.zones.findIndex(z=>z.id===id);if(index<0)fail(404,'班级区域不存在。');const zone=validateZone(await body(req),id);db.officePositions=positionsForZone(zone);db.zones[index]=zone;db.layoutRevision++;revision++;await save();return json(res,200,worldData());}
-  if(url.pathname==='/api/admin/assign'&&req.method==='POST'){requireAdmin(s);const data=await body(req),u=db.users.find(u=>u.id===data.userId),o=offices().find(o=>o.id===Number(data.officeId));if(!u||!o)fail(404,'用户或工位不存在。');if(o.ownerId&&o.ownerId!==u.id)fail(409,'该工位已有主人。');const old=db.officeStyles[u.officeId];if(old&&u.officeId!==o.id){db.officeStyles[o.id]=old;delete db.officeStyles[u.officeId];}u.classId=o.zoneId;u.officeId=o.id;revision++;await save();return json(res,200,{user:publicUser(u)});}
-  if(url.pathname==='/api/admin/settings'&&req.method==='PATCH'){requireAdmin(s);const data=await body(req);if(!['auto','manual'].includes(data.timeMode))fail(400,'时间模式不正确。');if(!Number.isFinite(Number(data.hour))||data.hour<0||data.hour>23)fail(400,'小时范围为 0–23。');db.settings={timeMode:data.timeMode,hour:Number(data.hour)};revision++;await save();return json(res,200,db.settings);}
-  if(url.pathname==='/api/stickers'&&req.method==='GET'){nearbyArea(s,'wall');return json(res,200,{stickers:db.stickers});}
-  if(url.pathname==='/api/stickers'&&req.method==='POST'){nearbyArea(s,'wall');const u=requireUser(s),data=await body(req),text=clean(data.text,80);if(!text)fail(400,'请写一点内容。');if(Date.now()-(s.lastSticker||0)<3000)fail(429,'请稍等片刻再贴。');const sticker={id:randomUUID(),userId:u.id,name:u.name,text,color:['#e7cf7a','#b7cfaa','#d7bfd8','#b4d4da'].includes(data.color)?data.color:'#e7cf7a',time:Date.now()};db.stickers.push(sticker);db.stickers=db.stickers.slice(-60);s.lastSticker=Date.now();revision++;await save();return json(res,201,{stickers:db.stickers});}
-  if(url.pathname==='/api/rankings'&&req.method==='GET'){nearbyArea(s,'hall');return json(res,200,{users:db.users.map(u=>({name:u.name,score:u.score,className:db.zones.find(z=>z.id===u.classId)?.name||''})).sort((a,b)=>b.score-a.score).slice(0,20)});}
-  if(url.pathname==='/api/fishing/cast'&&req.method==='POST'){nearbyArea(s,'pond');requireUser(s);s.fishingAt=Date.now();return json(res,200,{ok:true});}
-  if(url.pathname==='/api/fishing/reel'&&req.method==='POST'){nearbyArea(s,'pond');const u=requireUser(s),elapsed=Date.now()-s.fishingAt;delete s.fishingAt;if(!Number.isFinite(elapsed)||elapsed<200)fail(400,'请先抛竿。');const phase=(Math.sin(elapsed/450-Math.PI/2)+1)/2,caught=phase>=.58&&phase<=.82;const fish=caught?{name:['太阳鱼','河鲈','金鲤鱼'][Math.floor(Math.random()*3)],weight:Number((.5+Math.random()*6).toFixed(1))}:null;if(caught){u.score+=10;u.catches=[...(u.catches||[]),{...fish,time:Date.now()}].slice(-100);await save();revision++;}return json(res,200,{caught,fish,user:publicUser(u)});}
-  if(url.pathname==='/api/lab'&&req.method==='GET'){nearbyArea(s,'lab');return json(res,200,{tasks:[{id:'orientation',title:'社区探索入门',description:'阅读任务卡，了解自己的班级与工位。',reward:5},{id:'design',title:'空间设计练习',description:'尝试修改家具位置，保存一版属于自己的空间。',reward:5}]});}
-  if(url.pathname==='/api/lab/complete'&&req.method==='POST'){nearbyArea(s,'lab');const u=requireUser(s),data=await body(req);if(!['orientation','design'].includes(data.taskId))fail(400,'任务不存在。');if(data.taskId==='design'&&!db.officeStyles[u.officeId]?.furniture)fail(400,'请先到自己的工位保存一次家具布置。');u.completedTasks||=[];if(!u.completedTasks.includes(data.taskId)){u.completedTasks.push(data.taskId);u.score+=5;revision++;await save();}return json(res,200,{user:publicUser(u)});}
-  fail(404,'没有找到这个页面。');
- }
- if(/^\/uploads\/[a-f0-9-]{36}\.glb$/.test(url.pathname)&&req.method==='GET'){const id=url.pathname.split('/').pop().slice(0,-4);if(!db.modelAssets.some(a=>a.id===id))fail(404,'模型不存在。');res.writeHead(200,{'Content-Type':'model/gltf-binary','X-Content-Type-Options':'nosniff','Cache-Control':'public,max-age=31536000,immutable'});return res.end(await readFile(resolve(DATA,'models',id+'.glb')));}
- let path;if(!PRODUCTION&&url.pathname.startsWith('/vendor/three/'))path=resolve(ROOT,'node_modules/three',decodeURIComponent(url.pathname.slice(14)));else{const name=decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname);if(!PRODUCTION&&name.startsWith('/models/'))path=resolve(ROOT,'public','.'+name);else if(!PRODUCTION&&name==='/favicon.svg')path=resolve(ROOT,'public/favicon.svg');else path=resolve(STATIC,'.'+name);}
- const allowed=PRODUCTION?[STATIC]:[resolve(ROOT,'src'),resolve(ROOT,'public'),resolve(ROOT,'node_modules/three')];
- if(path!==resolve(STATIC,'index.html')&&!allowed.some(root=>path.startsWith(root+sep)))fail(403,'该文件不对外开放。');if(!(await stat(path)).isFile())fail(404,'没有找到内容。');const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.glb':'model/gltf-binary','.png':'image/png'};res.writeHead(200,{'Content-Type':types[extname(path)]||'application/octet-stream','Cache-Control':'no-cache'});res.end(await readFile(path));
- }catch(error){if(!res.headersSent)json(res,error.status|| (error.code==='ENOENT'?404:500),{error:error.status?error.message:error.code==='ENOENT'?'没有找到内容。':'暂时无法完成操作，请稍后重试。'});else res.end();if(!error.status&&error.code!=='ENOENT')console.error(error);}});
-if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))server.listen(PORT,HOST,()=>console.log(`格子社区已启动：http://${HOST}:${PORT}`));
+  if (decoded === '/') return { file: path.join(config.staticDir, 'index.html'), root: config.staticDir };
+
+  if (!config.production && decoded.startsWith('/vendor/three/')) {
+    const root = path.join(config.root, 'node_modules/three');
+    return { file: path.join(root, decoded.slice('/vendor/three/'.length)), root };
+  }
+
+  if (!config.production) {
+    const publicRoot = path.join(config.root, 'public');
+    const candidate = path.join(publicRoot, decoded);
+    if (insideRoot(candidate, publicRoot)) {
+      try {
+        if ((await stat(candidate)).isFile()) return { file: candidate, root: publicRoot };
+      } catch {
+        // Fall through to the source tree, then the normal 404 path.
+      }
+    }
+  }
+
+  return { file: path.join(config.staticDir, decoded), root: config.staticDir };
+}
+
+async function serveStatic(req, res, pathname) {
+  const { file, root } = await resolveStatic(pathname);
+  const index = path.join(config.staticDir, 'index.html');
+  const allowed = config.production
+    ? [config.staticDir]
+    : [path.join(config.root, 'src'), path.join(config.root, 'public'), path.join(config.root, 'node_modules/three')];
+  if (file !== index && !allowed.some(candidate => insideRoot(file, candidate))) {
+    fail(403, '该文件不对外开放。');
+  }
+  const info = await stat(file).catch(() => null);
+  if (!info?.isFile()) fail(404, '没有找到内容。');
+  res.writeHead(200, {
+    'Content-Type': mimeFor(file),
+    'Cache-Control': config.production && pathname !== '/' ? 'public,max-age=3600' : 'no-cache',
+  });
+  res.end(await readFile(file));
+}
+
+async function handleRequest(req, res) {
+  const requestId = req.headers['x-request-id'] || randomUUID();
+  const started = performance.now();
+  let pathname = '/';
+  res.setHeader('X-Request-Id', requestId);
+  securityHeaders(res);
+  res.on('finish', () => {
+    logger.info(
+      {
+        requestId,
+        method: req.method,
+        path: pathname,
+        status: res.statusCode,
+        ms: Math.round(performance.now() - started),
+        ip: req.socket.remoteAddress,
+      },
+      'http request',
+    );
+  });
+
+  try {
+    const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    pathname = url.pathname;
+
+    if ((pathname === '/healthz' || pathname === '/readyz') && req.method === 'GET') {
+      const healthy = await healthCheck();
+      if (!healthy) {
+        sendJson(res, 503, { ok: false, service: 'cubicles', database: 'down' });
+        return;
+      }
+      sendJson(res, 200, { ...healthPayload(), database: 'up' });
+      return;
+    }
+
+    if (pathname.startsWith('/api/')) {
+      await handleApi(req, res, url, getSession(req));
+      return;
+    }
+
+    if (pathname.startsWith('/uploads/')) {
+      await serveUpload(res, pathname);
+      return;
+    }
+
+    if (req.method !== 'GET' && req.method !== 'HEAD') fail(405, '只支持读取静态资源。');
+    await serveStatic(req, res, pathname);
+  } catch (error) {
+    const status = error.status || (error.code === 'ENOENT' ? 404 : 500);
+    if (status >= 500) captureError(error, { requestId, method: req.method, path: pathname });
+    if (!res.headersSent) {
+      sendJson(res, status, {
+        error: error.status
+          ? error.message
+          : error.code === 'ENOENT'
+            ? '没有找到内容。'
+            : '暂时无法完成操作，请稍后重试。',
+        requestId,
+      });
+    } else {
+      res.end();
+    }
+  }
+}
+
+export const server = http.createServer(handleRequest);
+
+export function getCommunityState() {
+  return getState();
+}
+
+export { getRevision };
+
+async function shutdown(signal) {
+  logger.info({ signal }, 'shutting down');
+  await new Promise(resolve => server.close(resolve));
+  await shutdownApp();
+  process.exit(0);
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  server.listen(config.port, config.host, () => {
+    logger.info(
+      { url: `http://${config.host}:${config.port}`, driver: getDriver(), production: config.production },
+      '格子社区已启动',
+    );
+  });
+  process.once('SIGTERM', () => shutdown('SIGTERM'));
+  process.once('SIGINT', () => shutdown('SIGINT'));
+}

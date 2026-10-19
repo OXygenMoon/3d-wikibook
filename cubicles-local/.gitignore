@@ -3,3 +3,6 @@ dist/
 .local-data/
 test-results/
 .DS_Store
+.tmp/
+backups/
+playwright-report/

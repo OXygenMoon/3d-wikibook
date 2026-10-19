@@ -2,8 +2,8 @@ import {test,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,rm,readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';
-const directory=await mkdtemp(join(tmpdir(),'cubicles-community-'));process.env.CUBICLES_DATA_DIR=directory;
-const {server}=await import('../server.mjs');await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
+const directory=await mkdtemp(join(tmpdir(),'cubicles-community-'));process.env.CUBICLES_DATA_DIR=directory;process.env.PGLITE_DIR=join(directory,'pglite');process.env.CUBICLES_DB_RESET='1';process.env.AUTO_IMPORT='false';process.env.NODE_ENV='test';
+const {server,getCommunityState}=await import('../server.mjs');await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 after(async()=>{await new Promise(r=>server.close(r));await rm(directory,{recursive:true,force:true});});
 async function call(path,data,token,method=data?'POST':'GET'){const res=await fetch(base+path,{method,headers:{'Content-Type':'application/json',...(token?{'X-Session-Token':token}:{})},...(data?{body:JSON.stringify(data)}:{})});return {status:res.status,data:await res.json(),cookie:res.headers.get('set-cookie')};}
 const move=(token,x,z)=>call('/api/tick',{x,z},token);
@@ -13,7 +13,7 @@ test('password login, httpOnly cookie, no credential disclosure and admin author
  const login=await call('/api/login',{username:'lzy',password:'123456'});assert.equal(login.status,200);admin=login.data.token;assert.match(login.cookie,/HttpOnly/);assert.equal(login.data.user.role,'admin');assert.equal(login.data.user.passwordHash,undefined);
  const guest=(await call('/api/session',{})).data.token;assert.equal((await call('/api/admin',null,guest)).status,401);assert.equal((await call('/api/admin')).status,401);
  const cookieMe=await fetch(base+'/api/me',{headers:{Cookie:login.cookie.split(';')[0]}});assert.equal((await cookieMe.json()).user.username,'lzy');
- world=(await call('/api/world')).data;assert.equal(world.offices.length,24);assert.equal(world.zones[0].spacing,7);
+ world=(await call('/api/world')).data;assert.equal(world.offices.length,24);assert.equal(world.zones[0].spacing,7);const health=await (await fetch(base+'/healthz')).json();assert.equal(health.database,'up');assert.equal(health.service,'cubicles');
 });
 test('atomic CSV-style batch registration allocates desks and rejects duplicates/capacity issues',async()=>{
  const imported=await call('/api/admin/import',{users:[{username:'student01',password:'abcdef',name:'小林',className:'创想一班'},{username:'student02',password:'123456',name:'小雨',className:'创想一班'}]},admin);assert.equal(imported.status,201);assert.equal(imported.data.created,2);assert.notEqual(imported.data.users[0].officeId,imported.data.users[1].officeId);
@@ -37,7 +37,7 @@ test('owner-only on-site furniture edits validate inventory and survive disk per
  assert.equal((await call('/api/offices/2001',{name:'小林的创作间',furniture},user.token,'PATCH')).status,200);
  const over=[...furniture,{id:'extra-monitor',itemId:'monitor',x:0,z:-.65,rotation:0}];assert.equal((await call('/api/offices/2001',{furniture:over},user.token,'PATCH')).status,400);
  furniture[0].x=20;assert.equal((await call('/api/offices/2001',{furniture},user.token,'PATCH')).status,400);
- const persisted=JSON.parse(await readFile(join(directory,'community.json'),'utf8'));assert.equal(persisted.officeStyles[2001].name,'小林的创作间');assert.equal(persisted.users.find(u=>u.username==='lzy').passwordHash.includes('123456'),false);
+ const persisted=getCommunityState();assert.equal(persisted.officeStyles[2001].name,'小林的创作间');assert.equal(persisted.users.find(u=>u.username==='lzy').passwordHash.includes('123456'),false);
  assert.equal((await call('/api/admin/assign',{userId:user.user.id,officeId:2002},admin)).status,200);const saved=(await call('/api/world')).data.offices.find(o=>o.id===2002);assert.equal(saved.name,'小林的创作间');assert.equal(saved.furniture.find(f=>f.itemId==='plant').rotation,45);
 });
 test('public areas require arrival, stickers persist, rankings and tasks use server scores',async()=>{
@@ -80,7 +80,7 @@ test('model upload is admin-only, durable and can be placed, validated, removed 
  const saved=await call('/api/admin/layout',{baseRevision:snapshot.layoutRevision,buildings:[...snapshot.buildings,custom]},admin,'PUT');assert.equal(saved.status,200);assert.equal(saved.data.buildings.find(b=>b.id===custom.id).rotation,90);assert.equal(saved.data.modelAssets[0].id,asset.id);
  const blocked=structuredClone(saved.data.buildings),candidate=blocked.find(b=>b.id===custom.id),region=blocked.find(b=>b.kind==='class');candidate.gridX=region.gridX;candidate.gridZ=region.gridZ;assert.equal((await call('/api/admin/layout',{baseRevision:saved.data.layoutRevision,buildings:blocked},admin,'PUT')).status,409);
  candidate.gridX=-45.5;candidate.gridZ=-30;assert.equal((await call('/api/admin/layout',{baseRevision:saved.data.layoutRevision,buildings:blocked},admin,'PUT')).status,409);
- const persisted=JSON.parse(await readFile(join(directory,'community.json'),'utf8'));assert.ok(persisted.buildings.some(b=>b.id===custom.id));assert.deepEqual(await readFile(join(directory,'models',asset.id+'.glb')),model);
+ const persisted=getCommunityState();assert.ok(persisted.buildings.some(b=>b.id===custom.id));assert.deepEqual(await readFile(join(directory,'models',asset.id+'.glb')),model);
  const without=saved.data.buildings.filter(b=>b.id!==custom.id);const removed=await call('/api/admin/layout',{baseRevision:saved.data.layoutRevision,buildings:without},admin,'PUT');assert.equal(removed.status,200);assert.equal((await fetch(base+asset.url)).status,200);
  const wall=removed.data.buildings.find(b=>b.id==='wall');wall.enabled=false;const closed=await call('/api/admin/layout',{baseRevision:removed.data.layoutRevision,buildings:removed.data.buildings},admin,'PUT');assert.equal(closed.status,200);assert.ok(!closed.data.areas.some(a=>a.id==='wall'));await move(admin,0,39);assert.equal((await call('/api/stickers',null,admin)).status,404);
 });

@@ -1,0 +1,73 @@
+name: cubicles
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cubicles}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cubicles}
+      POSTGRES_DB: ${POSTGRES_DB:-cubicles}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cubicles} -d ${POSTGRES_DB:-cubicles}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build: .
+    restart: unless-stopped
+    init: true
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4173
+      DATABASE_URL: postgres://${POSTGRES_USER:-cubicles}:${POSTGRES_PASSWORD:-cubicles}@db:5432/${POSTGRES_DB:-cubicles}
+      CUBICLES_DATA_DIR: /data
+      AUTO_IMPORT: ${AUTO_IMPORT:-true}
+      CUBICLES_IMPORT_FILE: /data/community.json
+      DEFAULT_ADMIN_USERNAME: ${DEFAULT_ADMIN_USERNAME:-lzy}
+      DEFAULT_ADMIN_PASSWORD: ${DEFAULT_ADMIN_PASSWORD:-123456}
+      SESSION_TTL_DAYS: ${SESSION_TTL_DAYS:-7}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      SENTRY_TRACES_SAMPLE_RATE: ${SENTRY_TRACES_SAMPLE_RATE:-0}
+    ports:
+      - "${CUBICLES_PORT:-4173}:4173"
+    volumes:
+      - ./.local-data:/data
+      - ./backups:/app/backups
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4173/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
+
+  backup:
+    profiles: ["ops"]
+    build: .
+    depends_on:
+      app:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://${POSTGRES_USER:-cubicles}:${POSTGRES_PASSWORD:-cubicles}@db:5432/${POSTGRES_DB:-cubicles}
+      CUBICLES_DATA_DIR: /data
+      CUBICLES_BACKUP_DIR: /app/backups
+      AUTO_IMPORT: "false"
+      LOG_LEVEL: info
+    command: ["sh", "-c", "while true; do node scripts/db-backup.mjs scheduled || true; sleep 86400; done"]
+    volumes:
+      - ./.local-data:/data
+      - ./backups:/app/backups
+
+volumes:
+  pgdata:

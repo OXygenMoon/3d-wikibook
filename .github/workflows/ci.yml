@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cubicles-local
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: cubicles
+          POSTGRES_PASSWORD: cubicles
+          POSTGRES_DB: cubicles_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cubicles -d cubicles_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgres://cubicles:cubicles@127.0.0.1:5432/cubicles_test
+      LOG_LEVEL: silent
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: cubicles-local/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Static checks
+        run: npm run check
+
+      - name: Unit and integration tests (PostgreSQL)
+        run: npm test
+
+      - name: Build browser assets
+        run: npm run build
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser smoke tests
+        run: npm run test:e2e
+
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifacts
+          path: |
+            cubicles-local/test-results
+            cubicles-local/playwright-report
+          if-no-files-found: ignore
