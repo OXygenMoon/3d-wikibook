@@ -1,0 +1,398 @@
+[
+  {
+    "file": "character-scenario.json",
+    "evidence_id": "ev_f41b1bb3834e76a24f68a3bac3710da7edc3914204d3f346f764386edf9c5530",
+    "duration_ms": 15192,
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "158.0.8106.0"
+    },
+    "completeness": {
+      "status": "complete",
+      "equality_eligible": true,
+      "missing_sections": [],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ],
+    "steps": [
+      {
+        "id": "scenario_start",
+        "action": "goto_start",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "wait-welcome",
+        "action": "wait_for",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "enter-world",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "world-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "open-character",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "panel-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "character-scenario-panel-ready.png",
+          "dom": "character-scenario-panel-ready.html",
+          "accessibility": "character-scenario-panel-ready.txt"
+        }
+      }
+    ]
+  },
+  {
+    "file": "controls-scenario.json",
+    "evidence_id": "ev_5c5cdd0a84b8237a944193dc4ff5761035927583a9dadc13869f6d8250c12c42",
+    "duration_ms": 15702,
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "158.0.8106.0"
+    },
+    "completeness": {
+      "status": "complete",
+      "equality_eligible": true,
+      "missing_sections": [],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ],
+    "steps": [
+      {
+        "id": "scenario_start",
+        "action": "goto_start",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "wait-welcome",
+        "action": "wait_for",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "enter-world",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "world-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "open-controls",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "panel-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "controls-scenario-panel-ready.png",
+          "dom": "controls-scenario-panel-ready.html",
+          "accessibility": "controls-scenario-panel-ready.txt"
+        }
+      }
+    ]
+  },
+  {
+    "file": "enter-scenario.json",
+    "evidence_id": "ev_d1ef5a07914aab83f99c3755757b3f4aed84e8440c2cdf2fdb7c468b993961bf",
+    "duration_ms": 21825,
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "158.0.8106.0"
+    },
+    "completeness": {
+      "status": "incomplete",
+      "equality_eligible": false,
+      "missing_sections": [
+        "events"
+      ],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Some network requests had not completed when capture ended; later activity is unknown.",
+      "Browser host platform and architecture were not observed."
+    ],
+    "steps": [
+      {
+        "id": "scenario_start",
+        "action": "goto_start",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "enter-scenario-scenario_start.png"
+        }
+      },
+      {
+        "id": "wait-welcome",
+        "action": "wait_for",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "enter-scenario-wait-welcome.png"
+        }
+      },
+      {
+        "id": "enter-world",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "enter-scenario-enter-world.png"
+        }
+      },
+      {
+        "id": "world-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "enter-scenario-world-ready.png",
+          "dom": "enter-scenario-world-ready.html",
+          "accessibility": "enter-scenario-world-ready.txt"
+        }
+      }
+    ]
+  },
+  {
+    "file": "first-person-scenario.json",
+    "evidence_id": "ev_406ae39b5b63abb9028e62c52070059b2c0217fe17546e6b1450a54c3fa6233e",
+    "duration_ms": 8795,
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "158.0.8106.0"
+    },
+    "completeness": {
+      "status": "complete",
+      "equality_eligible": true,
+      "missing_sections": [],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ],
+    "steps": [
+      {
+        "id": "scenario_start",
+        "action": "goto_start",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "wait-welcome",
+        "action": "wait_for",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "enter-world",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "world-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "first-person",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "panel-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "first-person-scenario-panel-ready.png",
+          "dom": "first-person-scenario-panel-ready.html",
+          "accessibility": "first-person-scenario-panel-ready.txt"
+        }
+      }
+    ]
+  },
+  {
+    "file": "home-scenario.json",
+    "evidence_id": "ev_057ca1ab40c724a8b0098886ab31973a3915d19fad848459b00cd10d0e5ee424",
+    "duration_ms": 33264,
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "158.0.8106.0"
+    },
+    "completeness": {
+      "status": "incomplete",
+      "equality_eligible": false,
+      "missing_sections": [
+        "events"
+      ],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Some network requests had not completed when capture ended; later activity is unknown.",
+      "Browser host platform and architecture were not observed."
+    ],
+    "steps": [
+      {
+        "id": "scenario_start",
+        "action": "goto_start",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "load-world",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "home-scenario-load-world.png",
+          "dom": "home-scenario-load-world.html",
+          "accessibility": "home-scenario-load-world.txt"
+        }
+      }
+    ]
+  },
+  {
+    "file": "map-scenario.json",
+    "evidence_id": "ev_3ed70c820572f826bc680b13806527c799d25eaf7ac65cfbfe10982d66239f10",
+    "duration_ms": 13951,
+    "browser": {
+      "mode": "launch",
+      "process_ownership": "provider-owned",
+      "cleanup": "terminated-owned-process",
+      "product": "Chromium",
+      "version": "158.0.8106.0"
+    },
+    "completeness": {
+      "status": "complete",
+      "equality_eligible": true,
+      "missing_sections": [],
+      "truncated_sections": []
+    },
+    "limitations": [
+      "Artifact identity is unavailable for this observation.",
+      "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+      "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+      "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+      "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+      "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+      "Storage values are hashed only after declared-secret redaction.",
+      "Browser host platform and architecture were not observed."
+    ],
+    "steps": [
+      {
+        "id": "scenario_start",
+        "action": "goto_start",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "wait-welcome",
+        "action": "wait_for",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "enter-world",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "world-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "open-map",
+        "action": "click",
+        "status": "completed",
+        "artifacts": {}
+      },
+      {
+        "id": "panel-ready",
+        "action": "wait_for_timeout",
+        "status": "completed",
+        "artifacts": {
+          "screenshot": "map-scenario-panel-ready.png",
+          "dom": "map-scenario-panel-ready.html",
+          "accessibility": "map-scenario-panel-ready.txt"
+        }
+      }
+    ]
+  }
+]

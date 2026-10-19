@@ -1,0 +1,17 @@
+{
+  "name": "cubicles-local",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local, playable reconstruction of the Cubicles office world.",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node server.mjs --production",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "three": "0.185.0"
+  }
+}

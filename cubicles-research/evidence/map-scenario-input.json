@@ -1,0 +1,77 @@
+{
+  "browser": {
+    "mode": "launch",
+    "executable_path": "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev",
+    "headless": true
+  },
+  "start_url": {
+    "url": "https://www.cubicles.lol/"
+  },
+  "environment": {
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "device_scale_factor": 1
+    },
+    "timezone": "Asia/Shanghai",
+    "reduced_motion": "no-preference"
+  },
+  "actions": [
+    {
+      "step_id": "wait-welcome",
+      "action": "wait_for",
+      "locator": {
+        "kind": "role",
+        "role": "button",
+        "name": "Enter the world"
+      },
+      "state": "visible",
+      "timeout_ms": 45000
+    },
+    {
+      "step_id": "enter-world",
+      "action": "click",
+      "locator": {
+        "kind": "role",
+        "role": "button",
+        "name": "Enter the world"
+      },
+      "timeout_ms": 5000
+    },
+    {
+      "step_id": "world-ready",
+      "action": "wait_for_timeout",
+      "duration_ms": 5000
+    },
+    {
+      "step_id": "open-map",
+      "action": "click",
+      "locator": {
+        "kind": "role",
+        "role": "button",
+        "name": "Map"
+      },
+      "timeout_ms": 10000
+    },
+    {
+      "step_id": "panel-ready",
+      "action": "wait_for_timeout",
+      "duration_ms": 1000
+    }
+  ],
+  "capture": {
+    "at_end": [
+      "screenshot",
+      "dom",
+      "accessibility",
+      "url"
+    ],
+    "events": [],
+    "network": {
+      "response_body": false,
+      "request_body": false,
+      "header_values": false
+    },
+    "after_each_step": []
+  }
+}

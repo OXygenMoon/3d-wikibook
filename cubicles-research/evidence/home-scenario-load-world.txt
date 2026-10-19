@@ -1,0 +1,14 @@
+- document:
+  - main:
+    - region "Notifications alt+T"
+    - region "Explore Cubicles"
+  - dialog "The internet has an office now.":
+    - text: cubicles.
+    - heading "The internet has an office now." [level=2]
+    - paragraph: Explore the neighborhood. Meet the people building it.
+    - button "Enter the world"
+    - text: Free to explore. No account needed.
+    - link "We’re live on Product Hunt (opens in a new tab)":
+      - /url: https://www.producthunt.com/products/cubicles-lol
+      - text: We’re live on Product Hunt
+    - button "Close"

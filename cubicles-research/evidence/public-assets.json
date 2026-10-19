@@ -1,0 +1,488 @@
+[
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/04ispu-xr-zux.css",
+    "path": "_next/static/immutable/chunks/04ispu-xr-zux.css",
+    "bytes": 7512,
+    "sha256": "7882228ad8872005e1c547570ca8820f26d65759398f02cacb32092a7727095f"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/05qmu0rie--oj.css",
+    "path": "_next/static/immutable/chunks/05qmu0rie--oj.css",
+    "bytes": 8497,
+    "sha256": "14b07b3c35da57fc5a98954a9b8a9a79973246a3521289b9701de4846a5c3a7e"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/06-6m087zyyel.css",
+    "path": "_next/static/immutable/chunks/06-6m087zyyel.css",
+    "bytes": 7327,
+    "sha256": "944dc226ccb1c3746f65b474c79767793792a00241738cc6ce9dcde2fc81a8af"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/07duao07dbfk0.css",
+    "path": "_next/static/immutable/chunks/07duao07dbfk0.css",
+    "bytes": 6921,
+    "sha256": "d0e41cd379c916ac918abca23e6e78ba15f5c10b3dd9b07266bb1ce487faa3d2"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/08fv757xovtj2.css",
+    "path": "_next/static/immutable/chunks/08fv757xovtj2.css",
+    "bytes": 4374,
+    "sha256": "9ee9668bd5e6804a3c729b58423e3506417ef7cc32b05d63fa54c62873244d93"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/08lzddi84z3an.js",
+    "path": "_next/static/immutable/chunks/08lzddi84z3an.js",
+    "bytes": 38053,
+    "sha256": "0b77c335c859b84e44eac4f4c5384fc0fd2a4f90589dd909506eda250ae1fccf"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/09b-t79xm1n11.css",
+    "path": "_next/static/immutable/chunks/09b-t79xm1n11.css",
+    "bytes": 4700,
+    "sha256": "436897838bd85f3d8356291a3f671afe8f04779847ccc97285e0390bc05033ea"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0a1we_xp9yupw.css",
+    "path": "_next/static/immutable/chunks/0a1we_xp9yupw.css",
+    "bytes": 6593,
+    "sha256": "db12d26fbd2aad4c30411a2b9d47ac2002b88f1d3389b907ff8d6e2a52a12cd3"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0b2faqdo7dof8.css",
+    "path": "_next/static/immutable/chunks/0b2faqdo7dof8.css",
+    "bytes": 2043,
+    "sha256": "03f836d65824f2a6e599fc4eff9c17887139e0c06b20cb4b777757540afa231a"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "path": "_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "bytes": 112594,
+    "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0cf9_h0mv9q3b.js",
+    "path": "_next/static/immutable/chunks/0cf9_h0mv9q3b.js",
+    "bytes": 34666,
+    "sha256": "64258ef8b39af83135174841403ca2d503f5da78d625d794890b869614abcdea"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0dlt25ffuf789.css",
+    "path": "_next/static/immutable/chunks/0dlt25ffuf789.css",
+    "bytes": 6507,
+    "sha256": "917ecfaa1541f46b0d736d33bc6bb9055827ccba6b8160abd91e412323f85948"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0ey6ieyrh79ny.css",
+    "path": "_next/static/immutable/chunks/0ey6ieyrh79ny.css",
+    "bytes": 40987,
+    "sha256": "1bbb6207efa2736c394bd0baddcce720ac3d49ee16ffa92436fed0c87631a592"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0f75ooigpcmtn.css",
+    "path": "_next/static/immutable/chunks/0f75ooigpcmtn.css",
+    "bytes": 8928,
+    "sha256": "2a22ce8adef27205388dcb891c8b6b723c5376882bbf68050fc951fd96ea9928"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0fhmirje2wt0f.js",
+    "path": "_next/static/immutable/chunks/0fhmirje2wt0f.js",
+    "bytes": 22066,
+    "sha256": "c6280b798f68dc5e100e101dd26fbed4727c49ae456964b4ab47a3750c913e15"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0l8ng6r0jjgug.css",
+    "path": "_next/static/immutable/chunks/0l8ng6r0jjgug.css",
+    "bytes": 8022,
+    "sha256": "7df1aaf5bce3313e3d82adb096382bc0d419e58bd90f30149f99bb27bc0984bf"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0llsa4_5p1t45.js",
+    "path": "_next/static/immutable/chunks/0llsa4_5p1t45.js",
+    "bytes": 34144,
+    "sha256": "e88351f9f8fe76d9590e2ce672ba0989e8f226e0f3db6584fe25270db6a62bcf"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0nsicrippjbpy.css",
+    "path": "_next/static/immutable/chunks/0nsicrippjbpy.css",
+    "bytes": 5118,
+    "sha256": "14d7c560a2ad356d59115411a6589ab523988756dd19056514ba51b8ae0e68ad"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "path": "_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "bytes": 443097,
+    "sha256": "626a0bb241de95cb73d7bc16334edf58c80791e9a55b9374ad739aeff3fb09dc"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0rgkau4of71hc.css",
+    "path": "_next/static/immutable/chunks/0rgkau4of71hc.css",
+    "bytes": 12164,
+    "sha256": "115c7e0b08e100937b93c3bd28992bc21e29cbab59d436cb6e72500cec257d23"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0sb-70ga8udy5.css",
+    "path": "_next/static/immutable/chunks/0sb-70ga8udy5.css",
+    "bytes": 27994,
+    "sha256": "732eeedad08564705ae864cef1a13f26c00e425ffce0f068c2d9512313f46a81"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0splnw8-j3kzo.css",
+    "path": "_next/static/immutable/chunks/0splnw8-j3kzo.css",
+    "bytes": 4959,
+    "sha256": "925c964a11ef899bc585a327e584309832f6f7bfea8138f12b7dcf1ee8522c91"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/0xdo8najholab.js",
+    "path": "_next/static/immutable/chunks/0xdo8najholab.js",
+    "bytes": 85304,
+    "sha256": "fbfe33eac51d30548248d0fb9ad7b2643b17243516cf06977d5296ba6ea475ff"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1-8bcf4airqfd.css",
+    "path": "_next/static/immutable/chunks/1-8bcf4airqfd.css",
+    "bytes": 146941,
+    "sha256": "aeefe0c0e97c20a2993339fb7717a17dbf374de1e334ac5ed3f6b056cc6bbb10"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1-h8xr0vu9wrm.js",
+    "path": "_next/static/immutable/chunks/1-h8xr0vu9wrm.js",
+    "bytes": 283144,
+    "sha256": "0a2be882e2a390c69539778a5d4bf56e2bcb73d16a215e26523c8f56b0f1c98e"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/158tjfh1gwq59.css",
+    "path": "_next/static/immutable/chunks/158tjfh1gwq59.css",
+    "bytes": 9259,
+    "sha256": "f94a937183167dc020e3de4cc28736079886247f971d180e38f255a09a38c520"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/16vwhjrq5-jqi.js",
+    "path": "_next/static/immutable/chunks/16vwhjrq5-jqi.js",
+    "bytes": 1957,
+    "sha256": "f31dd8035dd5fefd92f39a22fdd8aaf5142a4238eaba662cf4463aee75cd5256"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/17wgqr_xcllvx.js",
+    "path": "_next/static/immutable/chunks/17wgqr_xcllvx.js",
+    "bytes": 355088,
+    "sha256": "37ae444801b7a7a4d9cf196064c966c64d3cc08b89a357e3e5428292d497eded"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/19j__opbqyz7m.js",
+    "path": "_next/static/immutable/chunks/19j__opbqyz7m.js",
+    "bytes": 32367,
+    "sha256": "1d919bb75d15614892bd8334706b4c3c948dc8d5b18e4258fd0ea87c1d57f36b"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "path": "_next/static/immutable/chunks/1dc8d23161s01.js",
+    "bytes": 34849,
+    "sha256": "6d6b4312786c284f0abcaa51a622a8a9de4f0eb74cad7ab3a9e43587ef641c05"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1fddol83x04oj.css",
+    "path": "_next/static/immutable/chunks/1fddol83x04oj.css",
+    "bytes": 1052,
+    "sha256": "1e21d1d2cb990edc07c68e96e5b391d35f42184bd3d9966aef2a40e1be160340"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1g0phaevdae9i.css",
+    "path": "_next/static/immutable/chunks/1g0phaevdae9i.css",
+    "bytes": 1641,
+    "sha256": "55abf62eac0fd433edbdd221b4c543bb27bc401e038add73691c78e70d5bf789"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1i6o34e4ixizr.css",
+    "path": "_next/static/immutable/chunks/1i6o34e4ixizr.css",
+    "bytes": 18337,
+    "sha256": "89ca2df988f927ccde78cc25e49b9702bd3465216a2c563a6fa4e4e7649be0df"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1ij-c0r_yaj_2.css",
+    "path": "_next/static/immutable/chunks/1ij-c0r_yaj_2.css",
+    "bytes": 23112,
+    "sha256": "f8dc0f0130a5151f7a3096a31d60a300067e466ef4bd890cae8e589bb9489f26"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1mn88ko371iwe.css",
+    "path": "_next/static/immutable/chunks/1mn88ko371iwe.css",
+    "bytes": 4516,
+    "sha256": "0cd33cc3ad84f1e274472f57a6e1b9b29d82ff58e7ddf32aca5b455de65b488d"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1nruhniep3vg4.js",
+    "path": "_next/static/immutable/chunks/1nruhniep3vg4.js",
+    "bytes": 31448,
+    "sha256": "07e291bf719eafb0055438137ae59a1cb0d88296f11776b3e5048f9816baf42a"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1oy5fx70gxeei.js",
+    "path": "_next/static/immutable/chunks/1oy5fx70gxeei.js",
+    "bytes": 28303,
+    "sha256": "dda7bba40c6aeed00973e07f9efc29ebff3434912e8102bb71bd1967921a8ec4"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "path": "_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "bytes": 160948,
+    "sha256": "f507b17fa755a7f97566eb5330e4a44edb9d786553720f22b1b3e6490c7181d7"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1wugh_pfi95y1.js",
+    "path": "_next/static/immutable/chunks/1wugh_pfi95y1.js",
+    "bytes": 40915,
+    "sha256": "14647d36582361de3e720e77a220b6f017e5759541714d1ae1b9f51128aa1adf"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "path": "_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "bytes": 70589,
+    "sha256": "cf8aab3747783a68799a5dcb6379e41637e40ff59edb1bac45408bd0fc9e8f96"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1yb02tkegfrpf.js",
+    "path": "_next/static/immutable/chunks/1yb02tkegfrpf.js",
+    "bytes": 12784,
+    "sha256": "9c0efc78b241b70d45dc33ddf3420f34422b31cd64536a02e4f00e55cba6c41e"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/1zqrhv8-do_v3.css",
+    "path": "_next/static/immutable/chunks/1zqrhv8-do_v3.css",
+    "bytes": 4473,
+    "sha256": "67525d0d711c0a4af315b3a52a5f09da14d5fd9e8e678230311020443817d79f"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/20a-bt0p4dihe.css",
+    "path": "_next/static/immutable/chunks/20a-bt0p4dihe.css",
+    "bytes": 2214,
+    "sha256": "c12416f67549111203c3b39a07f0ed9fccecd62bb28164f3b3430c5c856c430c"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/20w6wmfg1mrzu.css",
+    "path": "_next/static/immutable/chunks/20w6wmfg1mrzu.css",
+    "bytes": 30859,
+    "sha256": "3d70c296240653a9845a7b221e31312a6cecf783c794ba02ac2a305ed5e446a2"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/215aeuxm_r1-c.js",
+    "path": "_next/static/immutable/chunks/215aeuxm_r1-c.js",
+    "bytes": 35910,
+    "sha256": "de26f0233352aad99f6f392d80bf894e6176897a2cd873eedd41939de765c47b"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/24_0nm382znjw.css",
+    "path": "_next/static/immutable/chunks/24_0nm382znjw.css",
+    "bytes": 23787,
+    "sha256": "879f6a0fbe62f78ffc421170c0b921e8f48140b1de9fd8b4fec730dae86b6ebe"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2573c5_8b62k7.css",
+    "path": "_next/static/immutable/chunks/2573c5_8b62k7.css",
+    "bytes": 8164,
+    "sha256": "45e6b287d1c7f71f9f20d937d3d2b330acdc43b3b72f704cc85f2e7b9c06adf0"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2601_4x72k977.css",
+    "path": "_next/static/immutable/chunks/2601_4x72k977.css",
+    "bytes": 1057,
+    "sha256": "1543ba24a039929464cbdb08974e3db06b0308025dafe6c3533a7aed6691f3fc"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/26fqt705s7s6s.js",
+    "path": "_next/static/immutable/chunks/26fqt705s7s6s.js",
+    "bytes": 60809,
+    "sha256": "b41f51110c80a269044c2b87b0f77d1376c2a43c0537e3e01884e9ed80d20a89"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "path": "_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "bytes": 51082,
+    "sha256": "95f81e5199fde87b9f59539befaa3374e8e80ba5edcf7b2bd8e191b23a9b7b61"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "path": "_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "bytes": 137237,
+    "sha256": "f5cfdba5db999b36e5bc7ea6e383f1a64e786b615fb75784d0b1641c75300a81"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2ghmldr7pyihp.css",
+    "path": "_next/static/immutable/chunks/2ghmldr7pyihp.css",
+    "bytes": 2441,
+    "sha256": "23e2b5b22e99309bdab9fcfd5df9c93dcdf4068bdbc9a45a248a888b8bf8b7db"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2h1h0yafi3g0i.css",
+    "path": "_next/static/immutable/chunks/2h1h0yafi3g0i.css",
+    "bytes": 1686,
+    "sha256": "1de52c90fefe315bb4ab8b9fd0b20cdba815db19522857ccf83c9c2fd3023b36"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2mqcv0u2ieinp.css",
+    "path": "_next/static/immutable/chunks/2mqcv0u2ieinp.css",
+    "bytes": 638,
+    "sha256": "83fd252dc29ba71774ab3dafcef55aeaf5708b5b91ccd9f3d256dc7a7dac739f"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2mun1zhr4rn_p.css",
+    "path": "_next/static/immutable/chunks/2mun1zhr4rn_p.css",
+    "bytes": 3885,
+    "sha256": "3fe83a4e40324dc42b6c12724ffa1f3b5bb43a68182e3b342019be340ca74c31"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2p95rkk1rne0c.js",
+    "path": "_next/static/immutable/chunks/2p95rkk1rne0c.js",
+    "bytes": 27439,
+    "sha256": "3bb7cc4e1d071ea392e2573cc10a0e469d2eaba89db7e29627236cc7c14322ce"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "path": "_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "bytes": 40267,
+    "sha256": "11158e59952933609ad28ac68262cc40981511dd519899238d736f1f70cdf8e2"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2spoo6v2b81sl.css",
+    "path": "_next/static/immutable/chunks/2spoo6v2b81sl.css",
+    "bytes": 1368,
+    "sha256": "ed2a34315b409fa1226751220106c5b32bda0521406eaed9fe5765f5e5b1afe8"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2vi5f5s-3xi1m.css",
+    "path": "_next/static/immutable/chunks/2vi5f5s-3xi1m.css",
+    "bytes": 419,
+    "sha256": "1cbc16588bc53c1b6c90c48b3f4510c3aa287db5f907a75c6e433f5ba7f6a493"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "path": "_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "bytes": 80366,
+    "sha256": "eac1b2379b455353d9dc59b33829bcb9bc605aad8d0d93a3ba1f864b84706fa2"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/2xgjbbv1ks5he.css",
+    "path": "_next/static/immutable/chunks/2xgjbbv1ks5he.css",
+    "bytes": 20320,
+    "sha256": "7143710c70b6f3e7152b210e68252fa10fb0224af461ce61e99dd69fa6fdc360"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/31x7izlinrd47.css",
+    "path": "_next/static/immutable/chunks/31x7izlinrd47.css",
+    "bytes": 6031,
+    "sha256": "841e27e93cff4ebcc7419607e171d497f1894555e0ac66560a734d91a4a7c5bd"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/32sbofpk3bud3.js",
+    "path": "_next/static/immutable/chunks/32sbofpk3bud3.js",
+    "bytes": 27869,
+    "sha256": "3dc9db74f8bf273a597e8e462d598fbaab2fcb58ee68adf869ec25e67556c3ed"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/363l1my5gnmyt.css",
+    "path": "_next/static/immutable/chunks/363l1my5gnmyt.css",
+    "bytes": 23709,
+    "sha256": "670b995f7de5f8b95c9b0aedc15b412ad503569745465d2bc597445f0d902150"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/37k1ke_m3ujc6.css",
+    "path": "_next/static/immutable/chunks/37k1ke_m3ujc6.css",
+    "bytes": 27276,
+    "sha256": "2b77b680731c35a1b98c3135d853b450ff6f1c26fef4d0e819c143c96a6b1f86"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3_45ezklvoi15.css",
+    "path": "_next/static/immutable/chunks/3_45ezklvoi15.css",
+    "bytes": 10062,
+    "sha256": "22e849fa76f821c524a308f93211db902bc6d546716b366db18c4e6bea0f0c5b"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "path": "_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "bytes": 233345,
+    "sha256": "1fda3f6436aae233769de108c35a1ea107bac7741c1eb2c2658e7eb8ec0b853b"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3_ms8soxiuwq9.js",
+    "path": "_next/static/immutable/chunks/3_ms8soxiuwq9.js",
+    "bytes": 35562,
+    "sha256": "469a1809f1c33b5b890fcc2216b74569ceb39312ebef759912d4a6c0af5de4fc"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3a5ybbelvqv1f.css",
+    "path": "_next/static/immutable/chunks/3a5ybbelvqv1f.css",
+    "bytes": 7386,
+    "sha256": "b70d3b415c4737b908faeaed3bf9ba2e08327bcd452c4d09320f920eaf84ba7a"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3dljqj5evagti.css",
+    "path": "_next/static/immutable/chunks/3dljqj5evagti.css",
+    "bytes": 2591,
+    "sha256": "31ab1381528a765b7245f37e785a7738adf4cf68b6eb59dbec9b6b7ca36186ee"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3dzu48d190e90.js",
+    "path": "_next/static/immutable/chunks/3dzu48d190e90.js",
+    "bytes": 101290,
+    "sha256": "53ed8f785de9c14af13094cf7a5d59ebed6ad8e79cb20e24682e94630a073529"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3fj3ssz0fg3bx.js",
+    "path": "_next/static/immutable/chunks/3fj3ssz0fg3bx.js",
+    "bytes": 6570,
+    "sha256": "49ca70f0f8f7a9c736c5f4dfc80c10d27eeec5201a85b336c9b7aa5a8cf949c7"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3hpj4rkp_3sxq.css",
+    "path": "_next/static/immutable/chunks/3hpj4rkp_3sxq.css",
+    "bytes": 9146,
+    "sha256": "ec13dd097f570c4b3dcbd0066c5a74771146c70b572eae9a832662f339085d82"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "path": "_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "bytes": 228557,
+    "sha256": "f3409575630c74105fa0662723ffabe1faa744ff57ccc2a71534a2e4c01c7ca4"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3l8vrazq3x4sq.css",
+    "path": "_next/static/immutable/chunks/3l8vrazq3x4sq.css",
+    "bytes": 43441,
+    "sha256": "6b25c731ef34f2d8f7526f00c3bc5f1678f0bd671777b51b840d512459c74642"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3lkoybxcnxupl.js",
+    "path": "_next/static/immutable/chunks/3lkoybxcnxupl.js",
+    "bytes": 44388,
+    "sha256": "bd96a5571fd2df08914f71bfeac2ae0e7a3b1384f03ae2a0be13c603830bf287"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3wvgmg8ei8k6w.css",
+    "path": "_next/static/immutable/chunks/3wvgmg8ei8k6w.css",
+    "bytes": 1246,
+    "sha256": "dd4f49aac29c86bb799d481266cce2ddc744de74034b3deaa531437ff210849f"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3xv5-1xn7-8au.js",
+    "path": "_next/static/immutable/chunks/3xv5-1xn7-8au.js",
+    "bytes": 42042,
+    "sha256": "76111b89cc4a21ae41db6665219ac87d584a6923eb030250ab6a7309a02b20cb"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/3ybmmrgkj-_vt.css",
+    "path": "_next/static/immutable/chunks/3ybmmrgkj-_vt.css",
+    "bytes": 25350,
+    "sha256": "9cf0eb60d5b58a73a64d1361778e188e14fcc0f452ab4b4532f11453e2cd2de6"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "path": "_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "bytes": 47940,
+    "sha256": "1b21936ad4de7ed367307725928852c524c521f7c6f4ac55746370ac5c3b6ef9"
+  },
+  {
+    "url": "https://www.cubicles.lol/_next/static/immutable/chunks/turbopack-0rtecbg1wouqh.js",
+    "path": "_next/static/immutable/chunks/turbopack-0rtecbg1wouqh.js",
+    "bytes": 10987,
+    "sha256": "be0e8350fc7b7cc7bd3e6778f3c2c0fcdbe02e6a1025f58df4739eb33bbada8d"
+  }
+]

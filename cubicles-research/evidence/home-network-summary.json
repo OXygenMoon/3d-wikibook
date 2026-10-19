@@ -1,0 +1,2280 @@
+[
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "document",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/favicon.ico?v=20260918",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "v"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "other",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/v1/commons.glb",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/art/chicago/panels.json",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/seating.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/foundation.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/tech.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/employee-leaderboard",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/contest-bar",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/fishing?contest=1",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "contest"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/blimp-sponsor",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?startup=1",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "startup"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/design-drafts",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://static.ads-twitter.com/uwt.js",
+      "origin": "https://static.ads-twitter.com",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "script",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-HEG612KBYQ",
+      "origin": "https://www.googletagmanager.com",
+      "query_parameter_names": [
+        "id"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "script",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-HEG612KBYQ&gtm=45je6ae1v9263693027za208zd9263693027xf1&_p=1792403303730&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=876840200.1792403305&frm=0&ngs=1&pscdl=noapi&rcb=13&sr=1440x900&uaa=arm&uab=64&uafvl=Chromium%3B158.0.8106.0%7CNot.A%252FBrand%3B24.0.0.0%7CGoogle%2520Chrome%3B158.0.8106.0&uam=&uamb=0&uap=macOS&uapv=26.5.2&uaw=0&ul=en-us&_s=1&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153~121246026~121246034&sid=1792403305&sct=1&seg=0&dl=https%3A%2F%2Fwww.cubicles.lol%2F&dt=Cubicles%20%7C%20Office%20Metaverse%20Game&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=2721",
+      "origin": "https://www.google-analytics.com",
+      "query_parameter_names": [
+        "v",
+        "tid",
+        "gtm",
+        "_p",
+        "gcd",
+        "npa",
+        "dma",
+        "cid",
+        "frm",
+        "ngs",
+        "pscdl",
+        "rcb",
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "_s",
+        "tag_exp",
+        "sid",
+        "sct",
+        "seg",
+        "dl",
+        "dt",
+        "en",
+        "_fv",
+        "_nsi",
+        "_ss",
+        "_ee",
+        "tfd"
+      ],
+      "redacted": false
+    },
+    "status": 204,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101,523,525,563,564,565",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r7/expression-cozy-hideout.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/greenery.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/lighting.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/v1/commons.glb",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-8e9d2cd4-02e8-43a2-8d21-e92ec9c472f1.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101,522,523,524,525,526,562,563,564,565,566,601,605",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/cars?viewX=0.0&viewZ=-15.3",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "viewX",
+        "viewZ"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/brand-498bda88ec047bd20cbe78b4afdce29e30536380.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-c33b3ccc17af4a5dad43fd9eb451309274ea9373.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/564?site=https%3A%2F%2Ftaxdiagnostic.com%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-HEG612KBYQ&gtm=45je6ae1v9263693027za200zd9263693027xf1&_p=1792403303730&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AEAAAAQ&ae=a&cid=876840200.1792403305&frm=0&ngs=1&pscdl=noapi&rcb=13&sr=1440x900&uaa=arm&uab=64&uafvl=Chromium%3B158.0.8106.0%7CNot.A%252FBrand%3B24.0.0.0%7CGoogle%2520Chrome%3B158.0.8106.0&uam=&uamb=0&uap=macOS&uapv=26.5.2&uaw=0&ul=en-us&_s=2&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153~121246026~121246034&sid=1792403305&sct=1&seg=0&dl=https%3A%2F%2Fwww.cubicles.lol%2F&dt=Cubicles%20%7C%20Office%20Metaverse%20Game&en=scroll&epn.percent_scrolled=90&_et=28&tfd=4746",
+      "origin": "https://www.google-analytics.com",
+      "query_parameter_names": [
+        "v",
+        "tid",
+        "gtm",
+        "_p",
+        "gcd",
+        "npa",
+        "dma",
+        "_eu",
+        "ae",
+        "cid",
+        "frm",
+        "ngs",
+        "pscdl",
+        "rcb",
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "_s",
+        "tag_exp",
+        "sid",
+        "sct",
+        "seg",
+        "dl",
+        "dt",
+        "en",
+        "epn.percent_scrolled",
+        "_et",
+        "tfd"
+      ],
+      "redacted": false
+    },
+    "status": 204,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/storage.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/trials",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/adam",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/player-safety",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/visitor",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/radio",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/visitor-pass",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101,437,439,440,441,442,443,444,445,447,448,449,450,451,479,480,481,482,483,484,487,488,489,490,491,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,597,598,599,600,601,602,603,604,605,606,607,608,609,610,636,637,638,639,641,642,643,644,645,646,647,648,649,650,676,677,678,681,682,683,684,685,686,687,688,689,690,721,722,723,724,725,761,762,763,764,765",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/brand-de28304424f236bb7e78e23bdaa83214bbf1ca05.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-d922867b-e757-4701-8ee6-a9360e4e034e.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/blimp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-7f6e3ae30213244cc878277099327137fa17a635.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/player-safety",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/cars?viewX=0.0&viewZ=-15.3",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "viewX",
+        "viewZ"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?startup=1",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "startup"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/brand-35bb58629f439bb79cfa95445b456419fb66bfc2.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-fbf5244a-2039-44d9-a94a-3316240c5c1b.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/hacker-cave.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?extras=1",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "extras"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/decor.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-9ff356c4379e1ca732c797b677c6e2d6613db67c.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-a0c4e60d7e837e8a56c336b99e29f5811ba4ff45.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?extras=1",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "extras"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-a0c4e60d7e837e8a56c336b99e29f5811ba4ff45.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-36cbdaaf-25f6-45e8-8847-23ce4e32e1ea.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/565?site=https%3A%2F%2Fwww.officesim.ai%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-bfbb7d613bfa80b259a3f454473cd7016199d756.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-4715d327ad1e5925fd8d8284344352f223c5b256.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-4715d327ad1e5925fd8d8284344352f223c5b256.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/brand-067339c5ab283c977e33b7d8172fd861b02149d7.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-0fa5c20834fdb9fd160de8f3affba433da0551c0.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-0fa5c20834fdb9fd160de8f3affba433da0551c0.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-c00df7bba0f5ed0ee55a479ee541149f1b5d7117.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-6bffe3d6-6f00-4bc3-9b59-0bc86be40f89.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/brand-18c9f92ce3ddcb5a9c38bfa192bb310b0c13b1e5.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://i.ytimg.com/vi/ZYQtWqxDpD0/hqdefault.jpg",
+      "origin": "https://i.ytimg.com",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-6d278925-c275-4500-8926-fd0a7ba6ebf0.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/566?site=https%3A%2F%2Fgrepsstrength.com%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-e5ac26e6b3f550ca844efddc3ea50d31e26e6fa8.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-52391b2fd9f15091885497f93a87422a78c2fc09.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-e5ac26e6b3f550ca844efddc3ea50d31e26e6fa8.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-c918aa0993f9698f5df990c447367d9802a93cb8.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-183e80f18f25d8ab40c56ea14fec33f843a7a0c5.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-813920c362115e93435ea3da4ceb8669e413415b.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-813920c362115e93435ea3da4ceb8669e413415b.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r7/expression-analog-studio.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/desk-details.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-c18b1f031bccf1ebbf00c0119d0e7307ec0b6c19.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r7/expression-builder-showcase.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-HEG612KBYQ&gtm=45je6ae1v9263693027za200zd9263693027xf1&_p=1792403303730&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAAQ&cid=876840200.1792403305&frm=0&ngs=1&pscdl=noapi&rcb=13&sr=1440x900&uaa=arm&uab=64&uafvl=Chromium%3B158.0.8106.0%7CNot.A%252FBrand%3B24.0.0.0%7CGoogle%2520Chrome%3B158.0.8106.0&uam=&uamb=0&uap=macOS&uapv=26.5.2&uaw=0&ul=en-us&_s=3&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153~121246026~121246034&sid=1792403305&sct=1&seg=0&dl=https%3A%2F%2Fwww.cubicles.lol%2F&dt=Cubicles%20%7C%20Office%20Metaverse%20Game&en=world_enter&_ee=1&ep.transport_type=beacon&_et=1993&tfd=9750",
+      "origin": "https://www.google-analytics.com",
+      "query_parameter_names": [
+        "v",
+        "tid",
+        "gtm",
+        "_p",
+        "gcd",
+        "npa",
+        "dma",
+        "_eu",
+        "cid",
+        "frm",
+        "ngs",
+        "pscdl",
+        "rcb",
+        "sr",
+        "uaa",
+        "uab",
+        "uafvl",
+        "uam",
+        "uamb",
+        "uap",
+        "uapv",
+        "uaw",
+        "ul",
+        "_s",
+        "tag_exp",
+        "sid",
+        "sct",
+        "seg",
+        "dl",
+        "dt",
+        "en",
+        "_ee",
+        "ep.transport_type",
+        "_et",
+        "tfd"
+      ],
+      "redacted": false
+    },
+    "status": 204,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r7/expression-collector-corner.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101,437,439,440,441,442,443,444,445,447,448,449,450,451,479,480,481,482,483,484,487,488,489,490,491,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,597,598,599,600,601,602,603,604,605,606,607,608,609,610,636,637,638,639,641,642,643,644,645,646,647,648,649,650,676,677,678,681,682,683,684,685,686,687,688,689,690,721,722,723,724,725,761,762,763,764,765",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/coffee.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/models/cubicles/higgsfield-r6/personality.glb.gz.b64",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-5b5edf15d9cb9b4692e447723dc65d8e1635bd90.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-d01f108ea179a0ac5857ecef24bcbac187fdc962.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://i.ytimg.com/vi/hUnsguOXgCY/hqdefault.jpg",
+      "origin": "https://i.ytimg.com",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-2fe5f197c9eb4640d1489a02ba27bd4445346533.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://i.ytimg.com/vi/asPlGl2Odq4/hqdefault.jpg",
+      "origin": "https://i.ytimg.com",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://i.ytimg.com/vi/ddJbeVacTZM/hqdefault.jpg",
+      "origin": "https://i.ytimg.com",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://i.ytimg.com/vi/c313hUAZU0A/hqdefault.jpg",
+      "origin": "https://i.ytimg.com",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-1bd272f0077ccb90ec7a3ede37bb76ae93ba1ede.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-1bd272f0077ccb90ec7a3ede37bb76ae93ba1ede.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-d153aecc6ef1c6e6621ca7588d9f73fd25dac03f.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-e2049432816021fcfd190c9c311de4a9b8dddc6e.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-37590238-1ba8-46f7-b46e-d4fbb06c77ad.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-05e75dfcbabd5b0e0e8fed3390ccf13a1046fec8.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/443?site=https%3A%2F%2Fwww.treemansion.com%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-9401f012-afb2-4fc9-8904-03a10385cdf9.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/444?site=https%3A%2F%2Fblooporg.com%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 503,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-e6aa159e670bd458446898bcb5c8dd05a29fdae5.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-dc0211045842724d2a53be5645ca51478853d63f.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/445?site=https%3A%2F%2Fwww.startdancing.ai%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-28848e1fe32a1dbd5ec4cc5965c1fdeab01bfaf2.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-3f2e8c31-04eb-4760-b043-a5074523ed6a.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/447?site=https%3A%2F%2Fwww.instagram.com%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-e6aa159e670bd458446898bcb5c8dd05a29fdae5.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-3ee385492818a66a3ff2f0139256aa0d325d4172.jpg",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-860a2060f35d2fa9f63138f25f7bcbe5bcedcd2a.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-736d4a51d97aa4f2d2c7257dc5ab8eea887c6f10.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/451?site=https%3A%2F%2Fwww.instagram.com%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-d193210f48011ca43fd6d04004ebfc4c6f792014.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-9a996e8372aab0e9e6f4621d9f0eff61ae2a0285.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-860a2060f35d2fa9f63138f25f7bcbe5bcedcd2a.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-520e46616472d5ef4a451376f1150a1fee8316bb.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-fccf6c07086de6ee89cfc3e770e188e43a585a52.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-39beb9d9420ea930f175d63812b687b622b4f784.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-4f605d7a57f2f0d305102caea6e02fc90f25d65f.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/481?site=https%3A%2F%2Fwww.trinary.llc%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-fccf6c07086de6ee89cfc3e770e188e43a585a52.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-4b12ecc1556bec8747160c17d0c7b4b5226a398f.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-5871d90acc3a693e89a0fbaba81dc7a7b51e0d4b.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-efc402f913c6c17c8de01955dc07e8edbd6ed3ab.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-4f605d7a57f2f0d305102caea6e02fc90f25d65f.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101,437,439,440,441,442,443,444,445,447,448,449,450,451,479,480,481,482,483,484,487,488,489,490,491,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,597,598,599,600,601,602,603,604,605,606,607,608,609,610,636,637,638,639,641,642,643,644,645,646,647,648,649,650,676,677,678,681,682,683,684,685,686,687,688,689,690,721,722,723,724,725,761,762,763,764,765",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-5871d90acc3a693e89a0fbaba81dc7a7b51e0d4b.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-be049d1dbd2fc0f3ced361f26098b9370a3c289d.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-ee3cec8ecd86a77c5d808475535b0e293b9478d6.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/player-safety",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-2e8d5a4d42025d83aa99af62af03d5bd9343105e.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-be049d1dbd2fc0f3ced361f26098b9370a3c289d.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-1a20ac5676e10de52921b0f5a7145284fc3c80d0.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-1a20ac5676e10de52921b0f5a7145284fc3c80d0.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-8465656549c444a27150d1915c2e94432b17754b.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-97d3b1dd31b3b2931cb3bbcfec4a10273f1e0893.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-7fc989f10a15b2177c7994c9547e9c3f144ba40f.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-7fc989f10a15b2177c7994c9547e9c3f144ba40f.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/contest-bar",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/fishing?contest=1",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "contest"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-57b5e6e8bec5ec9cbb81f5632325d9ebba404f12.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-21b685728e2614686bbf97aae34941e5d87998ce.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-70361dfdab74ce23039d448572727d4c9af29c67.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-cb4efa14d09eae28b2dff1f49bbe2aead288af80.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-588f6349c62aa79997f89c5095a4640f74c886ad.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-a6c33b0605f93528fbdfabbe309b077bcf416895.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-a6c33b0605f93528fbdfabbe309b077bcf416895.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-dedc5fe9d9976c5ed311a7e9fcf33d93595e8cc3.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-6031c4badb72e6bc0ab79dac446b3300e094d8ea.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-7f753021fc7952960212eb48e32bfdcb7bff6642.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/monitor-homepage/519?site=https%3A%2F%2Flwk.dating%2F",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "site"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-b3b9255e22fe3d3588c26b031abe044716993f79.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-b3b9255e22fe3d3588c26b031abe044716993f79.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/trials",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-b72f95263028b494c385d8c32fb4a74edb5f7c30.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/draft-ae9b7f53bf7b669458bbd40d6812852aa99d1051.png",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-b72f95263028b494c385d8c32fb4a74edb5f7c30.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/tick",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/world?ids=101,437,439,440,441,442,443,444,445,447,448,449,450,451,479,480,481,482,483,484,487,488,489,490,491,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,597,598,599,600,601,602,603,604,605,606,607,608,609,610,636,637,638,639,641,642,643,644,645,646,647,648,649,650,676,677,678,681,682,683,684,685,686,687,688,689,690,721,722,723,724,725,761,762,763,764,765",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [
+        "ids"
+      ],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-90d6fc9c54a786dacbd8fb094fa25db9dbe9a0b6.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  },
+  {
+    "kind": "response",
+    "url": {
+      "url": "https://www.cubicles.lol/api/files/overview-90d6fc9c54a786dacbd8fb094fa25db9dbe9a0b6.webp",
+      "origin": "https://www.cubicles.lol",
+      "query_parameter_names": [],
+      "redacted": false
+    },
+    "status": 200,
+    "resource_type": "fetch",
+    "failure": null
+  }
+]

@@ -1,0 +1,359 @@
+[
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "\"/api/presence\"",
+    "offset_char": 405796,
+    "offset_bytes": 406035,
+    "context": ")(\"button\",{type:\"button\",onClick:()=>window.location.reload(),children:\"Reload world\"})]})]})});e.s([\"default\",0,tE],335190)},492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles-layout\",\"x-cubicles-geometry\",\"x-cubicles-identity\"],i=(e,t,a)=>new Response(e,{status:t>=200&&t<=599?t:502,headers:{\"Content-Type\":\"application/json\",\"X-Tick-Sent\":String(a)}});e.s([\"batchedFetch\",0,function(e,o,r){return\"u\"<typeof location?fetch(e,o):(t??=function(e){let t=e.now??Date.now,o=e.setTimer??((e,t)=>setTimeout(e,t)),r=e.clearTimer??(e=>clearTimeout(e)),s=e.gatherMs??25,l=e.holdMs??1200,d=e.leaderMs??3e3,c=[],u,h=1/0,p=1/0,f=-1/0,m=!1,g=(e,t)=>{e.done||(e.done=!0,e.release(),t())},x=a=>"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "\"/api/messages\"",
+    "offset_char": 405827,
+    "offset_bytes": 406066,
+    "context": "ck:()=>window.location.reload(),children:\"Reload world\"})]})]})});e.s([\"default\",0,tE],335190)},492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles-layout\",\"x-cubicles-geometry\",\"x-cubicles-identity\"],i=(e,t,a)=>new Response(e,{status:t>=200&&t<=599?t:502,headers:{\"Content-Type\":\"application/json\",\"X-Tick-Sent\":String(a)}});e.s([\"batchedFetch\",0,function(e,o,r){return\"u\"<typeof location?fetch(e,o):(t??=function(e){let t=e.now??Date.now,o=e.setTimer??((e,t)=>setTimeout(e,t)),r=e.clearTimer??(e=>clearTimeout(e)),s=e.gatherMs??25,l=e.holdMs??1200,d=e.leaderMs??3e3,c=[],u,h=1/0,p=1/0,f=-1/0,m=!1,g=(e,t)=>{e.done||(e.done=!0,e.release(),t())},x=a=>{let n=t();return e.send(a.url,"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "WALK_SPEED",
+    "offset_char": 81974,
+    "offset_bytes": 81991,
+    "context": "ax(0,n))))}],971323),e.s([\"advanceWalk\",0,function(e,t,a,n,i){let o=Math.hypot(t.x,t.z);if(o<1e-6||a<=0)return{...e,moved:!1};let r=Math.min((n?ev.RUN_SPEED:ev.WALK_SPEED)*Math.min(a,.1),t.remaining),s={x:e.x+t.x/o*r,z:e.z+t.z/o*r};return i.clear(e,s,!0)?{...s,moved:(0,eV.distance)(e,s)>1e-5}:{...e,moved:!1}}],141704),e.s([\"WorldWalkPlanner\",0,class{geometry;version=0;stats=null;buildMs=0;searchMs=0;worker=null;id=0;pending=null;constructor(t,a,n){this.geometry=new eV.WalkGeometry(t,a,n);try{this.worker=e.r(823401)(Worker,{type:\"module\"}),this.worker.onmessage=e=>{let t=e.data;if(t.version===this.version)if(\"ready\"===t.kind)this.stats=t.stats,this.buildMs=t.buildMs;else if(\"route\"===t.kind&&this.pending?.id===t.id){let e=this.pending;this.pending=null,clearTimeout(e.timer),this.searchMs=t.searchMs,e.resolve(t.route)}else\"error\"===t.kind&&this.fail()},this.worker.onerror=()=>this.fail(),this.worker.onmessageerror=()=>this.fail(),this.send({kind:\"g"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "WalkGeometry",
+    "offset_char": 82287,
+    "offset_bytes": 82304,
+    "context": "41704),e.s([\"WorldWalkPlanner\",0,class{geometry;version=0;stats=null;buildMs=0;searchMs=0;worker=null;id=0;pending=null;constructor(t,a,n){this.geometry=new eV.WalkGeometry(t,a,n);try{this.worker=e.r(823401)(Worker,{type:\"module\"}),this.worker.onmessage=e=>{let t=e.data;if(t.version===this.version)if(\"ready\"===t.kind)this.stats=t.stats,this.buildMs=t.buildMs;else if(\"route\"===t.kind&&this.pending?.id===t.id){let e=this.pending;this.pending=null,clearTimeout(e.timer),this.searchMs=t.searchMs,e.resolve(t.route)}else\"error\"===t.kind&&this.fail()},this.worker.onerror=()=>this.fail(),this.worker.onmessageerror=()=>this.fail(),this.send({kind:\"geometry\",version:this.version,rects:t,bounds:a})}catch{this.fail()}}send(e){this.worker?.postMessage(e)}rejectPending(e){this.pending&&(clearTimeout(this.pending.timer),this.pending.reject(Error(e)),this.pending=null)}fail(){this.rejectPending(\"Navigation is unavailable. Use the movement keys or try again.\"),thi"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "WalkGeometry",
+    "offset_char": 83222,
+    "offset_bytes": 83239,
+    "context": " keys or try again.\"),this.worker?.terminate(),this.worker=null}update(e){this.version++,this.rejectPending(\"Collision geometry changed.\"),this.geometry=new eV.WalkGeometry(e,this.geometry.bounds,this.geometry.floor),this.send({kind:\"geometry\",version:this.version,rects:e,bounds:this.geometry.bounds})}plan(e,t){return(this.rejectPending(\"A newer destination replaced this route.\"),this.worker)?new Promise((a,n)=>{let i=++this.id,o=setTimeout(()=>{this.pending?.id===i&&this.rejectPending(\"Navigation timed out.\")},12e3);this.pending={id:i,resolve:a,reject:n,timer:o},this.send({kind:\"route\",id:i,version:this.version,start:{...e},goal:{...t}})}):Promise.reject(Error(\"Navigation worker unavailable.\"))}dispose(){this.rejectPending(\"World closed.\"),this.worker?.terminate(),this.worker=null}}],860216),e.s([\"AdaptiveRenderQuality\",0,class{baseRatio;minimumRatio;ratio;wide=!1;windowMs=0;frames=0;slowWindows=0;fastWindows=0;changedAt=-1/0;constructor(e){this"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "useEffect",
+    "offset_char": 303235,
+    "offset_bytes": 303445,
+    "context": "X.useRef)(null),tT=(0,X.useRef)(e);tT.current=e;let tD=(0,X.useRef)(null),[tO,t_]=(0,X.useState)(!1),[tN,tL]=(0,X.useState)(!1),[tG,tF]=(0,X.useState)(!1);(0,X.useEffect)(()=>{e.onCameraMode?.(tG?\"sky\":tN?\"first-person\":\"isometric\")},[tG,tN,e.onCameraMode]);let[tB,tW]=(0,X.useState)(\"idle\"),[tV,tU]=(0,X.useState)(null),[tj,tH]=(0,X.useState)(!1),[tK,tY]=(0,X.useState)(\"\"),[t$,tX]=(0,X.useState)(null),[tq,tZ]=(0,X.useState)(\"loading\");return(0,X.useImperativeHandle)(tE,()=>({dance:e=>tD.current?tD.current.dance(e):\"Wait for the world to load.\",findAdam:()=>tD.current?.findAdam()??\"unavailable\",startFreeLook:e=>tD.current?tD.current.startFreeLook(e):\"Wait for the world to load.\",stopFreeLook:()=>tD.current?.stopFreeLook(),configureFreeLook:e=>tD.current?.configureFreeLook(e),moveFreeLook:(e,t)=>tD.current?.moveFreeLook(e,t),prepareCinema:e=>tD.current?.prepareCinema(e)??Promise.reject(Error(\"Wait for the world to load.\")),playCinema:e=>tD.current?."
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "useEffect",
+    "offset_char": 304989,
+    "offset_bytes": 305199,
+    "context": "e:()=>tD.current?.seatUnavailable(),agentScreenPositions:()=>tD.current?.agentScreenPositions()??[],agentPosition:e=>tD.current?.agentPosition(e)??null})),(0,X.useEffect)(()=>{let t,z,X,tn,tE,tC,tO,tN,tG,tB,tV,tj,tK,t$=tP.current,tq=(0,eE.worldRenderBudget)(navigator,window.devicePixelRatio);try{t=new q.WebGLRenderer({antialias:tq.antialias,alpha:!0,preserveDrawingBuffer:tq.preserveDrawingBuffer,powerPreference:\"high-performance\"})}catch{t_(!0),tT.current.onRenderError?.(),tT.current.onReady();return}let tJ=new ek.AdaptiveRenderQuality(tq.pixelRatio),tQ=t.domElement.dataset,t0=(e,t)=>{tQ[e]!==t&&(tQ[e]=t)};t.setPixelRatio(tJ.baseRatio),t.shadowMap.enabled=tq.shadows,t.shadowMap.type=Z.PCFSoftShadowMap,t.outputColorSpace=Z.SRGBColorSpace,t.toneMapping=Z.ACESFilmicToneMapping,function(e=\"clean\"){let t=q.ShaderChunk.tonemapping_pars_fragment,a=tk[e];if(t.includes(a))return!0;let n=[\"vec3 CustomToneMapping( vec3 color ) { return color; }\",...Object.v"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "presence",
+    "offset_char": 136518,
+    "offset_bytes": 136541,
+    "context": "et a of this.sides)if(a.distanceToPoint(e.center)<-e.radius){t=!1;break}return t||this.view.intersectsSphere(e)}}e.s([\"ShadowCasterFrustum\",0,tk],460589),e.s([\"presenceFreshness\",0,function(e,t,a=2e4){let n=e,i=t;return{visible:(e,t)=>(e!==n&&(n=e,i=t),t-i<a?n:[])}}],780452);let tE=(e,t,a)=>Math.max(t,Math.min(a,e)),tC=e=>{let t=e.seating??e;return{x:t.x,z:t.z,rotation:t.rotation}};e.s([\"RemotePlayerMotion\",0,class{options;from;target;output;started;received;updated;seatKey;interval=1e3;duration=0;constructor(e,t,a={}){this.options=a,this.interval=a.interval??1e3,this.from=tC(e),this.target={...this.from},this.output={...this.from},this.started=this.received=t,this.updated=e.updated,this.seatKey=e.seating?.key??null}update(e,t){if(e.updated<=this.updated)return;let a=tC(e);if(![a.x,a.z,a.rotation,e.updated,t].every(Number.isFinite))return;let n=t-this.received,i=e.updated-this.updated,o=e.seating?.key??null,r=Math.hypot(a.x-this.target.x,a.z-this"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "presence",
+    "offset_char": 304626,
+    "offset_bytes": 304836,
+    "context": "tSky():tD.current?.toggleView(),screenshot:()=>tD.current?.screenshot(),radarHeading:()=>tD.current?.radarHeading()??0,radarZoom:()=>tD.current?.radarZoom()??1,presenceView:()=>tD.current?.presenceView()??null,position:()=>tD.current?.position()??{...ee.OFFICE_SPAWN,rotation:0},move:(e,t)=>tD.current?.move(e,t),steer:(e,t)=>tD.current?.steer(e,t),seatUnavailable:()=>tD.current?.seatUnavailable(),agentScreenPositions:()=>tD.current?.agentScreenPositions()??[],agentPosition:e=>tD.current?.agentPosition(e)??null})),(0,X.useEffect)(()=>{let t,z,X,tn,tE,tC,tO,tN,tG,tB,tV,tj,tK,t$=tP.current,tq=(0,eE.worldRenderBudget)(navigator,window.devicePixelRatio);try{t=new q.WebGLRenderer({antialias:tq.antialias,alpha:!0,preserveDrawingBuffer:tq.preserveDrawingBuffer,powerPreference:\"high-performance\"})}catch{t_(!0),tT.current.onRenderError?.(),tT.current.onReady();return}let tJ=new ek.AdaptiveRenderQuality(tq.pixelRatio),tQ=t.domElement.dataset,t0=(e,t)=>{tQ[e]"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "presence",
+    "offset_char": 304655,
+    "offset_bytes": 304865,
+    "context": "(),screenshot:()=>tD.current?.screenshot(),radarHeading:()=>tD.current?.radarHeading()??0,radarZoom:()=>tD.current?.radarZoom()??1,presenceView:()=>tD.current?.presenceView()??null,position:()=>tD.current?.position()??{...ee.OFFICE_SPAWN,rotation:0},move:(e,t)=>tD.current?.move(e,t),steer:(e,t)=>tD.current?.steer(e,t),seatUnavailable:()=>tD.current?.seatUnavailable(),agentScreenPositions:()=>tD.current?.agentScreenPositions()??[],agentPosition:e=>tD.current?.agentPosition(e)??null})),(0,X.useEffect)(()=>{let t,z,X,tn,tE,tC,tO,tN,tG,tB,tV,tj,tK,t$=tP.current,tq=(0,eE.worldRenderBudget)(navigator,window.devicePixelRatio);try{t=new q.WebGLRenderer({antialias:tq.antialias,alpha:!0,preserveDrawingBuffer:tq.preserveDrawingBuffer,powerPreference:\"high-performance\"})}catch{t_(!0),tT.current.onRenderError?.(),tT.current.onReady();return}let tJ=new ek.AdaptiveRenderQuality(tq.pixelRatio),tQ=t.domElement.dataset,t0=(e,t)=>{tQ[e]!==t&&(tQ[e]=t)};t.setPixelRa"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "presence",
+    "offset_char": 325332,
+    "offset_bytes": 325555,
+    "context": "turn!(!e||e.shared?.occupied||e.hidden||tT.current.paused||iU||oK.driving||oU.driving||!ib||tI.current?.hidden)&&(o0(),iN(),i9=null,e.onOpen(),!0)}let iT=(0,e9.presenceFreshness)(tT.current.people,performance.now()),iD=new Set,iO=new Set,i_={x:0,y:0};function iN(){iD.clear(),iO.clear(),i_={x:0,y:0}}let iL=null;function iG(){iL?.move&&(iL={move:null,startedAt:Math.max(Date.now(),iL.startedAt+1)},tT.current.onDanceChange?.(null))}let iF=(0,x.createPlaygroundScene)(aa,{piece:nx,batch:io});for(let e of g.PLAYGROUND_POSTS)ny(e.x,e.z,e.w,e.d);o.WORLD_V3_PREVIEW&&(0,r.clearTodaysScenery)([iF.root]);let iB=\"\",iW=0,iV=0,iU=!1,ij=new em.PlatformMotion,iH=new a.LakeFloat,iK=(0,p.createRampLandingDust)(aa),iY=new ep.CarPedestrianContact,i$=new ef.CarExitRoll,iX=null,iq=null,iZ=!1,iJ,iQ=(0,eI.allSeats)(tT.current.cubicles.filter(e=>!e.previewDesign)),i0=\"\",i1=0,i2=(0,eR.createSeatLookup)(iQ),i5=(0,eI.workstationSeatKeys)(tT.current.cubicles,iQ),i3=(0,B.create"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "presence",
+    "offset_char": 356887,
+    "offset_bytes": 357113,
+    "context": "AULT_ENTRY_CAMERA.size:0,aW)/ee.DEFAULT_ENTRY_CAMERA.size,radarHeading:()=>(aR.getWorldDirection(aT),Math.hypot(aT.x,aT.z)>1e-6&&(aD=Math.atan2(aT.x,aT.z)),aD),presenceView:()=>an.piloting?{x:an.root.position.x,z:an.root.position.z,flight:ai}:null,position:()=>({x:oY.recovering?oY.standingLocation().x:iX&&(0,g.playgroundKind)(iX.key)?iX.x:ih.position.x,z:oY.recovering?oY.standingLocation().z:iX&&(0,g.playgroundKind)(iX.key)?iX.z:ih.position.z,rotation:ih.rotation.y,jumpedAt:iW,doubleJumpAt:iV,elevation:ij.height,watercraft:iH.ocean?\"snorkel\":oK.kayaking?\"kayak\":null,seatKey:iX?.key??null,dance:iL,swing:iX?.swing}),move:(e,t)=>{if(!t)return void iO.delete(e);if(!(oD||tT.current.paused||(0,ts.isTextEntry)(document.activeElement))&&!iZ){if(iX){\"swing\"===(0,g.playgroundKind)(iX.key)&&[\"a\",\"d\",\"arrowleft\",\"arrowright\"].includes(e)&&iO.add(e);return}\" \"!==e||iO.has(e)||i7(),iO.add(e),a8=!0,[\"w\",\"a\",\"s\",\"d\",\"arrowup\",\"arrowdown\",\"arrowleft\",\"arrowright\""
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "presence",
+    "offset_char": 405802,
+    "offset_bytes": 406041,
+    "context": "ton\",{type:\"button\",onClick:()=>window.location.reload(),children:\"Reload world\"})]})]})});e.s([\"default\",0,tE],335190)},492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles-layout\",\"x-cubicles-geometry\",\"x-cubicles-identity\"],i=(e,t,a)=>new Response(e,{status:t>=200&&t<=599?t:502,headers:{\"Content-Type\":\"application/json\",\"X-Tick-Sent\":String(a)}});e.s([\"batchedFetch\",0,function(e,o,r){return\"u\"<typeof location?fetch(e,o):(t??=function(e){let t=e.now??Date.now,o=e.setTimer??((e,t)=>setTimeout(e,t)),r=e.clearTimer??(e=>clearTimeout(e)),s=e.gatherMs??25,l=e.holdMs??1200,d=e.leaderMs??3e3,c=[],u,h=1/0,p=1/0,f=-1/0,m=!1,g=(e,t)=>{e.done||(e.done=!0,e.release(),t())},x=a=>{let n"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence",
+    "offset_char": 110799,
+    "offset_bytes": 110976,
+    "context": "\":\"1\",\"X-Cubicles-Pictures\":\"1\",\"X-Cubicles-Wall-Branding\":\"1\"},body:JSON.stringify(t)}:{headers:{\"X-Cubicles-Identity\":\"1\"}},...a?{signal:a}:!t||e.startsWith(\"presence\")?{signal:AbortSignal.timeout(15e3)}:{}},n?(0,d.batchedFetch)(r,s,n):fetch(r,s))}catch(t){throw t instanceof Error&&\"AbortError\"===t.name||(0,a7.measure)((0,na.measurementFeature)(e),\"error\",{code:t instanceof Error&&\"TimeoutError\"===t.name?\"timeout\":\"network\"}),Object.assign(Error(t instanceof Error&&\"TimeoutError\"===t.name?\"Connection took too long. Please try again.\":\"Connection interrupted. Please try again.\"),{status:503})}try{r=await i.json()}catch{throw Object.assign(Error(\"Cubicles couldn’t connect. Please try again.\"),{status:i.status>=400?i.status:502})}if(!i.ok)throw(0,a7.measure)((0,na.measurementFeature)(e),\"error\",{code:`http_${i.status}`}),Object.assign(Error(r.error||\"Something went wrong. Please try again.\"),{status:i.status});return r}function nq(){return n??=nH("
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence",
+    "offset_char": 126464,
+    "offset_bytes": 126645,
+    "context": "ge.getItem(tz);t.some(t=>t.id===e)&&na(e)}catch{}}}).catch(()=>{}),()=>{e=!0}},[j?.id]),(0,b.useEffect)(()=>rB(0),[eo]);let{data:r4,error:r8}=(0,x.default)(ei?`presence?directory=1&offset=${80*rW}&q=${encodeURIComponent(eo)}`:null,nH,{refreshInterval:1e4}),r6=(0,b.useMemo)(()=>(0,aq.coastline)().map(e=>`${e.x},${e.z}`).join(\" \"),[]),r7=(0,b.useRef)(new Set),r9=(0,b.useRef)(!1),se=(0,b.useRef)(0),st=(0,b.useRef)(crypto.randomUUID()),sa=(0,b.useRef)(null),sn=(0,b.useRef)(null),si=(0,b.useRef)(null),sr=(0,b.useRef)(j),ss=(0,b.useRef)(ev),so=(0,b.useRef)(!0),sl=(0,b.useCallback)(()=>si.current?.radarHeading()??0,[]),sc=(0,b.useCallback)(()=>si.current?.radarZoom()??1,[]),sd=(0,b.useCallback)(()=>si.current?.position()??null,[]),su=(0,aK.useCinematic)(si,j?.id??ib?.id,!!j?.admin),sh=function(e){let t=(0,b.useRef)(e);t.current=e;let a=(0,b.useRef)(!1),n=(0,b.useRef)(e.initialCubicle),i=(0,b.useRef)(\"\"),[r,s]=(0,b.useState)(null),o=(0,b.useRef)(null);fu"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence",
+    "offset_char": 138147,
+    "offset_bytes": 138330,
+    "context": "state)continue;let i=n.route?(0,aY.routePosition)(n.route,e):n.position,r=Math.hypot(i.x-tT.x,i.z-tT.z);r<a&&(a=r,t=n)}return t})(),{mutate:oe}=(0,x.default)([\"presence\",j?.id??ib?.id],async()=>{let e=si.current?.position()??{...c.OFFICE_SPAWN,rotation:0},t=si.current?.presenceView()??null,a={actorId:sr.current?.id??i0.current?.id??null,seatKey:e.seatKey??null,version:se.current},n=r9.current||iJ.current,i=eZ&&!!a.actorId&&!n,r=nH(`presence?x=${e.x}&z=${e.z}${t?`&viewX=${t.x}&viewZ=${t.z}`:\"\"}`,i?{...e,...!sr.current?{avatar:iA.current}:{},seatControl:{clientId:st.current,version:se.current,command:rh.current===a.version}}:void 0,void 0,{lead:!0});i&&r7.current.add(r);try{return{...await r,position:e,seatSync:a,skip:n,flight:t?.flight??null}}catch(e){if(n)return{skip:!0};throw Object.assign(e instanceof Error?e:Error(\"Presence sync failed.\"),{seatSync:a})}finally{r7.current.delete(r)}},{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){if(!e."
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence",
+    "offset_char": 138257,
+    "offset_bytes": 138440,
+    "context": "a=r,t=n)}return t})(),{mutate:oe}=(0,x.default)([\"presence\",j?.id??ib?.id],async()=>{let e=si.current?.position()??{...c.OFFICE_SPAWN,rotation:0},t=si.current?.presenceView()??null,a={actorId:sr.current?.id??i0.current?.id??null,seatKey:e.seatKey??null,version:se.current},n=r9.current||iJ.current,i=eZ&&!!a.actorId&&!n,r=nH(`presence?x=${e.x}&z=${e.z}${t?`&viewX=${t.x}&viewZ=${t.z}`:\"\"}`,i?{...e,...!sr.current?{avatar:iA.current}:{},seatControl:{clientId:st.current,version:se.current,command:rh.current===a.version}}:void 0,void 0,{lead:!0});i&&r7.current.add(r);try{return{...await r,position:e,seatSync:a,skip:n,flight:t?.flight??null}}catch(e){if(n)return{skip:!0};throw Object.assign(e instanceof Error?e:Error(\"Presence sync failed.\"),{seatSync:a})}finally{r7.current.delete(r)}},{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){if(!e.skip&&!r9.current&&!iJ.current&&e.seatSync&&t9(e.seatSync,{actorId:sr.current?.id??i0.current?.id??null,seatKe"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence",
+    "offset_char": 138423,
+    "offset_bytes": 138606,
+    "context": "ceView()??null,a={actorId:sr.current?.id??i0.current?.id??null,seatKey:e.seatKey??null,version:se.current},n=r9.current||iJ.current,i=eZ&&!!a.actorId&&!n,r=nH(`presence?x=${e.x}&z=${e.z}${t?`&viewX=${t.x}&viewZ=${t.z}`:\"\"}`,i?{...e,...!sr.current?{avatar:iA.current}:{},seatControl:{clientId:st.current,version:se.current,command:rh.current===a.version}}:void 0,void 0,{lead:!0});i&&r7.current.add(r);try{return{...await r,position:e,seatSync:a,skip:n,flight:t?.flight??null}}catch(e){if(n)return{skip:!0};throw Object.assign(e instanceof Error?e:Error(\"Presence sync failed.\"),{seatSync:a})}finally{r7.current.delete(r)}},{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){if(!e.skip&&!r9.current&&!iJ.current&&e.seatSync&&t9(e.seatSync,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version:se.current})&&e.self?.accepted!==!1){var t;rh.current===e.seatSync.version&&(rh.current=null),e.flight===(si.current?.p"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence",
+    "offset_char": 139222,
+    "offset_bytes": 139405,
+    "context": "current?.position().seatKey??null,version:se.current})&&e.self?.accepted!==!1){var t;rh.current===e.seatSync.version&&(rh.current=null),e.flight===(si.current?.presenceView()?.flight??null)&&N(e.people.filter(e=>!ir.current.has(e.id))),rF(\"number\"==typeof(t=e.total)&&Number.isSafeInteger(t)&&t>=0?t:null),r_(performance.now()),rK(Array.isArray(e.onlineOwnerIds)?{onlineIds:new Set(e.onlineOwnerIds),receivedAt:performance.now()}:null),q(\"live\")}},onError(e){let t=function(e,t,a=!1){if(a||!e.seatSync||!t9(e.seatSync,t))return\"ignore\";if(!t.seatKey)return\"retry\";let n=403===e.status&&\"Only the office owner can use this desk seat.\"===e.message,i=409===e.status&&[\"That seat is no longer available.\",\"Someone is already sitting there.\",\"Move closer to the seat first.\",\"Approach the seat from its open side.\"].includes(e.message);return n||i?\"stand\":\"retry\"}(e,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "batchedFetch",
+    "offset_char": 26695,
+    "offset_bytes": 26729,
+    "context": "\"M12 3v18\",key:\"108xh3\"}],[\"path\",{d:\"M3 12h18\",key:\"1i2n21\"}],[\"rect\",{x:\"3\",y:\"3\",width:\"18\",height:\"18\",rx:\"2\",key:\"h1oib\"}]]),eD=async e=>{let t=await (0,d.batchedFetch)(e,{cache:\"no-store\"}),a=await t.json();if(!t.ok)throw Error(a.error||\"Rewards are unavailable. Your aura is safe.\");return a};function eT({message:e,onDismiss:t,onChoose:a,canClaim:n,hidden:r,onSave:s}){return!e||r?null:(0,i.jsxs)(\"aside\",{className:\"reward-notice\",role:\"status\",\"aria-live\":\"polite\",children:[(0,i.jsx)(\"p\",{children:e}),s?(0,i.jsx)(\"button\",{type:\"button\",onClick:s,children:\"Save my aura\"}):n&&(0,i.jsx)(\"button\",{type:\"button\",onClick:a,children:\"Choose your parcel\"}),(0,i.jsx)(\"button\",{type:\"button\",className:\"reward-notice-dismiss\",\"aria-label\":\"Dismiss reward notification\",onClick:t,children:\"×\"})]})}let eP={fishing:eg.Fish,pickleball:eA,chess:eE,\"ping-pong\":eA,\"four-row\":eR,typing:ew.Keyboard,\"boat-race\":ek,\"car-practice\":ey.Flag,skateboarding:eN,kayakin"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "batchedFetch",
+    "offset_char": 110856,
+    "offset_bytes": 111033,
+    "context": "\":\"1\"},body:JSON.stringify(t)}:{headers:{\"X-Cubicles-Identity\":\"1\"}},...a?{signal:a}:!t||e.startsWith(\"presence\")?{signal:AbortSignal.timeout(15e3)}:{}},n?(0,d.batchedFetch)(r,s,n):fetch(r,s))}catch(t){throw t instanceof Error&&\"AbortError\"===t.name||(0,a7.measure)((0,na.measurementFeature)(e),\"error\",{code:t instanceof Error&&\"TimeoutError\"===t.name?\"timeout\":\"network\"}),Object.assign(Error(t instanceof Error&&\"TimeoutError\"===t.name?\"Connection took too long. Please try again.\":\"Connection interrupted. Please try again.\"),{status:503})}try{r=await i.json()}catch{throw Object.assign(Error(\"Cubicles couldn’t connect. Please try again.\"),{status:i.status>=400?i.status:502})}if(!i.ok)throw(0,a7.measure)((0,na.measurementFeature)(e),\"error\",{code:`http_${i.status}`}),Object.assign(Error(r.error||\"Something went wrong. Please try again.\"),{status:i.status});return r}function nq(){return n??=nH(\"visitor\",{}).finally(()=>{n=void 0})}function nV({item:e"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "batchedFetch",
+    "offset_char": 137239,
+    "offset_bytes": 137422,
+    "context": "0,b.useEffect)(()=>{r.current=t},[t]),(0,b.useEffect)(()=>{if(!e)return;let t=!1,n,s=async()=>{if(!t){if(!document.hidden){let e=r.current;try{let a=await (0,d.batchedFetch)(`/api/agents/nearby?x=${e.x.toFixed(1)}&z=${e.z.toFixed(1)}`,{signal:AbortSignal.timeout(6e3),headers:{accept:\"application/json\"}});if(!a.ok)throw Error(String(a.status));let n=await a.json();t||i({agents:n.agents??[],at:n.at,offset:n.at-Date.now(),status:\"live\",humanChat:!!n.humanChat,lastOk:Date.now()})}catch{t||i(e=>({...e,status:e.lastOk?\"reconnecting\":e.status}))}}n=setTimeout(s,a)}};return s(),()=>{t=!0,n&&clearTimeout(n)}},[e,a]),e?n:{...n,status:\"idle\"}}(eO,(s2?si.current?.agentPosition(s2)??null:null)??tT),s6=(0,b.useRef)(()=>si.current?.agentScreenPositions()??[]),s7=eO&&!rv&&!sQ.readOnly&&sQ.agents.length>0,s9=(()=>{let e=Date.now()+s8.offset,t=null,a=8;for(let n of s8.agents){if(\"meeting\"===n.state||\"paused\"===n.state)continue;let i=n.route?(0,aY.routePosition)(n."
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "/api/world?",
+    "offset_char": 56606,
+    "offset_bytes": 56693,
+    "context": "y:r}){let[s,o]=(0,b.useState)(null),[l,c]=(0,b.useState)(\"\"),[d,u]=(0,b.useState)(0);(0,b.useEffect)(()=>{let a=new AbortController;return o(null),c(\"\"),fetch(\"/api/world?ids=\"+e,{headers:{\"X-Cubicles-Identity\":\"1\"},signal:AbortSignal.any([a.signal,AbortSignal.timeout(15e3)])}).then(async e=>{let t=await e.json();if(!e.ok)throw Error(\"Could not load your picture.\");return t}).then(n=>{if(a.signal.aborted)return;let i=n.cubicles?.find(a=>a.id===e&&a.ownerId===t&&!a.available&&Array.isArray(a.items));if(!i)throw Error(\"This space is no longer available to edit.\");o(i)}).catch(()=>{a.signal.aborted||c(\"Could not load this space. Reload before changing its picture.\")}),()=>a.abort()},[e,t,d]);let h=s?(0,ts.editableStarterFurniture)(s):null;return(0,i.jsxs)(\"div\",{className:\"profile-favicon-picture\",children:[(0,i.jsxs)(\"small\",{children:[\"PICTURE FOR SPACE #\",(0,R.parcelNumber)(e)]}),l?(0,i.jsxs)(\"p\",{role:\"alert\",children:[l,\" \",(0,i.jsx)(\"button\",{"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "/api/world?",
+    "offset_char": 124923,
+    "offset_bytes": 125104,
+    "context": "d===e)?.revision??0).join(\",\");(0,b.useEffect)(()=>{let e=new AbortController,t=!1,a=\"\";async function n(){if(!t&&!document.hidden){t=!0;try{let t=await fetch(\"/api/world?ids=\"+r0,{signal:AbortSignal.any([e.signal,AbortSignal.timeout(15e3)]),headers:{\"X-Cubicles-Identity\":\"1\"}});if(!t.ok)throw Error(\"Could not load this desk.\");let n=await t.text();if(!e.signal.aborted){if(n!==a){let e=JSON.parse(n);a=n,rO(new Map(e.cubicles.map(e=>[e.id,e])))}rL(!1)}}catch{e.signal.aborted||rL(!0)}finally{t=!1}}}n();let i=setInterval(n,5e3);return()=>{e.abort(),clearInterval(i)}},[r0,r1,tl]);let r2=function(e){let[t,a]=(0,b.useState)(!1),[n,i]=(0,b.useState)(null),[r,s]=(0,b.useState)(0),[o,l]=(0,b.useState)(!1);(0,b.useEffect)(()=>{a(!1),i(null),s(0),l(!1)},[e]);let c=(0,x.default)(e&&t?[\"/api/admin/design-drafts?offset=\"+50*r,e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),d=(0,x.default)(e&&n&&(t||o)?[\"/api/admin/design-drafts?id=\"+encodeURIComponent("
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "/api/world?",
+    "offset_char": 128435,
+    "offset_bytes": 128616,
+    "context": "CE_SPAWN,rotation:Math.PI}),async function(){let n=e.cubicles;try{let e=(0,tA.arrivalDetailIds)(m,n),t=new Map;for(let a=0;a<e.length;a+=64){let n=await fetch(\"/api/world?ids=\"+e.slice(a,a+64).join(\",\"),{signal:AbortSignal.any([i.signal,AbortSignal.timeout(15e3)]),headers:{\"X-Cubicles-Identity\":\"1\"},cache:\"no-store\"});if(!n.ok)throw Error(\"Location details unavailable\");let r=await n.json();if(!Array.isArray(r.cubicles))throw Error(\"Invalid location details\");for(let e of r.cubicles)t.set(e.id,e)}n=n.map(e=>{let a=t.get(e.id);return a&&a.ownerId===e.ownerId&&a.revision===e.revision?{...e,items:a.items??[],room:a.room??e.room}:e})}catch(e){if(i.signal.aborted)return}if(r||!t.current.world.current)return;let o=t.current.world.current.arrive(p,h,n,e.defaultParcelId);if(!o){a.current=!0,t.current.onPositioned();return}a.current=!0;let c=l(o.location);if(\"shared\"===o.source&&u){let e=new URL((0,tN.consumedLocationUrl)(d,u),d.origin);c||e.searchParams."
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "/api/rewards/save",
+    "offset_char": 118275,
+    "offset_bytes": 118454,
+    "context": ",b.useRef)(o);l.current=o,e||(s.current=null);let{data:c,error:d,mutate:u}=(0,x.default)([\"/api/rewards\",e,t],async()=>{if(e&&s.current!==e){let t=await fetch(\"/api/rewards/save\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:\"{}\"});if(!t.ok)throw Error(\"Your account is connected, but your guest aura could not be saved yet. Retry to finish saving.\");let a=await t.json();l.current===o&&(s.current=e),a.saved>0&&l.current===o&&n(e=>[...e,`${a.saved} aura saved to your account.`])}return eD(\"/api/rewards\")},{refreshInterval:5e3,revalidateOnFocus:!0});return(0,b.useEffect)(()=>{i.current=null,r.current=!1,n([])},[o]),(0,b.useEffect)(()=>{let e=()=>void u();return window.addEventListener(\"cubicles-reward-earned\",e),()=>window.removeEventListener(\"cubicles-reward-earned\",e)},[u]),(0,b.useEffect)(()=>{if(!c?.enabled||!!e!==c.account)return;if(!i.current){i.current=new Set(c.history.map(e=>e.id)),r.current=c.keysUnlocked,!c.account&&c.ava"
+  },
+  {
+    "file": "0llsa4_5p1t45.js",
+    "term": "version",
+    "offset_char": 18194,
+    "offset_bytes": 18194,
+    "context": "ts[r];s.push(new p(e,t)),1!==s.length||l||a(d)},p.prototype.run=function(){this.fun.apply(null,this.array)},o.title=\"browser\",o.browser=!0,o.env={},o.argv=[],o.version=\"\",o.versions={},o.on=y,o.addListener=y,o.once=y,o.off=y,o.removeListener=y,o.removeAllListeners=y,o.emit=y,o.prependListener=y,o.prependOnceListener=y,o.listeners=function(e){return[]},o.binding=function(e){throw Error(\"process.binding is not supported\")},o.cwd=function(){return\"/\"},o.chdir=function(e){throw Error(\"process.chdir is not supported\")},o.umask=function(){return 0}}},o={};function u(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}},i=!0;try{n[e](r,r.exports,u),i=!1}finally{i&&delete o[e]}return r.exports}u.ab=\"/ROOT/node_modules/next/dist/compiled/process/\",t.exports=u(156)},247167,(e,t,r)=>{\"use strict\";var n,o;t.exports=(null==(n=e.g.process)?void 0:n.env)&&\"object\"==typeof(null==(o=e.g.process)?void 0:o.env)?e.g.process:e.r(935451)},818800,(e,t,r)"
+  },
+  {
+    "file": "0llsa4_5p1t45.js",
+    "term": "version",
+    "offset_char": 18207,
+    "offset_bytes": 18207,
+    "context": "new p(e,t)),1!==s.length||l||a(d)},p.prototype.run=function(){this.fun.apply(null,this.array)},o.title=\"browser\",o.browser=!0,o.env={},o.argv=[],o.version=\"\",o.versions={},o.on=y,o.addListener=y,o.once=y,o.off=y,o.removeListener=y,o.removeAllListeners=y,o.emit=y,o.prependListener=y,o.prependOnceListener=y,o.listeners=function(e){return[]},o.binding=function(e){throw Error(\"process.binding is not supported\")},o.cwd=function(){return\"/\"},o.chdir=function(e){throw Error(\"process.chdir is not supported\")},o.umask=function(){return 0}}},o={};function u(e){var t=o[e];if(void 0!==t)return t.exports;var r=o[e]={exports:{}},i=!0;try{n[e](r,r.exports,u),i=!1}finally{i&&delete o[e]}return r.exports}u.ab=\"/ROOT/node_modules/next/dist/compiled/process/\",t.exports=u(156)},247167,(e,t,r)=>{\"use strict\";var n,o;t.exports=(null==(n=e.g.process)?void 0:n.env)&&\"object\"==typeof(null==(o=e.g.process)?void 0:o.env)?e.g.process:e.r(935451)},818800,(e,t,r)=>{\"use stric"
+  },
+  {
+    "file": "0llsa4_5p1t45.js",
+    "term": "version",
+    "offset_char": 22598,
+    "offset_bytes": 22598,
+    "context": "es=function(e,t){return e(t)},r.useFormState=function(e,t,r){return c.H.useFormState(e,t,r)},r.useFormStatus=function(){return c.H.useHostTransitionStatus()},r.version=\"19.3.0-canary-cbb046ab-20260731\"},174080,(e,t,r)=>{\"use strict\";e.i(247167),!function e(){if(\"u\">typeof __REACT_DEVTOOLS_GLOBAL_HOOK__&&\"function\"==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE)try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(e)}catch(e){console.error(e)}}(),t.exports=e.r(818800)},745689,(e,t,r)=>{\"use strict\";var n=Symbol.for(\"react.transitional.element\");function o(e,t,r){var o=null;if(void 0!==r&&(o=\"\"+r),void 0!==t.key&&(o=\"\"+t.key),\"key\"in t)for(var u in r={},t)\"key\"!==u&&(r[u]=t[u]);else r=t;return{$$typeof:n,type:e,key:o,ref:void 0!==(t=r.ref)?t:null,props:r}}r.Fragment=Symbol.for(\"react.fragment\"),r.jsx=o,r.jsxs=o},843476,(e,t,r)=>{\"use strict\";e.i(247167),t.exports=e.r(745689)},350740,(e,t,r)=>{\"use strict\";var n=e.i(247167),o=Symbol.for(\"react.transitional.e"
+  },
+  {
+    "file": "0llsa4_5p1t45.js",
+    "term": "version",
+    "offset_char": 31068,
+    "offset_bytes": 31068,
+    "context": "return T.H.useState(e)},r.useSyncExternalStore=function(e,t,r){return T.H.useSyncExternalStore(e,t,r)},r.useTransition=function(){return T.H.useTransition()},r.version=\"19.3.0-canary-cbb046ab-20260731\"},271645,(e,t,r)=>{\"use strict\";e.i(247167),t.exports=e.r(350740)},954839,(e,t,r)=>{\"use strict\";Object.defineProperty(r,\"__esModule\",{value:!0});var n={METADATA_BOUNDARY_NAME:function(){return u},OUTLET_BOUNDARY_NAME:function(){return a},ROOT_LAYOUT_BOUNDARY_NAME:function(){return s},VIEWPORT_BOUNDARY_NAME:function(){return i}};for(var o in n)Object.defineProperty(r,o,{enumerable:!0,get:n[o]});let u=\"__next_metadata_boundary__\",i=\"__next_viewport_boundary__\",a=\"__next_outlet_boundary__\",s=\"__next_root_layout_boundary__\"},897367,(e,t,r)=>{\"use strict\";Object.defineProperty(r,\"__esModule\",{value:!0});var n={MetadataBoundary:function(){return a},OutletBoundary:function(){return l},RootLayoutBoundary:function(){return c},ViewportBoundary:function(){ret"
+  },
+  {
+    "file": "0c0hxoamwjsbw.js",
+    "term": "version",
+    "offset_char": 1889,
+    "offset_bytes": 1889,
+    "context": "rn arguments.length<2?T(r=i[t])?r:void 0:i[t]&&i[t][e];var r},U=b({}.isPrototypeOf),N=i.navigator,C=N&&N.userAgent,_=C?String(C):\"\",F=i.process,B=i.Deno,D=F&&F.versions||B&&B.version,z=D&&D.v8;z&&(n=(r=z.split(\".\"))[0]>0&&r[0]<4?1:+(r[0]+r[1])),!n&&_&&(!(r=_.match(/Edge\\/(\\d+)/))||r[1]>=74)&&(r=_.match(/Chrome\\/(\\d+)/))&&(n=+r[1]);var W=n,q=i.String,H=!!Object.getOwnPropertySymbols&&!a(function(){var t=Symbol(\"symbol detection\");return!q(t)||!(Object(t)instanceof Symbol)||!Symbol.sham&&W&&W<41}),$=H&&!Symbol.sham&&\"symbol\"==typeof Symbol.iterator,K=Object,G=$?function(t){return\"symbol\"==typeof t}:function(t){var e=L(\"Symbol\");return T(e)&&U(e.prototype,K(t))},V=String,Y=function(t){try{return V(t)}catch(t){return\"Object\"}},X=TypeError,J=function(t){if(T(t))return t;throw new X(Y(t)+\" is not a function\")},Q=function(t,e){var r=t[e];return P(r)?void 0:J(r)},Z=TypeError,tt=Object.defineProperty,et=function(t,e){try{tt(i,t,{value:e,configurable:!0,wr"
+  },
+  {
+    "file": "0c0hxoamwjsbw.js",
+    "term": "version",
+    "offset_char": 1904,
+    "offset_bytes": 1904,
+    "context": "ngth<2?T(r=i[t])?r:void 0:i[t]&&i[t][e];var r},U=b({}.isPrototypeOf),N=i.navigator,C=N&&N.userAgent,_=C?String(C):\"\",F=i.process,B=i.Deno,D=F&&F.versions||B&&B.version,z=D&&D.v8;z&&(n=(r=z.split(\".\"))[0]>0&&r[0]<4?1:+(r[0]+r[1])),!n&&_&&(!(r=_.match(/Edge\\/(\\d+)/))||r[1]>=74)&&(r=_.match(/Chrome\\/(\\d+)/))&&(n=+r[1]);var W=n,q=i.String,H=!!Object.getOwnPropertySymbols&&!a(function(){var t=Symbol(\"symbol detection\");return!q(t)||!(Object(t)instanceof Symbol)||!Symbol.sham&&W&&W<41}),$=H&&!Symbol.sham&&\"symbol\"==typeof Symbol.iterator,K=Object,G=$?function(t){return\"symbol\"==typeof t}:function(t){var e=L(\"Symbol\");return T(e)&&U(e.prototype,K(t))},V=String,Y=function(t){try{return V(t)}catch(t){return\"Object\"}},X=TypeError,J=function(t){if(T(t))return t;throw new X(Y(t)+\" is not a function\")},Q=function(t,e){var r=t[e];return P(r)?void 0:J(r)},Z=TypeError,tt=Object.defineProperty,et=function(t,e){try{tt(i,t,{value:e,configurable:!0,writable:!0})}cat"
+  },
+  {
+    "file": "0c0hxoamwjsbw.js",
+    "term": "version",
+    "offset_char": 2801,
+    "offset_bytes": 2801,
+    "context": "tion(t,e){try{tt(i,t,{value:e,configurable:!0,writable:!0})}catch(r){i[t]=e}return e},rt=e(function(t){var e=\"__core-js_shared__\",r=t.exports=i[e]||et(e,{});(r.versions||(r.versions=[])).push({version:\"3.38.1\",mode:\"global\",copyright:\"© 2014-2024 Denis Pushkarev (zloirock.ru)\",license:\"https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE\",source:\"https://github.com/zloirock/core-js\"})}),nt=function(t,e){return rt[t]||(rt[t]=e||{})},ot=Object,it=function(t){return ot(j(t))},at=b({}.hasOwnProperty),ut=Object.hasOwn||function(t,e){return at(it(t),e)},st=0,ct=Math.random(),ft=b(1..toString),lt=function(t){return\"Symbol(\"+(void 0===t?\"\":t)+\")_\"+ft(++st+ct,36)},ht=i.Symbol,pt=nt(\"wks\"),vt=$?ht.for||ht:ht&&ht.withoutSetter||lt,dt=function(t){return ut(pt,t)||(pt[t]=H&&ut(ht,t)?ht[t]:vt(\"Symbol.\"+t)),pt[t]},gt=TypeError,yt=dt(\"toPrimitive\"),mt=function(t,e){if(!M(t)||G(t))return t;var r,n=Q(t,yt);if(n){if(void 0===e&&(e=\"default\"),r=f(n,t,e),!M(r)||G"
+  },
+  {
+    "file": "0c0hxoamwjsbw.js",
+    "term": "version",
+    "offset_char": 2814,
+    "offset_bytes": 2814,
+    "context": "{tt(i,t,{value:e,configurable:!0,writable:!0})}catch(r){i[t]=e}return e},rt=e(function(t){var e=\"__core-js_shared__\",r=t.exports=i[e]||et(e,{});(r.versions||(r.versions=[])).push({version:\"3.38.1\",mode:\"global\",copyright:\"© 2014-2024 Denis Pushkarev (zloirock.ru)\",license:\"https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE\",source:\"https://github.com/zloirock/core-js\"})}),nt=function(t,e){return rt[t]||(rt[t]=e||{})},ot=Object,it=function(t){return ot(j(t))},at=b({}.hasOwnProperty),ut=Object.hasOwn||function(t,e){return at(it(t),e)},st=0,ct=Math.random(),ft=b(1..toString),lt=function(t){return\"Symbol(\"+(void 0===t?\"\":t)+\")_\"+ft(++st+ct,36)},ht=i.Symbol,pt=nt(\"wks\"),vt=$?ht.for||ht:ht&&ht.withoutSetter||lt,dt=function(t){return ut(pt,t)||(pt[t]=H&&ut(ht,t)?ht[t]:vt(\"Symbol.\"+t)),pt[t]},gt=TypeError,yt=dt(\"toPrimitive\"),mt=function(t,e){if(!M(t)||G(t))return t;var r,n=Q(t,yt);if(n){if(void 0===e&&(e=\"default\"),r=f(n,t,e),!M(r)||G(r))return r;"
+  },
+  {
+    "file": "0c0hxoamwjsbw.js",
+    "term": "version",
+    "offset_char": 2834,
+    "offset_bytes": 2834,
+    "context": "figurable:!0,writable:!0})}catch(r){i[t]=e}return e},rt=e(function(t){var e=\"__core-js_shared__\",r=t.exports=i[e]||et(e,{});(r.versions||(r.versions=[])).push({version:\"3.38.1\",mode:\"global\",copyright:\"© 2014-2024 Denis Pushkarev (zloirock.ru)\",license:\"https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE\",source:\"https://github.com/zloirock/core-js\"})}),nt=function(t,e){return rt[t]||(rt[t]=e||{})},ot=Object,it=function(t){return ot(j(t))},at=b({}.hasOwnProperty),ut=Object.hasOwn||function(t,e){return at(it(t),e)},st=0,ct=Math.random(),ft=b(1..toString),lt=function(t){return\"Symbol(\"+(void 0===t?\"\":t)+\")_\"+ft(++st+ct,36)},ht=i.Symbol,pt=nt(\"wks\"),vt=$?ht.for||ht:ht&&ht.withoutSetter||lt,dt=function(t){return ut(pt,t)||(pt[t]=H&&ut(ht,t)?ht[t]:vt(\"Symbol.\"+t)),pt[t]},gt=TypeError,yt=dt(\"toPrimitive\"),mt=function(t,e){if(!M(t)||G(t))return t;var r,n=Q(t,yt);if(n){if(void 0===e&&(e=\"default\"),r=f(n,t,e),!M(r)||G(r))return r;throw new gt(\"Can't "
+  },
+  {
+    "file": "0c0hxoamwjsbw.js",
+    "term": "version",
+    "offset_char": 95469,
+    "offset_bytes": 95522,
+    "context": "{return _.slice(0,t.length)===t},ly=fy(\"Bun/\")?\"BUN\":fy(\"Cloudflare-Workers\")?\"CLOUDFLARE\":fy(\"Deno/\")?\"DENO\":fy(\"Node.js/\")?\"NODE\":i.Bun&&\"string\"==typeof Bun.version?\"BUN\":i.Deno&&\"object\"==typeof Deno.version?\"DENO\":\"process\"===E(i.process)?\"NODE\":i.window&&i.document?\"BROWSER\":\"REST\",hy=\"NODE\"===ly,py=/(?:ipad|iphone|ipod).*applewebkit/i.test(_),vy=i.setImmediate,dy=i.clearImmediate,gy=i.process,yy=i.Dispatch,my=i.Function,by=i.MessageChannel,wy=i.String,Sy=0,Ey={},Oy=\"onreadystatechange\";a(function(){ay=i.location});var xy=function(t){if(ut(Ey,t)){var e=Ey[t];delete Ey[t],e()}},Ry=function(t){return function(){xy(t)}},Py=function(t){xy(t.data)},Ay=function(t){i.postMessage(wy(t),ay.protocol+\"//\"+ay.host)};vy&&dy||(vy=function(t){Up(arguments.length,1);var e=T(t)?t:my(t),r=vo(arguments,1);return Ey[++Sy]=function(){Ra(e,void 0,r)},uy(Sy),Sy},dy=function(t){delete Ey[t]},hy?uy=function(t){gy.nextTick(Ry(t))}:yy&&yy.now?uy=function(t){yy.now(Ry"
+  },
+  {
+    "file": "1uf0bhym6qn16.js",
+    "term": "version",
+    "offset_char": 47989,
+    "offset_bytes": 47989,
+    "context": "}function d(e,t,r,n,a,l,i,o){if(\"u\"<typeof window)return;let f={rsc:r,prefetchRsc:n,head:a,prefetchHead:l,bfcacheId:o,ref:null,size:100,navigatedAt:e,staleAt:i,version:s,status:u.EntryStatus.Fulfilled};(0,u.setInCacheMap)(c,t,f,!1)}function h(e,t,r,n,a,l){d(e,t,r,n,null,null,a,l)}function p(e,t){if(\"u\"<typeof window)return;let r=(0,u.getFromCacheMap)(-1,s,c,e,!1,!1);null!==r&&(r.staleAt=t)}function y(e){return\"u\"<typeof window?null:(0,u.getFromCacheMap)(-1,s,c,e,!1,!1)}function g(e,t){return\"u\"<typeof window?null:(0,u.getFromCacheMap)(e,s,c,t,!1,!1)}(\"function\"==typeof r.default||\"object\"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,\"__esModule\",{value:!0}),Object.assign(r.default,r),t.exports=r.default)},477048,(e,t,r)=>{\"use strict\";Object.defineProperty(r,\"__esModule\",{value:!0});var n={createCacheKey:function(){return l},splitPathnameIntoParts:function(){return u}};for(var a in n)Object"
+  },
+  {
+    "file": "1uf0bhym6qn16.js",
+    "term": "version",
+    "offset_char": 50507,
+    "offset_bytes": 50507,
+    "context": "==a)return e(t,r,a,f,l,s,i)}return null}(e,t,r,n,a,0,l);return null===i||null===i.value?null:((0,u.lruPut)(i),i.value)}function d(e,t,r){return r.staleAt<=e||r.version<t}function h(e,t,r,n){let a=function(e,t,r){let n=e,a=t,l=null;for(;;){let e=l;if(null!==a)l=a.value,a=a.parent;else if(r&&e!==c){if(null===n.value)return n;l=c}else break;let t=n.map;if(null!==t){let e=t.get(l);if(void 0!==e){n=e;continue}}else t=new Map,n.map=t;let u={parent:n,key:l,value:null,map:null,prev:null,next:null,size:0};t.set(l,u),n=u}return n}(e,t,n);p(a,r),(0,u.lruPut)(a),(0,u.updateLruSize)(a,r.size)}function p(e,t){null!==e.value&&(e.value.ref=null,e.value=null);let r=t.ref;e.value=t,t.ref=e,(0,u.updateLruSize)(e,t.size),null!==r&&r!==e&&r.value===t&&g(r)}function y(e){let t=e.ref;null!==t&&(e.ref=null,g(t))}function g(e){e.value=null,(0,u.deleteFromLru)(e);let t=e.map;if(null===t){let t=e.parent,r=e.key;for(;null!==t;){let e=t.map;if(null!==e&&(e.delete(r),0===e.si"
+  },
+  {
+    "file": "1uf0bhym6qn16.js",
+    "term": "version",
+    "offset_char": 55639,
+    "offset_bytes": 55639,
+    "context": "dTasks:null,tree:null,metadata:null,couldBeIntercepted:!0,supportsPerSegmentPrefetching:!1,hasDynamicRewrite:!1,renderedSearch:null,ref:null,size:0,staleAt:1/0,version:j}}function G(e,t,r){null!==t.onInvalidate&&(null===M?M=new Set([t]):M.add(t));let n=H(e,r);if(null!==n)return n;let a=X(),l=(0,s.getRouteVaryPath)(r.pathname,r.search,r.nextUrl);return(0,p.setInCacheMap)(w,l,a,!1),a}function $(e,t,r){let n=t.search;if(\"\"===n)return null;let a=new URL(t);a.search=\"\";let l=H(e,(0,d.createCacheKey)(a.href,r));if(null===l||l.status!==p.EntryStatus.Fulfilled)return null;let u=new URL(l.canonicalUrl,t.origin),i=\"\"!==u.search?u.search:n,o=\"\"!==l.renderedSearch?l.renderedSearch:n,c=new URL(l.canonicalUrl,location.origin);c.search=i;let s=(0,f.createHrefFromUrl)(c),h=K(l.tree,o),y=K(l.metadata,o);return{canonicalUrl:s,status:p.EntryStatus.Fulfilled,blockedTasks:null,tree:h,metadata:y,couldBeIntercepted:l.couldBeIntercepted,supportsPerSegmentPrefetching:l.s"
+  },
+  {
+    "file": "1uf0bhym6qn16.js",
+    "term": "version",
+    "offset_char": 56557,
+    "offset_bytes": 56557,
+    "context": "ercepted,supportsPerSegmentPrefetching:l.supportsPerSegmentPrefetching,hasDynamicRewrite:l.hasDynamicRewrite,renderedSearch:o,ref:null,size:0,staleAt:l.staleAt,version:l.version}}function K(e,t){let r=null,n=e.slots;if(null!==n)for(let[e,a]of(r=new Map,n))r.set(e,K(a,t));return e.isPage?{requestKey:e.requestKey,segment:e.segment,shellVaryPath:e.shellVaryPath,refreshState:e.refreshState,varyPath:(0,s.clonePageVaryPathWithNewSearchParams)(e.varyPath,t),isPage:!0,slots:r,prefetchHints:e.prefetchHints}:{requestKey:e.requestKey,segment:e.segment,shellVaryPath:e.shellVaryPath,refreshState:e.refreshState,varyPath:e.varyPath,isPage:!1,slots:r,prefetchHints:e.prefetchHints}}function q(e,t,r,n){let a=(0,p.getFromCacheMap)(e,I,t,n.varyPath,!1,!1);return null!==a?a:Y(e,t,r,n)}function Y(e,t,r,n){let a=(0,s.getSegmentVaryPathForRequest)(r,n),l=ee(e);return(0,p.setInCacheMap)(t,a,l,!1),l}function W(e,t,r,n){var a;let l=(a=n.varyPath,(0,p.getFromCacheMap)(e,I,t"
+  },
+  {
+    "file": "1uf0bhym6qn16.js",
+    "term": "version",
+    "offset_char": 56567,
+    "offset_bytes": 56567,
+    "context": "upportsPerSegmentPrefetching:l.supportsPerSegmentPrefetching,hasDynamicRewrite:l.hasDynamicRewrite,renderedSearch:o,ref:null,size:0,staleAt:l.staleAt,version:l.version}}function K(e,t){let r=null,n=e.slots;if(null!==n)for(let[e,a]of(r=new Map,n))r.set(e,K(a,t));return e.isPage?{requestKey:e.requestKey,segment:e.segment,shellVaryPath:e.shellVaryPath,refreshState:e.refreshState,varyPath:(0,s.clonePageVaryPathWithNewSearchParams)(e.varyPath,t),isPage:!0,slots:r,prefetchHints:e.prefetchHints}:{requestKey:e.requestKey,segment:e.segment,shellVaryPath:e.shellVaryPath,refreshState:e.refreshState,varyPath:e.varyPath,isPage:!1,slots:r,prefetchHints:e.prefetchHints}}function q(e,t,r,n){let a=(0,p.getFromCacheMap)(e,I,t,n.varyPath,!1,!1);return null!==a?a:Y(e,t,r,n)}function Y(e,t,r,n){let a=(0,s.getSegmentVaryPathForRequest)(r,n),l=ee(e);return(0,p.setInCacheMap)(t,a,l,!1),l}function W(e,t,r,n){var a;let l=(a=n.varyPath,(0,p.getFromCacheMap)(e,I,t,a,!0,!1))"
+  },
+  {
+    "file": "1uf0bhym6qn16.js",
+    "term": "version",
+    "offset_char": 58420,
+    "offset_bytes": 58420,
+    "context": "ryStatus.Empty,blockedTasks:null,fetchStrategy:R.FetchStrategy.PPR,rsc:null,isPartial:!0,isUpgradeableISRFallback:!1,promise:null,ref:null,size:0,staleAt:e+3e4,version:0}}function et(e,t){return e.status=p.EntryStatus.Pending,e.fetchStrategy=t,t===R.FetchStrategy.Full&&(e.isPartial=!1),e.version=I,e}function er(e,t,r){let n=r.varyPath,a=(0,P.readFromBFCache)(n);if(null!==a){let r=a.navigatedAt+_.STATIC_STALETIME_MS;return e>r?null:ec(et(t,R.FetchStrategy.Full),a.rsc,r,!1,!1,R.FetchStrategy.Full)}return null}function en(e,t,r){let n=r.varyPath,a=(0,P.readFromBFCache)(n);if(null!==a){let n=a.navigatedAt+_.STATIC_STALETIME_MS;if(e>n)return null;let l=ec(et(ee(e),R.FetchStrategy.Full),a.rsc,n,!1,!1,R.FetchStrategy.Full),u=J(e,t,(0,s.getSegmentVaryPathForRequest)(R.FetchStrategy.Full,r),l,r.varyPath);if(null!==u&&u.status===p.EntryStatus.Fulfilled)return u}return null}function ea(e){let t=e.blockedTasks;if(null!==t){for(let e of t)(0,c.pingPrefetchTas"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "/models/",
+    "offset_char": 4376,
+    "offset_bytes": 4376,
+    "context": "i(190830),a=e.i(786126),o=e.i(190072),r=e.i(223490),i=e.i(22311),n=e.i(330696),l=e.i(134417),s=e.i(793384),c=e.i(502222);async function d(e){let t=await fetch(\"/models/cubicles/v1/commons.glb\",{signal:e});if(!t.ok)throw Error(\"Commons kit unavailable\");let a=await t.arrayBuffer();if(a.byteLength>n.COMMONS_BUDGET.maxBytes)throw Error(\"Commons byte budget exceeded\");let o=await new r.GLTFLoader().parseAsync(a,\"\"),l=(0,i.extractWorldKit)(o.scene,n.COMMONS_ASSETS,n.COMMONS_BUDGET.maxPrimitives);if(e.aborted)throw l.dispose(),new DOMException(\"Aborted\",\"AbortError\");return l}a.SCENERY_RANGE.enter,e.s([\"loadCommonsKit\",0,d,\"makeCommons\",0,function(e,r,i){var n;let f=new Set(r.filter(e=>\"Kayak\"===e.asset).map(e=>e.id));r=r.filter(e=>\"Kayak\"!==e.asset);let h=new AbortController,m=!1,u,p,b={x:0,z:0,zoom:1e3},g=new Set,y=(0,l.makeHiggsfieldInstances)(e,{maxInstances:96,maxTriangles:22e4,scenery:!0}),x=[...(0,s.libraryCommonsPlacements)(r),...(n=r,[...(0,s."
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "/models/",
+    "offset_char": 15840,
+    "offset_bytes": 15844,
+    "context": "hrow Error(\"Unknown library pack\");return r.has(e)||r.set(e,(async()=>{let r=o.HIGGSFIELD_PACKS[e],n=\"directory\"in r?r.directory:\"higgsfield-r6\",l=await fetch(\"/models/cubicles/\"+n+\"/\"+e+\".glb.gz.b64\");if(!l.ok)throw Error(\"Library pack unavailable\");let s=await l.text();if(s.length>4e6)throw Error(\"Library response too large\");let c=await i(s,r.bytes+16);if(Array.from(new Uint8Array(await crypto.subtle.digest(\"SHA-256\",c))).map(e=>e.toString(16).padStart(2,\"0\")).join(\"\")!==r.sha256)throw Error(\"Library checksum mismatch\");let d=await new a.GLTFLoader().parseAsync(c,\"\");var f=d.scene;let h=new Map,m=e=>{if(!e.isMeshPhysicalMaterial||!(e.transmission>0))return e;let a=h.get(e);return a||(a=new t.MeshStandardMaterial({name:e.name,color:e.color,roughness:Math.min(.25,e.roughness),metalness:0,transparent:!0,opacity:.38,depthWrite:!1,side:e.side}),h.set(e,a)),a};for(let e of(f.traverse(e=>{e.isMesh&&(e.material=Array.isArray(e.material)?e.material.map"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "/models/",
+    "offset_char": 25030,
+    "offset_bytes": 25034,
+    "context": "omParent(),s))e.material.map=null;d(),l.traverse(e=>{e.isMesh&&(e.geometry.dispose(),e.material.dispose())})},{once:!0})}async function w(e){let t=await fetch(\"/models/cubicles/v1/cubicle.glb\",{signal:e});if(!t.ok)throw Error(\"The furniture kit could not be loaded.\");let o=await t.arrayBuffer();if(o.byteLength>15e5)throw Error(\"World kit exceeds its published budget.\");let r=k((await new a.GLTFLoader().parseAsync(o,\"\")).scene);if(e.aborted)throw r.dispose(),new DOMException(\"Aborted\",\"AbortError\");return r}function k(e,a=[\"CubicleFloor\",\"PartitionBack\",\"PartitionLeft\",\"PartitionRight\",\"DeskTop\",\"DeskFrame\",\"Chair\",\"Monitor\"],r=24){e.updateMatrixWorld(!0);let i=[],n=new Set,l=new Set;try{e.traverse(e=>{if(!e.isMesh)return;for(let t of(n.add(e.geometry),Array.isArray(e.material)?e.material:[e.material]))l.add(t);if(Array.isArray(e.material)||!(e.material instanceof t.MeshStandardMaterial)||e.isSkinnedMesh)throw Error(\"World kit must contain static,"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "maxTriangles",
+    "offset_char": 5088,
+    "offset_bytes": 5088,
+    "context": "e=>e.id));r=r.filter(e=>\"Kayak\"!==e.asset);let h=new AbortController,m=!1,u,p,b={x:0,z:0,zoom:1e3},g=new Set,y=(0,l.makeHiggsfieldInstances)(e,{maxInstances:96,maxTriangles:22e4,scenery:!0}),x=[...(0,s.libraryCommonsPlacements)(r),...(n=r,[...(0,s.libraryCommonsPlacements)(n).filter(e=>\"HF_Desk_Classic\"===e.asset||\"HF_Desk_Standing\"===e.asset).filter((e,t)=>t%2==0).flatMap((e,t)=>{let a=(e.y??.12)+c.HIGGSFIELD_ASSETS[e.asset].height*(e.scale??1)+.025,o=e.rotation??0,r=Math.cos(o),i=Math.sin(o),n=(t,a)=>({x:e.x+t*r+a*i,z:e.z-t*i+a*r});return[{id:`library-showcase:${e.id}:screen`,asset:t%2?\"HF_TerminalScreenTower\":\"HF_TripleVerticalCodeMonitorRig\",...n(0,-.05),y:a,rotation:o,scale:.48},{id:`library-showcase:${e.id}:keyboard`,asset:\"HF_MechanicalKeyboardDeluxe\",...n(-.1,.35),y:a,rotation:o,scale:.48},{id:`library-showcase:${e.id}:button`,asset:\"HF_EmergencyDeployButton\",...n(.55,.3),y:a,rotation:o,scale:.5}]}),...n.filter(e=>\"CafeCounter\"===e.asset)"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "maxTriangles",
+    "offset_char": 18087,
+    "offset_bytes": 18091,
+    "context": "=e.i(587287),n=e.i(455734),l=e.i(190830),s=e.i(486793),c=e.i(453431),d=e.i(786126),f=e.i(585540),h=e.i(502222);function m(e,a={}){let o=a.maxInstances??320,r=a.maxTriangles??5e5,i=Math.max(l.VISUAL_RANGE.enter,a.distance??0),n=new Set,s=!1,c=new Map,u=new Map,p=new Set,b=new Set,g=!1,y=new t.Matrix4,x=new t.Quaternion,w=new t.Vector3,k=new t.Vector3,S=new t.Vector3(0,1,0),M=[],v={x:0,z:0,zoom:1e3},T=\"\";function E(o){c.has(o)||p.has(o)||b.has(o)||(p.add(o),(0,f.loadHiggsfieldPack)(h.HIGGSFIELD_ASSETS[o].pack).then(r=>{if(g)return;let i=r.assets.get(o);i.updateMatrixWorld(!0);let n=i.matrixWorld.clone().invert(),l=[];i.traverse(a=>{if(!a.isMesh)return;if(Array.isArray(a.material))throw Error(\"Expected per-material GLTF primitives\");let r=a.geometry.clone().applyMatrix4(new t.Matrix4().multiplyMatrices(n,a.matrixWorld)),i=a.material.clone(),s=new t.InstancedMesh(r,i,1024);s.name=\"Higgsfield:\"+o,s.count=0,s.visible=!1,s.receiveShadow=!0,e.add(s),l.pu"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "maxTriangles",
+    "offset_char": 27157,
+    "offset_bytes": 27161,
+    "context": "et g,y,k,S,M,v,T=(0,n.makeShells)(e,a),E=new AbortController,C=a,D={x:0,z:0,zoom:1e3},A=!1,I,F,B=0,R=d&&!h?(g=new Set,y=!1,k=!1,S=0,M=0,v=m(e,{maxInstances:384,maxTriangles:5e5,distance:96,onChange:()=>{!y&&u.every(e=>v.hasAsset(e))&&(y=!0,f(\"ready\"))}}),f(\"loading\"),v.prime(u),{update(e,t,a,o){let r=u.every(e=>v.hasAsset(e));r&&!y&&(y=!0,f(\"ready\")),k=(0,l.overviewMode)(o,k),S=(0,c.stationDetailLevel)(o,S),M=(0,s.worldMapMode)(o,M);let i=r&&!k&&0===M?(0,c.nearbyLibraryStations)(e,t,a,Math.min(o,129),g,S):[];return g=new Set(i.map(e=>e.id)),v.update(i.flatMap(c.stationPlacements),t,a,o),g},get count(){return v.count},get activeCount(){return g.size},get activeIds(){return[...g].sort((e,t)=>e-t)},dispose(){v.dispose()}}):void 0,P=function(e,a){let o=new Map;function n(e){let t=o.get(e);t&&(t.abort.abort(),t.root.removeFromParent(),o.delete(e))}return{update(l,s,d,f,h,m){let u=f<100?l.filter(e=>(0,i.isSpaceAnchor)(e)&&(0,r.hasStarter)(e)&&(0,p.scre"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "InstancedMesh",
+    "offset_char": 6430,
+    "offset_bytes": 6430,
+    "context": "l).then(i=>{m?i.dispose():(p=function(e,r,i){let n=new o.Matrix4,l=new o.Quaternion,s=new o.Vector3(1,1,1),c=new o.Vector3(0,1,0),d=r.parts.map(t=>{let a=new o.InstancedMesh(t.geometry,t.material,160);return a.name=\"Commons:\"+t.name,a.count=0,a.receiveShadow=!0,e.add(a),{mesh:a,part:t}}),f=new Map;for(let e of r.parts)f.set(e.name,(f.get(e.name)??0)+(e.geometry.index?.count??e.geometry.attributes.position.count)/3);let h=\"\",m=!1,u=new Set;return{update(e,r,p,b=new Set){m=(0,t.overviewMode)(p,m),u=(0,a.sceneryResidents)(i.filter(e=>\"ChessTable\"!==e.asset&&!b.has(e.id)&&f.has(e.asset)).map(t=>({id:t.id,distance:Math.hypot(t.x-e,t.z-r),cost:f.get(t.asset)})),u,{max:160,budget:18e4,overview:m});let g=i.filter(e=>u.has(e.id)&&!b.has(e.id)).sort((e,t)=>e.id.localeCompare(t.id)),y=g.map(e=>e.id).join(\"|\");if(y!==h){for(let{mesh:e,part:t}of d){let a=0;for(let r of g)r.asset===t.name&&(l.setFromAxisAngle(c,r.rotation),n.compose(new o.Vector3(r.x,r.y??.12,"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "InstancedMesh",
+    "offset_char": 18785,
+    "offset_bytes": 18789,
+    "context": "(\"Expected per-material GLTF primitives\");let r=a.geometry.clone().applyMatrix4(new t.Matrix4().multiplyMatrices(n,a.matrixWorld)),i=a.material.clone(),s=new t.InstancedMesh(r,i,1024);s.name=\"Higgsfield:\"+o,s.count=0,s.visible=!1,s.receiveShadow=!0,e.add(s),l.push({mesh:s,geometry:r,material:i})}),u.set(o,l.reduce((e,t)=>e+(t.geometry.index?.count??t.geometry.attributes.position.count)/3,0)),c.set(o,l),T=\"\",a.onChange?.()}).catch(()=>{b.add(o)}).finally(()=>p.delete(o)))}return{update:(e,t,f,m)=>(M=e,v={x:t,z:f,zoom:m},function(){s=(0,l.overviewMode)(v.zoom,s);let e=M.map(e=>({id:e.id,distance:Math.hypot(e.x-v.x,e.z-v.z),cost:a.scenery?u.get(e.asset)??h.HIGGSFIELD_ASSETS[e.asset].triangles:h.HIGGSFIELD_ASSETS[e.asset].triangles}));n=a.scenery?(0,d.sceneryResidents)(e,n,{max:o,budget:r,overview:s}):(0,l.stableResidents)(e,n,{enter:i,exit:Math.max(l.VISUAL_RANGE.exit,i+24),max:o,budget:r,overview:s});let t=M.filter(e=>n.has(e.id)).sort((e,t)=>e.id."
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "InstancedMesh",
+    "offset_char": 29154,
+    "offset_bytes": 29158,
+    "context": "P.update(C,D.x,D.z,B>0?130:D.zoom,e,t)};return d&&h&&(f(\"loading\"),w(E.signal).then(a=>{A?a.dispose():(F=function(e,a,n=!0){let l,s=a.parts.map(a=>{let o=new t.InstancedMesh(a.geometry,a.material,15);return o.name=\"Kit:\"+a.name,o.count=0,o.receiveShadow=!0,e.add(o),{part:a,mesh:o}}),c=(l=o.seedCubicles.find(e=>e.founder),new Set([...o.seedCubicles].sort((e,t)=>Math.hypot(e.x-l.x,e.z-l.z)-Math.hypot(t.x-l.x,t.z-l.z)||e.id-t.id).slice(0,15).map(e=>e.id))),d=new t.Matrix4,f=new t.Color,h=\"\",m=new Set;return{update(e,t,a,l){let u=e.filter(e=>(!n||c.has(e.id))&&(0,r.hasStarter)(e)&&(0,i.isSpaceAnchor)(e)&&(!e.office||1===e.office.side)&&l<70&&55>Math.hypot(e.x-t,e.z-a)).sort((e,o)=>Math.hypot(e.x-t,e.z-a)-2*!!m.has(e.id)-(Math.hypot(o.x-t,o.z-a)-2*!!m.has(o.id))).slice(0,n?15:8);m=new Set(u.map(e=>e.id));let p=JSON.stringify(u.map(e=>[e.id,e.x,e.z,e.color,e.accent,(0,r.roomSettings)(e)?.floor]));if(p!==h){for(let{part:e,mesh:t}of s){let a=0;for(let i "
+  }
+]

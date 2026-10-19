@@ -1,0 +1,209 @@
+[
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "nH\\(\"presence",
+    "start_char": 175894,
+    "end_char": 177294,
+    "offset_char": 176294,
+    "offset_bytes": 176501,
+    "context": "upants:r.people??[]},null,r5);if(!s)return void(0,aR.toast)(\"The arrival area is unavailable. Step out of your car or try again in a moment.\");let o=++se.current,l=si.current.position();if(tY(l),rl(t?(0,th.neighborhoodAt)(l.x,l.z)?.id??null:e),sE(null),sD(!1),sz(!1),s$(null),(0,tN.writeWorldLocation)(s.location,(0,tN.locationStores)()),em(!1),ee(null),es(!1),rE(!1),i){rh.current=o;try{let e=await nH(\"presence\",{...l,seatKey:null,jumpedAt:0,seatControl:{clientId:st.current,version:o,command:!0}});if(e.self?.accepted===!1)throw Error(\"Travel is still synchronizing.\");(sr.current?.id??i0.current?.id)===i&&se.current===o&&(rh.current=null,N((e.people??[]).filter(e=>!ir.current.has(e.id))))}catch{(0,aR.toast)(\"You arrived. Reconnecting your shared location…\",{id:\"neighborhood-sync\"})}}return!0}finally{r9.current=!1,ru.current=!1,so.current&&(rd(!1),oe())}}async function lI(e){try{await navigator.clipboard.writeText((0,tN.neighborhoodUrl)(location.origin,e)),aR.toast.success(\"Neighborhood link copied.\")}catch{aR.toast.error(\"Could not copy the neighborhood link.\")}}function lA(e){\"guide\"===e?ee(101):(ee(null),\"map\"===e?em(!0):\"directory\"===e?(eu(\"\"),rB(0),es(!0)):\"help\"===e?lV():\"claim\"===e&&lu())}let lE={known:iv,canClaim:iv&&(M||z),canDesign:iv&&!sm,ownerId:\"authenticated\"===iw?j?.id:void 0,admin:\"authenticated\"===iw&&!!j?.admin};(0,a7.default)({ready:eO,identity:oA,admin:!!j?.admi"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "nH\\(\"presence",
+    "start_char": 185282,
+    "end_char": 186682,
+    "offset_char": 185682,
+    "offset_bytes": 185897,
+    "context": "ballGame:sK.client.data?.game??null,onNearby:en,parcelAccess:lE,onParcelAction:(e,t)=>void lr(e,t),initialLoading:!e8||!eZ,onInitialized:()=>eX(!0),onReady:()=>eM(!0),onJump:()=>{(sr.current||i0.current)&&oe()},onSeatCommand:async(e,t)=>{if(!sr.current&&!i0.current)throw Error(\"Wait for your visitor to connect.\");r9.current=!0,se.current++;try{await Promise.allSettled([...r7.current]);let a=await nH(\"presence\",{...t,seatKey:e,seatControl:{clientId:st.current,version:se.current,command:!0}});if(a.self?.accepted===!1)throw Error(\"Your seat changed in another tab. Try the seat action again here.\");return N(a.people.filter(e=>!ir.current.has(e.id))),(0,a7.measure)(\"social\",e?\"start\":\"close\",{code:\"seat\"}),(0,t7.acknowledgedSeat)(a,sr.current?.id??i0.current?.id??\"\")}finally{setTimeout(()=>{r9.current=!1},0)}},paused:(0,e2.hudBlocksMovement)(lT,eO,ry,ev),onCameraMode:rk,suspended:sS||r2.open||!!sL||sF||sP||sK.playing||!!eR||ni||tj||eg||!!eb,night:tu}),su.freeLook&&(0,i.jsx)(nM,{world:si,ready:su.freeReady,error:su.error,onClose:su.close}),su.request&&(0,i.jsx)(nO,{request:su.request,world:si,cubicles:y,prepared:su.prepared,status:su.status,onPrepared:su.prepare,onClose:()=>{let e=!!su.request?.draftId;su.close(),e&&r2.setOpen(!0)}},`${su.request.mode}:${su.request.draftId??su.request.id??\"\"}`),eO&&(0,i.jsx)(nL,{seatKey:sA,open:sR,onOpenChange:sD,onGame:sT.update}),eO&&(0,i.jsx)(ta.F"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "nH\\(`presence",
+    "start_char": 138019,
+    "end_char": 139419,
+    "offset_char": 138419,
+    "offset_bytes": 138602,
+    "context": "aY.routePosition)(n.route,e):n.position,r=Math.hypot(i.x-tT.x,i.z-tT.z);r<a&&(a=r,t=n)}return t})(),{mutate:oe}=(0,x.default)([\"presence\",j?.id??ib?.id],async()=>{let e=si.current?.position()??{...c.OFFICE_SPAWN,rotation:0},t=si.current?.presenceView()??null,a={actorId:sr.current?.id??i0.current?.id??null,seatKey:e.seatKey??null,version:se.current},n=r9.current||iJ.current,i=eZ&&!!a.actorId&&!n,r=nH(`presence?x=${e.x}&z=${e.z}${t?`&viewX=${t.x}&viewZ=${t.z}`:\"\"}`,i?{...e,...!sr.current?{avatar:iA.current}:{},seatControl:{clientId:st.current,version:se.current,command:rh.current===a.version}}:void 0,void 0,{lead:!0});i&&r7.current.add(r);try{return{...await r,position:e,seatSync:a,skip:n,flight:t?.flight??null}}catch(e){if(n)return{skip:!0};throw Object.assign(e instanceof Error?e:Error(\"Presence sync failed.\"),{seatSync:a})}finally{r7.current.delete(r)}},{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){if(!e.skip&&!r9.current&&!iJ.current&&e.seatSync&&t9(e.seatSync,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version:se.current})&&e.self?.accepted!==!1){var t;rh.current===e.seatSync.version&&(rh.current=null),e.flight===(si.current?.presenceView()?.flight??null)&&N(e.people.filter(e=>!ir.current.has(e.id))),rF(\"number\"==typeof(t=e.total)&&Number.isSafeInteger(t)&&t>=0?t:null),r_(performance.now()),rK(Array.isArray(e.onlineOwne"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "nH\\(`presence",
+    "start_char": 175208,
+    "end_char": 176608,
+    "offset_char": 175608,
+    "offset_bytes": 175815,
+    "context": "nd a free car. Try again in a moment.\");return}t?await lC(\"\",t)&&iT(!1):(0,aR.toast)(\"This activity is unavailable right now.\")}async function lC(e,t){let a=t?{arrival:t}:(0,th.neighborhoodById)(e);if(!a||!eO||!iv||ru.current||r9.current||iJ.current)return;ru.current=!0,rd(!0),r9.current=!0;let n=se.current,i=sr.current?.id??i0.current?.id;try{await Promise.allSettled([...r7.current]);let r=await nH(`presence?x=${a.arrival.x}&z=${a.arrival.z}`).catch(()=>({people:[]}));if(!so.current||iJ.current||se.current!==n||(sr.current?.id??i0.current?.id)!==i)return;let s=si.current?.arrive(t?{kind:\"point\",known:!0,strict:!0,location:t}:{kind:\"neighborhood\",id:e,identity:i??st.current,occupants:r.people??[]},null,r5);if(!s)return void(0,aR.toast)(\"The arrival area is unavailable. Step out of your car or try again in a moment.\");let o=++se.current,l=si.current.position();if(tY(l),rl(t?(0,th.neighborhoodAt)(l.x,l.z)?.id??null:e),sE(null),sD(!1),sz(!1),s$(null),(0,tN.writeWorldLocation)(s.location,(0,tN.locationStores)()),em(!1),ee(null),es(!1),rE(!1),i){rh.current=o;try{let e=await nH(\"presence\",{...l,seatKey:null,jumpedAt:0,seatControl:{clientId:st.current,version:o,command:!0}});if(e.self?.accepted===!1)throw Error(\"Travel is still synchronizing.\");(sr.current?.id??i0.current?.id)===i&&se.current===o&&(rh.current=null,N((e.people??[]).filter(e=>!ir.current.has(e.id))))}catch{(0,aR.toast)("
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "nH\\(\"messages",
+    "start_char": 139880,
+    "end_char": 141280,
+    "offset_char": 140280,
+    "offset_bytes": 140463,
+    "context": "s(e.message);return n||i?\"stand\":\"retry\"}(e,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version:se.current},r9.current||iJ.current);if(\"ignore\"!==t){if(401!==e.status||sr.current||(ix(null),i0.current=null),\"stand\"===t)return void si.current?.seatUnavailable();q(\"offline\")}}}),{mutate:ot}=(0,x.default)(eO?[\"messages\",j?.id??ib?.id??\"public\"]:null,()=>nH(\"messages\",void 0,void 0,{}),{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){eN(e.messages)}});(0,b.useEffect)(()=>{if(!eO)return;let e=NaN,t=NaN,a=()=>{let a=si.current?.position();if(!a)return;let n=e===a.x&&t===a.z;e=a.x,t=a.z,tY(e=>e.x===a.x&&e.z===a.z||!n&&1.5>Math.hypot(e.x-a.x,e.z-a.z)?e:{x:a.x,z:a.z,rotation:a.rotation}),rl((0,th.neighborhoodAt)(a.x,a.z)?.id??null),sI(!!a.seatKey?.startsWith(\"starter:\"))};a();let n=setInterval(a,100);return()=>clearInterval(n)},[eO]);let oa=(0,b.useRef)(!1);(0,b.useEffect)(()=>{eO&&!oa.current&&(oa.current=!0,(0,a6.trackConversion)(\"world_enter\"))},[eO]),(0,b.useEffect)(()=>{if(\"loading\"===iw||\"unavailable\"===iw)return;let e=\"authenticated\"===iw?j?.id??null:null;n9.current&&n9.current!==e&&(n5(null),n6(!1)),n9.current=e},[iw,j?.id]),(0,b.useEffect)(()=>{if(\"authenticated\"!==iw||!j?.id)return;let e=j.id,t=new AbortController,a=!1,n,i=async()=>{if(document.hidden||n2?.sessionId||a||t.signal.aborted)return;a=!0,clearTimeout(n);let r=null"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "nH\\(\"messages",
+    "start_char": 172345,
+    "end_char": 173745,
+    "offset_char": 172745,
+    "offset_bytes": 172952,
+    "context": "${n.id}-${n.revision}`),rO(e=>new Map(e).set(n.id,n)),(0,a7.measure)(\"design\",\"complete\",{parcel:n.id,code:\"save\"}),sZ().catch(()=>{}),n}async function lw(e){if(e.preventDefault(),eC.trim()&&(!ew||oF())){if(ew&&oz.has(ew))return void aR.toast.error(\"Private messaging is unavailable for this player.\");eE(!0);try{if(!sr.current&&!i0.current){let e=await nq();ix(e.visitor),i0.current=e.visitor}await nH(\"messages\",{body:eC,recipient:ew}),(0,a7.measure)(\"social\",\"complete\",{code:\"message\"}),eI(\"\"),await ot()}catch(e){401!==e.status||sr.current||(ix(null),i0.current=null),aR.toast.error(e.message)}finally{eE(!1)}}}let lk=(0,b.useMemo)(()=>{if(su.active){let e=new Map(su.details.map(e=>[e.id,e]));return(su.prepared?.isolated?c.seedCubicles:r5).map(t=>e.get(t.id)??t)}return eR?r5.map(e=>e.id===eR.id?eR:e):function(e,t,a=Date.now()){return!t||t.draft.expiresAt<=a||null!=t.draft.publishedParcelId?e:(0,tD.overlayDesign)(e,t.draft)}((0,tD.overlayDesign)(r5,n0),n0?null:r2.worldDetail)},[r5,eR,n0,su.active,su.details,su.prepared?.isolated,r2.worldDetail]);function lS(e){rs(e??ro??th.COMMONS_DESTINATION.id),ra(!0),em(!0),rE(!1),ej(!1),ih(!1)}async function lN(e){if(\"typing\"===e){iT(!1),sN(!0);return}let t=function(e,t){let a,n=e=>[...e].sort((e,a)=>Math.hypot(e.x-t.x,e.z-t.z)-Math.hypot(a.x-t.x,a.z-t.z))[0];if(\"chess\"===e){let e=n(eL.CHESS_TABLES);e&&(a={x:e.x,z:e.z+3,rotation:Math.PI})}if(\"p"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence\\?",
+    "start_char": 126064,
+    "end_char": 127464,
+    "offset_char": 126464,
+    "offset_bytes": 126645,
+    "context": "=iw&&j?.admin?j.id:null),r5=(0,b.useMemo)(()=>(0,t6.hydrateCubicles)(y,rz),[y,rz]),r3=void 0===rZ?void 0:r5.find(e=>e.id===rZ);(0,b.useEffect)(()=>{let e=!1;return tM().then(t=>{if(!e&&(a9(t),!n1.current)){n1.current=!0;try{let e=localStorage.getItem(tz);t.some(t=>t.id===e)&&na(e)}catch{}}}).catch(()=>{}),()=>{e=!0}},[j?.id]),(0,b.useEffect)(()=>rB(0),[eo]);let{data:r4,error:r8}=(0,x.default)(ei?`presence?directory=1&offset=${80*rW}&q=${encodeURIComponent(eo)}`:null,nH,{refreshInterval:1e4}),r6=(0,b.useMemo)(()=>(0,aq.coastline)().map(e=>`${e.x},${e.z}`).join(\" \"),[]),r7=(0,b.useRef)(new Set),r9=(0,b.useRef)(!1),se=(0,b.useRef)(0),st=(0,b.useRef)(crypto.randomUUID()),sa=(0,b.useRef)(null),sn=(0,b.useRef)(null),si=(0,b.useRef)(null),sr=(0,b.useRef)(j),ss=(0,b.useRef)(ev),so=(0,b.useRef)(!0),sl=(0,b.useCallback)(()=>si.current?.radarHeading()??0,[]),sc=(0,b.useCallback)(()=>si.current?.radarZoom()??1,[]),sd=(0,b.useCallback)(()=>si.current?.position()??null,[]),su=(0,aK.useCinematic)(si,j?.id??ib?.id,!!j?.admin),sh=function(e){let t=(0,b.useRef)(e);t.current=e;let a=(0,b.useRef)(!1),n=(0,b.useRef)(e.initialCubicle),i=(0,b.useRef)(\"\"),[r,s]=(0,b.useState)(null),o=(0,b.useRef)(null);function l(e){if(!e)return!1;o.current??=(0,tN.locationStores)();let t=JSON.stringify(e);if(t===i.current)return!0;let a=(0,tN.writeWorldLocation)(e,o.current);return a&&(i.current=t),a}return(0,b.useEf"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence\\?",
+    "start_char": 138023,
+    "end_char": 139423,
+    "offset_char": 138423,
+    "offset_bytes": 138606,
+    "context": "outePosition)(n.route,e):n.position,r=Math.hypot(i.x-tT.x,i.z-tT.z);r<a&&(a=r,t=n)}return t})(),{mutate:oe}=(0,x.default)([\"presence\",j?.id??ib?.id],async()=>{let e=si.current?.position()??{...c.OFFICE_SPAWN,rotation:0},t=si.current?.presenceView()??null,a={actorId:sr.current?.id??i0.current?.id??null,seatKey:e.seatKey??null,version:se.current},n=r9.current||iJ.current,i=eZ&&!!a.actorId&&!n,r=nH(`presence?x=${e.x}&z=${e.z}${t?`&viewX=${t.x}&viewZ=${t.z}`:\"\"}`,i?{...e,...!sr.current?{avatar:iA.current}:{},seatControl:{clientId:st.current,version:se.current,command:rh.current===a.version}}:void 0,void 0,{lead:!0});i&&r7.current.add(r);try{return{...await r,position:e,seatSync:a,skip:n,flight:t?.flight??null}}catch(e){if(n)return{skip:!0};throw Object.assign(e instanceof Error?e:Error(\"Presence sync failed.\"),{seatSync:a})}finally{r7.current.delete(r)}},{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){if(!e.skip&&!r9.current&&!iJ.current&&e.seatSync&&t9(e.seatSync,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version:se.current})&&e.self?.accepted!==!1){var t;rh.current===e.seatSync.version&&(rh.current=null),e.flight===(si.current?.presenceView()?.flight??null)&&N(e.people.filter(e=>!ir.current.has(e.id))),rF(\"number\"==typeof(t=e.total)&&Number.isSafeInteger(t)&&t>=0?t:null),r_(performance.now()),rK(Array.isArray(e.onlineOwnerIds"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "presence\\?",
+    "start_char": 175212,
+    "end_char": 176612,
+    "offset_char": 175612,
+    "offset_bytes": 175819,
+    "context": " free car. Try again in a moment.\");return}t?await lC(\"\",t)&&iT(!1):(0,aR.toast)(\"This activity is unavailable right now.\")}async function lC(e,t){let a=t?{arrival:t}:(0,th.neighborhoodById)(e);if(!a||!eO||!iv||ru.current||r9.current||iJ.current)return;ru.current=!0,rd(!0),r9.current=!0;let n=se.current,i=sr.current?.id??i0.current?.id;try{await Promise.allSettled([...r7.current]);let r=await nH(`presence?x=${a.arrival.x}&z=${a.arrival.z}`).catch(()=>({people:[]}));if(!so.current||iJ.current||se.current!==n||(sr.current?.id??i0.current?.id)!==i)return;let s=si.current?.arrive(t?{kind:\"point\",known:!0,strict:!0,location:t}:{kind:\"neighborhood\",id:e,identity:i??st.current,occupants:r.people??[]},null,r5);if(!s)return void(0,aR.toast)(\"The arrival area is unavailable. Step out of your car or try again in a moment.\");let o=++se.current,l=si.current.position();if(tY(l),rl(t?(0,th.neighborhoodAt)(l.x,l.z)?.id??null:e),sE(null),sD(!1),sz(!1),s$(null),(0,tN.writeWorldLocation)(s.location,(0,tN.locationStores)()),em(!1),ee(null),es(!1),rE(!1),i){rh.current=o;try{let e=await nH(\"presence\",{...l,seatKey:null,jumpedAt:0,seatControl:{clientId:st.current,version:o,command:!0}});if(e.self?.accepted===!1)throw Error(\"Travel is still synchronizing.\");(sr.current?.id??i0.current?.id)===i&&se.current===o&&(rh.current=null,N((e.people??[]).filter(e=>!ir.current.has(e.id))))}catch{(0,aR.toast)(\"You"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 4807,
+    "end_char": 6207,
+    "offset_char": 5207,
+    "offset_bytes": 5210,
+    "context": "ng\"===e?`${(t/1e3).toFixed(2)} kg`:\"trials\"===e?`${Math.floor(t/6e4)}:${(t%6e4/1e3).toFixed(3).padStart(6,\"0\")}`:`${t.toLocaleString(\"en-US\")} ${1===t?\"win\":\"wins\"}`}async function _(e){let t=await fetch(e,{signal:AbortSignal.timeout(8e3),cache:\"no-store\"});if(!t.ok)throw Error(\"Standings unavailable\");return t.json()}function Y(e,t,a){let{data:n,error:i,mutate:r}=(0,x.default)(t?L[e].url:null,_,{refreshInterval:\"points\"===e?5e3:3e4,dedupingInterval:\"points\"===e?2e3:3e4,keepPreviousData:!1,errorRetryCount:2});(0,b.useEffect)(()=>{t&&\"points\"===e&&void 0!==a&&r()},[t,e,a,r]),(0,b.useEffect)(()=>{if(!t||\"points\"!==e)return;let a=()=>{r()};return window.addEventListener(\"cubicles-reward-earned\",a),()=>window.removeEventListener(\"cubicles-reward-earned\",a)},[t,e,r]);let s=(0,b.useMemo)(()=>{if(void 0===n)return{board:void 0,invalid:!1};try{return{board:function(e,t){if(!$(t))throw Error(\"Invalid standings\");let a=$(t.competition)?t.competition:null,n=\"fishing\"===e?a?.leaderboard:\"trials\"===e?t.timeTrials:t.leaderboard;if(!Array.isArray(n))throw Error(\"Invalid standings\");let i=[];for(let[t,a]of n.slice(0,20).entries()){if(!$(a)||\"string\"!=typeof a.name||!a.name.trim())throw Error(\"Invalid standings\");let n=\"points\"===e?a.points:\"fishing\"===e?a.grams:\"trials\"===e?a.time_ms:a.wins;if(!F(n)&&(\"racing\"!==e||0!==n))throw Error(\"Invalid standings\");let r=\"trials\"===e?a.position:a.rank;i."
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 12120,
+    "end_char": 13520,
+    "offset_char": 12520,
+    "offset_bytes": 12536,
+    "context": "i.jsx)(\"strong\",{children:e.name})]})},A(e)))})]}):null}function et({open:e,onOpenChange:t,hidden:a,onVisit:n,collapsed:r,onCollapsedChange:s,compact:o=!1,night:l=!1}){let c=V(),d=(0,b.useMemo)(()=>{try{return c?function(e){try{return z(JSON.parse(e.getItem(T)??\"null\"))}catch{return}}(sessionStorage):void 0}catch{return}},[c]),{data:u,error:h,mutate:p}=(0,x.default)(\"/api/employee-leaderboard\",H,{refreshInterval:6e4,revalidateOnFocus:!0,dedupingInterval:6e4,keepPreviousData:!0});(0,b.useEffect)(()=>{if(u)try{var e=sessionStorage;try{let t=z(u);t&&e.setItem(T,JSON.stringify(t))}catch{}}catch{}},[u]);let[m,f]=(0,b.useState)(null),k=(0,b.useRef)(null),[S,E]=(0,b.useState)(\"offices\"),[R,D]=(0,b.useState)(\"racing\"),[P,O]=(0,b.useState)(e);P!==e&&(O(e),E(\"offices\"),e||f(null));let M=\"racing\"===S?R:\"fishing\"===S?\"fishing\":\"points\",L=Y(M,\"offices\"!==S&&(e||!a&&!o&&!r)),$=e=>{E(e),f(null)},F=(0,i.jsx)(K,{category:S,onChange:$}),U=\"racing\"===S?(0,i.jsx)(W,{view:R,onChange:D}):null,_=((u??d)?.entries??[]).filter(g).sort((e,t)=>Number(!y(e))-Number(!y(t))).map((e,t)=>({...e,rank:t+1})),q=_.find(e=>A(e)===m),G=e=>{k.current=document.activeElement,E(\"offices\"),f(e?A(e):null),t(!0)},J=(e,a)=>{t(!1),n(e,a)},X=\"offices\"!==S?(0,i.jsx)(ee,{entries:_.filter(e=>e.parcelIds.length>0),onVisit:J,onShowOffices:()=>$(\"offices\")}):null,ea=()=>{s(!0),document.querySelector(\".hud-discovery-trigger\")?.focus"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 16565,
+    "end_char": 17965,
+    "offset_char": 16965,
+    "offset_bytes": 16985,
+    "context": "ength?er(_):ei}),(0,i.jsx)(Q,{})]}):(0,i.jsx)(B,{view:M,...L})},`${S}:${R}:${m??\"\"}`)]})})]})}let ea=\"cubicles:new-tenant-spotlight:dismissed:v1\";function en({hidden:e,onVisit:t,embedded:a=!1}){let n=V(),r=(0,b.useMemo)(()=>{try{return n&&\"1\"===sessionStorage.getItem(ea)}catch{return!1}},[n]),[s,o]=(0,b.useState)(!1),[l,c]=(0,b.useState)(null),{data:d}=(0,x.default)(\"/api/employee-leaderboard\",H,{refreshInterval:6e4,revalidateOnFocus:!0,dedupingInterval:6e4,keepPreviousData:!0}),u=(d?.newTenants??[]).filter(g).slice(0,3),h=Math.max(0,u.findIndex(e=>A(e)===l)),p=u[h],m=()=>{o(!0);try{sessionStorage.setItem(ea,\"1\")}catch{}document.querySelector(\".hud-menu-toggle\")?.focus()};if(!n||e||!a&&(r||s)||!p)return null;let f=e=>c(A(u[(h+e+u.length)%u.length]));return(0,i.jsxs)(\"aside\",{className:\"tenant-spotlight\",\"data-embedded\":a||void 0,\"aria-label\":\"New tenants\",onKeyDown:e=>{a&&\"Escape\"===e.key||(e.stopPropagation(),\"Escape\"===e.key&&(e.preventDefault(),m()))},children:[(0,i.jsxs)(\"header\",{children:[(0,i.jsx)(\"strong\",{children:\"Just moved in\"}),!a&&(0,i.jsx)(\"button\",{type:\"button\",onClick:m,\"aria-label\":\"Dismiss new tenants\",title:\"Dismiss new tenants\",children:(0,i.jsx)(C.X,{size:14,\"aria-hidden\":\"true\"})})]}),(0,i.jsxs)(\"a\",{className:\"tenant-spotlight-visit\",href:(0,R.parcelPath)(p.parcelIds[0]),\"aria-label\":`Visit ${p.name}'s office`,onClick:e=>{0!==e.button||e.metaKey||e.ctrl"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 27365,
+    "end_char": 28765,
+    "offset_char": 27765,
+    "offset_bytes": 27800,
+    "context": "kleball:eA,chess:eE,\"ping-pong\":eA,\"four-row\":eR,typing:ew.Keyboard,\"boat-race\":ek,\"car-practice\":ey.Flag,skateboarding:eN,kayaking:eS,snorkeling:eS,swings:eC,\"monkey-bars\":eI};function ez({open:e,onOpenChange:t,data:a,error:n,onSignIn:r,onChoose:s,onExtend:o,onVisit:l,onTrophy:c,busy:d,onRetry:u,onGames:h,onTyping:p,onActivity:m}){let f,g,y,k,{data:S,error:C}=(0,x.default)(e?\"/api/cars\":null,eD,{refreshInterval:3e3}),[A,E]=(0,b.useState)(\"play\"),[D,T]=(0,b.useState)(null),{data:P,error:z,mutate:O}=(0,x.default)(e?\"rewards-fishing-detail\":null,()=>eD(\"/api/fishing?contest=1\"),{refreshInterval:15e3}),[M,L]=(0,b.useState)(Date.now());(0,b.useEffect)(()=>{if(!e){E(\"play\"),T(null);return}L(Date.now());let t=setInterval(()=>L(Date.now()),1e3);return()=>clearInterval(t)},[e]);let $=(0,b.useRef)({server:Date.now(),local:Date.now()});(0,b.useEffect)(()=>{a&&($.current={server:a.serverNow,local:Date.now()})},[a]);let F=$.current.server+M-$.current.local,U=a?(f=a.hasActiveParcel&&!a.introUsed,g=(0,ep.rewardGoal)(a),y=(0,ep.canClaimEarned)(a),k=!!a.space&&(\"expired\"===a.space.status||a.space.expiresAt<=F),{title:a.enabled&&!a.account&&g.ready?\"Save your aura to claim a space\":f?\"Your aura\":y?\"Your space is ready\":a.introUsed?\"Keep your space\":\"Your first office\",target:f?null:g.target,progress:g.progress,caption:f?\"Play for rewards.\":a.introUsed?`${g.target} aura = ${a.terms.parcelDays} m"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 27549,
+    "end_char": 28949,
+    "offset_char": 27949,
+    "offset_bytes": 27984,
+    "context": "n ez({open:e,onOpenChange:t,data:a,error:n,onSignIn:r,onChoose:s,onExtend:o,onVisit:l,onTrophy:c,busy:d,onRetry:u,onGames:h,onTyping:p,onActivity:m}){let f,g,y,k,{data:S,error:C}=(0,x.default)(e?\"/api/cars\":null,eD,{refreshInterval:3e3}),[A,E]=(0,b.useState)(\"play\"),[D,T]=(0,b.useState)(null),{data:P,error:z,mutate:O}=(0,x.default)(e?\"rewards-fishing-detail\":null,()=>eD(\"/api/fishing?contest=1\"),{refreshInterval:15e3}),[M,L]=(0,b.useState)(Date.now());(0,b.useEffect)(()=>{if(!e){E(\"play\"),T(null);return}L(Date.now());let t=setInterval(()=>L(Date.now()),1e3);return()=>clearInterval(t)},[e]);let $=(0,b.useRef)({server:Date.now(),local:Date.now()});(0,b.useEffect)(()=>{a&&($.current={server:a.serverNow,local:Date.now()})},[a]);let F=$.current.server+M-$.current.local,U=a?(f=a.hasActiveParcel&&!a.introUsed,g=(0,ep.rewardGoal)(a),y=(0,ep.canClaimEarned)(a),k=!!a.space&&(\"expired\"===a.space.status||a.space.expiresAt<=F),{title:a.enabled&&!a.account&&g.ready?\"Save your aura to claim a space\":f?\"Your aura\":y?\"Your space is ready\":a.introUsed?\"Keep your space\":\"Your first office\",target:f?null:g.target,progress:g.progress,caption:f?\"Play for rewards.\":a.introUsed?`${g.target} aura = ${a.terms.parcelDays} more days`:`${g.target} aura = ${a.terms.parcelDays} days of your own space`,claimReady:y,extendReady:a.enabled&&a.account&&a.introUsed&&g.ready&&!!a.space,timeLeft:a.space?k?\"Time ende"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 92035,
+    "end_char": 93435,
+    "offset_char": 92435,
+    "offset_bytes": 92582,
+    "context": "]})}var a6=e.i(969411),a7=e.i(929516);async function a9(e){let t=await fetch(e,{signal:AbortSignal.timeout(8e3)});if(!t.ok)throw Error(\"Statistics unavailable\");return t.json()}let ne=e=>null==e?\"—\":e.toLocaleString();function nt({parcel:e,visible:t=!0}){let{data:a,error:n}=(0,x.default)(t?`/api/parcel-stats?parcel=${e}`:null,a9,{dedupingInterval:6e4,revalidateOnFocus:!0,focusThrottleInterval:6e4,refreshInterval:0,shouldRetryOnError:!1});return(0,i.jsxs)(\"div\",{className:\"parcel-stats\",\"aria-label\":\"Observed cubicle visitors and total recorded website clicks\",children:[(0,i.jsxs)(\"dl\",{children:[(0,i.jsxs)(\"div\",{title:\"Distinct tracked visitors who entered this cubicle or opened its details, including earlier recorded activity. Repeat activity counts once within the last 30 days; guest expiry or another device may count someone again.\",children:[(0,i.jsx)(\"dt\",{children:\"Visitors\"}),(0,i.jsx)(\"dd\",{children:ne(a?.visitors)})]}),(0,i.jsxs)(\"div\",{title:\"Recorded clicks to this website across Cubicles, including historical data.\",children:[(0,i.jsx)(\"dt\",{children:\"Website clicks\"}),(0,i.jsx)(\"dd\",{children:ne(a?.clicks)})]})]}),(0,i.jsx)(\"small\",{children:n?\"Stats unavailable\":a?`${null==a.visitors?\"Visitors unavailable\":a.visitorsSince?`Visitors since ${new Date(a.visitorsSince).toLocaleDateString(\"en-US\",{month:\"short\",day:\"numeric\",timeZone:\"America/Chicago\"})}`:\"Visitors: r"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 118242,
+    "end_char": 119642,
+    "offset_char": 118642,
+    "offset_bytes": 118821,
+    "context": ".current!==e){let t=await fetch(\"/api/rewards/save\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:\"{}\"});if(!t.ok)throw Error(\"Your account is connected, but your guest aura could not be saved yet. Retry to finish saving.\");let a=await t.json();l.current===o&&(s.current=e),a.saved>0&&l.current===o&&n(e=>[...e,`${a.saved} aura saved to your account.`])}return eD(\"/api/rewards\")},{refreshInterval:5e3,revalidateOnFocus:!0});return(0,b.useEffect)(()=>{i.current=null,r.current=!1,n([])},[o]),(0,b.useEffect)(()=>{let e=()=>void u();return window.addEventListener(\"cubicles-reward-earned\",e),()=>window.removeEventListener(\"cubicles-reward-earned\",e)},[u]),(0,b.useEffect)(()=>{if(!c?.enabled||!!e!==c.account)return;if(!i.current){i.current=new Set(c.history.map(e=>e.id)),r.current=c.keysUnlocked,!c.account&&c.available>0&&n(e=>[...e,`You have ${c.available} aura. Sign in to save it.`]);return}let t=c.history.filter(e=>!i.current.has(e.id));for(let e of t)i.current.add(e.id);let a=function(e,t,a=!1){let n=new Map;for(let t of e){if(t.points<=0)continue;let e=n.get(t.kind)??{points:0,count:0};e.points+=t.points,e.count++,n.set(t.kind,e)}let i=[...n].sort(([e],[t])=>(\"daily-activity\"===e)-(\"daily-activity\"===t)),r=i.slice(0,3).map(([e,t])=>`${\"scheduled-race\"===e?\"Race complete\":\"daily-activity\"===e?\"Daily bonus\":\"fishing-hourly\"===e?\"Hourly fishing\":\"fishing-daily\"===e?\""
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 125199,
+    "end_char": 126599,
+    "offset_char": 125599,
+    "offset_bytes": 125780,
+    "context": "[e.id,e])))}rL(!1)}}catch{e.signal.aborted||rL(!0)}finally{t=!1}}}n();let i=setInterval(n,5e3);return()=>{e.abort(),clearInterval(i)}},[r0,r1,tl]);let r2=function(e){let[t,a]=(0,b.useState)(!1),[n,i]=(0,b.useState)(null),[r,s]=(0,b.useState)(0),[o,l]=(0,b.useState)(!1);(0,b.useEffect)(()=>{a(!1),i(null),s(0),l(!1)},[e]);let c=(0,x.default)(e&&t?[\"/api/admin/design-drafts?offset=\"+50*r,e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),d=(0,x.default)(e&&n&&(t||o)?[\"/api/admin/design-drafts?id=\"+encodeURIComponent(n),e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),u=e&&!d.error&&d.data?.draft.id===n&&d.data.draft.expiresAt>Date.now()?d.data:null;return{open:!!e&&t,setOpen:a,page:r,setPage:s,list:c,detail:u,selected:n,error:d.error,inspect(e){i(e),l(!1)},worldDetail:o?u:null,showInWorld(){l(!0),a(!1)},stop(){l(!1),i(null)}}}(\"authenticated\"===iw&&j?.admin?j.id:null),r5=(0,b.useMemo)(()=>(0,t6.hydrateCubicles)(y,rz),[y,rz]),r3=void 0===rZ?void 0:r5.find(e=>e.id===rZ);(0,b.useEffect)(()=>{let e=!1;return tM().then(t=>{if(!e&&(a9(t),!n1.current)){n1.current=!0;try{let e=localStorage.getItem(tz);t.some(t=>t.id===e)&&na(e)}catch{}}}).catch(()=>{}),()=>{e=!0}},[j?.id]),(0,b.useEffect)(()=>rB(0),[eo]);let{data:r4,error:r8}=(0,x.default)(ei?`presence?directory=1&offset=${80*rW}&q=${encodeURIComponent(eo)}`:null,nH,{refreshInterval:1e4}),r6=(0,b.useMemo)(()=>(0,aq.coastline)("
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 125338,
+    "end_char": 126738,
+    "offset_char": 125738,
+    "offset_bytes": 125919,
+    "context": "r1,tl]);let r2=function(e){let[t,a]=(0,b.useState)(!1),[n,i]=(0,b.useState)(null),[r,s]=(0,b.useState)(0),[o,l]=(0,b.useState)(!1);(0,b.useEffect)(()=>{a(!1),i(null),s(0),l(!1)},[e]);let c=(0,x.default)(e&&t?[\"/api/admin/design-drafts?offset=\"+50*r,e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),d=(0,x.default)(e&&n&&(t||o)?[\"/api/admin/design-drafts?id=\"+encodeURIComponent(n),e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),u=e&&!d.error&&d.data?.draft.id===n&&d.data.draft.expiresAt>Date.now()?d.data:null;return{open:!!e&&t,setOpen:a,page:r,setPage:s,list:c,detail:u,selected:n,error:d.error,inspect(e){i(e),l(!1)},worldDetail:o?u:null,showInWorld(){l(!0),a(!1)},stop(){l(!1),i(null)}}}(\"authenticated\"===iw&&j?.admin?j.id:null),r5=(0,b.useMemo)(()=>(0,t6.hydrateCubicles)(y,rz),[y,rz]),r3=void 0===rZ?void 0:r5.find(e=>e.id===rZ);(0,b.useEffect)(()=>{let e=!1;return tM().then(t=>{if(!e&&(a9(t),!n1.current)){n1.current=!0;try{let e=localStorage.getItem(tz);t.some(t=>t.id===e)&&na(e)}catch{}}}).catch(()=>{}),()=>{e=!0}},[j?.id]),(0,b.useEffect)(()=>rB(0),[eo]);let{data:r4,error:r8}=(0,x.default)(ei?`presence?directory=1&offset=${80*rW}&q=${encodeURIComponent(eo)}`:null,nH,{refreshInterval:1e4}),r6=(0,b.useMemo)(()=>(0,aq.coastline)().map(e=>`${e.x},${e.z}`).join(\" \"),[]),r7=(0,b.useRef)(new Set),r9=(0,b.useRef)(!1),se=(0,b.useRef)(0),st=(0,b.useRef)(crypto.randomUUID()"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 126139,
+    "end_char": 127539,
+    "offset_char": 126539,
+    "offset_bytes": 126720,
+    "context": "[y,rz]),r3=void 0===rZ?void 0:r5.find(e=>e.id===rZ);(0,b.useEffect)(()=>{let e=!1;return tM().then(t=>{if(!e&&(a9(t),!n1.current)){n1.current=!0;try{let e=localStorage.getItem(tz);t.some(t=>t.id===e)&&na(e)}catch{}}}).catch(()=>{}),()=>{e=!0}},[j?.id]),(0,b.useEffect)(()=>rB(0),[eo]);let{data:r4,error:r8}=(0,x.default)(ei?`presence?directory=1&offset=${80*rW}&q=${encodeURIComponent(eo)}`:null,nH,{refreshInterval:1e4}),r6=(0,b.useMemo)(()=>(0,aq.coastline)().map(e=>`${e.x},${e.z}`).join(\" \"),[]),r7=(0,b.useRef)(new Set),r9=(0,b.useRef)(!1),se=(0,b.useRef)(0),st=(0,b.useRef)(crypto.randomUUID()),sa=(0,b.useRef)(null),sn=(0,b.useRef)(null),si=(0,b.useRef)(null),sr=(0,b.useRef)(j),ss=(0,b.useRef)(ev),so=(0,b.useRef)(!0),sl=(0,b.useCallback)(()=>si.current?.radarHeading()??0,[]),sc=(0,b.useCallback)(()=>si.current?.radarZoom()??1,[]),sd=(0,b.useCallback)(()=>si.current?.position()??null,[]),su=(0,aK.useCinematic)(si,j?.id??ib?.id,!!j?.admin),sh=function(e){let t=(0,b.useRef)(e);t.current=e;let a=(0,b.useRef)(!1),n=(0,b.useRef)(e.initialCubicle),i=(0,b.useRef)(\"\"),[r,s]=(0,b.useState)(null),o=(0,b.useRef)(null);function l(e){if(!e)return!1;o.current??=(0,tN.locationStores)();let t=JSON.stringify(e);if(t===i.current)return!0;let a=(0,tN.writeWorldLocation)(e,o.current);return a&&(i.current=t),a}return(0,b.useEffect)(()=>{if(n.current!==e.initialCubicle&&(n.current=e.initialCubicle,a.c"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 133765,
+    "end_char": 135165,
+    "offset_char": 134165,
+    "offset_bytes": 134348,
+    "context": "==iQ.current?.id)&&(eP(null),(0,aR.toast)(\"This space is no longer yours. Your last draft stays on this device.\")),B(e=>i.some(t=>t.id===e)?e:i[0]?.id??null),n?(eP(null),tB(null),re(null)):a?(tB(e.me),t&&(eP(null),ey(!1),eN([]),re(null))):tB(t=>t??e.me),re(e=>i.some(t=>t.id===e&&[\"test\",\"unbilled\"].includes(t.billing_status))?e:null)}let{mutate:sH}=(0,x.default)(\"world\",()=>nH(\"world?startup=1\"),{refreshInterval:M?5e3:2e4,onSuccess:sB,onError(e){to(!0),ij(!1),ik(\"unavailable\"),aR.toast.error(eO?\"Account and ownership details could not load. You can keep exploring.\":\"The office could not load. Please try again.\",{id:\"ownership-connection\"})}}),{data:sq,error:sV,mutate:sG}=(0,x.default)(eO&&e8&&\"loading\"!==iw&&\"unavailable\"!==iw?[\"world-extras\",j?.id??null]:null,()=>nH(\"world?extras=1\"),{refreshInterval:3e4,onSuccess(e){e.accountId===(sr.current?.id??null)&&(O(!0===e.billingReady),a2(e.foundingBuilder??null),_([\"playtest\",\"paused\",\"paid\"].includes(e.rentalMode)?e.rentalMode:\"paused\"),L(!0===e.testMode))},onError(){(sr.current?.id??null)===(j?.id??null)&&O(!1)}}),sJ=(0,aO.useTrialPromotion)(j?.id??null,eO&&e8&&\"loading\"!==iw&&\"unavailable\"!==iw),sX=!sm&&!sJ.error&&sJ.data?.accountId===(j?.id??null)&&sJ.data?.enabled===!0&&sJ.data?.eligible===!0,sZ=(0,b.useCallback)((...e)=>(0===e.length&&sG().catch(()=>void 0),sH(...e)),[sH,sG]);(0,b.useEffect)(()=>{if(!eO||j?.id||ib?.id)return;le"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 134162,
+    "end_char": 135562,
+    "offset_char": 134562,
+    "offset_bytes": 134745,
+    "context": "),{refreshInterval:M?5e3:2e4,onSuccess:sB,onError(e){to(!0),ij(!1),ik(\"unavailable\"),aR.toast.error(eO?\"Account and ownership details could not load. You can keep exploring.\":\"The office could not load. Please try again.\",{id:\"ownership-connection\"})}}),{data:sq,error:sV,mutate:sG}=(0,x.default)(eO&&e8&&\"loading\"!==iw&&\"unavailable\"!==iw?[\"world-extras\",j?.id??null]:null,()=>nH(\"world?extras=1\"),{refreshInterval:3e4,onSuccess(e){e.accountId===(sr.current?.id??null)&&(O(!0===e.billingReady),a2(e.foundingBuilder??null),_([\"playtest\",\"paused\",\"paid\"].includes(e.rentalMode)?e.rentalMode:\"paused\"),L(!0===e.testMode))},onError(){(sr.current?.id??null)===(j?.id??null)&&O(!1)}}),sJ=(0,aO.useTrialPromotion)(j?.id??null,eO&&e8&&\"loading\"!==iw&&\"unavailable\"!==iw),sX=!sm&&!sJ.error&&sJ.data?.accountId===(j?.id??null)&&sJ.data?.enabled===!0&&sJ.data?.eligible===!0,sZ=(0,b.useCallback)((...e)=>(0===e.length&&sG().catch(()=>void 0),sH(...e)),[sH,sG]);(0,b.useEffect)(()=>{if(!eO||j?.id||ib?.id)return;let e=!1,t,a=()=>{nq().then(t=>{e||(ix(t.visitor),i0.current=t.visitor,sZ())}).catch(()=>{e||(t=setTimeout(a,5e3))})};return a(),()=>{e=!0,clearTimeout(t)}},[eO,j?.id,ib?.id,sZ]),(0,b.useEffect)(()=>{try{let e=(0,aQ.parseAccountIntent)(JSON.parse(sessionStorage.getItem(nE)||\"null\"),nA);e?iq(e):sessionStorage.removeItem(nE)}catch{}},[]);let sQ=function(e,t=15e3){let[a,n]=(0,b.useState)({agents:[],"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 138487,
+    "end_char": 139887,
+    "offset_char": 138887,
+    "offset_bytes": 139070,
+    "context": "i?{...e,...!sr.current?{avatar:iA.current}:{},seatControl:{clientId:st.current,version:se.current,command:rh.current===a.version}}:void 0,void 0,{lead:!0});i&&r7.current.add(r);try{return{...await r,position:e,seatSync:a,skip:n,flight:t?.flight??null}}catch(e){if(n)return{skip:!0};throw Object.assign(e instanceof Error?e:Error(\"Presence sync failed.\"),{seatSync:a})}finally{r7.current.delete(r)}},{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){if(!e.skip&&!r9.current&&!iJ.current&&e.seatSync&&t9(e.seatSync,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version:se.current})&&e.self?.accepted!==!1){var t;rh.current===e.seatSync.version&&(rh.current=null),e.flight===(si.current?.presenceView()?.flight??null)&&N(e.people.filter(e=>!ir.current.has(e.id))),rF(\"number\"==typeof(t=e.total)&&Number.isSafeInteger(t)&&t>=0?t:null),r_(performance.now()),rK(Array.isArray(e.onlineOwnerIds)?{onlineIds:new Set(e.onlineOwnerIds),receivedAt:performance.now()}:null),q(\"live\")}},onError(e){let t=function(e,t,a=!1){if(a||!e.seatSync||!t9(e.seatSync,t))return\"ignore\";if(!t.seatKey)return\"retry\";let n=403===e.status&&\"Only the office owner can use this desk seat.\"===e.message,i=409===e.status&&[\"That seat is no longer available.\",\"Someone is already sitting there.\",\"Move closer to the seat first.\",\"Approach the seat from its open side.\"].includes(e.mes"
+  },
+  {
+    "file": "3_dlclu6ncxwx.js",
+    "term": "refreshInterval:[^,}]{1,50}",
+    "start_char": 139913,
+    "end_char": 141313,
+    "offset_char": 140313,
+    "offset_bytes": 140496,
+    "context": "\"retry\"}(e,{actorId:sr.current?.id??i0.current?.id??null,seatKey:si.current?.position().seatKey??null,version:se.current},r9.current||iJ.current);if(\"ignore\"!==t){if(401!==e.status||sr.current||(ix(null),i0.current=null),\"stand\"===t)return void si.current?.seatUnavailable();q(\"offline\")}}}),{mutate:ot}=(0,x.default)(eO?[\"messages\",j?.id??ib?.id??\"public\"]:null,()=>nH(\"messages\",void 0,void 0,{}),{refreshInterval:1e3,dedupingInterval:500,onSuccess(e){eN(e.messages)}});(0,b.useEffect)(()=>{if(!eO)return;let e=NaN,t=NaN,a=()=>{let a=si.current?.position();if(!a)return;let n=e===a.x&&t===a.z;e=a.x,t=a.z,tY(e=>e.x===a.x&&e.z===a.z||!n&&1.5>Math.hypot(e.x-a.x,e.z-a.z)?e:{x:a.x,z:a.z,rotation:a.rotation}),rl((0,th.neighborhoodAt)(a.x,a.z)?.id??null),sI(!!a.seatKey?.startsWith(\"starter:\"))};a();let n=setInterval(a,100);return()=>clearInterval(n)},[eO]);let oa=(0,b.useRef)(!1);(0,b.useEffect)(()=>{eO&&!oa.current&&(oa.current=!0,(0,a6.trackConversion)(\"world_enter\"))},[eO]),(0,b.useEffect)(()=>{if(\"loading\"===iw||\"unavailable\"===iw)return;let e=\"authenticated\"===iw?j?.id??null:null;n9.current&&n9.current!==e&&(n5(null),n6(!1)),n9.current=e},[iw,j?.id]),(0,b.useEffect)(()=>{if(\"authenticated\"!==iw||!j?.id)return;let e=j.id,t=new AbortController,a=!1,n,i=async()=>{if(document.hidden||n2?.sessionId||a||t.signal.aborted)return;a=!0,clearTimeout(n);let r=null;try{r=function(e,t,a=Date.now())"
+  }
+]

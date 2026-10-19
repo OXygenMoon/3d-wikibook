@@ -1,0 +1,44 @@
+[
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "requestAnimationFrame",
+    "offset_char": 358579,
+    "offset_bytes": 358805,
+    "context": "etries:t.info.memory.geometries}),t_(!0),tT.current.onRenderError?.(),tT.current.onReady()};return t.domElement.addEventListener(\"webglcontextlost\",rm),rp(),oe=requestAnimationFrame(function e(i){oe=requestAnimationFrame(e),t7.active&&(document.hidden||!document.hasFocus()||tT.current.cinemaError)&&t7.pause(tT.current.cinemaError??\"Playback paused while the window is inactive.\"),!t1.active||tT.current.parcelAccess?.admin&&tT.current.freeLook||t8(),(document.hidden||!document.hasFocus())&&t6(),aG=t7.frame("
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "requestAnimationFrame",
+    "offset_char": 358618,
+    "offset_bytes": 358844,
+    "context": "),tT.current.onRenderError?.(),tT.current.onReady()};return t.domElement.addEventListener(\"webglcontextlost\",rm),rp(),oe=requestAnimationFrame(function e(i){oe=requestAnimationFrame(e),t7.active&&(document.hidden||!document.hasFocus()||tT.current.cinemaError)&&t7.pause(tT.current.cinemaError??\"Playback paused while the window is inactive.\"),!t1.active||tT.current.parcelAccess?.admin&&tT.current.freeLook||t8(),(document.hidden||!document.hasFocus())&&t6(),aG=t7.frame(i,t$.clientWidth/Math.max(1,t$.clientHe"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "cancelAnimationFrame",
+    "offset_char": 358250,
+    "offset_bytes": 358476,
+    "context": "ObjectURL(e),t.download=\"my-cubicles-office.png\",t.click(),setTimeout(()=>URL.revokeObjectURL(t.href),1e3)}),e!==tJ.baseRatio&&t.setPixelRatio(e)}};let rm=()=>{cancelAnimationFrame(oe),console.error(\"[world] WebGL context lost\",{mobile:tq.mobile,pixelRatio:t.getPixelRatio(),interiors:n8.size,textures:t.info.memory.textures,geometries:t.info.memory.geometries}),t_(!0),tT.current.onRenderError?.(),tT.current.onReady()};return t.domElement.addEventListener(\"webglcontextlost\",rm),rp(),oe=requestAnimationFrame"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "cancelAnimationFrame",
+    "offset_char": 401901,
+    "offset_bytes": 402129,
+    "context": "();for(let[e,a]of(n4.dispose(),n3.clear(),nJ.dispose(),nX.dispose(),nq.dispose(),nH.dispose(),nK.dispose(),iF.root.removeFromParent(),ii(iF.root),nY?.dispose(),cancelAnimationFrame(oe),rf.disconnect(),window.removeEventListener(\"keydown\",rt),window.removeEventListener(\"keyup\",ra),window.removeEventListener(\"blur\",rn),window.removeEventListener(\"pagehide\",av),[[\"pointerdown\",ro],[\"pointermove\",rl],[\"pointerup\",rd],[\"dblclick\",rc],[\"wheel\",ru]]))t.domElement.removeEventListener(e,a);for(let e of(ak.dispose("
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "t.render(",
+    "offset_char": 357986,
+    "offset_bytes": 358212,
+    "context": "((i_=(0,tr.boundedMovement)(e,t)).x||i_.y)&&(a8=!0,i9=null)},screenshot:()=>{let e=t.getPixelRatio();e!==tJ.baseRatio&&t.setPixelRatio(tJ.baseRatio),n4.flush(),t.render(aa,aR),t.domElement.toBlob(e=>{if(!e)return;let t=document.createElement(\"a\");t.href=URL.createObjectURL(e),t.download=\"my-cubicles-office.png\",t.click(),setTimeout(()=>URL.revokeObjectURL(t.href),1e3)}),e!==tJ.baseRatio&&t.setPixelRatio(e)}};let rm=()=>{cancelAnimationFrame(oe),console.error(\"[world] WebGL context lost\",{mobile:tq.mobile,"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "t.render(",
+    "offset_char": 400164,
+    "offset_bytes": 400392,
+    "context": "2&&aR===a5,!!tT.current.night),t.domElement.dataset.cameraRig!==(a2?\"follow\":\"overview\")&&(t.domElement.dataset.cameraRig=a2?\"follow\":\"overview\"),ni=ne?aR:null,t.render(aa,aR),ni=null,ae&&t9.ready(i,at===ae.pendingId&&n7.filter(e=>!e.available).every(e=>void 0!==e.items&&n8.get(e.id)?.signature===n5(e,n9.has(e.id)))&&0===n3.pending),aG){let e=(0,$.cinemaLoadingPlots)(aG.job,n7);t7.ready(i,(0,Y.cinematicContentReady)({visiblePlots:e.length,overview:ia>0,unready:e.filter(e=>!e.available&&(void 0===e.items||"
+  }
+]

@@ -1,0 +1,42 @@
+- document:
+  - main:
+    - region "Notifications alt+T"
+    - region "Explore Cubicles":
+      - button "Could not enter first person. Click the camera button to try again."
+      - button "Switch to first person": First person
+      - button "About Cubicles and controls": cubicles.
+      - button "2 people online. Open people directory.":
+        - status: 2 online
+      - navigation "Account":
+        - text: Guest
+        - button "Join"
+        - button "Log In"
+      - status "6633 total visitors": TOTAL VISITORS
+      - button "Open aura and rewards": ★ 0 aura
+      - link "We’re live on Product Hunt (opens in a new tab)":
+        - /url: https://www.producthunt.com/products/cubicles-lol
+        - text: We’re live on Product Hunt
+      - region "Cubicles Radio":
+        - button "Expand music controls": Music
+      - region "Nearby player radar":
+        - 'button "Guest #6939, 19 units away"'
+      - button "Open game menu": Menu
+      - group "Zoom controls":
+        - button "Zoom out"
+        - button "Zoom in"
+      - button "Leaderboard"
+      - navigation "Quick actions":
+        - button "Chat"
+        - button "Dance"
+        - 'button "Character: Classic. Change character"': Character
+        - button "Reactions": 👋
+        - button "Map"
+      - button "Controls / How to play": Controls
+      - complementary "New chat messages"
+      - link "Built by @imnotMatt_eth":
+        - /url: https://x.com/imnotMatt_eth
+      - complementary "Quick start controls":
+        - text: WASD Walk around · or arrow keys
+        - button "View controls"
+        - button "Dismiss controls hint"
+  - alert

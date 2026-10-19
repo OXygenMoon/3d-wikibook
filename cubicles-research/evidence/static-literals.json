@@ -1,0 +1,1556 @@
+[
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 5863,
+    "value": "https://higgsfield.ai/3d-jutsu/eaa2c37f-b1ab-49a6-ab51-731d54338fca",
+    "context": ":.6,height:1.585,offsetX:0,offsetZ:0}}],95574);let t=JSON.parse('{\"source\":{\"projectUrl\":\"https://higgsfield.ai/3d-jutsu/eaa2c37f-b1ab-49a6-ab51-731d54338fca\",\"projectId\":\"eaa2c37f-b1ab-49a6-ab51-731d54338fca\",\"revision\":6,\"sourceGlbSha256\":\"defbd"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 83084,
+    "value": "https://www.instagram.com/${a}/",
+    "context": "]{0,28}[a-z0-9_])?$/.test(a)||a.includes(\"..\")||i.has(a))return null;return{handle:a,url:`https://www.instagram.com/${a}/`}}catch{return null}}e.s([\"instagramProfile\",0,s],531134);let o=[\"brand\",\"wall\",\"lightbox"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 6557,
+    "value": "foundation.glb",
+    "context": " cameras, lamps or presentation floors.\"},\"assetCount\":208,\"packs\":{\"foundation\":{\"file\":\"foundation.glb\",\"bytes\":175952,\"sha256\":\"4431f2c0aef633acba5d16cf1a0b85a590ba35ce276c4a6ac37f75669cb46af"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 6730,
+    "value": "seating.glb",
+    "context": "6c4a6ac37f75669cb46af5\",\"assets\":7,\"triangles\":2700,\"gzipBytes\":18492},\"seating\":{\"file\":\"seating.glb\",\"bytes\":387116,\"sha256\":\"8c4f1d94e04f5d2f45f59bcd80d7eb51e424b6141168740c893800d8464d1a4"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 6901,
+    "value": "storage.glb",
+    "context": "8740c893800d8464d1a45\",\"assets\":11,\"triangles\":6128,\"gzipBytes\":69335},\"storage\":{\"file\":\"storage.glb\",\"bytes\":498800,\"sha256\":\"874c5de787e7e4915b0c2bac61384de04e263b5b6069cab3a6b79a0cf248557"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 7069,
+    "value": "tech.glb",
+    "context": "6069cab3a6b79a0cf248557b\",\"assets\":18,\"triangles\":7728,\"gzipBytes\":68511},\"tech\":{\"file\":\"tech.glb\",\"bytes\":667440,\"sha256\":\"23ed87d056a095a87e4bfbec2918f5b8ff1934d162fdb4664221c4b77547dd1"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 7238,
+    "value": "greenery.glb",
+    "context": "b4664221c4b77547dd1d\",\"assets\":27,\"triangles\":9800,\"gzipBytes\":71170},\"greenery\":{\"file\":\"greenery.glb\",\"bytes\":540436,\"sha256\":\"f3af1fe147b8e4449b0692a8ea55c6cea7cd5b99ce46d2c09d57204dfb76f24"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 7411,
+    "value": "lighting.glb",
+    "context": "d2c09d57204dfb76f246\",\"assets\":12,\"triangles\":7784,\"gzipBytes\":78536},\"lighting\":{\"file\":\"lighting.glb\",\"bytes\":247960,\"sha256\":\"8fa577252c4d3a498b827ee1c9710908bea7079e55bd91ebb8cfb8dd5e38ab5"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 7581,
+    "value": "decor.glb",
+    "context": "5bd91ebb8cfb8dd5e38ab54\",\"assets\":12,\"triangles\":3472,\"gzipBytes\":42192},\"decor\":{\"file\":\"decor.glb\",\"bytes\":340656,\"sha256\":\"d02cd44a742066f731fc3c6cb1d6d96161d10b0b93744c74c0ae338f9863877"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 7755,
+    "value": "desk-details.glb",
+    "context": "c0ae338f98638778\",\"assets\":16,\"triangles\":4892,\"gzipBytes\":37815},\"desk-details\":{\"file\":\"desk-details.glb\",\"bytes\":553168,\"sha256\":\"7fdbe1b8cd431576f92b9a97e0bed7253e61b4e5f7cd43d4f434f3112696cb2"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 7935,
+    "value": "personality.glb",
+    "context": "4f434f3112696cb21\",\"assets\":32,\"triangles\":8152,\"gzipBytes\":78292},\"personality\":{\"file\":\"personality.glb\",\"bytes\":246040,\"sha256\":\"1c11dfaef40cef011603dec2cf44386141e040257461f38caff6658633b168a"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 8109,
+    "value": "coffee.glb",
+    "context": "61f38caff6658633b168a3\",\"assets\":10,\"triangles\":3392,\"gzipBytes\":29865},\"coffee\":{\"file\":\"coffee.glb\",\"bytes\":199696,\"sha256\":\"da3bc8b61bfc01464c754d4824d8983c483188cfbfdf23180187424a2178bdd"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 8282,
+    "value": "hacker-cave.glb",
+    "context": "180187424a2178bdd1\",\"assets\":5,\"triangles\":3108,\"gzipBytes\":25838},\"hacker-cave\":{\"file\":\"hacker-cave.glb\",\"bytes\":1806584,\"sha256\":\"22d9db52c819ab243e4d46fe52f9b1ab1ef980a3423cc883b5abcb607aec80"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 8477,
+    "value": "expression-analog-studio.glb",
+    "context": "78\",\"assets\":10,\"triangles\":31772,\"gzipBytes\":276776},\"expression-analog-studio\":{\"file\":\"expression-analog-studio.glb\",\"directory\":\"higgsfield-r7\",\"bytes\":2735364,\"sha256\":\"ec831b855543cb12d2c84ff5adccc42873"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 8716,
+    "value": "expression-builder-showcase.glb",
+    "context": ",\"assets\":12,\"triangles\":73074,\"gzipBytes\":556016},\"expression-builder-showcase\":{\"file\":\"expression-builder-showcase.glb\",\"directory\":\"higgsfield-r7\",\"bytes\":2489388,\"sha256\":\"99c2b534ec878c89728623cd2d2bc24327"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 8958,
+    "value": "expression-collector-corner.glb",
+    "context": ",\"assets\":12,\"triangles\":55761,\"gzipBytes\":501422},\"expression-collector-corner\":{\"file\":\"expression-collector-corner.glb\",\"directory\":\"higgsfield-r7\",\"bytes\":3757740,\"sha256\":\"c38d1d797e32e369dd13db0f9ef3955863"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0xdo8najholab.js",
+    "offset": 9198,
+    "value": "expression-cozy-hideout.glb",
+    "context": "c\",\"assets\":12,\"triangles\":110028,\"gzipBytes\":1034533},\"expression-cozy-hideout\":{\"file\":\"expression-cozy-hideout.glb\",\"directory\":\"higgsfield-r7\",\"bytes\":3958320,\"sha256\":\"8550f358ff0d6e3df2c53a7ac51a18d6ef"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "offset": 14184,
+    "value": "https://",
+    "context": "\"https:\"!==t.protocol)throw new c(`Invalid base URL: ${e}. URL must include 'http://' or 'https://'`)}catch(t){if(t instanceof c)throw t;throw new c(`Invalid base URL: ${e}. Please provide"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "offset": 29391,
+    "value": "https://",
+    "context": "ch{}if(n.default.env.VERCEL_URL)try{let t=n.default.env.VERCEL_URL.startsWith(\"http\")?\"\":\"https://\";return`${new URL(`${t}${n.default.env.VERCEL_URL}`).origin}${e??\"/api/auth\"}`}catch{}}}}"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "offset": 14036,
+    "value": "/api/auth",
+    "context": ";for(;t>0&&47===e.charCodeAt(t-1);)t--;return t===e.length?e:e.slice(0,t)}function f(e,t=\"/api/auth\"){try{let t=new URL(e);if(\"http:\"!==t.protocol&&\"https:\"!==t.protocol)throw new c(`Invali"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "offset": 29466,
+    "value": "/api/auth",
+    "context": "th(\"http\")?\"\":\"https://\";return`${new URL(`${t}${n.default.env.VERCEL_URL}`).origin}${e??\"/api/auth\"}`}catch{}}}})(e?.basePath)??\"/api/auth\",w=e?.plugins?.flatMap(e=>e.fetchPlugins).filter("
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2se2xvv2wwgdr.js",
+    "offset": 29506,
+    "value": "/api/auth",
+    "context": "L(`${t}${n.default.env.VERCEL_URL}`).origin}${e??\"/api/auth\"}`}catch{}}}})(e?.basePath)??\"/api/auth\",w=e?.plugins?.flatMap(e=>e.fetchPlugins).filter(e=>void 0!==e)||[],I={id:\"lifecycle-hook"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0fhmirje2wt0f.js",
+    "offset": 869,
+    "value": "https://www.googletagmanager.com/gtag/js?id=${a.GA_ID}",
+    "context": ")?(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n.default,{id:\"google-analytics-loader\",src:`https://www.googletagmanager.com/gtag/js?id=${a.GA_ID}`,strategy:\"afterInteractive\"}),(0,a.validXPixel)(i)&&(0,a.xTrackingAllowed)()&&(0,r.jsx)("
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0fhmirje2wt0f.js",
+    "offset": 1049,
+    "value": "https://static.ads-twitter.com/uwt.js",
+    "context": ".validXPixel)(i)&&(0,a.xTrackingAllowed)()&&(0,r.jsx)(n.default,{id:\"x-pixel-loader\",src:\"https://static.ads-twitter.com/uwt.js\",strategy:\"afterInteractive\"})]}):null}])},969411,e=>{\"use strict\";let t,r=\"G-HEG612KBYQ\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/32sbofpk3bud3.js",
+    "offset": 248,
+    "value": "/api/files/",
+    "context": "r=new Map;e.s([\"normalizedBrandMark\",0,function(e){if(\"/favicon.svg\"!==e&&!e?.startsWith(\"/api/files/\"))return Promise.resolve(null);let t=r.get(e);if(t)return t;for(t=new Promise(t=>{let r=n"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 14444,
+    "value": "http://n",
+    "context": "rl:d}=s,{searchParams:w,pathname:_}=(0,o.useMemo)(()=>{let e=new URL(d,\"u\"<typeof window?\"http://n\":window.location.href);return{searchParams:e.searchParams,pathname:(0,y.hasBasePath)(e.pa"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 24967,
+    "value": "https://react.dev/errors/",
+    "context": "trict\";var r,l=e.i(247167),a=e.r(553389),o=e.r(271645),i=e.r(174080);function u(e){var t=\"https://react.dev/errors/\"+e;if(1<arguments.length){t+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var n=2;n<ar"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 41235,
+    "value": "httpEquiv",
+    "context": ";default:return!0}}var tC=new Map([[\"acceptCharset\",\"accept-charset\"],[\"htmlFor\",\"for\"],[\"httpEquiv\",\"http-equiv\"],[\"crossOrigin\",\"crossorigin\"],[\"accentHeight\",\"accent-height\"],[\"alignment"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 41247,
+    "value": "http-equiv",
+    "context": "urn!0}}var tC=new Map([[\"acceptCharset\",\"accept-charset\"],[\"htmlFor\",\"for\"],[\"httpEquiv\",\"http-equiv\"],[\"crossOrigin\",\"crossorigin\"],[\"accentHeight\",\"accent-height\"],[\"alignmentBaseline\",\"al"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 134256,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "ument||a;t:switch(t){case\"title\":(!(l=r.getElementsByTagName(\"title\")[0])||l[e0]||l[eq]||\"http://www.w3.org/2000/svg\"===l.namespaceURI||l.hasAttribute(\"itemprop\"))&&(l=r.createElement(t),r.head.insertBefore"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 135156,
+    "value": "http-equiv",
+    "context": "n.name)&&l.getAttribute(\"property\")===(null==n.property?null:n.property)&&l.getAttribute(\"http-equiv\")===(null==n.httpEquiv?null:n.httpEquiv)&&l.getAttribute(\"charset\")===(null==n.charSet?nu"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 135180,
+    "value": "httpEquiv?null:n.httpEquiv)&&l.getAttribute(",
+    "context": "\"property\")===(null==n.property?null:n.property)&&l.getAttribute(\"http-equiv\")===(null==n.httpEquiv?null:n.httpEquiv)&&l.getAttribute(\"charset\")===(null==n.charSet?null:n.charSet)){a.splice(o,1);break t}}cu(l=r.createElement"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 157550,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "(a=et.current,r1(t))rZ(t);else{var o=cp(er.current);switch(a){case 1:a=o.createElementNS(\"http://www.w3.org/2000/svg\",l);break;case 2:a=o.createElementNS(\"http://www.w3.org/1998/Math/MathML\",l);break;defaul"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 157615,
+    "value": "http://www.w3.org/1998/Math/MathML",
+    "context": "e 1:a=o.createElementNS(\"http://www.w3.org/2000/svg\",l);break;case 2:a=o.createElementNS(\"http://www.w3.org/1998/Math/MathML\",l);break;default:switch(l){case\"svg\":a=o.createElementNS(\"http://www.w3.org/2000/svg\",l)"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 157709,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "://www.w3.org/1998/Math/MathML\",l);break;default:switch(l){case\"svg\":a=o.createElementNS(\"http://www.w3.org/2000/svg\",l);break;case\"math\":a=o.createElementNS(\"http://www.w3.org/1998/Math/MathML\",l);break;ca"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 157778,
+    "value": "http://www.w3.org/1998/Math/MathML",
+    "context": "a=o.createElementNS(\"http://www.w3.org/2000/svg\",l);break;case\"math\":a=o.createElementNS(\"http://www.w3.org/1998/Math/MathML\",l);break;case\"script\":(a=o.createElement(\"div\")).innerHTML=\"<script></script>\",a=a.remov"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 186559,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "of r||\"symbol\"==typeof r){e.removeAttribute(\"xlink:href\");break}n=tO(r),e.setAttributeNS(\"http://www.w3.org/1999/xlink\",\"xlink:href\",n);break;case\"contentEditable\":case\"spellCheck\":case\"draggable\":case\"value\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 187896,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "ver\":s2(\"beforetoggle\",e),s2(\"toggle\",e),tu(e,\"popover\",r);break;case\"xlinkActuate\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:actuate\",r);break;case\"xlinkArcrole\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:a"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 187976,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "te\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:actuate\",r);break;case\"xlinkArcrole\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:arcrole\",r);break;case\"xlinkRole\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:role"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188053,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "crole\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:arcrole\",r);break;case\"xlinkRole\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:role\",r);break;case\"xlinkShow\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:show\",r"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188127,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "linkRole\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:role\",r);break;case\"xlinkShow\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:show\",r);break;case\"xlinkTitle\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:title\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188202,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "inkShow\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:show\",r);break;case\"xlinkTitle\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:title\",r);break;case\"xlinkType\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:type\","
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188277,
+    "value": "http://www.w3.org/1999/xlink",
+    "context": "nkTitle\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:title\",r);break;case\"xlinkType\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:type\",r);break;case\"xmlBase\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:bas"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188349,
+    "value": "http://www.w3.org/XML/1998/namespace",
+    "context": "\"xlinkType\":tc(e,\"http://www.w3.org/1999/xlink\",\"xlink:type\",r);break;case\"xmlBase\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:base\",r);break;case\"xmlLang\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:lang\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188427,
+    "value": "http://www.w3.org/XML/1998/namespace",
+    "context": "Base\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:base\",r);break;case\"xmlLang\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:lang\",r);break;case\"xmlSpace\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:spac"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 188506,
+    "value": "http://www.w3.org/XML/1998/namespace",
+    "context": "ang\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:lang\",r);break;case\"xmlSpace\":tc(e,\"http://www.w3.org/XML/1998/namespace\",\"xml:space\",r);break;case\"is\":tu(e,\"is\",r);break;case\"innerText\":case\"textContent\":retur"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 192455,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "null;function cp(e){return 9===e.nodeType?e:e.ownerDocument}function cm(e){switch(e){case\"http://www.w3.org/2000/svg\":return 1;case\"http://www.w3.org/1998/Math/MathML\":return 2;default:return 0}}function ch"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 192497,
+    "value": "http://www.w3.org/1998/Math/MathML",
+    "context": "e:e.ownerDocument}function cm(e){switch(e){case\"http://www.w3.org/2000/svg\":return 1;case\"http://www.w3.org/1998/Math/MathML\":return 2;default:return 0}}function ch(e,t){if(0===e)switch(t){case\"svg\":return 1;case\"m"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 212564,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "th;l++){var a=n[l];if(!(a[e0]||a[eq]||\"link\"===e&&\"stylesheet\"===a.getAttribute(\"rel\"))&&\"http://www.w3.org/2000/svg\"!==a.namespaceURI){var o=a.getAttribute(t)||\"\";o=e+o;var i=r.get(o);i?i.push(a):r.set(o,["
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3kl4vkbuikvpv.js",
+    "offset": 228142,
+    "value": "https://vercel.live/_next-live/feedback/feedback.js",
+    "context": "el_toolbar=1(?:;|$)/.test(document.cookie)){var t=document.createElement(\"script\");t.src=\"https://vercel.live/_next-live/feedback/feedback.js\",t.setAttribute(\"data-explicit-opt-in\",\"true\"),t.setAttribute(\"data-cookie-opt-in\",\"true\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 39961,
+    "value": "https://nextjs.org/docs/messages/failed-to-find-server-action",
+    "context": " i.UnrecognizedActionError(`Server Action \"${_}\" was not found on the server. \nRead more: https://nextjs.org/docs/messages/failed-to-find-server-action`),\"__NEXT_ERROR_CODE\",{value:\"E715\",enumerable:!1,configurable:!0});let j=s.headers.get(\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 114696,
+    "value": "https://react.dev/errors/",
+    "context": ".exports=r.default)},964893,(e,t,r)=>{\"use strict\";var n=e.r(174080);function a(e){var t=\"https://react.dev/errors/\"+e;if(1<arguments.length){t+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var r=2;r<ar"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 141930,
+    "value": "https://nextjs.org/docs/messages/public-next-folder-conflict",
+    "context": "xt' folder inside of your public folder. This conflicts with the internal '/_next' route. https://nextjs.org/docs/messages/public-next-folder-conflict\",z=\"You can not use getInitialProps with getStaticProps. To use SSG, please remove your g"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 142363,
+    "value": "https://nextjs.org/docs/messages/404-get-initial-props",
+    "context": "SG, please remove getServerSideProps\",Z=\"can not have getInitialProps/getServerSideProps, https://nextjs.org/docs/messages/404-get-initial-props\",ee=\"pages with `getServerSideProps` can not be exported. See more info here: https://nex"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 142496,
+    "value": "https://nextjs.org/docs/messages/gssp-export",
+    "context": "itial-props\",ee=\"pages with `getServerSideProps` can not be exported. See more info here: https://nextjs.org/docs/messages/gssp-export\",et=\"Your `getStaticProps` function did not return an object. Did you forget to add a `re"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 142944,
+    "value": "https://nextjs.org/docs/messages/gssp-component-member",
+    "context": "be attached to a page's component and must be exported from the page. See more info here: https://nextjs.org/docs/messages/gssp-component-member\",el='You are using a non-standard \"NODE_ENV\" value in your environment. This creates inco"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 143159,
+    "value": "https://nextjs.org/docs/messages/non-standard-node-env",
+    "context": ". This creates inconsistencies in the project and is strongly advised against. Read more: https://nextjs.org/docs/messages/non-standard-node-env',eu=\"Pages with `fallback` enabled in `getStaticPaths` can not be exported. See more info"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 143310,
+    "value": "https://nextjs.org/docs/messages/ssg-fallback-true-export",
+    "context": "ages with `fallback` enabled in `getStaticPaths` can not be exported. See more info here: https://nextjs.org/docs/messages/ssg-fallback-true-export\",ei=[\"app\",\"pages\",\"components\",\"lib\",\"src\"],eo={edge:\"edge\",experimentalEdge:\"experiment"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 149736,
+    "value": "https://nextjs.org/docs/messages/instant-unrendered-segment",
+    "context": "nt = false\\` to opt the dropped segment out of instant-navigation validation\n\nLearn more: https://nextjs.org/docs/messages/instant-unrendered-segment`}return Object.defineProperty(Error(r),\"__NEXT_ERROR_CODE\",{value:\"E1286\",enumerable:!1,c"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1uf0bhym6qn16.js",
+    "offset": 150485,
+    "value": "https://nextjs.org/docs/messages/instant-link-prefetch-partial",
+    "context": "onst instant = false\\` to opt the route out of instant-navigation validation\n\nLearn more: https://nextjs.org/docs/messages/instant-link-prefetch-partial`),\"__NEXT_ERROR_CODE\",{value:\"E1435\",enumerable:!1,configurable:!0})}},312718,(e,t,r)=>{\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/215aeuxm_r1-c.js",
+    "offset": 700,
+    "value": ".webp",
+    "context": "oth\"},s=\"wardrobe:v1:\",r=e=>\"string\"==typeof e&&/^\\/api\\/files\\/avatar-logo-[a-zA-Z0-9-]+\\.webp$/.test(e),l=e=>\"string\"==typeof e&&/^#[0-9a-f]{6}$/i.test(e);function c(e){if(!e||\"object"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3lkoybxcnxupl.js",
+    "offset": 20108,
+    "value": "0===e[s]&&(t.userData.gltfExtensions=t.userData.gltfExtensions||{},t.userData.gltf",
+    "context": "polateLinear,STEP:t.InterpolateDiscrete};function G(e,t,r){for(let s in r.extensions)void 0===e[s]&&(t.userData.gltfExtensions=t.userData.gltfExtensions||{},t.userData.gltfExtensions[s]=r.extensions[s])}function K(e,t){void 0!==t.extras&&(\"object\"==typeof t.extr"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3lkoybxcnxupl.js",
+    "offset": 28824,
+    "value": ".webp",
+    "context": "i).search(/\\.jpe?g($|\\?)/i)>0||0===t.search(/^data\\:image\\/jpeg/)?\"image/jpeg\":t.search(/\\.webp($|\\?)/i)>0||0===t.search(/^data\\:image\\/webp/)?\"image/webp\":t.search(/\\.ktx2($|\\?)/i)>0||"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 7676,
+    "value": "https://github.com/btahir/open-lofi",
+    "context": "\",0,t],593583)},241079,(e,t,i)=>{t.exports=JSON.parse('{\"name\":\"Cubicles Radio\",\"source\":\"https://github.com/btahir/open-lofi\",\"release\":\"v1.0.0\",\"license\":\"CC0-1.0\",\"audio\":{\"codec\":\"mp3\",\"bitrateKbps\":96,\"targetLu"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 20990,
+    "value": "/api/radio",
+    "context": ":\"idle\",track:null,volume:.01,muted:!1,message:\"\"};async function y(e){let t=await fetch(\"/api/radio\",{cache:\"no-store\",signal:e});if(!t.ok)throw Error(\"Station clock unavailable\");return t."
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 7901,
+    "value": "/audio/open-lofi/2-am-debug-loop.mp3",
+    "context": "tracks\":[{\"id\":\"2-am-debug-loop\",\"title\":\"2 AM Debug Loop\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/2-am-debug-loop.mp3\",\"duration\":117.838,\"bytes\":1414467,\"sha256\":\"c8cc9e3efc70bb8d20769d093cee0fd40f1f1d7f0dd"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 8144,
+    "value": "/audio/open-lofi/brushstrokes-and-rain.mp3",
+    "context": "d\":\"brushstrokes-and-rain\",\"title\":\"Brushstrokes and Rain\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/brushstrokes-and-rain.mp3\",\"duration\":146.364,\"bytes\":1756782,\"sha256\":\"48ed6e10210a2618c2ff28c6b6c95604c357b44168d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 8395,
+    "value": "/audio/open-lofi/butter-and-windowlight.mp3",
+    "context": ":\"butter-and-windowlight\",\"title\":\"Butter and Windowlight\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/butter-and-windowlight.mp3\",\"duration\":128.026,\"bytes\":1536727,\"sha256\":\"e9b3f79cc51f406ded347c814ed7b220dd71d05b4e2"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 8643,
+    "value": "/audio/open-lofi/chapter-by-lamplight.mp3",
+    "context": "\"id\":\"chapter-by-lamplight\",\"title\":\"Chapter By Lamplight\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/chapter-by-lamplight.mp3\",\"duration\":136.072,\"bytes\":1633274,\"sha256\":\"0f08b399d444f3594288ee71d8e58d61ef58bc3d679"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 8889,
+    "value": "/audio/open-lofi/coffee-ring-notebook.mp3",
+    "context": "\"id\":\"coffee-ring-notebook\",\"title\":\"Coffee Ring Notebook\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/coffee-ring-notebook.mp3\",\"duration\":130.691,\"bytes\":1568699,\"sha256\":\"0f47e0f3f821bce1b4f3e7388e7cb3b7ec5c4ada20f"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 9139,
+    "value": "/audio/open-lofi/continue-screen-dreams.mp3",
+    "context": ":\"continue-screen-dreams\",\"title\":\"Continue Screen Dreams\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/continue-screen-dreams.mp3\",\"duration\":95.19,\"bytes\":1142696,\"sha256\":\"4229314a35d5b9fc5f7eeba4e9ef060198836c2fe2830"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 9387,
+    "value": "/audio/open-lofi/cursor-after-midnight.mp3",
+    "context": "d\":\"cursor-after-midnight\",\"title\":\"Cursor After Midnight\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/cursor-after-midnight.mp3\",\"duration\":232.438,\"bytes\":2789664,\"sha256\":\"2d7e986b895b64c47b44f2d5ec8f3e7a5b8da223fa1"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 9624,
+    "value": "/audio/open-lofi/dog-eared-pages.mp3",
+    "context": "5f4c6a\"},{\"id\":\"dog-eared-pages\",\"title\":\"Dog Eared Pages\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/dog-eared-pages.mp3\",\"duration\":167.889,\"bytes\":2015075,\"sha256\":\"1345b0545c360916e6d7c7594da69b8e7c370acb879"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 9865,
+    "value": "/audio/open-lofi/dust-in-the-curtains.mp3",
+    "context": "\"id\":\"dust-in-the-curtains\",\"title\":\"Dust in the Curtains\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/dust-in-the-curtains.mp3\",\"duration\":185.966,\"bytes\":2232001,\"sha256\":\"8f1e45018fd0f00182423adc94b143f4a02e6a5c0b4"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 10107,
+    "value": "/audio/open-lofi/exhale-the-morning.mp3",
+    "context": "\"},{\"id\":\"exhale-the-morning\",\"title\":\"Exhale the Morning\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/exhale-the-morning.mp3\",\"duration\":199.915,\"bytes\":2399391,\"sha256\":\"8fce21544cfc6924f06a5a4448da903912f49e41fe6"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 10361,
+    "value": "/audio/open-lofi/faded-corners-of-the-page.mp3",
+    "context": "d-corners-of-the-page\",\"title\":\"Faded Corners of the Page\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/faded-corners-of-the-page.mp3\",\"duration\":142.393,\"bytes\":1709139,\"sha256\":\"bb84463166bf7a6051733103e3dbf645078e6553f9d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 10614,
+    "value": "/audio/open-lofi/first-coffee-thoughts.mp3",
+    "context": "d\":\"first-coffee-thoughts\",\"title\":\"First Coffee Thoughts\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/first-coffee-thoughts.mp3\",\"duration\":94.668,\"bytes\":1136426,\"sha256\":\"cbff500b784add726a8e17b748645e3031b34f26dbd3"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 10862,
+    "value": "/audio/open-lofi/graphite-in-the-quiet.mp3",
+    "context": "d\":\"graphite-in-the-quiet\",\"title\":\"Graphite in the Quiet\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/graphite-in-the-quiet.mp3\",\"duration\":130.795,\"bytes\":1569954,\"sha256\":\"ab98c62014d92856cf3a96b2210a88cf8ff1449c22b"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 11103,
+    "value": "/audio/open-lofi/graphite-mornings.mp3",
+    "context": "99\"},{\"id\":\"graphite-mornings\",\"title\":\"Graphite Mornings\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/graphite-mornings.mp3\",\"duration\":130.351,\"bytes\":1564621,\"sha256\":\"fb0610e311d1840a87e6b62116add94e1ba9c138810"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 11344,
+    "value": "/audio/open-lofi/hour-between-clicks.mp3",
+    "context": ",{\"id\":\"hour-between-clicks\",\"title\":\"Hour Between Clicks\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/hour-between-clicks.mp3\",\"duration\":223.765,\"bytes\":2685590,\"sha256\":\"b68a3198bb3c0618025eb1d2ae7dcfc510a90fd156f"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 11585,
+    "value": "/audio/open-lofi/kettle-before-work.mp3",
+    "context": "\"},{\"id\":\"kettle-before-work\",\"title\":\"Kettle Before Work\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/kettle-before-work.mp3\",\"duration\":147.331,\"bytes\":1768377,\"sha256\":\"93ce911bef5254adeb44bcec420644d6ebe491a45cd"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 11829,
+    "value": "/audio/open-lofi/margin-notes-at-dusk.mp3",
+    "context": "\"id\":\"margin-notes-at-dusk\",\"title\":\"Margin Notes at Dusk\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/margin-notes-at-dusk.mp3\",\"duration\":135.001,\"bytes\":1620422,\"sha256\":\"eaebbe062c19f50c6331acf06125754357f3014a34e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 12077,
+    "value": "/audio/open-lofi/mat-and-morning-light.mp3",
+    "context": "d\":\"mat-and-morning-light\",\"title\":\"Mat and Morning Light\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/mat-and-morning-light.mp3\",\"duration\":198.713,\"bytes\":2384975,\"sha256\":\"5817e474149fa092e2317fc559627d7583bc2bef2fc"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 12322,
+    "value": "/audio/open-lofi/morning-in-the-hiss.mp3",
+    "context": ",{\"id\":\"morning-in-the-hiss\",\"title\":\"Morning in the Hiss\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/morning-in-the-hiss.mp3\",\"duration\":136.882,\"bytes\":1642991,\"sha256\":\"ff8c9ba52ac67c1a27d26bfc4a4425488087072b25d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 12553,
+    "value": "/audio/open-lofi/morning-pages.mp3",
+    "context": "d670e2ce77\"},{\"id\":\"morning-pages\",\"title\":\"Morning Pages\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/morning-pages.mp3\",\"duration\":133.329,\"bytes\":1600353,\"sha256\":\"1a61cca852913b86502bcd5aff0dc69f3a6b6fa0401"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 12790,
+    "value": "/audio/open-lofi/pancakes-in-the-sun.mp3",
+    "context": ",{\"id\":\"pancakes-in-the-sun\",\"title\":\"Pancakes in the Sun\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/pancakes-in-the-sun.mp3\",\"duration\":107.729,\"bytes\":1293159,\"sha256\":\"45b70679e725a55f3d19ac64bb3d7a02ecd7be91b1f"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 13029,
+    "value": "/audio/open-lofi/penciled-sunbeams.mp3",
+    "context": "28\"},{\"id\":\"penciled-sunbeams\",\"title\":\"Penciled Sunbeams\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/penciled-sunbeams.mp3\",\"duration\":121.469,\"bytes\":1458042,\"sha256\":\"e68225412290ef4b1a00948bcfb46bd82bca0015a31"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 13276,
+    "value": "/audio/open-lofi/pixel-quest-save-point.mp3",
+    "context": ":\"pixel-quest-save-point\",\"title\":\"Pixel Quest Save Point\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/pixel-quest-save-point.mp3\",\"duration\":84.924,\"bytes\":1019503,\"sha256\":\"f3a0fa125391498d4e5248f021baccfd6b0721efbb78"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 13529,
+    "value": "/audio/open-lofi/quiet-lungs-quiet-light.mp3",
+    "context": "quiet-lungs-quiet-light\",\"title\":\"Quiet Lungs Quiet Light\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/quiet-lungs-quiet-light.mp3\",\"duration\":151.171,\"bytes\":1814462,\"sha256\":\"fbf9e36413bc897826a136dae26059c7807309c52aa"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 13780,
+    "value": "/audio/open-lofi/stacks-of-quiet-hours.mp3",
+    "context": "d\":\"stacks-of-quiet-hours\",\"title\":\"Stacks of Quiet Hours\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/stacks-of-quiet-hours.mp3\",\"duration\":139.964,\"bytes\":1679982,\"sha256\":\"5abfd146000e495de7f4ddf7e7b56fda319850f13e2"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 14027,
+    "value": "/audio/open-lofi/sunrise-stretch-flow.mp3",
+    "context": "\"id\":\"sunrise-stretch-flow\",\"title\":\"Sunrise Stretch Flow\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/sunrise-stretch-flow.mp3\",\"duration\":189.074,\"bytes\":2269303,\"sha256\":\"002f2b6ff7abb8a92f117f214547c67350bc0945a7d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 14259,
+    "value": "/audio/open-lofi/terminal-rain.mp3",
+    "context": "dd8244476c\"},{\"id\":\"terminal-rain\",\"title\":\"Terminal Rain\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/terminal-rain.mp3\",\"duration\":123.794,\"bytes\":1485936,\"sha256\":\"1f3b8d3e035726672285e5a2cd0bb7f26dd6bfdb60e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 14508,
+    "value": "/audio/open-lofi/watercolors-by-the-window.mp3",
+    "context": "rcolors-by-the-window\",\"title\":\"Watercolors By the Window\",\"category\":\"activities\",\"src\":\"/audio/open-lofi/watercolors-by-the-window.mp3\",\"duration\":116.689,\"bytes\":1400685,\"sha256\":\"fde05faa38e1bbaa422cb32b65a76a99c2852854154"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 14755,
+    "value": "/audio/open-lofi/dusk-between-stoops.mp3",
+    "context": "\"},{\"id\":\"dusk-between-stoops\",\"title\":\"Dusk Between Stoops\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/dusk-between-stoops.mp3\",\"duration\":132.284,\"bytes\":1587820,\"sha256\":\"9ab47304de655b8c6e294781c816e26763b3f4358b1"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 15006,
+    "value": "/audio/open-lofi/dust-on-the-morning-keys.mp3",
+    "context": "dust-on-the-morning-keys\",\"title\":\"Dust on the Morning Keys\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/dust-on-the-morning-keys.mp3\",\"duration\":152.79,\"bytes\":1833898,\"sha256\":\"53a120a121b4e8ad12c17c5859f19594f38fcc4deba6"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 15253,
+    "value": "/audio/open-lofi/glow-on-the-overpass.mp3",
+    "context": ",{\"id\":\"glow-on-the-overpass\",\"title\":\"Glow on the Overpass\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/glow-on-the-overpass.mp3\",\"duration\":159.948,\"bytes\":1919785,\"sha256\":\"7b99d5eea01dcf2a0d19120a55b2b611c6c4a03caac"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 15501,
+    "value": "/audio/open-lofi/porchlight-golden-hour.mp3",
+    "context": "d\":\"porchlight-golden-hour\",\"title\":\"Porchlight Golden Hour\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/porchlight-golden-hour.mp3\",\"duration\":129.907,\"bytes\":1559297,\"sha256\":\"a54c085f9857009589a55665bb21a9be304a77b9df0"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 15741,
+    "value": "/audio/open-lofi/sidewalk-slow-jam.mp3",
+    "context": "3a53\"},{\"id\":\"sidewalk-slow-jam\",\"title\":\"Sidewalk Slow Jam\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/sidewalk-slow-jam.mp3\",\"duration\":134.687,\"bytes\":1616657,\"sha256\":\"c3ef940b032d8cffdf04696527a54dd481139255f60"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 15968,
+    "value": "/audio/open-lofi/soft-gold-sky.mp3",
+    "context": "d0389222270c\"},{\"id\":\"soft-gold-sky\",\"title\":\"Soft Gold Sky\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/soft-gold-sky.mp3\",\"duration\":142.968,\"bytes\":1716023,\"sha256\":\"32b2fa0ac461f3c26f3a13648c587abfba7998477d3"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 16193,
+    "value": "/audio/open-lofi/sunset-offbeat.mp3",
+    "context": "9f3715e411\"},{\"id\":\"sunset-offbeat\",\"title\":\"Sunset Offbeat\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/sunset-offbeat.mp3\",\"duration\":159.007,\"bytes\":1908494,\"sha256\":\"a78d6d431a99e1d649dc93d1a3923dd2bb3e475fb13"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 16431,
+    "value": "/audio/open-lofi/window-seat-daydream.mp3",
+    "context": ",{\"id\":\"window-seat-daydream\",\"title\":\"Window Seat Daydream\",\"category\":\"chillhop\",\"src\":\"/audio/open-lofi/window-seat-daydream.mp3\",\"duration\":139.99,\"bytes\":1680294,\"sha256\":\"62a7d76b81e5dbad2ca0a1a1bd71c4648656a6ac330f"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 16679,
+    "value": "/audio/open-lofi/ashes-in-the-coffee-cup.mp3",
+    "context": "\":\"ashes-in-the-coffee-cup\",\"title\":\"Ashes in the Coffee Cup\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/ashes-in-the-coffee-cup.mp3\",\"duration\":131.84,\"bytes\":1582495,\"sha256\":\"e51bbcc55fde5a3bc2f2cb2c9ee0e94e58eb6f5764dc"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 16932,
+    "value": "/audio/open-lofi/breezy-afternoon-terrace.mp3",
+    "context": "\"breezy-afternoon-terrace\",\"title\":\"Breezy Afternoon Terrace\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/breezy-afternoon-terrace.mp3\",\"duration\":89.887,\"bytes\":1079064,\"sha256\":\"13ea6bc35113746d0251c0d14f6e16156cd51341d652"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 17176,
+    "value": "/audio/open-lofi/candlelit-at-70-bpm.mp3",
+    "context": "3\"},{\"id\":\"candlelit-at-70-bpm\",\"title\":\"Candlelit at 70 BPM\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/candlelit-at-70-bpm.mp3\",\"duration\":121.626,\"bytes\":1459924,\"sha256\":\"38d7465a3f72a0870c85edc7992e3fd09b66c96363d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 17416,
+    "value": "/audio/open-lofi/dust-and-hardcovers.mp3",
+    "context": "4\"},{\"id\":\"dust-and-hardcovers\",\"title\":\"Dust and Hardcovers\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/dust-and-hardcovers.mp3\",\"duration\":212.245,\"bytes\":2547350,\"sha256\":\"d76bac93d001a59cd2a3b05d56a05caa2c1e0154305"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 17656,
+    "value": "/audio/open-lofi/harbor-before-words.mp3",
+    "context": "5\"},{\"id\":\"harbor-before-words\",\"title\":\"Harbor Before Words\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/harbor-before-words.mp3\",\"duration\":145.998,\"bytes\":1752391,\"sha256\":\"a7020fa9448a243fa1fc4b4a7eb2b6ecb5d20124ed0"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 17898,
+    "value": "/audio/open-lofi/last-call-in-c-minor.mp3",
+    "context": "},{\"id\":\"last-call-in-c-minor\",\"title\":\"Last Call in C Minor\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/last-call-in-c-minor.mp3\",\"duration\":137.796,\"bytes\":1653963,\"sha256\":\"5f02fd731c98769954b161bf62638e63c013cace53c"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 18141,
+    "value": "/audio/open-lofi/linen-and-limoncello.mp3",
+    "context": "},{\"id\":\"linen-and-limoncello\",\"title\":\"Linen and Limoncello\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/linen-and-limoncello.mp3\",\"duration\":114.965,\"bytes\":1379991,\"sha256\":\"46d9daf71297e64f58e48b8bc58fdfa096204728574"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 18382,
+    "value": "/audio/open-lofi/midnight-amber-room.mp3",
+    "context": "c\"},{\"id\":\"midnight-amber-room\",\"title\":\"Midnight Amber Room\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/midnight-amber-room.mp3\",\"duration\":145.189,\"bytes\":1742674,\"sha256\":\"538f18d9091e9783622e6f4d5680910aede400ed445"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 18626,
+    "value": "/audio/open-lofi/rain-on-the-boulevard.mp3",
+    "context": "{\"id\":\"rain-on-the-boulevard\",\"title\":\"Rain on the Boulevard\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/rain-on-the-boulevard.mp3\",\"duration\":89.913,\"bytes\":1079375,\"sha256\":\"5fc9a41bde22fd74eed68b37271de86ec21f0b8509da"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 18871,
+    "value": "/audio/open-lofi/saxophone-in-the-rain.mp3",
+    "context": "{\"id\":\"saxophone-in-the-rain\",\"title\":\"Saxophone in the Rain\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/saxophone-in-the-rain.mp3\",\"duration\":98.847,\"bytes\":1186581,\"sha256\":\"bb1b1e003c0be4a7ca89b387fb9d5279bc9760d2f59e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 19116,
+    "value": "/audio/open-lofi/stacks-of-quiet-books.mp3",
+    "context": "{\"id\":\"stacks-of-quiet-books\",\"title\":\"Stacks of Quiet Books\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/stacks-of-quiet-books.mp3\",\"duration\":179.644,\"bytes\":2156142,\"sha256\":\"37e9de1d784f03439ffc97ae7545cbf10b8f4035e89"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1dc8d23161s01.js",
+    "offset": 19362,
+    "value": "/audio/open-lofi/velvet-cigarette-haze.mp3",
+    "context": "{\"id\":\"velvet-cigarette-haze\",\"title\":\"Velvet Cigarette Haze\",\"category\":\"jazzhop\",\"src\":\"/audio/open-lofi/velvet-cigarette-haze.mp3\",\"duration\":152.346,\"bytes\":1828566,\"sha256\":\"9e3db35c5965776aa5464f0b83a2bbd726af7781f82"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1oy5fx70gxeei.js",
+    "offset": 5852,
+    "value": "/api/design-drafts/upload",
+    "context": "nd(\"file\",e),t.append(\"purpose\",\"overview\"),f&&t.append(\"draftId\",f);let i=await fetch(f?\"/api/design-drafts/upload\":\"/api/upload\",{method:\"POST\",body:t,signal:AbortSignal.any([r.signal,AbortSignal.timeout"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1oy5fx70gxeei.js",
+    "offset": 5880,
+    "value": "/api/upload",
+    "context": "se\",\"overview\"),f&&t.append(\"draftId\",f);let i=await fetch(f?\"/api/design-drafts/upload\":\"/api/upload\",{method:\"POST\",body:t,signal:AbortSignal.any([r.signal,AbortSignal.timeout(45e3)])}),n=a"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3dzu48d190e90.js",
+    "offset": 37935,
+    "value": "https://${t}",
+    "context": "est(t)&&!/^https?:\\/\\//i.test(t))return null;try{let e=new URL(/^https?:\\/\\//i.test(t)?t:`https://${t}`);return[\"http:\",\"https:\"].includes(e.protocol)&&e.hostname.includes(\".\")&&!e.username&&!"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 2928,
+    "value": "https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE",
+    "context": "ion:\"3.38.1\",mode:\"global\",copyright:\"© 2014-2024 Denis Pushkarev (zloirock.ru)\",license:\"https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE\",source:\"https://github.com/zloirock/core-js\"})}),nt=function(t,e){return rt[t]||(rt[t]=e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 2994,
+    "value": "https://github.com/zloirock/core-js",
+    "context": "(zloirock.ru)\",license:\"https://github.com/zloirock/core-js/blob/v3.38.1/LICENSE\",source:\"https://github.com/zloirock/core-js\"})}),nt=function(t,e){return rt[t]||(rt[t]=e||{})},ot=Object,it=function(t){return ot(j(t"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 70709,
+    "value": "https://a",
+    "context": "i,t);return e&&e.value},Tp=dt(\"iterator\"),Mp=!a(function(){var t=new URL(\"b?a=1&b=2&c=3\",\"https://a\"),e=t.searchParams,r=new URLSearchParams(\"a=1&a=2&b=3\"),n=\"\";return t.pathname=\"c%20d\",e."
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 70913,
+    "value": "https://a/c%20d?a=1&c=3",
+    "context": "n(t,r){e.delete(\"b\"),n+=r+t}),r.delete(\"a\",2),r.delete(\"b\",void 0),!e.size&&!u||!e.sort||\"https://a/c%20d?a=1&c=3\"!==t.href||\"3\"!==e.get(\"c\")||\"a=1\"!==String(new URLSearchParams(\"?a=1\"))||!e[Tp]||\"a\"!==n"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 71034,
+    "value": "https://a@b",
+    "context": "ef||\"3\"!==e.get(\"c\")||\"a=1\"!==String(new URLSearchParams(\"?a=1\"))||!e[Tp]||\"a\"!==new URL(\"https://a@b\").username||\"b\"!==new URLSearchParams(new URLSearchParams(\"a=b\")).get(\"a\")||\"xn--e1aybc\"!"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 71146,
+    "value": "https://тест",
+    "context": "||\"b\"!==new URLSearchParams(new URLSearchParams(\"a=b\")).get(\"a\")||\"xn--e1aybc\"!==new URL(\"https://тест\").host||\"#%D0%B1\"!==new URL(\"https://a#б\").hash||\"a1c3\"!==n||\"x\"!==new URL(\"https://x\",vo"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 71188,
+    "value": "https://a#б",
+    "context": "arams(\"a=b\")).get(\"a\")||\"xn--e1aybc\"!==new URL(\"https://тест\").host||\"#%D0%B1\"!==new URL(\"https://a#б\").hash||\"a1c3\"!==n||\"x\"!==new URL(\"https://x\",void 0).host}),Lp=TypeError,Up=function(t,e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 71235,
+    "value": "https://x",
+    "context": "\"https://тест\").host||\"#%D0%B1\"!==new URL(\"https://a#б\").hash||\"a1c3\"!==n||\"x\"!==new URL(\"https://x\",void 0).host}),Lp=TypeError,Up=function(t,e){if(t<e)throw new Lp(\"Not enough arguments\")"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+    "offset": 81099,
+    "value": "http:80,https:443,ws:80,wss:443},tg=function(t,e){var",
+    "context": "{var r=fd(t,0);return r>32&&r<127&&!ut(e,t)?t:encodeURIComponent(t)},Zd={ftp:21,file:null,http:80,https:443,ws:80,wss:443},tg=function(t,e){var r;return 2===t.length&&Sd(Nd,wd(t,0))&&(\":\"===(r=wd(t,1))||!e&&\"|\"===r)},eg=function(t){v"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 14657,
+    "value": "https://",
+    "context": "\"===e.protocol&&!e.username&&!e.password)return e.href}catch{}throw Error(\"Use a complete https:// link.\")}e.s([\"FLOOR_FINISHES\",0,l,\"contentUrl\",0,d,\"validateDecorItems\",0,function(e,f=a."
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 37179,
+    "value": "https://",
+    "context": ".length>1800)return null;try{let e=new URL(/^[a-z][a-z\\d+.-]*:/i.test(t.trim())?t.trim():\"https://\"+t.trim()),i=e.hostname.toLowerCase().replace(/\\.$/,\"\");if(![\"https:\",\"http:\"].includes(e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 50219,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "xOf(e)===t).join(\" \").trim();e.s([\"mergeClasses\",0,t],396661);var i=e.i(271645),r={xmlns:\"http://www.w3.org/2000/svg\",width:24,height:24,viewBox:\"0 0 24 24\",fill:\"none\",stroke:\"currentColor\",strokeWidth:2,s"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 16875,
+    "value": "/api/files/",
+    "context": ")throw Error(\"Unsupported favicon picture version.\");let f=d(e.logo);if(f&&!f.startsWith(\"/api/files/\"))throw Error(\"Upload or import a private logo before choosing a parcel mark.\");if(void 0"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 19162,
+    "value": "/api/files/",
+    "context": "Style))throw Error(\"Choose a supported sign style.\");let m=d(e.logo);if(m&&!m.startsWith(\"/api/files/\"))throw Error(\"Upload or import your logo before adding it.\");if(void 0!==e.contentMode&&"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 33905,
+    "value": "/api/files/",
+    "context": "ont\",x>0?C+7.5:k-7.5,1.1,0,\"water\")),(r.analysis?.images??[]).filter(e=>e.url.startsWith(\"/api/files/\")).slice(0,3).forEach((e,t)=>O({id:F(\"product\"),type:\"image\",title:e.alt||r.name,url:e.ur"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/29pwl2pex9vu6.js",
+    "offset": 37621,
+    "value": "/api/monitor-homepage/${e.office?.anchor??e.id}?site=${encodeURIComponent(t)}",
+    "context": "e.hostname=i,e.pathname=\"/\",e.search=\"\",e.hash=\"\",e.href}catch{return null}}(e);return t?`/api/monitor-homepage/${e.office?.anchor??e.id}?site=${encodeURIComponent(t)}`:null}e.s([\"monitorScreenshotUrl\",0,r],119277);let o=new Set([\"HF_Monitor_Standard\",\"HF_M"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 40120,
+    "value": "https://i.ytimg.com/vi/",
+    "context": "tObjectContent)(s,e,t,()=>{d.needsUpdate=!0,a?.()}),n;let h=g(e.url),m=e.screenImage||(h?\"https://i.ytimg.com/vi/\"+h+\"/hqdefault.jpg\":null);if(m){let o=async()=>{try{let o=await (0,u.imageTexture)(m,t);i"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 35959,
+    "value": "/api/files/",
+    "context": "idOverviewImage)(e.screenImage)?e.screenImage:e.logo;return!e.contentMode&&v?.startsWith(\"/api/files/\")&&((s=new Image).onload=M,s.onerror=()=>{},s.src=v),e.contentMode?(0,i.paintObjectConten"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 40848,
+    "value": "/api/files/",
+    "context": "if(s.position.y=.525,!e.contentMode&&!e.screenImage&&\"image\"===e.type&&e.url?.startsWith(\"/api/files/\")){let t=()=>(0,u.imageTexture)(e.url,r).then(t=>{if(r.aborted)return void t.dispose();le"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 4376,
+    "value": "/models/cubicles/v1/commons.glb",
+    "context": "(330696),l=e.i(134417),s=e.i(793384),c=e.i(502222);async function d(e){let t=await fetch(\"/models/cubicles/v1/commons.glb\",{signal:e});if(!t.ok)throw Error(\"Commons kit unavailable\");let a=await t.arrayBuffer();"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 15868,
+    "value": ".glb",
+    "context": ",n=\"directory\"in r?r.directory:\"higgsfield-r6\",l=await fetch(\"/models/cubicles/\"+n+\"/\"+e+\".glb.gz.b64\");if(!l.ok)throw Error(\"Library pack unavailable\");let s=await l.text();if(s.lengt"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 25030,
+    "value": "/models/cubicles/v1/cubicle.glb",
+    "context": "etry.dispose(),e.material.dispose())})},{once:!0})}async function w(e){let t=await fetch(\"/models/cubicles/v1/cubicle.glb\",{signal:e});if(!t.ok)throw Error(\"The furniture kit could not be loaded.\");let o=await t"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1y0jl7cpc38wf.js",
+    "offset": 40148,
+    "value": "/hqdefault.jpg",
+    "context": ".needsUpdate=!0,a?.()}),n;let h=g(e.url),m=e.screenImage||(h?\"https://i.ytimg.com/vi/\"+h+\"/hqdefault.jpg\":null);if(m){let o=async()=>{try{let o=await (0,u.imageTexture)(m,t);if(t.aborted)return "
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/17wgqr_xcllvx.js",
+    "offset": 175924,
+    "value": "https://jcgt.org/published/0007/04/01/",
+    "context": "sampling (Eric Heitz 2018)\n\t\t\t// \"Sampling the GGX Distribution of Visible Normals\"\n\t\t\t// https://jcgt.org/published/0007/04/01/\n\t\t\tvec3 importanceSampleGGX_VNDF(vec2 Xi, vec3 V, float roughness) {\n\t\t\t\tfloat alpha = ro"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "offset": 48312,
+    "value": "/api/fishing",
+    "context": "=!1){if(_)return _;let t=q;return N=performance.now(),_=(async()=>{try{let n=await fetch(\"/api/fishing\",{signal:eH.signal,cache:\"no-store\"}),i=await n.json();if(!n.ok)throw Error(i.error||\"Lea"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "offset": 49163,
+    "value": "/api/fishing?water=1",
+    "context": "w()+z).fish,eE=performance.now();return}eS=!0;let e=q,t=Date.now();try{let n=await fetch(\"/api/fishing?water=1\",{signal:eH.signal,cache:\"no-store\"}),i=await n.json();if(!n.ok)throw Error(i.error||\"The"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "offset": 50086,
+    "value": "/api/fishing",
+    "context": "w()+z,i,et);E=t.state,ex=t.fish,eE=performance.now()}else{let t=Date.now(),n=await fetch(\"/api/fishing\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "offset": 56693,
+    "value": "/api/fishing",
+    "context": "efresh())}function no(){A||!E||[\"caught\",\"lost\"].includes(E.phase)||navigator.sendBeacon(\"/api/fishing\",new Blob([JSON.stringify({action:\"cancel\",id:E.id})],{type:\"application/json\"}))}ne.type"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2w0y2gqqj2oc7.js",
+    "offset": 47710,
+    "value": "/art/fishing/coastal-kit.glb",
+    "context": "W=!1,t$=!1,tK=[];async function tj(){if(!tW&&!t$){t$=!0;try{let e=await (0,y.modelAsset)(\"/art/fishing/coastal-kit.glb\",eH.signal);if(I)return;for(let t of f.FISHING_SPOTS){let n=e.getObjectByName(\"FishingSta"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 123475,
+    "value": "http_400",
+    "context": "ve a passing release report.\",tab:\"health\"});let n=e.health.errors.find(e=>e.count>=5&&![\"http_400\",\"http_401\",\"http_403\",\"http_409\",\"http_413\",\"http_429\"].includes(e.code));n&&t.push({sev"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 123486,
+    "value": "http_401",
+    "context": "g release report.\",tab:\"health\"});let n=e.health.errors.find(e=>e.count>=5&&![\"http_400\",\"http_401\",\"http_403\",\"http_409\",\"http_413\",\"http_429\"].includes(e.code));n&&t.push({severity:\"issu"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 123497,
+    "value": "http_403",
+    "context": "eport.\",tab:\"health\"});let n=e.health.errors.find(e=>e.count>=5&&![\"http_400\",\"http_401\",\"http_403\",\"http_409\",\"http_413\",\"http_429\"].includes(e.code));n&&t.push({severity:\"issue\",title:`$"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 123508,
+    "value": "http_409",
+    "context": ":\"health\"});let n=e.health.errors.find(e=>e.count>=5&&![\"http_400\",\"http_401\",\"http_403\",\"http_409\",\"http_413\",\"http_429\"].includes(e.code));n&&t.push({severity:\"issue\",title:`${n.feature}"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 123519,
+    "value": "http_413",
+    "context": ";let n=e.health.errors.find(e=>e.count>=5&&![\"http_400\",\"http_401\",\"http_403\",\"http_409\",\"http_413\",\"http_429\"].includes(e.code));n&&t.push({severity:\"issue\",title:`${n.feature} is reporti"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 123530,
+    "value": "http_429",
+    "context": "alth.errors.find(e=>e.count>=5&&![\"http_400\",\"http_401\",\"http_403\",\"http_409\",\"http_413\",\"http_429\"].includes(e.code));n&&t.push({severity:\"issue\",title:`${n.feature} is reporting repeated"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 1699,
+    "value": "/api/agents/chat",
+    "context": "ate)(\"\"),[m,f]=(0,n.useState)(!1),b=async(t,n)=>{if(e){u(!0),p(\"\");try{let r=await fetch(\"/api/agents/chat\",{method:\"POST\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify({agentId:"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 14478,
+    "value": "/api/cinematics",
+    "context": "69431),b=e.i(328214),x=e.i(776233),g=e.i(422376);async function y(e,t){let n=await fetch(\"/api/cinematics\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(e),signal"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 25742,
+    "value": "/api/contest-bar",
+    "context": "(271645),r=e.i(560491);let a={visible:!1,showRace:!0,showFishing:!0,layout:\"standard\"},i=\"/api/contest-bar\";async function s(e){let t=await fetch(e,{cache:\"no-store\"}),n=await t.json();if(!t.ok)th"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 29011,
+    "value": "/api/admin/trial-promotion",
+    "context": "70),e.s([\"TrialPromotionSetting\",0,function(){let{data:e,error:a,mutate:i}=(0,r.default)(\"/api/admin/trial-promotion\",o,{refreshInterval:15e3}),[s,l]=(0,n.useState)(!1),[c,d]=(0,n.useState)(\"\"),u=(0,n.useRe"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 29220,
+    "value": "/api/admin/trial-promotion",
+    "context": "!1);async function h(t){if(!u.current&&e){u.current=!0,l(!0),d(\"\");try{let n=await fetch(\"/api/admin/trial-promotion\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({enabled:"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 30879,
+    "value": "/api/trials",
+    "context": "t-3 text-sm\",children:c})]})},\"useTrialPromotion\",0,function(e,t){return(0,r.default)(t?[\"/api/trials\",e]:null,([e])=>o(e),{refreshInterval:15e3,revalidateOnFocus:!0})}],277284)},877784,e=>{\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 40361,
+    "value": "/api/fishing?contest=1",
+    "context": "dAt)]})]})]})})},\"useFishingContest\",0,function(e=1e4){let{data:t,error:a}=(0,r.default)(\"/api/fishing?contest=1\",h,{refreshInterval:15e3,revalidateOnFocus:!0}),[i,s]=(0,n.useState)(0);(0,n.useEffect)(("
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 41874,
+    "value": "/api/four-row?boardId=${n}&spectator=1",
+    "context": "n;let e=!1,t,r=new AbortController,a=async()=>{if(!document.hidden)try{let t=await fetch(`/api/four-row?boardId=${n}&spectator=1`,{cache:\"no-store\",signal:AbortSignal.any([r.signal,AbortSignal.timeout(8e3)])});if(t.ok)"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 43454,
+    "value": "/api/hq/chat",
+    "context": ".share===x||(w.current={id:crypto.randomUUID(),message:n,share:x});try{let e=await fetch(\"/api/hq/chat\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({agent:C."
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 44139,
+    "value": "/api/adam/settings",
+    "context": "lost. Try again.\")}finally{t===N.current&&m(!1)}}async function A(){try{if(!(await fetch(\"/api/adam/settings\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 49364,
+    "value": "/api/hq",
+    "context": "if(e)return;let n=!1,a=async()=>{try{if(!document.hidden){let e=await (0,r.batchedFetch)(\"/api/hq\",{signal:AbortSignal.timeout(6e3),cache:\"no-store\"});if(e.ok){let t=await e.json();n||i(t"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 49768,
+    "value": "/api/office-move-requests",
+    "context": "=e.i(560491),i=e.i(422376),s=e.i(587287),l=e.i(330944),o=e.i(521932),c=e.i(787594);let d=\"/api/office-move-requests\";async function u(e){let t=await fetch(e,{cache:\"no-store\"}),n=await t.json();if(!t.ok)th"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 99730,
+    "value": "/api/chess?table=${encodeURIComponent(e)}&spectator=1",
+    "context": "mise.all((0,n.nearbyChessTables)(a.current).map(async({table:e})=>{try{let t=await fetch(`/api/chess?table=${encodeURIComponent(e)}&spectator=1`,{cache:\"no-store\",signal:r.signal});t.ok&&l((await t.json()).game)}catch{}})),r.signal.a"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 102638,
+    "value": "/api/measurement",
+    "context": "rcel??void 0,events:j.splice(0,r)};b=Math.max(0,b-t),x=0,g=0,y=Date.now(),C(),v=!0,fetch(\"/api/measurement\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(a),keepal"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 104599,
+    "value": "/api/measurement",
+    "context": "{for(let t of e.getEntries()){t.name.includes(location.origin+\"/api/\")&&!t.name.includes(\"/api/measurement\")&&(g=Math.min(90,g+1));let e=t.responseStatus;e&&e>=400&&(t.name.includes(\"/models/\")||t"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 104721,
+    "value": "/api/files/",
+    "context": "90,g+1));let e=t.responseStatus;e&&e>=400&&(t.name.includes(\"/models/\")||t.name.includes(\"/api/files/\"))&&i(\"media\",\"error\",{code:\"asset_load\"})}})).observe({entryTypes:[\"resource\"]})}catch{}"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 108148,
+    "value": "/api/pickleball?court=",
+    "context": "mance.now(),r=new AbortController,a=setTimeout(()=>r.abort(),1800);try{let a=await fetch(\"/api/pickleball?court=\"+encodeURIComponent(s)+(!e&&!M.current?\"&spectator=1\":\"\"),{method:e?\"POST\":\"GET\",credenti"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/2dxki5-mc5qms.js",
+    "offset": 110872,
+    "value": "/api/pickleball?court=",
+    "context": "et t=x.current;t&&(x.current={...t,game:{...e,you:null,queued:null}},o(x.current)),fetch(\"/api/pickleball?court=\"+encodeURIComponent(s),{method:\"POST\",credentials:\"same-origin\",keepalive:!0,headers:{\"Co"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1-h8xr0vu9wrm.js",
+    "offset": 257,
+    "value": "http://www.w3.org/1999/xhtml",
+    "context": "\"srgb\",l=\"srgb-linear\",u=\"linear\",c=\"srgb\";function p(t){return document.createElementNS(\"http://www.w3.org/1999/xhtml\",t)}Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1-h8xr0vu9wrm.js",
+    "offset": 243815,
+    "value": "https?:)?",
+    "context": "(/^https?:\\/\\//i.test(e)&&/^\\//.test(t)&&(e=e.replace(/(^https?:\\/\\/[^\\/]+).*/i,\"$1\")),/^(https?:)?\\/\\//i.test(t)||/^data:.*,.*$/i.test(t)||/^blob:.*$/i.test(t))?t:e+t}},\"MOUSE\",0,{LEFT:0,M"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0llsa4_5p1t45.js",
+    "offset": 9213,
+    "value": "https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams",
+    "context": "ds Error{constructor(){super(\"Method unavailable on `ReadonlyURLSearchParams`. Read more: https://nextjs.org/docs/app/api-reference/functions/use-search-params#updating-searchparams\"),Object.defineProperty(this,\"__NEXT_ERROR_CODE\",{value:\"E1174\",enumerable:!1,configurabl"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0llsa4_5p1t45.js",
+    "offset": 19049,
+    "value": "https://react.dev/errors/",
+    "context": "process:e.r(935451)},818800,(e,t,r)=>{\"use strict\";var n=e.r(271645);function o(e){var t=\"https://react.dev/errors/\"+e;if(1<arguments.length){t+=\"?args[]=\"+encodeURIComponent(arguments[1]);for(var r=2;r<ar"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 114773,
+    "value": "https://www.youtube.com/iframe_api",
+    "context": "ily unavailable\")):e8??=new Promise((e,a)=>{let n=document.createElement(\"script\");n.src=\"https://www.youtube.com/iframe_api\";let i=t.onYouTubeIframeAPIReady,o=()=>{clearTimeout(r),n.remove(),e8=void 0,e7=Date.now("
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 116992,
+    "value": "https://www.youtube.com/watch?v=",
+    "context": "e9(()=>o.player?.playVideo()),o.playing=!0),n.style.display=o.ready?\"flex\":\"none\",h.href=\"https://www.youtube.com/watch?v=\"+o.surface.id,c.textContent=o.manualPause?\"Play\":\"Pause\",u.textContent=o.audible?\"Mute\":\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 407840,
+    "value": "http://localhost",
+    "context": "var u;let h,x,w=(o.method??\"GET\").toUpperCase(),b=e.origin??globalThis.location?.origin??\"http://localhost\";try{h=new URL(i,b)}catch{return e.send(i,o)}if(m||h.origin!==b||(u=h.pathname,!((x=a[u])"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 14288,
+    "value": "/api/blimp-sponsor",
+    "context": "troller;async function i(){try{if(\"hidden\"!==document.visibilityState){let t=await fetch(\"/api/blimp-sponsor\",{signal:AbortSignal.any([n.signal,AbortSignal.timeout(1e4)])});if(t.ok){let n=await t.js"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 20028,
+    "value": "/api/blimp",
+    "context": "pilot:null,name:null,pose:null},u=t=>{c=t,e.onState(t)};async function h(e,a,n){return t(\"/api/blimp\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 20577,
+    "value": "/api/blimp",
+    "context": "f=l,g=Date.now(),x=()=>i||l!==f||a!==p||n;try{let a=p?await h(\"move\",p,e.pose()):await t(\"/api/blimp\",{cache:\"no-store\",signal:AbortSignal.timeout(4e3)});if(x())return;if(!a.ok){p&&[401,403,"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 188532,
+    "value": "/api/cars",
+    "context": "ath)&&(e$=Math.max(e$,e.path.at(-1)?.seq??0));let t=M.viewPosition?.()??M.position(),a=e?\"/api/cars\":`/api/cars?viewX=${t.x.toFixed(1)}&viewZ=${t.z.toFixed(1)}${M.spectator?.()?\"&spectator="
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 188544,
+    "value": "/api/cars?viewX=${t.x.toFixed(1)}&viewZ=${t.z.toFixed(1)}${M.spectator?.()?",
+    "context": "th.max(e$,e.path.at(-1)?.seq??0));let t=M.viewPosition?.()??M.position(),a=e?\"/api/cars\":`/api/cars?viewX=${t.x.toFixed(1)}&viewZ=${t.z.toFixed(1)}${M.spectator?.()?\"&spectator=1\":\"\"}`,n=Date.now(),i=await (e||!ej?fetch:M.pollFetch??fetch)(a,{credentials:"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 232715,
+    "value": "/api/boat-races",
+    "context": "t(),a.stop(ev.currentTime+t)}async function ek(e){let t=Date.now(),a=l?.id,n=await fetch(\"/api/boat-races\",{method:e?\"POST\":\"GET\",headers:e?{\"Content-Type\":\"application/json\"}:void 0,body:e?JSON."
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 240767,
+    "value": "/api/boat-races",
+    "context": "E(),eT())}).finally(()=>m=!1))}else o.update(null,e/1e3)},dispose(){f=!0,h&&l&&!p&&fetch(\"/api/boat-races\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 269625,
+    "value": "/api/skateboards",
+    "context": "ew\",e,Date.now()),w=performance.now();return}let a=await (e||h||g?fetch:eL.batchedFetch)(\"/api/skateboards\",{method:e?\"POST\":\"GET\",headers:e?{\"Content-Type\":\"application/json\"}:void 0,body:e?JSON."
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 277110,
+    "value": "/api/skateboards",
+    "context": "tches),eW(B,\"hidden\",!!D||!r||!h&&(!M&&e>=S||!i.allowed())),ea()},dispose(){h&&!p&&fetch(\"/api/skateboards\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 278981,
+    "value": "/api/fishing/celebration?x=${i.x}&z=${i.z}",
+    "context": "nc function d(){n=!0;let i=e.position(),s=Date.now();try{let e=await (0,eL.batchedFetch)(`/api/fishing/celebration?x=${i.x}&z=${i.z}`,{cache:\"no-store\",signal:AbortSignal.any([t.signal,AbortSignal.timeout(8e3)])});if(!e.ok"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 279629,
+    "value": "/api/fishing/celebration",
+    "context": "u,expiresAt:u+eH.CATCH_CELEBRATION_MS},d){l=!0;return}try{let r=Date.now(),l=await fetch(\"/api/fishing/celebration\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({id:n}),s"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 296582,
+    "value": "/api/pickleball?court=",
+    "context": "t e=new AbortController;o.abort=e,o.next=i+350;let a=setTimeout(()=>e.abort(),2e3);fetch(\"/api/pickleball?court=\"+encodeURIComponent(o.court.id)+\"&spectator=1\",{cache:\"no-store\",signal:e.signal}).then(a"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 390946,
+    "value": "/api/files/",
+    "context": "toUpperCase(),0,1.23,.08,1.7,\"#e0e8ce\",\"#445248\",.4);\"image\"===t.type&&t.url?.startsWith(\"/api/files/\")&&h++<4?n3.add(async()=>{let a=await (0,eo.imageTexture)(t.url,r.signal);if(r.signal.abo"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 391420,
+    "value": "/api/files/",
+    "context": "2,.1),e.removeFromParent(),ii(e),i.add(s)},r.signal):\"model\"===t.type&&t.url?.startsWith(\"/api/files/\")&&h++<4&&n3.add(async()=>{let e=await (0,eo.modelAsset)(t.url,r.signal),a=0,n=0;if(e.tra"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405797,
+    "value": "/api/presence",
+    "context": ":\"Reload world\"})]})]})});e.s([\"default\",0,tE],335190)},492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/pre"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405828,
+    "value": "/api/messages",
+    "context": "\"default\",0,tE],335190)},492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboard"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405852,
+    "value": "/api/fishing/celebration",
+    "context": ",492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/ap"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405887,
+    "value": "/api/adam/presence",
+    "context": "/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405916,
+    "value": "/api/skateboards",
+    "context": ",\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405943,
+    "value": "/api/cars",
+    "context": "api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/reward"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405963,
+    "value": "/api/blimp",
+    "context": "ion\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"conte"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 405984,
+    "value": "/api/agents/nearby",
+    "context": "am/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 406013,
+    "value": "/api/hq",
+    "context": "ateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles-layout\",\"x-cubicl"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 406031,
+    "value": "/api/rewards",
+    "context": ",\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles-layout\",\"x-cubicles-geometry\",\"x-cubicle"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 407182,
+    "value": "/api/tick",
+    "context": "t)});if(o.length<2||r.length>65536)return void o.forEach(x);let l=t();try{a=await e.send(\"/api/tick\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:r,signal:AbortSignal.tim"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/0pk2_0c34vbky.js",
+    "offset": 358115,
+    "value": "my-cubicles-office.png",
+    "context": "{if(!e)return;let t=document.createElement(\"a\");t.href=URL.createObjectURL(e),t.download=\"my-cubicles-office.png\",t.click(),setTimeout(()=>URL.revokeObjectURL(t.href),1e3)}),e!==tJ.baseRatio&&t.setPixel"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 12052,
+    "value": "http_${t.status??503}",
+    "context": "(0,l.measure)(\"adam\",\"error\",{code:t instanceof Error&&\"TimeoutError\"===t.name?\"timeout\":`http_${t.status??503}`}),x(t instanceof Error&&\"TimeoutError\"===t.name?\"Adam is a little slow right now. No nee"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 13145,
+    "value": "http://www.w3.org/2000/svg",
+    "context": ":\"sonner-loading-bar\",key:`spinner-bar-${a}`})))),s=e.default.createElement(\"svg\",{xmlns:\"http://www.w3.org/2000/svg\",viewBox:\"0 0 20 20\",fill:\"currentColor\",height:\"20\",width:\"20\",\"aria-hidden\":\"true\"},e.d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 13526,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "5.75 0 001.137-.089l4-5.5z\",clipRule:\"evenodd\"})),o=e.default.createElement(\"svg\",{xmlns:\"http://www.w3.org/2000/svg\",viewBox:\"0 0 24 24\",fill:\"currentColor\",height:\"20\",width:\"20\",\"aria-hidden\":\"true\"},e.d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 13990,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "0 100-1.5.75.75 0 000 1.5z\",clipRule:\"evenodd\"})),i=e.default.createElement(\"svg\",{xmlns:\"http://www.w3.org/2000/svg\",viewBox:\"0 0 20 20\",fill:\"currentColor\",height:\"20\",width:\"20\",\"aria-hidden\":\"true\"},e.d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 14452,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "6A1.75 1.75 0 009.253 9H9z\",clipRule:\"evenodd\"})),l=e.default.createElement(\"svg\",{xmlns:\"http://www.w3.org/2000/svg\",viewBox:\"0 0 20 20\",fill:\"currentColor\",height:\"20\",width:\"20\",\"aria-hidden\":\"true\"},e.d"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 14814,
+    "value": "http://www.w3.org/2000/svg",
+    "context": "0a1 1 0 100-2 1 1 0 000 2z\",clipRule:\"evenodd\"})),d=e.default.createElement(\"svg\",{xmlns:\"http://www.w3.org/2000/svg\",width:\"12\",height:\"12\",viewBox:\"0 0 24 24\",fill:\"none\",stroke:\"currentColor\",strokeWidth"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 6689,
+    "value": "/api/adam/presence",
+    "context": "ent&&(m.current=t.revision,s(t))},[]),h=(0,a.useCallback)(async(t,e)=>{let a=await fetch(\"/api/adam/presence\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:t"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 7321,
+    "value": "/api/adam/presence",
+    "context": "enew\",r);e||t!==u.current||p(a)}else if(!document.hidden){let a=await (0,c.batchedFetch)(\"/api/adam/presence\",{cache:\"no-store\",signal:AbortSignal.timeout(8e3)});if(a.ok){let r=await a.json();!e&&t="
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 8522,
+    "value": "/api/adam/settings",
+    "context": ");async function F(t,e){if(R||b)return;D(!0),x(\"\");let a=H.current;try{let r=await fetch(\"/api/adam/settings\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:t"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 9112,
+    "value": "/api/adam",
+    "context": "eEffect)(()=>{if(!t)return;let e=new AbortController;return n?void i(\"available\"):(fetch(\"/api/adam\",{signal:AbortSignal.any([e.signal,AbortSignal.timeout(8e3)]),cache:\"no-store\"}).then(asy"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 9798,
+    "value": "/api/adam/settings",
+    "context": "eview:!1,memoryEnabled:!1,revision:0,account:!1});let t=new AbortController;return fetch(\"/api/adam/settings\",{signal:t.signal,cache:\"no-store\"}).then(async e=>{let a=await e.json();if(!e.ok)throw E"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/41i2xl0uungfg.js",
+    "offset": 11297,
+    "value": "/api/adam",
+    "context": "gnal.any([r.signal,AbortSignal.timeout(5e4)]);if(n)t=await n(s,o);else{let e=await fetch(\"/api/adam\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({...s,ses"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1nruhniep3vg4.js",
+    "offset": 9608,
+    "value": "/api/files/",
+    "context": "e.working||\"\").slice(0,140),accent:/^#[\\da-f]{6}$/i.test(h)?h:\"#6a7d50\",...d?.startsWith(\"/api/files/\")||\"/favicon.svg\"===d?{logo:d}:{},...r,...u?{overviewImage:u,mapSize:r.mapSize||.7*Math.m"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/1nruhniep3vg4.js",
+    "offset": 8197,
+    "value": ".webp",
+    "context": ".i(587287);function a(e){return\"string\"==typeof e&&/^\\/api\\/files\\/overview-[a-zA-Z0-9-]+\\.webp$/.test(e)&&e.length<=180}function i(e){let t=e.items?.find(e=>\"room\"===e.type)??e.room;re"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 2073,
+    "value": "https?:$/.test(t.protocol)||t.username||t.password?",
+    "context": "74);let A=e=>e.domain||`office:${e.officeId}`;function E(e){try{let t=new URL(e);return!/^https?:$/.test(t.protocol)||t.username||t.password?\"\":t.hostname.toLowerCase().replace(/^www\\./,\"\").replace(/\\.$/,\"\")}catch{return\"\"}}var R=e"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 2519,
+    "value": "https://",
+    "context": "s.length>1e4)return;let t=[];for(let a of e.entries){if(!a||\"string\"!=typeof a.domain||E(\"https://\"+a.domain)!==a.domain||\"string\"!=typeof a.name||\"string\"!=typeof a.description||!Number.i"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 10452,
+    "value": "https://",
+    "context": "className:\"eom-actions\",children:[e.domain&&(0,i.jsx)(\"a\",{href:(0,u.businessWebsiteUrl)(\"https://\"+e.domain),target:\"_blank\",rel:\"noopener noreferrer\",children:\"Website ↗\"}),1===o?l(e.par"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 111451,
+    "value": "http_${i.status}",
+    "context": "0?i.status:502})}if(!i.ok)throw(0,a7.measure)((0,na.measurementFeature)(e),\"error\",{code:`http_${i.status}`}),Object.assign(Error(r.error||\"Something went wrong. Please try again.\"),{status:i.stat"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 112133,
+    "value": "https://www.youtube-nocookie.com/embed/",
+    "context": "e.com\",\"www.youtube.com\",\"youtu.be\",\"www.youtube-nocookie.com\"].includes(t.hostname)&&(s=\"https://www.youtube-nocookie.com/embed/\"+e)}if(\"twitch\"===e.type&&[\"twitch.tv\",\"www.twitch.tv\"].includes(t.hostname)){let e=t.pat"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 112334,
+    "value": "https://player.twitch.tv/?channel=",
+    "context": "name)){let e=t.pathname.split(\"/\")[1];/^[a-zA-Z0-9_]+$/.test(e)&&\"u\">typeof location&&(s=\"https://player.twitch.tv/?channel=\"+e+\"&parent=\"+location.hostname+\"&autoplay=false\")}}catch{}return\"room\"===e.type?null:\"si"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 169028,
+    "value": "https://checkout.stripe.com/",
+    "context": "officeSide?\"cubicle\":\"office\"},e.conversionId),\"string\"!=typeof e.url||!e.url.startsWith(\"https://checkout.stripe.com/\"))throw Error(\"Checkout did not return a payment link. Please try again.\");window.self!=="
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 196964,
+    "value": "https://x.com/imnotMatt_eth",
+    "context": ",eO&&!lF&&!su.active&&!ev&&!n0&&!nc&&(0,i.jsxs)(\"a\",{className:\"hud-builder-credit\",href:\"https://x.com/imnotMatt_eth\",target:\"_blank\",rel:\"noopener noreferrer\",children:[\"Built by \",(0,i.jsx)(\"span\",{childr"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 3590,
+    "value": "/api/points-leaderboard",
+    "context": "g\"],M={points:\"Aura\",offices:\"Offices\",racing:\"Racing\",fishing:\"Fishing\"},L={points:{url:\"/api/points-leaderboard\",heading:\"Total aura\",empty:\"No aura yet. Play games and take part in activities to get o"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 3867,
+    "value": "/api/cars?spectator=1",
+    "context": "edits and corrections. Spending aura on a parcel does not lower your rank.\"},racing:{url:\"/api/cars?spectator=1\",heading:\"Most race wins · All time\",empty:\"No race wins yet. Join the next race to make "
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 4075,
+    "value": "/api/cars?spectator=1",
+    "context": "rk.\",method:\"Ranked by completed race wins from the existing race records.\"},trials:{url:\"/api/cars?spectator=1\",heading:\"Fastest time trials · Current course\",empty:\"No time trials recorded yet. Compl"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 4327,
+    "value": "/api/fishing",
+    "context": "valid, unassisted time per player on the current course. Lower is better.\"},fishing:{url:\"/api/fishing\",heading:\"Total catch weight · This week\",empty:\"No qualifying catches this week. Head to"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 12490,
+    "value": "/api/employee-leaderboard",
+    "context": "urn}}(sessionStorage):void 0}catch{return}},[c]),{data:u,error:h,mutate:p}=(0,x.default)(\"/api/employee-leaderboard\",H,{refreshInterval:6e4,revalidateOnFocus:!0,dedupingInterval:6e4,keepPreviousData:!0});("
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 16935,
+    "value": "/api/employee-leaderboard",
+    "context": "turn!1}},[n]),[s,o]=(0,b.useState)(!1),[l,c]=(0,b.useState)(null),{data:d}=(0,x.default)(\"/api/employee-leaderboard\",H,{refreshInterval:6e4,revalidateOnFocus:!0,dedupingInterval:6e4,keepPreviousData:!0}),u"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 20468,
+    "value": "/api/feedback",
+    "context": "\"keyboard\",activity:r,position:{x:Math.round(n.x),z:Math.round(n.z)}}};let e=await fetch(\"/api/feedback\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(y.current"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 27745,
+    "value": "/api/cars",
+    "context": "Retry:u,onGames:h,onTyping:p,onActivity:m}){let f,g,y,k,{data:S,error:C}=(0,x.default)(e?\"/api/cars\":null,eD,{refreshInterval:3e3}),[A,E]=(0,b.useState)(\"play\"),[D,T]=(0,b.useState)(null),{"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 27923,
+    "value": "/api/fishing?contest=1",
+    "context": "te)(null),{data:P,error:z,mutate:O}=(0,x.default)(e?\"rewards-fishing-detail\":null,()=>eD(\"/api/fishing?contest=1\"),{refreshInterval:15e3}),[M,L]=(0,b.useState)(Date.now());(0,b.useEffect)(()=>{if(!e){E("
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 41707,
+    "value": "/api/rewards/build",
+    "context": "=>l(a.space.parcel),children:\"Visit office\"}),a.space.hasSavedBuild&&(0,i.jsx)(\"a\",{href:\"/api/rewards/build\",download:!0,children:\"Download saved build\"}),a.introUsed&&(0,i.jsx)(\"button\",{type:\"but"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 56606,
+    "value": "/api/world?ids=",
+    "context": "b.useState)(0);(0,b.useEffect)(()=>{let a=new AbortController;return o(null),c(\"\"),fetch(\"/api/world?ids=\"+e,{headers:{\"X-Cubicles-Identity\":\"1\"},signal:AbortSignal.any([a.signal,AbortSignal.time"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 71360,
+    "value": "/api/design-drafts",
+    "context": "i(521932);let tz=\"cubicles-active-design-v1\";async function tO(e,t={}){let a=await fetch(\"/api/design-drafts\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\",\"X-Cubicles-Layout\":tP.PARCEL_"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 71814,
+    "value": "/api/design-drafts",
+    "context": "d. Please try again.\"),{status:a.status});return n}async function tM(){let e=await fetch(\"/api/design-drafts\",{cache:\"no-store\",signal:AbortSignal.timeout(15e3)}),t=await e.json();if(!e.ok)throw Err"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 90176,
+    "value": "/api/visitor-pass",
+    "context": ";try{localStorage.setItem(a2,t)}catch{}}}return t}async function a3(){return a||(a=fetch(\"/api/visitor-pass\",{method:\"POST\",credentials:\"same-origin\",cache:\"no-store\",headers:{\"x-cubicles-pass-toke"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 90873,
+    "value": "/api/visitor-pass",
+    "context": "=!1,s=async()=>{if(!i&&\"hidden\"!==document.visibilityState){i=!0;try{let e=n?await fetch(\"/api/visitor-pass\",{cache:\"no-store\",credentials:\"same-origin\",signal:AbortSignal.timeout(8e3)}).then(a4):a"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 92327,
+    "value": "/api/parcel-stats?parcel=${e}",
+    "context": "oLocaleString();function nt({parcel:e,visible:t=!0}){let{data:a,error:n}=(0,x.default)(t?`/api/parcel-stats?parcel=${e}`:null,a9,{dedupingInterval:6e4,revalidateOnFocus:!0,focusThrottleInterval:6e4,refreshInte"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 108182,
+    "value": "/api/rolodex",
+    "context": "dren:\"Sign in to start your Rolodex\"})]})]})]})})}async function nC(e){let t=await fetch(\"/api/rolodex\",{cache:\"no-store\",...e?{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:J"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 118206,
+    "value": "/api/rewards",
+    "context": "b.useRef)(o);l.current=o,e||(s.current=null);let{data:c,error:d,mutate:u}=(0,x.default)([\"/api/rewards\",e,t],async()=>{if(e&&s.current!==e){let t=await fetch(\"/api/rewards/save\",{method:\"POST\""
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 118275,
+    "value": "/api/rewards/save",
+    "context": "e:u}=(0,x.default)([\"/api/rewards\",e,t],async()=>{if(e&&s.current!==e){let t=await fetch(\"/api/rewards/save\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:\"{}\"});if(!t.ok)throw Er"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 118625,
+    "value": "/api/rewards",
+    "context": ".saved>0&&l.current===o&&n(e=>[...e,`${a.saved} aura saved to your account.`])}return eD(\"/api/rewards\")},{refreshInterval:5e3,revalidateOnFocus:!0});return(0,b.useEffect)(()=>{i.current=null,"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 124923,
+    "value": "/api/world?ids=",
+    "context": "troller,t=!1,a=\"\";async function n(){if(!t&&!document.hidden){t=!0;try{let t=await fetch(\"/api/world?ids=\"+r0,{signal:AbortSignal.any([e.signal,AbortSignal.timeout(15e3)]),headers:{\"X-Cubicles-Id"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 125548,
+    "value": "/api/admin/design-drafts?offset=",
+    "context": "State)(!1);(0,b.useEffect)(()=>{a(!1),i(null),s(0),l(!1)},[e]);let c=(0,x.default)(e&&t?[\"/api/admin/design-drafts?offset=\"+50*r,e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),d=(0,x.default)(e&&n&&(t||o"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 125674,
+    "value": "/api/admin/design-drafts?id=",
+    "context": "*r,e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),d=(0,x.default)(e&&n&&(t||o)?[\"/api/admin/design-drafts?id=\"+encodeURIComponent(n),e]:null,tq,{refreshInterval:5e3,shouldRetryOnError:!1}),u=e&&!d.er"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 128435,
+    "value": "/api/world?ids=",
+    "context": "e=(0,tA.arrivalDetailIds)(m,n),t=new Map;for(let a=0;a<e.length;a+=64){let n=await fetch(\"/api/world?ids=\"+e.slice(a,a+64).join(\",\"),{signal:AbortSignal.any([i.signal,AbortSignal.timeout(15e3)]),"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 135658,
+    "value": "/api/agents/me",
+    "context": "ly:!1,loaded:!1,error:null,busy:!1}),i=(0,b.useCallback)(async()=>{try{let e=await fetch(\"/api/agents/me\",{signal:AbortSignal.timeout(8e3),headers:{accept:\"application/json\"}}),t=await e.json();"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 136209,
+    "value": "/api/agents/me",
+    "context": "et r=(0,b.useCallback)(async e=>{n(e=>({...e,busy:!0,error:null}));try{let t=await fetch(\"/api/agents/me\",{method:\"POST\",headers:{\"content-type\":\"application/json\",accept:\"application/json\"},bod"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 136623,
+    "value": "/api/agents/me/${e}?${n}",
+    "context": "b.useCallback)(async(e,t,a={})=>{let n=new URLSearchParams({agent:t,...a}),i=await fetch(`/api/agents/me/${e}?${n}`,{signal:AbortSignal.timeout(8e3),headers:{accept:\"application/json\"}}),r=await i.json();"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 137254,
+    "value": "/api/agents/nearby?x=${e.x.toFixed(1)}&z=${e.z.toFixed(1)}",
+    "context": "async()=>{if(!t){if(!document.hidden){let e=r.current;try{let a=await (0,d.batchedFetch)(`/api/agents/nearby?x=${e.x.toFixed(1)}&z=${e.z.toFixed(1)}`,{signal:AbortSignal.timeout(6e3),headers:{accept:\"application/json\"}});if(!a.ok)throw Er"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 150443,
+    "value": "/api/player-safety",
+    "context": "(e))}catch{}}},[]),m=(0,b.useCallback)(async()=>{let t=++u.current;try{let a=await fetch(\"/api/player-safety\",{cache:\"no-store\"}),n=await a.json();if(!a.ok)throw Error(n.error||\"Safety settings are "
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 151374,
+    "value": "/api/player-safety",
+    "context": "e current action to finish.\");h.current=!0,o(!0),c(\"\"),u.current++;try{let a=await fetch(\"/api/player-safety\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(t)}),n=aw"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3_dlclu6ncxwx.js",
+    "offset": 160516,
+    "value": "/api/design-drafts/checkout",
+    "context": "h(e){aR.toast.error(e.message)}finally{nb(!1)}}}async function le(e,t){let a=await fetch(\"/api/design-drafts/checkout\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\",\"X-Cubicles-Layout\":tP.PARCEL_"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/19j__opbqyz7m.js",
+    "offset": 8406,
+    "value": "https://x.com/imnotMatt_eth",
+    "context": "Checking availability…\"})]}),e.visitors,(0,t.jsx)(\"a\",{className:\"game-menu-credit\",href:\"https://x.com/imnotMatt_eth\",target:\"_blank\",rel:\"noopener noreferrer\",children:\"Built by @imnotMatt_eth\"}),e.legal]}"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/19j__opbqyz7m.js",
+    "offset": 10368,
+    "value": "https://www.producthunt.com/products/cubicles-lol",
+    "context": "e}){return(0,t.jsxs)(\"a\",{className:`product-hunt-launch product-hunt-launch--${e}`,href:\"https://www.producthunt.com/products/cubicles-lol\",target:\"_blank\",rel:\"noopener noreferrer\",\"aria-label\":\"We’re live on Product Hunt (open"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3fj3ssz0fg3bx.js",
+    "offset": 5608,
+    "value": "httpEquiv:",
+    "context": "ction(){return l}});let o={acceptCharset:\"accept-charset\",className:\"class\",htmlFor:\"for\",httpEquiv:\"http-equiv\",noModule:\"noModule\"},n=[\"onLoad\",\"onReady\",\"dangerouslySetInnerHTML\",\"childre"
+  },
+  {
+    "file": "public-bundle/_next/static/immutable/chunks/3fj3ssz0fg3bx.js",
+    "offset": 5619,
+    "value": "http-equiv",
+    "context": "urn l}});let o={acceptCharset:\"accept-charset\",className:\"class\",htmlFor:\"for\",httpEquiv:\"http-equiv\",noModule:\"noModule\"},n=[\"onLoad\",\"onReady\",\"dangerouslySetInnerHTML\",\"children\",\"onError"
+  }
+]

@@ -1,0 +1,639 @@
+[
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "405797",
+    "offset_utf16_approx": 405797,
+    "offset_bytes": 406036,
+    "context": "{type:\"button\",onClick:()=>window.location.reload(),children:\"Reload world\"})]})]})});e.s([\"default\",0,tE],335190)},492380,e=>{\"use strict\";let t,a={\"/api/presence\":[\"GET\",\"POST\"],\"/api/messages\":[\"GET\"],\"/api/fishing/celebration\":[\"GET\"],\"/api/adam/presence\":[\"GET\"],\"/api/skateboards\":[\"GET\"],\"/api/cars\":[\"GET\"],\"/api/blimp\":[\"GET\"],\"/api/agents/nearby\":[\"GET\"],\"/api/hq\":[\"GET\"],\"/api/rewards\":[\"GET\"]},n=[\"content-type\",\"accept\",\"x-cubicles-layout\",\"x-cubicles-geometry\",\"x-cubicles-identity\"],i=(e,t,a)=>new Response(e,{status:t>=200&&t<=599?t:502,headers:{\"Content-Type\":\"application/json\",\"X-Tick-Sent\":String(a)}});e.s([\"batchedFetch\",0,function(e,o,r){return\"u\"<typeof location?fetch(e,o):(t??=function(e){let t=e.now??Date.now,o=e.setTimer??((e,t)=>setTimeout(e,t)),r=e.clearTimer??(e=>cle"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "407182",
+    "offset_utf16_approx": 407182,
+    "offset_bytes": 407421,
+    "context": "h&&y(t()+s);let r=JSON.stringify({requests:o.map(e=>e.request)});if(o.length<2||r.length>65536)return void o.forEach(x);let l=t();try{a=await e.send(\"/api/tick\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:r,signal:AbortSignal.timeout(15e3)})}catch(e){for(let t of o)g(t,()=>t.reject(e));return}if(404===a.status||405===a.status){m=!0,o.forEach(x);return}try{n=(await a.json())?.responses}catch{}if(!a.ok||!Array.isArray(n)||n.length!==o.length){let e=JSON.stringify({error:\"Cubicles couldn’t connect. Please try again.\"});for(let t of o)g(t,()=>t.resolve(i(e,a.ok?502:a.status,l)));return}o.forEach((e,t)=>{let a=n[t];g(e,()=>e.resolve(i(a.body,a.status,l)))})}return{request:function(i,o={},r=!1){var u;let h,x,w=(o.method??\"GET\").toUpperCase(),b=e.origin??globalThis.location?.o"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 305134,
+    "offset_bytes": 305344,
+    "context": "(0,X.useEffect)(()=>{let t,z,X,tn,tE,tC,tO,tN,tG,tB,tV,tj,tK,t$=tP.current,tq=(0,eE.worldRenderBudget)(navigator,window.devicePixelRatio);try{t=new q.WebGLRenderer({antialias:tq.antialias,alpha:!0,preserveDrawingBuffer:tq.preserveDrawingBuffer,powerPreference:\"high-performance\"})}catch{t_(!0),tT.current.onRenderError?.(),tT.current.onReady();return}let tJ=new ek.AdaptiveRenderQuality(tq.pixelRatio),tQ=t.domElement.dataset,t0=(e,t)=>{tQ[e]!==t&&(tQ[e]=t)};t.setPixelRatio(tJ.baseRatio),t.shadowMap.enabled=tq.shadows,t.shadowMap.type=Z.PCFSoftShadowMap,t.outputColorSpace=Z.SRGBColorSpace,t.toneMapping=Z.ACESFilmicToneMapping,function(e=\"clean\"){let t=q.ShaderChunk.tonemapping_pars_fragment,a=tk[e];if(t.includes(a))return!0;let n=[\"vec3 CustomToneMapping( vec3 color ) { return color; }\",...Obj"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 2561,
+    "offset_bytes": 2564,
+    "context": ".set(.65,.65,1),m.position.set(0,p?2.95:3.3,0),m.visible=!0}],823912);var s=e.i(328214),l=e.i(483206);e.s([\"createTVCamera\",0,function(e){let a=new t.PerspectiveCamera(42,16/9,.15,1600),n=new Map,i=new t.Vector3,o=new Map,r=null,d=null,c=0,u=0,h=-1/0,p=0,f=0,m=null,g=[],x=[],y=(t,a)=>{for(let[e,t]of(r&&n.set(r.subject.id,a),n))a-t>18e4&&n.delete(e);r={subject:t,started:a,duration:\"race\"===t.kind?14e3:l.TV_SHOT_MS,angle:void 0===t.heading?.45+f%4*.72:t.heading+Math.PI+[.4,-.65,1.1][f%3],move:[\"arc\",\"push\",\"crane\"][f++%3]},i.set(t.x,0,t.z),d=null,u=0,e({title:t.title,detail:t.detail,kind:t.kind})};return{camera:a,frame(e,f,w,b,M){if(m!==w.plots&&(m=w.plots,g=(0,s.cinemaObstacles)([...w.plots])),(!x.length||e-h>=1e3)&&(x=(0,l.tvSubjects)({...w,movingIds:(0,l.tvMovingPeople)(w.activity.people,"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 8203,
+    "offset_bytes": 8206,
+    "context": "entListener(\"wheel\",f,{capture:!0}),e.removeEventListener(\"contextmenu\",m)}}],69401);var u=e.i(969431);e.s([\"freeLookCamera\",0,function(){let e=new t.PerspectiveCamera(50,1,.05,4e3),a=new t.Vector3,n=new t.Vector3,i=new t.Euler(0,0,0,\"YXZ\"),o={speed:12,fov:50},r=!1,s=null,l=()=>a.set(0,0,0);return{camera:e,settings:o,stopMotion:l,get active(){return r},start(t,a){s=a,e.position.copy(t.position),e.quaternion.copy(t.quaternion),i.setFromQuaternion(e.quaternion,\"YXZ\"),l(),r=!0},stop(){r=!1,l()},configure(e){Number.isFinite(e.speed)&&(o.speed=t.MathUtils.clamp(e.speed,1,80)),Number.isFinite(e.fov)&&(o.fov=t.MathUtils.clamp(e.fov,20,100))},look(a,n){r&&Number.isFinite(a)&&Number.isFinite(n)&&(i.y-=.003*a,i.x=t.MathUtils.clamp(i.x-.003*n,-Math.PI/2+.001,Math.PI/2-.001),e.quaternion.setFromEuler("
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 9926,
+    "offset_bytes": 9929,
+    "context": "rn y.x=t.MathUtils.clamp(y.x,s.minX,s.maxX),y.z=t.MathUtils.clamp(y.z,s.minZ,s.maxZ),y}}}],851450),e.s([\"cinematicPlayback\",0,function(e){let a=new t.PerspectiveCamera(42,1,.12,1600),n=(0,u.cinemaClock)();a.up.set(0,1,0);let i=null,o=null,r=\"idle\",s=null,l=0,d=0,c=0,h=null,p=\"\",f=0,m=!1,g=null,x=null,y=(t=performance.now(),a=!1)=>{(a||!(t-d<180))&&(d=t,e({phase:r,time:c,duration:i?.duration??0,shot:i?.sample(c).shot??0,message:p||void 0}))},w=e=>{n.reset(),x&&x(Error(e||\"Preparation cancelled.\")),g=null,x=null,s?.(),s=null,i=null,o=null,r=e?\"error\":\"idle\",p=e??\"\",c=0,y(0,!0)};return{camera:a,prepare:function(e,t){return w(),i=(0,u.compileCinema)(e.sequence),o=e,s=t(),r=\"preparing\",l=performance.now(),d=0,c=0,f=0,m=!1,h=null,p=\"Preparing the shot views…\",y(0,!0),new Promise((e,t)=>{g=e,x=t}"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 311413,
+    "offset_bytes": 311634,
+    "context": ")(aa,t.capabilities.getMaxAnisotropy()),ak=(0,e_.createParcelAddresses)(aa),aE=null,aC=\"\",aP=new Z.OrthographicCamera(-30,30,22,-22,.1,1400),aI=new Z.PerspectiveCamera(ts.FIRST_PERSON_FOV,1,.055,240);aI.rotation.order=\"YXZ\";let aR=aP,aT=new Z.Vector3,aD=0,aO=!1,a_=(0,ts.lookFromAvatar)(Math.PI),aN=!1,aL={yaw:0,pitch:0},aG=null,aF=ee.OFFICE_SPAWN.x,aB=ee.OFFICE_SPAWN.z,aW=ee.DEFAULT_ENTRY_CAMERA.size,aV=crypto.randomUUID(),aU=!1,aj=!1,aH=0,aK=new Z.Color(tz.skyHorizon),aY=new Z.Color(tz.skyHorizonNight),a$=new Z.Fog(aK,70,210),aX=new Z.Fog(aK,70,210),aq=new Z.Fog(aK,45,140),aZ=new Z.Vector3(ee.OFFICE_SPAWN.x,0,ee.OFFICE_SPAWN.z-1),aJ=ee.DEFAULT_ENTRY_CAMERA.angle,aQ=ee.DEFAULT_ENTRY_CAMERA.tilt,a0=6.5,a1=.36,a2=!1,a5=new Z.PerspectiveCamera(48,1,.1,300),a3=(X=new Float32Array(3*(z=new Z.Sph"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 311995,
+    "offset_bytes": 312216,
+    "context": "=new Z.Vector3(ee.OFFICE_SPAWN.x,0,ee.OFFICE_SPAWN.z-1),aJ=ee.DEFAULT_ENTRY_CAMERA.angle,aQ=ee.DEFAULT_ENTRY_CAMERA.tilt,a0=6.5,a1=.36,a2=!1,a5=new Z.PerspectiveCamera(48,1,.1,300),a3=(X=new Float32Array(3*(z=new Z.SphereGeometry(1,24,12)).attributes.position.count),z.setAttribute(\"color\",new Z.BufferAttribute(X,3)),tn=new Z.MeshBasicMaterial({vertexColors:!0,side:Z.BackSide,fog:!1,depthWrite:!1,depthTest:!1,toneMapped:!1}),(tE=new Z.Mesh(z,tn)).name=\"sky-dome\",tE.renderOrder=-10,tE.frustumCulled=!1,tE.visible=!1,tE.raycast=()=>{},aa.add(tE),tC=new Z.Color,tO=new Z.Color,tN=new Z.Color,tG=null,{mesh:tE,update(e,t,a){tE.visible=t,t&&(!function(e){if(tG===e)return;tG=e,tC.set(e?tz.skyTopNight:tz.skyTop),tO.set(e?tz.skyHorizonNight:tz.skyHorizon);let t=z.attributes.position;for(let e=0;e<t.co"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 334122,
+    "offset_bytes": 334348,
+    "context": "+a6.x,0,d.z+a6.z)),aZ.copy(a4),it=-1/0,tW((aN=aO)?\"drag\":\"idle\"),aO||(aa.background=null,aa.fog=null,t.domElement.style.cursor=\"grab\"),l}let oB=new Z.PerspectiveCamera(ts.FIRST_PERSON_FOV,1,.08,500),oW=\"\",oV=\"walking\",oU=(0,tl.createSportsCars)(aa,t$,{pollFetch:(e,t)=>(0,i.batchedFetch)(String(e),t),onControlsOpen:()=>{iN(),i9=null},onHudMode:e=>{if(iU||oK.driving)return;let t=\"nearby\"===e?\"walking\":e;t!==oV&&(iN(),i9=null,oV=t),tT.current.onCarHudMode?.(e)},recordsHost:tT.current.raceRecordsHost?.current,activityHost:tT.current.raceActivityHost?.current,position:()=>({x:ih.position.x,z:ih.position.z,rotation:ih.rotation.y}),setPosition:e=>{ih.position.set(e.x,.78,e.z),ih.rotation.y=e.rotation},driveClear:(e,t)=>!nd.near(e,t,e$.AVATAR_COLLISION_RADIUS).some(a=>(0,td.carObstacleBlocks)(a,e,"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "PerspectiveCamera",
+    "offset_utf16_approx": 336042,
+    "offset_bytes": 336268,
+    "context": "(),i9=null,aO&&(a_=(0,ts.lookFromAvatar)(ih.rotation.y)),it=-1/0},onToggleCamera:()=>{o2(),o5(!aO),t.domElement.focus({preventScroll:!0})}}),oj=new Z.PerspectiveCamera(64,1,.08,700),oH=null,oK=(0,tc.createOceanBoats)(aa,t$,{sharedPrompt:!0,kayaks:nF.placements.filter(e=>\"Kayak\"===e.asset),walkClear:(e,t,a)=>(0,tx.onCoastalFloor)(e,t)&&!(0,tu.kayakBoardingBlocked)(nd.near(e,t,.6),e,t,a)&&oU.arrivalClear(e,t),view:()=>({x:aZ.x,z:aZ.z,zoom:aW}),position:()=>({x:ih.position.x,z:ih.position.z,rotation:ih.rotation.y}),identity:()=>tT.current.me?.id,safeReturn:e=>oS(e.x,e.z)&&oU.arrivalClear(e.x,e.z)?e:{...tx.MARINAS.map(e=>(0,tx.marinaArrival)(e)).find(e=>oS(e.x,e.z))??ee.OFFICE_SPAWN,rotation:e.rotation,speed:0},onRaceStart:()=>{oH={firstPerson:aO,look:{...a_},angle:aJ,tilt:aQ,size:a0,following"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "OrthographicCamera",
+    "offset_utf16_approx": 311362,
+    "offset_bytes": 311583,
+    "context": "ateYouTubeLayer)(t$),aA=(0,eG.createParcelMarkLayer)(aa,t.capabilities.getMaxAnisotropy()),ak=(0,e_.createParcelAddresses)(aa),aE=null,aC=\"\",aP=new Z.OrthographicCamera(-30,30,22,-22,.1,1400),aI=new Z.PerspectiveCamera(ts.FIRST_PERSON_FOV,1,.055,240);aI.rotation.order=\"YXZ\";let aR=aP,aT=new Z.Vector3,aD=0,aO=!1,a_=(0,ts.lookFromAvatar)(Math.PI),aN=!1,aL={yaw:0,pitch:0},aG=null,aF=ee.OFFICE_SPAWN.x,aB=ee.OFFICE_SPAWN.z,aW=ee.DEFAULT_ENTRY_CAMERA.size,aV=crypto.randomUUID(),aU=!1,aj=!1,aH=0,aK=new Z.Color(tz.skyHorizon),aY=new Z.Color(tz.skyHorizonNight),a$=new Z.Fog(aK,70,210),aX=new Z.Fog(aK,70,210),aq=new Z.Fog(aK,45,140),aZ=new Z.Vector3(ee.OFFICE_SPAWN.x,0,ee.OFFICE_SPAWN.z-1),aJ=ee.DEFAULT_ENTRY_CAMERA.angle,aQ=ee.DEFAULT_ENTRY_CAMERA.tilt,a0=6.5,a1=.36,a2=!1,a5=new Z.PerspectiveCamera"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "requestAnimationFrame",
+    "offset_utf16_approx": 358579,
+    "offset_bytes": 358805,
+    "context": "nfo.memory.geometries}),t_(!0),tT.current.onRenderError?.(),tT.current.onReady()};return t.domElement.addEventListener(\"webglcontextlost\",rm),rp(),oe=requestAnimationFrame(function e(i){oe=requestAnimationFrame(e),t7.active&&(document.hidden||!document.hasFocus()||tT.current.cinemaError)&&t7.pause(tT.current.cinemaError??\"Playback paused while the window is inactive.\"),!t1.active||tT.current.parcelAccess?.admin&&tT.current.freeLook||t8(),(document.hidden||!document.hasFocus())&&t6(),aG=t7.frame(i,t$.clientWidth/Math.max(1,t$.clientHeight)),tR.current&&!aG?.preparing!==tR.current.hidden&&(tR.current.hidden=!aG?.preparing);let o=aG||t1.active?tT.current.cinemaPeople??[]:iT.visible(tT.current.people,i),r=tT.current.claimPreview?.ids.join(\",\")??\"\";if(tT.current.suspended&&r===np){oY.pause(),oK"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "requestAnimationFrame",
+    "offset_utf16_approx": 358618,
+    "offset_bytes": 358844,
+    "context": "nt.onRenderError?.(),tT.current.onReady()};return t.domElement.addEventListener(\"webglcontextlost\",rm),rp(),oe=requestAnimationFrame(function e(i){oe=requestAnimationFrame(e),t7.active&&(document.hidden||!document.hasFocus()||tT.current.cinemaError)&&t7.pause(tT.current.cinemaError??\"Playback paused while the window is inactive.\"),!t1.active||tT.current.parcelAccess?.admin&&tT.current.freeLook||t8(),(document.hidden||!document.hasFocus())&&t6(),aG=t7.frame(i,t$.clientWidth/Math.max(1,t$.clientHeight)),tR.current&&!aG?.preparing!==tR.current.hidden&&(tR.current.hidden=!aG?.preparing);let o=aG||t1.active?tT.current.cinemaPeople??[]:iT.visible(tT.current.people,i),r=tT.current.claimPreview?.ids.join(\",\")??\"\";if(tT.current.suspended&&r===np){oY.pause(),oK.pause(),ix.hide(),iE.tick(i,0,!1,!0,!1"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "ArrowUp",
+    "offset_utf16_approx": 5963,
+    "offset_bytes": 5966,
+    "context": ".removeFromParent(),i.dispose(),o.dispose(),r.dispose(),s.dispose(),l.dispose()}}}],761078);let c=new Set([\"KeyW\",\"KeyA\",\"KeyS\",\"KeyD\",\"KeyQ\",\"KeyE\",\"ArrowUp\",\"ArrowDown\",\"ArrowLeft\",\"ArrowRight\",\"Space\",\"ShiftLeft\",\"ShiftRight\"]);e.s([\"bindFreeLookInput\",0,function(e,t,a){let n=null,i=0,o=0,r=()=>{a.clear(),t.stopMotion(),n=null},s=e=>{!t.active||e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey||!e.target?.closest?.(\"input,textarea,select,button,a,[contenteditable=true]\")&&c.has(e.code)&&(e.preventDefault(),e.stopImmediatePropagation(),a.add(e.code))},l=e=>{a.delete(e.code)},d=a=>{t.active&&(a.preventDefault(),a.stopImmediatePropagation(),null===n&&(n=a.pointerId,i=a.clientX,o=a.clientY,e.focus({preventScroll:!0}),e.setPointerCapture(a.pointerId)))},u=e=>{t.active&&(e.stopImmediatePropa"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "ArrowUp",
+    "offset_utf16_approx": 9044,
+    "offset_bytes": 9047,
+    "context": "et h=t.MathUtils.clamp(i,0,.05),p=(...e)=>+!!e.some(e=>c.has(e));n.set(p(\"KeyD\",\"ArrowRight\")-p(\"KeyA\",\"ArrowLeft\"),0,p(\"KeyS\",\"ArrowDown\")-p(\"KeyW\",\"ArrowUp\")).applyQuaternion(e.quaternion),n.y+=p(\"KeyE\",\"Space\")-p(\"KeyQ\"),n.lengthSq()>1&&n.normalize();let f=o.speed*(p(\"ShiftLeft\",\"ShiftRight\")?3:1);n.multiplyScalar(f),a.lerp(n,1-Math.exp(-12*h)),0===n.lengthSq()&&1e-4>a.lengthSq()&&l(),e.position.addScaledVector(a,h),e.position.x=t.MathUtils.clamp(e.position.x,s.minX,s.maxX),e.position.z=t.MathUtils.clamp(e.position.z,s.minZ,s.maxZ),e.far=Math.max(4e3,4*Math.abs(e.position.y)),e.aspect=d,e.fov=o.fov,e.updateProjectionMatrix(),e.updateMatrixWorld();let m=new t.Vector3(0,0,-1).applyQuaternion(e.quaternion),g=m.y<-.02?t.MathUtils.clamp(-e.position.y/m.y,1,1e4):40,x=e.position.clone().addSca"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 7049,
+    "offset_bytes": 7052,
+    "context": "topImmediatePropagation())},m=e=>{t.active&&e.preventDefault()},g=()=>{document.hidden&&r()},x=t=>{t.target!==e&&r()};return window.addEventListener(\"keydown\",s,{capture:!0}),window.addEventListener(\"keyup\",l,{capture:!0}),window.addEventListener(\"blur\",r),document.addEventListener(\"visibilitychange\",g),document.addEventListener(\"focusin\",x),e.addEventListener(\"pointerdown\",d,{capture:!0}),e.addEventListener(\"pointermove\",u,{capture:!0}),e.addEventListener(\"pointerup\",h,{capture:!0}),e.addEventListener(\"pointercancel\",p),e.addEventListener(\"lostpointercapture\",p),e.addEventListener(\"wheel\",f,{capture:!0,passive:!1}),e.addEventListener(\"contextmenu\",m),()=>{r(),window.removeEventListener(\"keydown\",s,{capture:!0}),window.removeEventListener(\"keyup\",l,{capture:!0}),window.removeEventListener("
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 7596,
+    "offset_bytes": 7599,
+    "context": "lostpointercapture\",p),e.addEventListener(\"wheel\",f,{capture:!0,passive:!1}),e.addEventListener(\"contextmenu\",m),()=>{r(),window.removeEventListener(\"keydown\",s,{capture:!0}),window.removeEventListener(\"keyup\",l,{capture:!0}),window.removeEventListener(\"blur\",r),document.removeEventListener(\"visibilitychange\",g),document.removeEventListener(\"focusin\",x),e.removeEventListener(\"pointerdown\",d,{capture:!0}),e.removeEventListener(\"pointermove\",u,{capture:!0}),e.removeEventListener(\"pointerup\",h,{capture:!0}),e.removeEventListener(\"pointercancel\",p),e.removeEventListener(\"lostpointercapture\",p),e.removeEventListener(\"wheel\",f,{capture:!0}),e.removeEventListener(\"contextmenu\",m)}}],69401);var u=e.i(969431);e.s([\"freeLookCamera\",0,function(){let e=new t.PerspectiveCamera(50,1,.05,4e3),a=new t.Vec"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 127903,
+    "offset_bytes": 127926,
+    "context": "-u[0].rotation.x)}}}e.s([\"createAdamAvatar\",0,tu],709307),e.s([\"createAdamImpactAudio\",0,function(e){let t=null,a=!1,n=new Set;function i(n){if(!a&&(\"keydown\"!==n.type||e.contains(document.activeElement)))try{t??=new AudioContext,\"suspended\"===t.state&&t.resume().catch(()=>{})}catch{}}return e.addEventListener(\"pointerdown\",i),window.addEventListener(\"keydown\",i),{bonk(e,i){if(a||!t||\"running\"!==t.state||document.hidden||i>24||n.size>=2)return;let o=t.createOscillator(),r=t.createGain(),s=t.currentTime;o.type=\"sine\",o.frequency.setValueAtTime(e>=7?340:260,s),o.frequency.exponentialRampToValueAtTime(85,s+.09),o.frequency.exponentialRampToValueAtTime(145,s+.2),r.gain.setValueAtTime(1e-4,s),r.gain.linearRampToValueAtTime(.12*(1-i/24),s+.008),r.gain.exponentialRampToValueAtTime(1e-4,s+.23),o.c"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 128107,
+    "offset_bytes": 128130,
+    "context": ")try{t??=new AudioContext,\"suspended\"===t.state&&t.resume().catch(()=>{})}catch{}}return e.addEventListener(\"pointerdown\",i),window.addEventListener(\"keydown\",i),{bonk(e,i){if(a||!t||\"running\"!==t.state||document.hidden||i>24||n.size>=2)return;let o=t.createOscillator(),r=t.createGain(),s=t.currentTime;o.type=\"sine\",o.frequency.setValueAtTime(e>=7?340:260,s),o.frequency.exponentialRampToValueAtTime(85,s+.09),o.frequency.exponentialRampToValueAtTime(145,s+.2),r.gain.setValueAtTime(1e-4,s),r.gain.linearRampToValueAtTime(.12*(1-i/24),s+.008),r.gain.exponentialRampToValueAtTime(1e-4,s+.23),o.connect(r),r.connect(t.destination),n.add(o),o.onended=()=>{n.delete(o),o.disconnect(),r.disconnect()},o.start(),o.stop(s+.24)},dispose(){for(let t of(a=!0,e.removeEventListener(\"pointerdown\",i),window.rem"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 128775,
+    "offset_bytes": 128798,
+    "context": ".disconnect(),r.disconnect()},o.start(),o.stop(s+.24)},dispose(){for(let t of(a=!0,e.removeEventListener(\"pointerdown\",i),window.removeEventListener(\"keydown\",i),n))try{t.stop()}catch{}n.clear(),t&&t.close().catch(()=>{}),t=null}}}],516789);var th=e.i(691315),tp=e.i(641338),tf=e.i(896066);let tm={...(0,eO.storedFootprint)(524,3,[...tp.HQ.ids],0).shape,preserveRowAisles:!0},tg={id:\"hq-room\",type:\"room\",title:\"Cubicles HQ\",x:0,z:0,starter:!1};e.s([\"HQ_OFFICE\",0,tm,\"HQ_ROOM\",0,tg],293983);var tx=e.i(455734);e.s([\"createHqScene\",0,function(e,a){let n=new t.Group;n.name=\"Cubicles HQ\",n.visible=!1,e.add(n);let i=new t.Group;n.add(i);let o=a.piece;for(let e of tf.HQ_DESKS){for(let t of(o(i,e.x,1.12,e.z,e.w,.18,e.d,\"#dbc2a0\"),[-1.1,1.1]))o(i,e.x+t,.55,e.z,.13,1.05,1.1,\"#656b60\");o(i,e.x,1.63,e.z-."
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 145737,
+    "offset_bytes": 145770,
+    "context": "ecenter(),k.onclick=()=>{s&&d&&(\"ready\"===p?(D.start(),D.active&&(x(\"tilt\"),h=!1,O())):D.enable())},[y,C]))e.onpointerdown=e=>e.stopPropagation(),e.onkeydown=e=>e.stopPropagation(),e.onclick=e=>e.stopPropagation();function N(e,t,a,n){let l=document.createElement(\"button\");l.type=\"button\",l.className=`car-touch-${e}`,l.textContent=t,l.setAttribute(\"aria-label\",a),l.setAttribute(\"aria-pressed\",\"false\"),r.set(e,l),n.append(l),l.oncontextmenu=e=>e.preventDefault(),l.onpointerdown=t=>{if(!s||h||\"mouse\"===t.pointerType&&0!==t.button)return;t.preventDefault(),t.stopPropagation(),l.setPointerCapture(t.pointerId);let a=o.get(e)??new Set;a.add(t.pointerId),o.set(e,a),l.setAttribute(\"aria-pressed\",\"true\"),(\"throttle\"===e||\"boost\"===e)&&(c=!0,i.hidden=!0)};let d=t=>{t.preventDefault(),t.stopPropagatio"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 146628,
+    "offset_bytes": 146661,
+    "context": "d\",\"false\")),l.hasPointerCapture(t.pointerId)&&l.releasePointerCapture(t.pointerId)};l.onpointerup=d,l.onpointercancel=d,l.onlostpointercapture=d,l.onkeydown=t=>{s&&!h&&(\"Enter\"===t.key||\" \"===t.key)&&(t.preventDefault(),t.stopPropagation(),o.set(e,new Set([-1])),l.setAttribute(\"aria-pressed\",\"true\"))},l.onkeyup=t=>{(\"Enter\"===t.key||\" \"===t.key)&&(t.preventDefault(),t.stopPropagation(),o.delete(e),l.setAttribute(\"aria-pressed\",\"false\"))},l.onblur=()=>{o.delete(e),l.setAttribute(\"aria-pressed\",\"false\")}}N(\"left\",\"‹\",\"Hold to steer left\",a),N(\"right\",\"›\",\"Hold to steer right\",a),N(\"boost\",\"Boost\",\"Hold to accelerate with boost\",n),N(\"brake\",\"Brake\",\"Hold to brake, then reverse\",n),N(\"throttle\",\"Go\",\"Hold to accelerate\",n),t.append(i,a,n,y,C),e.append(t);let L=()=>{document.hidden&&u()};retu"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 157655,
+    "offset_bytes": 157693,
+    "context": "(M.onControlsOpen?.(),e9?.reset())});let ey=e=>{ef.contains(e.target)||(ef.open=!1)};document.addEventListener(\"pointerdown\",ey),eu.addEventListener(\"keydown\",e=>{e.stopPropagation(),\"Escape\"===e.key&&(e.preventDefault(),ef.open=!1,em.focus())}),eu.addEventListener(\"pointerdown\",e=>e.stopPropagation()),ep.onclick=()=>{ef.open=!1,tz(\"recover\",eJ?.id??\"\")},eu.append(eh,el,ef,eo,er);let ew=\"walking\";function eb(e){e!==ew&&(ef.open=!1,ew=e,b.dataset.carMode=e,M.onHudMode?.(e))}let eM=(0,o.defaultCars)(),ev=null,eS=!1,ez=null,eA=0,ek=!1,eE=!1,eC=!1,eP=!1,eI=!1,eR=0,eT=0,eD=0,eO=null,e_=0,eN=!1,eL=null,eG={x:0,z:0},eF=null,eB=!1,eW=null,eV=0,eU=0,ej=!1,eH=null,eK=[],eY=0,e$=0,eX=\"\",eq,eZ=null,eJ=null,eQ=[],e0=0,e1=0,e2=null,e5=[],e3=null,e4,e6=!1,e8=new AbortController,e7=function(e,a,n,i=a,o=a)"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 165215,
+    "offset_bytes": 165260,
+    "context": "reventScroll:!0})};en.onclick=()=>ei(!1,!0);let eo=e=>{\"Escape\"===e.key&&eT&&(e.preventDefault(),e.stopPropagation(),ei(!1,!0))};ea.addEventListener(\"keydown\",eo),et.addEventListener(\"keydown\",eo);let er=document.createElement(\"section\");er.className=\"car-scheduled-notice\",er.hidden=!0;let es=document.createElement(\"span\"),el=document.createElement(\"span\"),ed=document.createElement(\"button\");es.setAttribute(\"role\",\"status\"),es.setAttribute(\"aria-live\",\"polite\"),el.setAttribute(\"aria-live\",\"off\"),ed.type=\"button\",er.append(es,el,ed),o.append(er);let ec=\"\",eu=document.createElement(\"details\"),eh=document.createElement(\"summary\"),ep=document.createElement(\"strong\"),ef=document.createElement(\"span\"),em=document.createElement(\"ul\");eu.className=\"car-scheduled-roster\",ef.className=\"car-scheduled"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 165249,
+    "offset_bytes": 165294,
+    "context": "ei(!1,!0);let eo=e=>{\"Escape\"===e.key&&eT&&(e.preventDefault(),e.stopPropagation(),ei(!1,!0))};ea.addEventListener(\"keydown\",eo),et.addEventListener(\"keydown\",eo);let er=document.createElement(\"section\");er.className=\"car-scheduled-notice\",er.hidden=!0;let es=document.createElement(\"span\"),el=document.createElement(\"span\"),ed=document.createElement(\"button\");es.setAttribute(\"role\",\"status\"),es.setAttribute(\"aria-live\",\"polite\"),el.setAttribute(\"aria-live\",\"off\"),ed.type=\"button\",er.append(es,el,ed),o.append(er);let ec=\"\",eu=document.createElement(\"details\"),eh=document.createElement(\"summary\"),ep=document.createElement(\"strong\"),ef=document.createElement(\"span\"),em=document.createElement(\"ul\");eu.className=\"car-scheduled-roster\",ef.className=\"car-scheduled-roster-preview\",em.setAttribute(\""
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 166512,
+    "offset_bytes": 166558,
+    "context": "tAttribute(\"aria-label\",\"Close race details\"),n.onclick=()=>{eu.open=!1,eh.focus()},t.append(a,n),e.append(t,eg,em),eu.append(e),eu.addEventListener(\"keydown\",e=>{\"Escape\"===e.key&&eu.open&&(e.preventDefault(),e.stopPropagation(),eu.open=!1,eh.focus())})}let ex=new Intl.DateTimeFormat(void 0,{hour:\"numeric\",minute:\"2-digit\",timeZoneName:\"short\"}),ey=0,ew=\"\",eb=\"\",eM=\"\",ev,eS=-1,ez=function(e,a){let n,i,o,r=new t.Group;r.name=\"Street race starting gantry\",r.visible=!1,e.add(r);let s=(f.RACE_START_MAX_X-f.RACE_START_MIN_X)/2+3;r.position.set((f.RACE_START_MIN_X+f.RACE_START_MAX_X)/2,0,h.RACE_LOOP[0].z);let l=[],d=(e,t,a,n,i,o,r)=>l.push({x:e,y:t,z:a,w:n,h:i,d:o,color:r});for(let e of[-1,1]){for(let t of(d(e*s,3.7,0,.65,7.4,.8,\"#293b38\"),d(e*s,.35,0,1.2,.7,1.5,\"#e6bd61\"),[-1,1]))d(e*s,3.7,.42"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 172424,
+    "offset_bytes": 172472,
+    "context": "\",e_),V.onclick=()=>u(\"race-quit\",e_);let eL=e=>e.stopPropagation();for(let e of[O,ea,et,er])e.addEventListener(\"pointerdown\",eL),e.addEventListener(\"keydown\",eL);let eG={minX:Math.min(...h.RACE_LOOP.map(e=>e.x))-5,minZ:Math.min(...h.RACE_LOOP.map(e=>e.z))-5},eF=Math.max(...h.RACE_LOOP.map(e=>e.x))-eG.minX+5,eB=Math.max(...h.RACE_LOOP.map(e=>e.z))-eG.minZ+5;return{update(e,t,a,i,o,s,f,x,M,v,S=0,z={}){l=!0===z.touch;let A=z.reservation??z.scheduled,k=!x&&!z.spectator||!A;if(k&&eu.open&&(eu.open=!1),A){let t=!!z.reservation?.joined||A.joined;ey!==A.startAt&&(ey=A.startAt,ew=ex.format(A.startAt));let a=e?.scheduled&&[\"countdown\",\"running\"].includes(e.phase)&&f<e.endAt;z.spectator&&!t&&!a&&f<A.cutoffAt-6e4&&(k=!0),z.spectator&&!t&&a&&f>e.startAt+1e4&&(k=!0),o&&e?.scheduled&&e.players.some(e=>e"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 186709,
+    "offset_bytes": 186825,
+    "context": "stered. We’ll bring you to the grid before the start.\")};tl.onclick=tc,ti.addEventListener(\"pointerdown\",e=>e.stopPropagation()),ti.addEventListener(\"keydown\",e=>{e.stopPropagation(),\"Escape\"===e.key&&(e.preventDefault(),tc())}),ti.append(to,tr,ts,tl),b.append(ti);let tu=()=>{ta=!1,te&&b.setAttribute(\"data-driving-options\",\"false\"),tt.setAttribute(\"aria-expanded\",\"false\"),e9?.reset()};tt.onclick=e=>{e.stopPropagation(),ta=!ta,b.setAttribute(\"data-driving-options\",String(ta)),tt.setAttribute(\"aria-expanded\",String(ta)),tt.textContent=ta?\"Close options\":\"Race options\",e9?.reset()},tt.onpointerdown=e=>e.stopPropagation();let th=e=>{ta&&e.target instanceof Element&&!e.target.closest(\".car-race-panel,.car-drive-more,.sports-car-prompt\")&&tu()};e9&&b.addEventListener(\"pointerdown\",th);let tp=e=>"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "keydown",
+    "offset_utf16_approx": 306495,
+    "offset_bytes": 306705,
+    "context": "und to walk around obstacles, double-click a cubicle to inspect it, and drag to rotate the camera.\"),t.domElement.tabIndex=0,window.addEventListener(\"keydown\",o6,!0);let t1=(0,H.freeLookCamera)(),t2=new Set,t5=null,t3=null,t4=(0,j.bindFreeLookInput)(t.domElement,t1,t2),t6=()=>{t2.clear(),t1.stopMotion()};function t8(){t1.stop(),t5=null,t6(),t3?.(),t3=null}let t7=(0,K.cinematicPlayback)(e=>tT.current.onCinemaStatus?.(e)),t9=(0,V.createTVCamera)(e=>tT.current.onBroadcastShot?.(e)),ae=null,at=\"\",aa=new Z.Scene,an=(0,J.createGooddayBlimp)(aa,ec.ISLAND_BOUNDS),ai=0,ao=null,ar=document.createElement(\"div\");Object.assign(ar.style,{position:\"absolute\",bottom:\"90px\",left:\"50%\",transform:\"translateX(-50%)\",zIndex:\"30\",background:\"#193d72\",color:\"#fff3d7\",padding:\"12px 18px\",borderRadius:\"14px\",textA"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 7263,
+    "offset_bytes": 7266,
+    "context": "ure:!0}),window.addEventListener(\"blur\",r),document.addEventListener(\"visibilitychange\",g),document.addEventListener(\"focusin\",x),e.addEventListener(\"pointerdown\",d,{capture:!0}),e.addEventListener(\"pointermove\",u,{capture:!0}),e.addEventListener(\"pointerup\",h,{capture:!0}),e.addEventListener(\"pointercancel\",p),e.addEventListener(\"lostpointercapture\",p),e.addEventListener(\"wheel\",f,{capture:!0,passive:!1}),e.addEventListener(\"contextmenu\",m),()=>{r(),window.removeEventListener(\"keydown\",s,{capture:!0}),window.removeEventListener(\"keyup\",l,{capture:!0}),window.removeEventListener(\"blur\",r),document.removeEventListener(\"visibilitychange\",g),document.removeEventListener(\"focusin\",x),e.removeEventListener(\"pointerdown\",d,{capture:!0}),e.removeEventListener(\"pointermove\",u,{capture:!0}),e.remov"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 7825,
+    "offset_bytes": 7828,
+    "context": "dow.removeEventListener(\"blur\",r),document.removeEventListener(\"visibilitychange\",g),document.removeEventListener(\"focusin\",x),e.removeEventListener(\"pointerdown\",d,{capture:!0}),e.removeEventListener(\"pointermove\",u,{capture:!0}),e.removeEventListener(\"pointerup\",h,{capture:!0}),e.removeEventListener(\"pointercancel\",p),e.removeEventListener(\"lostpointercapture\",p),e.removeEventListener(\"wheel\",f,{capture:!0}),e.removeEventListener(\"contextmenu\",m)}}],69401);var u=e.i(969431);e.s([\"freeLookCamera\",0,function(){let e=new t.PerspectiveCamera(50,1,.05,4e3),a=new t.Vector3,n=new t.Vector3,i=new t.Euler(0,0,0,\"YXZ\"),o={speed:12,fov:50},r=!1,s=null,l=()=>a.set(0,0,0);return{camera:e,settings:o,stopMotion:l,get active(){return r},start(t,a){s=a,e.position.copy(t.position),e.quaternion.copy(t.quat"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 128066,
+    "offset_bytes": 128089,
+    "context": "type||e.contains(document.activeElement)))try{t??=new AudioContext,\"suspended\"===t.state&&t.resume().catch(()=>{})}catch{}}return e.addEventListener(\"pointerdown\",i),window.addEventListener(\"keydown\",i),{bonk(e,i){if(a||!t||\"running\"!==t.state||document.hidden||i>24||n.size>=2)return;let o=t.createOscillator(),r=t.createGain(),s=t.currentTime;o.type=\"sine\",o.frequency.setValueAtTime(e>=7?340:260,s),o.frequency.exponentialRampToValueAtTime(85,s+.09),o.frequency.exponentialRampToValueAtTime(145,s+.2),r.gain.setValueAtTime(1e-4,s),r.gain.linearRampToValueAtTime(.12*(1-i/24),s+.008),r.gain.exponentialRampToValueAtTime(1e-4,s+.23),o.connect(r),r.connect(t.destination),n.add(o),o.onended=()=>{n.delete(o),o.disconnect(),r.disconnect()},o.start(),o.stop(s+.24)},dispose(){for(let t of(a=!0,e.remove"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 128731,
+    "offset_bytes": 128754,
+    "context": "ation),n.add(o),o.onended=()=>{n.delete(o),o.disconnect(),r.disconnect()},o.start(),o.stop(s+.24)},dispose(){for(let t of(a=!0,e.removeEventListener(\"pointerdown\",i),window.removeEventListener(\"keydown\",i),n))try{t.stop()}catch{}n.clear(),t&&t.close().catch(()=>{}),t=null}}}],516789);var th=e.i(691315),tp=e.i(641338),tf=e.i(896066);let tm={...(0,eO.storedFootprint)(524,3,[...tp.HQ.ids],0).shape,preserveRowAisles:!0},tg={id:\"hq-room\",type:\"room\",title:\"Cubicles HQ\",x:0,z:0,starter:!1};e.s([\"HQ_OFFICE\",0,tm,\"HQ_ROOM\",0,tg],293983);var tx=e.i(455734);e.s([\"createHqScene\",0,function(e,a){let n=new t.Group;n.name=\"Cubicles HQ\",n.visible=!1,e.add(n);let i=new t.Group;n.add(i);let o=a.piece;for(let e of tf.HQ_DESKS){for(let t of(o(i,e.x,1.12,e.z,e.w,.18,e.d,\"#dbc2a0\"),[-1.1,1.1]))o(i,e.x+t,.55,e."
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 145698,
+    "offset_bytes": 145731,
+    "context": "s&&d&&(u(),h=!0,O())},R.onclick=()=>D.recenter(),k.onclick=()=>{s&&d&&(\"ready\"===p?(D.start(),D.active&&(x(\"tilt\"),h=!1,O())):D.enable())},[y,C]))e.onpointerdown=e=>e.stopPropagation(),e.onkeydown=e=>e.stopPropagation(),e.onclick=e=>e.stopPropagation();function N(e,t,a,n){let l=document.createElement(\"button\");l.type=\"button\",l.className=`car-touch-${e}`,l.textContent=t,l.setAttribute(\"aria-label\",a),l.setAttribute(\"aria-pressed\",\"false\"),r.set(e,l),n.append(l),l.oncontextmenu=e=>e.preventDefault(),l.onpointerdown=t=>{if(!s||h||\"mouse\"===t.pointerType&&0!==t.button)return;t.preventDefault(),t.stopPropagation(),l.setPointerCapture(t.pointerId);let a=o.get(e)??new Set;a.add(t.pointerId),o.set(e,a),l.setAttribute(\"aria-pressed\",\"true\"),(\"throttle\"===e||\"boost\"===e)&&(c=!0,i.hidden=!0)};let d="
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 146056,
+    "offset_bytes": 146089,
+    "context": ".textContent=t,l.setAttribute(\"aria-label\",a),l.setAttribute(\"aria-pressed\",\"false\"),r.set(e,l),n.append(l),l.oncontextmenu=e=>e.preventDefault(),l.onpointerdown=t=>{if(!s||h||\"mouse\"===t.pointerType&&0!==t.button)return;t.preventDefault(),t.stopPropagation(),l.setPointerCapture(t.pointerId);let a=o.get(e)??new Set;a.add(t.pointerId),o.set(e,a),l.setAttribute(\"aria-pressed\",\"true\"),(\"throttle\"===e||\"boost\"===e)&&(c=!0,i.hidden=!0)};let d=t=>{t.preventDefault(),t.stopPropagation();let a=o.get(e);a?.delete(t.pointerId),a?.size||(o.delete(e),l.setAttribute(\"aria-pressed\",\"false\")),l.hasPointerCapture(t.pointerId)&&l.releasePointerCapture(t.pointerId)};l.onpointerup=d,l.onpointercancel=d,l.onlostpointercapture=d,l.onkeydown=t=>{s&&!h&&(\"Enter\"===t.key||\" \"===t.key)&&(t.preventDefault(),t.stopP"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 156406,
+    "offset_bytes": 156444,
+    "context": "(\"role\",\"status\"),b.append(es);let el=document.createElement(\"button\");el.type=\"button\",el.onclick=e=>{e.stopPropagation(),M.onToggleCamera?.()},el.onpointerdown=e=>e.stopPropagation(),el.className=\"sports-car-camera-hint\",el.hidden=!0,b.append(el);let ed=(0,n.getControlInput)(),ec=(0,n.observeControlInput)(e=>{ed=e,b.dataset.controlInput=e}),eu=document.createElement(\"div\");eu.className=\"car-drive-bar\",eu.hidden=!0,eu.setAttribute(\"aria-label\",\"Car controls\"),b.append(eu);let eh=document.createElement(\"strong\");eh.className=\"car-drive-name\";let ep=document.createElement(\"button\");ep.type=\"button\",ep.className=\"car-drive-recover\",ep.textContent=\"Recover\",ep.title=\"Move the car back to a clear road\",ep.onclick=()=>void tz(\"recover\",eJ?.id??\"\");let ef=document.createElement(\"details\");ef.cla"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 157617,
+    "offset_bytes": 157655,
+    "context": "dEventListener(\"toggle\",()=>{ef.open&&(M.onControlsOpen?.(),e9?.reset())});let ey=e=>{ef.contains(e.target)||(ef.open=!1)};document.addEventListener(\"pointerdown\",ey),eu.addEventListener(\"keydown\",e=>{e.stopPropagation(),\"Escape\"===e.key&&(e.preventDefault(),ef.open=!1,em.focus())}),eu.addEventListener(\"pointerdown\",e=>e.stopPropagation()),ep.onclick=()=>{ef.open=!1,tz(\"recover\",eJ?.id??\"\")},eu.append(eh,el,ef,eo,er);let ew=\"walking\";function eb(e){e!==ew&&(ef.open=!1,ew=e,b.dataset.carMode=e,M.onHudMode?.(e))}let eM=(0,o.defaultCars)(),ev=null,eS=!1,ez=null,eA=0,ek=!1,eE=!1,eC=!1,eP=!1,eI=!1,eR=0,eT=0,eD=0,eO=null,e_=0,eN=!1,eL=null,eG={x:0,z:0},eF=null,eB=!1,eW=null,eV=0,eU=0,ej=!1,eH=null,eK=[],eY=0,e$=0,eX=\"\",eq,eZ=null,eJ=null,eQ=[],e0=0,e1=0,e2=null,e5=[],e3=null,e4,e6=!1,e8=new Abor"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 157772,
+    "offset_bytes": 157810,
+    "context": "erdown\",ey),eu.addEventListener(\"keydown\",e=>{e.stopPropagation(),\"Escape\"===e.key&&(e.preventDefault(),ef.open=!1,em.focus())}),eu.addEventListener(\"pointerdown\",e=>e.stopPropagation()),ep.onclick=()=>{ef.open=!1,tz(\"recover\",eJ?.id??\"\")},eu.append(eh,el,ef,eo,er);let ew=\"walking\";function eb(e){e!==ew&&(ef.open=!1,ew=e,b.dataset.carMode=e,M.onHudMode?.(e))}let eM=(0,o.defaultCars)(),ev=null,eS=!1,ez=null,eA=0,ek=!1,eE=!1,eC=!1,eP=!1,eI=!1,eR=0,eT=0,eD=0,eO=null,e_=0,eN=!1,eL=null,eG={x:0,z:0},eF=null,eB=!1,eW=null,eV=0,eU=0,ej=!1,eH=null,eK=[],eY=0,e$=0,eX=\"\",eq,eZ=null,eJ=null,eQ=[],e0=0,e1=0,e2=null,e5=[],e3=null,e4,e6=!1,e8=new AbortController,e7=function(e,a,n,i=a,o=a){let r=o!==a,s=window.matchMedia?.(\"(any-pointer: coarse)\"),l=!1,d=()=>l||!!s?.matches,c=0,u=(e,t)=>{if(d()&&Date.now"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 172387,
+    "offset_bytes": 172435,
+    "context": "pt\",e_),W.onclick=()=>n(\"race-decline\",e_),V.onclick=()=>u(\"race-quit\",e_);let eL=e=>e.stopPropagation();for(let e of[O,ea,et,er])e.addEventListener(\"pointerdown\",eL),e.addEventListener(\"keydown\",eL);let eG={minX:Math.min(...h.RACE_LOOP.map(e=>e.x))-5,minZ:Math.min(...h.RACE_LOOP.map(e=>e.z))-5},eF=Math.max(...h.RACE_LOOP.map(e=>e.x))-eG.minX+5,eB=Math.max(...h.RACE_LOOP.map(e=>e.z))-eG.minZ+5;return{update(e,t,a,i,o,s,f,x,M,v,S=0,z={}){l=!0===z.touch;let A=z.reservation??z.scheduled,k=!x&&!z.spectator||!A;if(k&&eu.open&&(eu.open=!1),A){let t=!!z.reservation?.joined||A.joined;ey!==A.startAt&&(ey=A.startAt,ew=ex.format(A.startAt));let a=e?.scheduled&&[\"countdown\",\"running\"].includes(e.phase)&&f<e.endAt;z.spectator&&!t&&!a&&f<A.cutoffAt-6e4&&(k=!0),z.spectator&&!t&&a&&f>e.startAt+1e4&&(k=!0)"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 186651,
+    "offset_bytes": 186767,
+    "context": "ace-practice\",td);let tc=()=>{ti.hidden=!0,tp(\"You’re registered. We’ll bring you to the grid before the start.\")};tl.onclick=tc,ti.addEventListener(\"pointerdown\",e=>e.stopPropagation()),ti.addEventListener(\"keydown\",e=>{e.stopPropagation(),\"Escape\"===e.key&&(e.preventDefault(),tc())}),ti.append(to,tr,ts,tl),b.append(ti);let tu=()=>{ta=!1,te&&b.setAttribute(\"data-driving-options\",\"false\"),tt.setAttribute(\"aria-expanded\",\"false\"),e9?.reset()};tt.onclick=e=>{e.stopPropagation(),ta=!ta,b.setAttribute(\"data-driving-options\",String(ta)),tt.setAttribute(\"aria-expanded\",String(ta)),tt.textContent=ta?\"Close options\":\"Race options\",e9?.reset()},tt.onpointerdown=e=>e.stopPropagation();let th=e=>{ta&&e.target instanceof Element&&!e.target.closest(\".car-race-panel,.car-drive-more,.sports-car-prompt\")&"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 187150,
+    "offset_bytes": 187266,
+    "context": "ute(\"data-driving-options\",String(ta)),tt.setAttribute(\"aria-expanded\",String(ta)),tt.textContent=ta?\"Close options\":\"Race options\",e9?.reset()},tt.onpointerdown=e=>e.stopPropagation();let th=e=>{ta&&e.target instanceof Element&&!e.target.closest(\".car-race-panel,.car-drive-more,.sports-car-prompt\")&&tu()};e9&&b.addEventListener(\"pointerdown\",th);let tp=e=>{es.textContent=e,eD=performance.now()},tf=()=>eM.find(e=>e.id===ev)??null,tm=e=>!e.driver&&!e.passenger&&!(e.coast&&Date.now()+e0<e.coast.at+1e3*e.coast.duration)&&!z(e.id)&&[eJ,eq,eZ].some(e=>e&&(\"countdown\"===e.phase||\"running\"===e.phase)&&Date.now()+e0<e.endAt),tg=(e,t)=>(0,o.carPedestrianClear)(eM.filter(e=>!e.ghost&&!tm(e)),e,t),tx=e=>(0,o.carExit)(e,(e,t)=>M.clear(e,t)&&tg(e,t))??((0,o.carFloatAmount)(e.x,e.z)>0?(0,o.carSafeShore)"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 187332,
+    "offset_bytes": 187448,
+    "context": "();let th=e=>{ta&&e.target instanceof Element&&!e.target.closest(\".car-race-panel,.car-drive-more,.sports-car-prompt\")&&tu()};e9&&b.addEventListener(\"pointerdown\",th);let tp=e=>{es.textContent=e,eD=performance.now()},tf=()=>eM.find(e=>e.id===ev)??null,tm=e=>!e.driver&&!e.passenger&&!(e.coast&&Date.now()+e0<e.coast.at+1e3*e.coast.duration)&&!z(e.id)&&[eJ,eq,eZ].some(e=>e&&(\"countdown\"===e.phase||\"running\"===e.phase)&&Date.now()+e0<e.endAt),tg=(e,t)=>(0,o.carPedestrianClear)(eM.filter(e=>!e.ghost&&!tm(e)),e,t),tx=e=>(0,o.carExit)(e,(e,t)=>M.clear(e,t)&&tg(e,t))??((0,o.carFloatAmount)(e.x,e.z)>0?(0,o.carSafeShore)(e,(e,t)=>M.clear(e,t)&&tg(e,t)):null),ty=e=>M.setPosition((0,o.carSeatPose)(e,eS));function tw(e){e_=0,eL=null,eN=!1;let t=tf();if(t){let a=e??tx(t);a&&M.setPosition(a),ek||!ez||z(t"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "pointerdown",
+    "offset_utf16_approx": 195441,
+    "offset_bytes": 195572,
+    "context": "ner(\"cubicles-join-race\",tA),eo.onclick=()=>{if(\"touch\"===ed&&ev&&\"race\"===ew&&performance.now()>tn){tn=performance.now()+3500;return}tn=0,tS()},eo.onpointerdown=e=>e.stopPropagation(),er.onclick=()=>{ev&&eS&&!tf()?.driver&&tv(ev,!1)},{arrivalClear:tg,pedestrianClear:(e,t)=>tg(e,t)&&(0,o.carPedestrianClear)(eM.filter(e=>!e.ghost&&!tm(e)).map(e=>B.get(e.id).position),e,t),pedestrianCars:()=>W,exitRollFor:e=>eM.reduce((t,a)=>a.exitRoll?.actor===e&&(!t||a.exitRoll.at>t.at)?a.exitRoll:t,null),serverNow:()=>Date.now()+e0,raceCamera:()=>{let e=tf();if(!e)return null;let t=null;if(!e2||e2.car!==e.id||eS||eJ&&[\"countdown\",\"running\"].includes(eJ.phase)&&eJ.players.some(t=>t.car===e.id&&!t.forfeit)){let a=eJ?.players.find(t=>t.car===e.id&&!t.forfeit);a&&eJ&&\"invitation\"!==eJ.phase&&(t={id:eJ.id,star"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "setInterval",
+    "offset_utf16_approx": 20915,
+    "offset_bytes": 20924,
+    "context": "ch{!x()&&p&&Date.now()-r>6e3&&m()}finally{o=!1}}function x(){d?.visibilityState!==\"hidden\"&&(s=0,g())}d?.addEventListener(\"visibilitychange\",x);let y=setInterval(()=>{g()},500);return g(),{get occupied(){return!!c.pilot&&!a},get pending(){return n},get name(){return c.name},async claim(){if(i||n||a)return!1;n=!0;let e=crypto.randomUUID(),t=++l,o=Date.now();try{let n=await h(\"claim\",e),s=await n.json();if(n.ok&&s.accepted){if(i||l!==t)return h(\"release\",e).catch(()=>{}),!1;return a=e,r=o,u(s),!0}return i||l!==t||409!==n.status||u(s),!1}catch{return h(\"release\",e).catch(()=>{}),!1}finally{l===t&&(n=!1)}},release:p,dispose(){i=!0,clearInterval(y),d?.removeEventListener(\"visibilitychange\",x),p()}}}],840050);var m=e.i(786126),g=e.i(600053),x=e.i(109428),y=e.i(552260),w=e.i(485084),b=e.i(67195),"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 79026,
+    "offset_bytes": 79043,
+    "context": ".points.length)return void this.finish();this.progressRemaining=(0,eV.distance)(this.position(),this.points[this.at])+this.tails[this.at],this.state=\"walking\"}};this.planner.geometry.walkable(t)&&this.planner.geometry.clear(e,t,!0)?i({points:[t],requested:t,goal:t,exact:!0,visited:0}):this.planner.plan(e,t).then(i).catch(()=>{a===this.serial&&n===this.planner.version&&(this.pending=!1,this.points=[],this.state=\"blocked\",this.requested=null)})}finish(){if(this.requested&&this.unknown(this.requested)&&this.time<this.waitingUntil){this.state=\"waiting\",this.points=[];return}this.state=this.goal&&this.requested&&.03>(0,eV.distance)(this.goal,this.requested)?\"arrived\":this.goal&&.08>(0,eV.distance)(this.position(),this.goal)?\"nearest\":\"blocked\",this.requested=null,this.points=[],this.pending=!1}"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 80411,
+    "offset_bytes": 80428,
+    "context": "-1?.025:1e-5);)this.at++;if(this.at>=this.points.length)return!this.pending&&\"planning\"===this.state&&e>=this.nextSearch?this.search():this.pending||\"walking\"!==this.state||this.finish(),null;for(;this.at+1<this.points.length&&6>(0,eV.distance)(a,this.points[this.at+1])&&this.planner.geometry.clear(a,this.points[this.at+1],!0);)this.at++;let n=this.points[this.at],i=(0,eV.distance)(a,n),o=i>1.2?{x:a.x+(n.x-a.x)*1.2/i,z:a.z+(n.z-a.z)*1.2/i}:n;if(!this.planner.geometry.clear(a,o,!0))return this.points=[],this.state=\"planning\",!this.pending&&e>=this.nextSearch&&this.search(),null;let r=(0,eV.distance)(a,n);if(this.at+1<this.points.length&&r<.85){let e=this.points[this.at+1],t=(0,eV.distance)(n,e),i=Math.min(t,.65,Math.max(0,.85-r));if(t>.001){let o={x:n.x+(e.x-n.x)*i/t,z:n.z+(e.z-n.z)*i/t};th"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 133506,
+    "offset_bytes": 133529,
+    "context": "){let i=l.get(n.id);i.root.visible=r||\"adam\"!==n.id;let o=(0,tf.routePosition)(n.location,n.target,n.updated,t),s=(0,tp.agentProfile)(n.id).desk,d=!o.walking&&.15>Math.hypot(o.x-s.x,o.z-s.z)&&\"adam\"!==n.id;i.root.position.set(o.x,.2*!d,o.z),i.root.rotation.y=o.rotation,i.update(t/1e3,a,!1,o.walking&&!e.paused&&!n.paused,d)}},dispose(){(0,th.disposeWorldSign)(s),e.remove(n)}}}],141799);let ty=1/Math.hypot(20,22),tw={x:20*ty,y:0,z:22*ty},tb=Math.hypot(22,38,20),tM={x:-22/tb,y:38/tb,z:20/tb},tv={x:tM.y*tw.z-tM.z*tw.y,y:tM.z*tw.x-tM.x*tw.z,z:tM.x*tw.y-tM.y*tw.x};e.s([\"cameraShadowCoverage\",0,function(e,t,a,n=!1){if(n)return{span:80,distance:tb,near:1,far:100,intensity:1};let i=Math.max(.1,a),o=Math.hypot(e*t/2,e/(2*Math.sin(i)))+8/Math.tan(i),r=Math.max(40,o+8+8),s=o*Math.hypot(tM.x,tM.z)+8*tM"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 133648,
+    "offset_bytes": 133671,
+    "context": "sk,d=!o.walking&&.15>Math.hypot(o.x-s.x,o.z-s.z)&&\"adam\"!==n.id;i.root.position.set(o.x,.2*!d,o.z),i.root.rotation.y=o.rotation,i.update(t/1e3,a,!1,o.walking&&!e.paused&&!n.paused,d)}},dispose(){(0,th.disposeWorldSign)(s),e.remove(n)}}}],141799);let ty=1/Math.hypot(20,22),tw={x:20*ty,y:0,z:22*ty},tb=Math.hypot(22,38,20),tM={x:-22/tb,y:38/tb,z:20/tb},tv={x:tM.y*tw.z-tM.z*tw.y,y:tM.z*tw.x-tM.x*tw.z,z:tM.x*tw.y-tM.y*tw.x};e.s([\"cameraShadowCoverage\",0,function(e,t,a,n=!1){if(n)return{span:80,distance:tb,near:1,far:100,intensity:1};let i=Math.max(.1,a),o=Math.hypot(e*t/2,e/(2*Math.sin(i)))+8/Math.tan(i),r=Math.max(40,o+8+8),s=o*Math.hypot(tM.x,tM.z)+8*tM.y+8,l=Math.max(tb,s+2),d=Math.max(100,l+s+2),c=Math.max(0,Math.min(1,(e-105)/25));return{span:2*r,distance:l,near:1,far:d,intensity:1-c*c*(3-"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 157896,
+    "offset_bytes": 157934,
+    "context": "))}),eu.addEventListener(\"pointerdown\",e=>e.stopPropagation()),ep.onclick=()=>{ef.open=!1,tz(\"recover\",eJ?.id??\"\")},eu.append(eh,el,ef,eo,er);let ew=\"walking\";function eb(e){e!==ew&&(ef.open=!1,ew=e,b.dataset.carMode=e,M.onHudMode?.(e))}let eM=(0,o.defaultCars)(),ev=null,eS=!1,ez=null,eA=0,ek=!1,eE=!1,eC=!1,eP=!1,eI=!1,eR=0,eT=0,eD=0,eO=null,e_=0,eN=!1,eL=null,eG={x:0,z:0},eF=null,eB=!1,eW=null,eV=0,eU=0,ej=!1,eH=null,eK=[],eY=0,e$=0,eX=\"\",eq,eZ=null,eJ=null,eQ=[],e0=0,e1=0,e2=null,e5=[],e3=null,e4,e6=!1,e8=new AbortController,e7=function(e,a,n,i=a,o=a){let r=o!==a,s=window.matchMedia?.(\"(any-pointer: coarse)\"),l=!1,d=()=>l||!!s?.matches,c=0,u=(e,t)=>{if(d()&&Date.now()>c){c=Date.now()+3500,V.textContent=\"Tap again to leave\";return}c=0,n(e,t)},b=new t.Group;b.name=\"Temporary race course ov"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 188337,
+    "offset_bytes": 188453,
+    "context": "?[])e.visible=!1;Z=0,tu(),e9?.reset(),te&&b.removeAttribute(\"data-driving\"),ev=null,eS=!1,ez=null,eA=0,eG={x:0,z:0},eB=!1,eW=null,eK=[],eY=0,e$=0,eb(\"walking\")}async function tb(e){if(e&&M.spectator?.())throw Error(\"TV is read-only.\");e&&Array.isArray(e.path)&&(e$=Math.max(e$,e.path.at(-1)?.seq??0));let t=M.viewPosition?.()??M.position(),a=e?\"/api/cars\":`/api/cars?viewX=${t.x.toFixed(1)}&viewZ=${t.z.toFixed(1)}${M.spectator?.()?\"&spectator=1\":\"\"}`,n=Date.now(),i=await (e||!ej?fetch:M.pollFetch??fetch)(a,{credentials:M.spectator?.()?\"omit\":\"same-origin\",method:e?\"POST\":\"GET\",headers:e?{\"Content-Type\":\"application/json\"}:void 0,body:e?JSON.stringify(e):void 0,cache:\"no-store\",signal:AbortSignal.any([e8.signal,AbortSignal.timeout(4e3)])}),o=await i.json();if(!i.ok)throw Object.assign(Error(o."
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 203757,
+    "offset_bytes": 203903,
+    "context": "led:eq,reservation:eZ,spectator:!!M.spectator?.()})},dispose(){for(let e of(eC=!0,ti.remove(),document.removeEventListener(\"pointerdown\",ey),ec(),eb(\"walking\"),delete b.dataset.carMode,delete b.dataset.controlInput,eu.remove(),e9?.dispose(),tt.remove(),e9&&(b.removeEventListener(\"pointerdown\",th),b.removeAttribute(\"data-driving\"),b.removeAttribute(\"data-driving-options\")),window.removeEventListener(\"cubicles-join-race\",tA),e8.abort(),e7.dispose(),ea.keys()))en(e);for(let e of Y.values())for(let t of e)t.dispose();Y.clear(),eo.remove(),er.remove(),es.remove(),el.remove(),k.dispose(),e.remove(S),X.dispose(),C.forEach(e=>e.dispose()),P.forEach(e=>e.dispose())}}}],947808);var k=e.i(538595),E=e.i(209456),C=e.i(691315),P=e.i(511801);let I=\"out-of-office-sprint-v3\",R=\"Out of Office Sprint\",T=(e,t"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 298735,
+    "offset_bytes": 298945,
+    "context": "nReturn:n}){let i=\"touch\"===(0,z.useControlInput)(),o=(0,A.useCompactHud)(),r=t||o,s=\"first-person\"===e?\"Switch to third person\":\"sky\"===e?\"Return to walking\":\"Switch to first person\";return(0,S.jsxs)(\"button\",{className:\"camera-mode-button camera-view-trigger\",type:\"button\",disabled:r,\"aria-label\":s,title:i?s:`${s} (${\"first-person\"===e?`${E.KEY_LABELS.exitFirstPerson} or ${E.KEY_LABELS.camera}`:E.KEY_LABELS.camera})`,onKeyDown:e=>{(0,E.worldKey)(e,\"camera\")||(0,E.worldKey)(e,\"exitFirstPerson\")||e.stopPropagation()},onClick:()=>{r||(\"sky\"===e?n():a(\"first-person\"===e?\"isometric\":\"first-person\"))},children:[(0,S.jsx)(k.Camera,{size:20,\"aria-hidden\":\"true\"}),(0,S.jsx)(\"span\",{children:\"first-person\"===e?\"Third person\":\"sky\"===e?\"Walk\":\"First person\"})]})}],379367)},335190,e=>{\"use strict\";v"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 334181,
+    "offset_bytes": 334407,
+    "context": "dle\"),aO||(aa.background=null,aa.fog=null,t.domElement.style.cursor=\"grab\"),l}let oB=new Z.PerspectiveCamera(ts.FIRST_PERSON_FOV,1,.08,500),oW=\"\",oV=\"walking\",oU=(0,tl.createSportsCars)(aa,t$,{pollFetch:(e,t)=>(0,i.batchedFetch)(String(e),t),onControlsOpen:()=>{iN(),i9=null},onHudMode:e=>{if(iU||oK.driving)return;let t=\"nearby\"===e?\"walking\":e;t!==oV&&(iN(),i9=null,oV=t),tT.current.onCarHudMode?.(e)},recordsHost:tT.current.raceRecordsHost?.current,activityHost:tT.current.raceActivityHost?.current,position:()=>({x:ih.position.x,z:ih.position.z,rotation:ih.rotation.y}),setPosition:e=>{ih.position.set(e.x,.78,e.z),ih.rotation.y=e.rotation},driveClear:(e,t)=>!nd.near(e,t,e$.AVATAR_COLLISION_RADIUS).some(a=>(0,td.carObstacleBlocks)(a,e,t)),clear:oS,identity:()=>tT.current.me?.id,firstPerson:()="
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 334366,
+    "offset_bytes": 334592,
+    "context": "(aa,t$,{pollFetch:(e,t)=>(0,i.batchedFetch)(String(e),t),onControlsOpen:()=>{iN(),i9=null},onHudMode:e=>{if(iU||oK.driving)return;let t=\"nearby\"===e?\"walking\":e;t!==oV&&(iN(),i9=null,oV=t),tT.current.onCarHudMode?.(e)},recordsHost:tT.current.raceRecordsHost?.current,activityHost:tT.current.raceActivityHost?.current,position:()=>({x:ih.position.x,z:ih.position.z,rotation:ih.rotation.y}),setPosition:e=>{ih.position.set(e.x,.78,e.z),ih.rotation.y=e.rotation},driveClear:(e,t)=>!nd.near(e,t,e$.AVATAR_COLLISION_RADIUS).some(a=>(0,td.carObstacleBlocks)(a,e,t)),clear:oS,identity:()=>tT.current.me?.id,firstPerson:()=>aO,spectator:()=>!!tT.current.broadcast,viewPosition:()=>({x:aZ.x,z:aZ.z}),canEnter:()=>!iH.active&&!an.piloting&&!i$.active&&!iU&&!oK.driving&&!iX&&!iZ&&!tT.current.paused&&!tT.curren"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 337772,
+    "offset_bytes": 337998,
+    "context": "y:0},ij.reset(),ih.rotation.x=0,ih.rotation.z=0,a8=!0,it=-1/0,t.domElement.focus({preventScroll:!0})},onMode:e=>tT.current.onCarHudMode?.(e?\"driver\":\"walking\")}),oY=(0,tp.createSkateboards)(aa,t$,{position:()=>({x:ih.position.x,z:ih.position.z,rotation:ih.rotation.y}),identity:()=>tT.current.me?.id,allowed:()=>!iH.active&&!an.piloting&&!i$.active&&!iU&&!oK.driving&&!oK.kayakNearby&&!oU.driving&&!iX&&!iZ&&!oD&&!t7.active&&!t1.active&&!tT.current.broadcast&&!tT.current.paused&&!tT.current.suspended&&!tT.current.cinematic&&!oJ.ownsMovement()&&!oJ.isPresenting()&&!oJ.isMobileSession(),standClear:(e,t)=>oS(e,t)&&oU.arrivalClear(e,t),clear:(e,t,a)=>(0,tx.onCoastalFloor)(e,t)&&oU.arrivalClear(e,t)&&!nd.near(e,t,.6).some(n=>(0,tg.skateObstacleBlocks)(n,e,t,a)),grindReady:e=>nH.grindReady(e),setRec"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 339192,
+    "offset_bytes": 339418,
+    "context": ".x,.15,e.z),ih.rotation.x=0,ih.rotation.z=0,ip=\"\",a8=!0,t.domElement.focus({preventScroll:!0})},onMode:e=>{iU=e,tT.current.onCarHudMode?.(e?\"driver\":\"walking\")},onSteer:(e,t)=>{i_={x:e,y:t},a8=!0}}),o$=null,oX=(e,t=!1)=>{t&&\"touch\"===(0,ti.getControlInput)()&&(o$||(o$={firstPerson:aO,look:{...a_},angle:aJ,tilt:aQ,size:a0,offset:a6.clone()}),o0(),aO=!0,tL(!0),aR=aI,ih.visible=!1,im.visible=!1,a_=(0,tv.fishingViewLook)(ih.position.x,ih.position.z,e,ts.FIRST_PERSON_EYE_HEIGHT+.15,t),aN=!0,tW(\"drag\"),it=-1/0,a8=!0)},oq=()=>{if(!o$)return;let e=o$;o$=null,o0(),tL(aO=e.firstPerson&&\"touch\"===(0,ti.getControlInput)()),aR=aO?aI:aP,a_=e.look,aJ=e.angle,aQ=e.tilt,a0=e.size,a6.copy(e.offset),ih.visible=!aO,im.visible=!aO,aN=aO,tW(aO?\"drag\":\"idle\"),aa.background=null,aa.fog=null,it=-1/0},oZ=(0,tb.crea"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 352618,
+    "offset_bytes": 352844,
+    "context": "Presenting()||oJ.isMobileSession()?\"Finish fishing to dance.\":tT.current.paused||tT.current.suspended||tT.current.cinematic||t7.active||oD?\"Return to walking to dance.\":ij.grounded?(iN(),i9=null,i_={x:0,y:0},aO&&o5(!1),a8=!0,iL={move:e,startedAt:Math.max(Date.now(),(iL?.startedAt??0)+1)},tT.current.onDanceChange?.(e),null):\"Land first, then dance.\":\"Choose a valid dance.\",exitSky:oL,prepareCameraView:()=>(o0(),an.piloting?\"Exit the blimp first.\":iU?\"Step off the skateboard first.\":oK.driving?\"Return to the dock first.\":oU.driving?\"Leave the car to use Sky View.\":iZ?\"Finish sitting or standing first.\":null),selectCameraView:e=>{tT.current.paused||t7.active||tT.current.cinematic||(t.domElement.focus({preventScroll:!0}),\"sky\"===e?oN():o5(\"first-person\"===e))},startFreeLook:e=>{if(an.piloting)"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "walking",
+    "offset_utf16_approx": 397028,
+    "offset_bytes": 397255,
+    "context": "on.x-ih.position.x,ib.position.z-ih.position.z):1/0,c=r.localPreview?ik.step(a,l||d<2.2||iC.active(e)):r.shared?.position?{position:r.shared.position,walking:r.shared.walking}:null;if(c){ib||(ib=(iS=(0,e1.createAdamAvatar)({piece:nx,batch:io})).root,iM=e,aa.add(ib));let t=c.position;if(!r.localPreview&&r.shared){let a={...t,rotation:t.rotation??0,updated:r.shared.updated};iv?iv.update(a,e):iv=new te.RemotePlayerMotion(a,e,{interval:1100,maxSpeed:1.6,turnDuration:350}),t=iv.sample(e),(0,G.adamPathClear)(ib.position,t,(e,t)=>oU.pedestrianClear(e,t))||e===iM||(t={x:ib.position.x,z:ib.position.z,rotation:ib.rotation.y})}let a=Math.hypot(ib.position.x-t.x,ib.position.z-t.z);c.walking=r.localPreview?c.walking:a>1e-4,ib.position.set(t.x,.15,t.z),ib.rotation.y=t.rotation??0}let u=ib?Math.hypot(ib."
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 14281,
+    "offset_bytes": 14290,
+    "context": "dispose(),o.dispose()}}}(i),r=function(e){let t,a=!1,n=new AbortController;async function i(){try{if(\"hidden\"!==document.visibilityState){let t=await fetch(\"/api/blimp-sponsor\",{signal:AbortSignal.any([n.signal,AbortSignal.timeout(1e4)])});if(t.ok){let n=await t.json();a||e((0,h.parseBlimpSponsor)(n.sponsor))}}}catch{}finally{a||(t=setTimeout(i,3e4))}}return i(),()=>{a=!0,clearTimeout(t),n.abort()}}(o.setSponsor),s=window.matchMedia(\"(prefers-reduced-motion: reduce)\"),l=[],d=[],c=new t.SphereGeometry(1,32,16),u=new t.BoxGeometry(1,1,1);l.push(c,u);let f=new t.MeshStandardMaterial({color:\"#193d72\",roughness:.75}),m=new t.MeshStandardMaterial({color:\"#ffce45\",roughness:.7}),g=new t.MeshStandardMaterial({color:\"#fff3d7\",roughness:.8}),x=new t.MeshStandardMaterial({color:\"#5d9bab\",roughness:.3"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 94941,
+    "offset_bytes": 94961,
+    "context": "sin(o)*s,.165+e.y,r.z+Math.cos(o)*s,o,i))}}),t.instanceMatrix.needsUpdate=!0;n.userData.loadedPanels=C.size,n.userData.visiblePosts=P.size}return _(),fetch(\"/art/chicago/panels.json\",{signal:o.signal}).then(e=>{if(!e.ok)throw Error(\"Sign atlas unavailable\");return e.json()}).then(async e=>{for(let[a,i]of E){let o=e.panels[a];if(!o||R)continue;let l=await new t.TextureLoader().loadAsync(o.image);if(R)return void l.dispose();l.colorSpace=t.SRGBColorSpace,l.minFilter=t.LinearMipmapLinearFilter,l.anisotropy=4,r.push(l);let d=new t.MeshStandardMaterial({map:l,transparent:!0,alphaTest:.25,roughness:.66,metalness:0,depthWrite:!0});s.push(d);let c=new t.InstancedMesh(k,d,2*i.length);c.name=\"Chicago artwork · \"+a,c.frustumCulled=!1,n.add(c),C.set(a,c),_()}R||_()}).catch(()=>{R||(n.userData.artworkU"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 232708,
+    "offset_bytes": 232883,
+    "context": "001,ev.currentTime+t),a.connect(n),n.connect(ev.destination),a.start(),a.stop(ev.currentTime+t)}async function ek(e){let t=Date.now(),a=l?.id,n=await fetch(\"/api/boat-races\",{method:e?\"POST\":\"GET\",headers:e?{\"Content-Type\":\"application/json\"}:void 0,body:e?JSON.stringify(e):void 0,signal:s,cache:\"no-store\"}),i=await n.json();if(!n.ok)throw Error(i.error||\"Racing is temporarily unavailable.\");return!p&&a===l?.id&&Number.isFinite(i.serverNow)&&(u=i.serverNow-(t+Date.now())/2),i}function eE(){g||(g=!0,h=!1,P=0,a.dataset.boatRacing=\"false\",c=[],i.onReturn(),i.onPeers([],performance.now()))}function eC(){l?.phase!==\"finished\"||T?(eE(),eT()):(P=performance.now()+850,c=[],l.boat.speed=0,o.splash(l.boat.x,l.boat.z,performance.now()/1e3,1.5),eA(784,.22))}function eP(e){if(!e.run||!h||l&&e.run.id!=="
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 240760,
+    "offset_bytes": 240954,
+    "context": "ted\",l.message=\"Finish could not be verified. No record claimed.\",eE(),eT())}).finally(()=>m=!1))}else o.update(null,e/1e3)},dispose(){f=!0,h&&l&&!p&&fetch(\"/api/boat-races\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:\"exit\",id:l.id}),keepalive:!0}).catch(()=>{}),h&&eE(),r.abort(),o.dispose(),D.remove(),_.remove(),J.remove(),ev?.close()}}}(e,a,{canStart:()=>i.allowed()&&!p?.shore&&(!!p||!!f),onStart:()=>{let e=i.position();x={boat:p,foot:{x:e.x,z:e.z,rotation:e.rotation??0,speed:0}},p&&(p.mesh.visible=!1),i.onRaceStart?.(),F(),p={marina:p?.marina??f??k.MARINAS[0],pose:(0,k.boatLaunch)(f??k.MARINAS[0]),mesh:o.boat(i.identity()??\"local\")},i.onBoard(),i.onMode(!0),B()},onPose:(e,t)=>{p&&(p.pose=e,V(p.mesh,e,t,e.speed,e),i.setPosition(e,.52+p.mesh.pos"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 277103,
+    "offset_bytes": 277313,
+    "context": ".highlight(h?.pose.rail??p?.id??null),o.sparks(h?.pose??null,e,c.matches),eW(B,\"hidden\",!!D||!r||!h&&(!M&&e>=S||!i.allowed())),ea()},dispose(){h&&!p&&fetch(\"/api/skateboards\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:\"release\",id:h.id,session:l}),keepalive:!0}).catch(()=>{}),x=!0,r.abort(),en(),ee(),B.remove(),o.dispose(),_.removeFromParent(),N.dispose(),L.dispose()}}}],237994),e.s([\"skateObstacleBlocks\",0,function(e,t,a,n,i=eA.GRIND_RAILS){if(!(0,ef.blocksAvatar)(e,t,a))return!1;if(\"wall\"===e.kind)return!0;let o=i.find(t=>{if(\"sign\"===t.kind)return!1;let a=t.obstacle;return .001>Math.abs(a.x-e.x)&&.001>Math.abs(a.z-e.z)&&.001>Math.abs(a.w-e.w)&&.001>Math.abs(a.d-e.d)});return!o||n<o.a.y+.08}],904241);var eV=e.i(614015);let eU=e=>{let t=Math.max"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 279622,
+    "offset_bytes": 279832,
+    "context": ".actor()??\"local\",u=Date.now()+o;if(s={...r,id:n,actor:c,startedAt:u,expiresAt:u+eH.CATCH_CELEBRATION_MS},d){l=!0;return}try{let r=Date.now(),l=await fetch(\"/api/fishing/celebration\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({id:n}),signal:AbortSignal.any([t.signal,AbortSignal.timeout(8e3)])}),d=await l.json();if(!l.ok)throw Error(d.error||\"Your catch could not be shared.\");if(a||e.actor()!==c||s?.id!==n)return;o=d.serverNow-(r+Date.now())/2,s=d.celebration,i=-1/0}catch{a||e.actor()!==c||e.notice(\"Catch saved. The celebration could not sync with other players.\")}},now:()=>Date.now()+o,tick(t){s&&(s.actor!==(e.actor()??\"local\")||!(0,eH.liveCatchCelebration)(s,Date.now()+o))&&(s=null),a||l||document.hidden||n||!(t-i>=1e3)||(i=t,d())},dispose(){a=!0,t.abor"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 296575,
+    "offset_bytes": 296785,
+    "context": ".visible=a,!a){o.abort?.abort();continue}if(i>=o.next&&!o.abort){let e=new AbortController;o.abort=e,o.next=i+350;let a=setTimeout(()=>e.abort(),2e3);fetch(\"/api/pickleball?court=\"+encodeURIComponent(o.court.id)+\"&spectator=1\",{cache:\"no-store\",signal:e.signal}).then(async a=>{if(!a.ok)throw Error(\"Court unavailable\");let n=await a.json();t||e.signal.aborted||(o.view=n.game??null,o.received=performance.now(),o.playback.accept(o.view,o.received))}).catch(()=>{o.next=performance.now()+2e3}).finally(()=>{clearTimeout(a),o.abort=null})}let r=o.view;o.art.update(o.playback.frame(i),n,null,r?.id??\"\")}},dispose(){for(let n of(t=!0,a))n.abort?.abort(),e.remove(n.art.group),n.art.dispose()}}}],249930);var v=e.i(261437);e.s([\"createParkRamps\",0,function(e){let a=new t.Group;a.name=\"Park car jumps\",e"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 406335,
+    "offset_bytes": 406574,
+    "context": "0&&t<=599?t:502,headers:{\"Content-Type\":\"application/json\",\"X-Tick-Sent\":String(a)}});e.s([\"batchedFetch\",0,function(e,o,r){return\"u\"<typeof location?fetch(e,o):(t??=function(e){let t=e.now??Date.now,o=e.setTimer??((e,t)=>setTimeout(e,t)),r=e.clearTimer??(e=>clearTimeout(e)),s=e.gatherMs??25,l=e.holdMs??1200,d=e.leaderMs??3e3,c=[],u,h=1/0,p=1/0,f=-1/0,m=!1,g=(e,t)=>{e.done||(e.done=!0,e.release(),t())},x=a=>{let n=t();return e.send(a.url,a.init).then(e=>g(a,()=>{let t;return a.resolve(((t=new Headers(e.headers)).set(\"X-Tick-Sent\",String(n)),new Response(e.body,{status:e.status,statusText:e.statusText,headers:t})))}),e=>g(a,()=>a.reject(e)))};function y(e){e>=h||(void 0!==u&&r(u),h=e,u=o(()=>void w(),Math.max(0,e-t())))}async function w(){let a,n;u=void 0,h=1/0,p=1/0;let o=(c=c.filter(e=>!e"
+  },
+  {
+    "file": "0pk2_0c34vbky.js",
+    "term": "fetch(",
+    "offset_utf16_approx": 408641,
+    "offset_bytes": 408882,
+    "context": "abort\",n,{once:!0}),c.push(u);let m=t();r?(f=m,y(m+s)):m-f<d?(p=Math.min(p,m),y(Math.max(m+s,p+l))):y(m+s)})},get disabled(){return m}}}({send:(e,t)=>fetch(e,t)})).request(e,o,r?.lead)}],492380)},154129,e=>{\"use strict\";let t=(e,t)=>t.visible&&t.open&&(\"direct\"===e.kind?t.recipient===e.message.sender:null===t.recipient);e.s([\"NEARBY_CHAT_RADIUS\",0,24,\"createChatActivity\",0,function(e){let a=new Map,n=new Map,i=e;return{receive(o,r,s){let l=Math.max(e,i-3e4);for(let e of o){if(e.created<l||a.has(e.id))continue;a.set(e.id,e.created),i=Math.max(i,e.created);let o=e.sender===r.identity?null:null!==e.recipient?r.identity&&e.recipient===r.identity?\"direct\":null:Number.isFinite(e.x)&&Number.isFinite(e.z)&&24>=Math.hypot(e.x-r.position.x,e.z-r.position.z)?\"nearby\":null;if(!o)continue;let d={messag"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "commons.glb",
+    "offset_utf16_approx": 4396,
+    "offset_bytes": 4396,
+    "context": "190072),r=e.i(223490),i=e.i(22311),n=e.i(330696),l=e.i(134417),s=e.i(793384),c=e.i(502222);async function d(e){let t=await fetch(\"/models/cubicles/v1/commons.glb\",{signal:e});if(!t.ok)throw Error(\"Commons kit unavailable\");let a=await t.arrayBuffer();if(a.byteLength>n.COMMONS_BUDGET.maxBytes)throw Error(\"Commons byte budget exceeded\");let o=await new r.GLTFLoader().parseAsync(a,\"\"),l=(0,i.extractWorldKit)(o.scene,n.COMMONS_ASSETS,n.COMMONS_BUDGET.maxPrimitives);if(e.aborted)throw l.dispose(),new DOMException(\"Aborted\",\"AbortError\");return l}a.SCENERY_RANGE.enter,e.s([\"loadCommonsKit\",0,d,\"makeCommons\",0,function(e,r,i){var n;let f=new Set(r.filter(e=>\"Kayak\"===e.asset).map(e=>e.id));r=r.filter(e=>\"Kayak\"!==e.asset);let h=new AbortController,m=!1,u,p,b={x:0,z:0,zoom:1e3},g=new Set,y=(0,l.ma"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "cubicle.glb",
+    "offset_utf16_approx": 25050,
+    "offset_bytes": 25054,
+    "context": "ull;d(),l.traverse(e=>{e.isMesh&&(e.geometry.dispose(),e.material.dispose())})},{once:!0})}async function w(e){let t=await fetch(\"/models/cubicles/v1/cubicle.glb\",{signal:e});if(!t.ok)throw Error(\"The furniture kit could not be loaded.\");let o=await t.arrayBuffer();if(o.byteLength>15e5)throw Error(\"World kit exceeds its published budget.\");let r=k((await new a.GLTFLoader().parseAsync(o,\"\")).scene);if(e.aborted)throw r.dispose(),new DOMException(\"Aborted\",\"AbortError\");return r}function k(e,a=[\"CubicleFloor\",\"PartitionBack\",\"PartitionLeft\",\"PartitionRight\",\"DeskTop\",\"DeskFrame\",\"Chair\",\"Monitor\"],r=24){e.updateMatrixWorld(!0);let i=[],n=new Set,l=new Set;try{e.traverse(e=>{if(!e.isMesh)return;for(let t of(n.add(e.geometry),Array.isArray(e.material)?e.material:[e.material]))l.add(t);if(Array"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "GLTFLoader",
+    "offset_utf16_approx": 4601,
+    "offset_bytes": 4601,
+    "context": "kit unavailable\");let a=await t.arrayBuffer();if(a.byteLength>n.COMMONS_BUDGET.maxBytes)throw Error(\"Commons byte budget exceeded\");let o=await new r.GLTFLoader().parseAsync(a,\"\"),l=(0,i.extractWorldKit)(o.scene,n.COMMONS_ASSETS,n.COMMONS_BUDGET.maxPrimitives);if(e.aborted)throw l.dispose(),new DOMException(\"Aborted\",\"AbortError\");return l}a.SCENERY_RANGE.enter,e.s([\"loadCommonsKit\",0,d,\"makeCommons\",0,function(e,r,i){var n;let f=new Set(r.filter(e=>\"Kayak\"===e.asset).map(e=>e.id));r=r.filter(e=>\"Kayak\"!==e.asset);let h=new AbortController,m=!1,u,p,b={x:0,z:0,zoom:1e3},g=new Set,y=(0,l.makeHiggsfieldInstances)(e,{maxInstances:96,maxTriangles:22e4,scenery:!0}),x=[...(0,s.libraryCommonsPlacements)(r),...(n=r,[...(0,s.libraryCommonsPlacements)(n).filter(e=>\"HF_Desk_Classic\"===e.asset||\"HF_Des"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "GLTFLoader",
+    "offset_utf16_approx": 16227,
+    "offset_bytes": 16231,
+    "context": "to.subtle.digest(\"SHA-256\",c))).map(e=>e.toString(16).padStart(2,\"0\")).join(\"\")!==r.sha256)throw Error(\"Library checksum mismatch\");let d=await new a.GLTFLoader().parseAsync(c,\"\");var f=d.scene;let h=new Map,m=e=>{if(!e.isMeshPhysicalMaterial||!(e.transmission>0))return e;let a=h.get(e);return a||(a=new t.MeshStandardMaterial({name:e.name,color:e.color,roughness:Math.min(.25,e.roughness),metalness:0,transparent:!0,opacity:.38,depthWrite:!1,side:e.side}),h.set(e,a)),a};for(let e of(f.traverse(e=>{e.isMesh&&(e.material=Array.isArray(e.material)?e.material.map(m):m(e.material))}),h.keys()))e.dispose();h.size;let u=new Map;for(let[t,a]of Object.entries(o.HIGGSFIELD_ASSETS)){if(a.pack!==e)continue;let o=d.scene.getObjectByName(t);if(!o)throw Error(\"Library asset missing: \"+t);u.set(t,o)}return{"
+  },
+  {
+    "file": "1y0jl7cpc38wf.js",
+    "term": "GLTFLoader",
+    "offset_utf16_approx": 25263,
+    "offset_bytes": 25267,
+    "context": "t could not be loaded.\");let o=await t.arrayBuffer();if(o.byteLength>15e5)throw Error(\"World kit exceeds its published budget.\");let r=k((await new a.GLTFLoader().parseAsync(o,\"\")).scene);if(e.aborted)throw r.dispose(),new DOMException(\"Aborted\",\"AbortError\");return r}function k(e,a=[\"CubicleFloor\",\"PartitionBack\",\"PartitionLeft\",\"PartitionRight\",\"DeskTop\",\"DeskFrame\",\"Chair\",\"Monitor\"],r=24){e.updateMatrixWorld(!0);let i=[],n=new Set,l=new Set;try{e.traverse(e=>{if(!e.isMesh)return;for(let t of(n.add(e.geometry),Array.isArray(e.material)?e.material:[e.material]))l.add(t);if(Array.isArray(e.material)||!(e.material instanceof t.MeshStandardMaterial)||e.isSkinnedMesh)throw Error(\"World kit must contain static, single-material components.\");let a=e.geometry.clone().applyMatrix4(e.matrixWorld)"
+  },
+  {
+    "file": "0xdo8najholab.js",
+    "term": "foundation.glb",
+    "offset_utf16_approx": 6557,
+    "offset_bytes": 6557,
+    "context": "endant transforms and authored materials baked/preserved. No cameras, lamps or presentation floors.\"},\"assetCount\":208,\"packs\":{\"foundation\":{\"file\":\"foundation.glb\",\"bytes\":175952,\"sha256\":\"4431f2c0aef633acba5d16cf1a0b85a590ba35ce276c4a6ac37f75669cb46af5\",\"assets\":7,\"triangles\":2700,\"gzipBytes\":18492},\"seating\":{\"file\":\"seating.glb\",\"bytes\":387116,\"sha256\":\"8c4f1d94e04f5d2f45f59bcd80d7eb51e424b6141168740c893800d8464d1a45\",\"assets\":11,\"triangles\":6128,\"gzipBytes\":69335},\"storage\":{\"file\":\"storage.glb\",\"bytes\":498800,\"sha256\":\"874c5de787e7e4915b0c2bac61384de04e263b5b6069cab3a6b79a0cf248557b\",\"assets\":18,\"triangles\":7728,\"gzipBytes\":68511},\"tech\":{\"file\":\"tech.glb\",\"bytes\":667440,\"sha256\":\"23ed87d056a095a87e4bfbec2918f5b8ff1934d162fdb4664221c4b77547dd1d\",\"assets\":27,\"triangles\":9800,\"gzipByt"
+  },
+  {
+    "file": "0xdo8najholab.js",
+    "term": "seating.glb",
+    "offset_utf16_approx": 6730,
+    "offset_bytes": 6730,
+    "context": ":175952,\"sha256\":\"4431f2c0aef633acba5d16cf1a0b85a590ba35ce276c4a6ac37f75669cb46af5\",\"assets\":7,\"triangles\":2700,\"gzipBytes\":18492},\"seating\":{\"file\":\"seating.glb\",\"bytes\":387116,\"sha256\":\"8c4f1d94e04f5d2f45f59bcd80d7eb51e424b6141168740c893800d8464d1a45\",\"assets\":11,\"triangles\":6128,\"gzipBytes\":69335},\"storage\":{\"file\":\"storage.glb\",\"bytes\":498800,\"sha256\":\"874c5de787e7e4915b0c2bac61384de04e263b5b6069cab3a6b79a0cf248557b\",\"assets\":18,\"triangles\":7728,\"gzipBytes\":68511},\"tech\":{\"file\":\"tech.glb\",\"bytes\":667440,\"sha256\":\"23ed87d056a095a87e4bfbec2918f5b8ff1934d162fdb4664221c4b77547dd1d\",\"assets\":27,\"triangles\":9800,\"gzipBytes\":71170},\"greenery\":{\"file\":\"greenery.glb\",\"bytes\":540436,\"sha256\":\"f3af1fe147b8e4449b0692a8ea55c6cea7cd5b99ce46d2c09d57204dfb76f246\",\"assets\":12,\"triangles\":7784,\"gzipByt"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "REVISION",
+    "offset_utf16_approx": 323199,
+    "offset_bytes": 323199,
+    "context": " eV(){return null===eg?eb:1}let ez=W;function ek(e,n){return V.getContext(e,n)}try{if(\"setAttribute\"in V&&V.setAttribute(\"data-engine\",`three.js r${n.REVISION}`),V.addEventListener(\"webglcontextlost\",eK,!1),V.addEventListener(\"webglcontextrestored\",eY,!1),V.addEventListener(\"webglcontextcreationerror\",ej,!1),null===ez){const e=\"webgl2\";if(ez=ek(e,{alpha:!0,depth:z,stencil:k,antialias:q,premultipliedAlpha:K,preserveDrawingBuffer:Y,powerPreference:j,failIfMajorPerformanceCaveat:Z}),null===ez)if(ek(e))throw Error(\"THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.\");else throw Error(\"THREE.WebGLRenderer: Error creating WebGL context.\")}}catch(e){throw(0,n.error)(\"WebGLRenderer: \"+e.message),e}function eX(){(a=new D(ez)).init(),O=new nR(ez,a),o=new p(ez,a,e,O),l=n"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 166447,
+    "offset_bytes": 166447,
+    "context": "cisionFormat(e.FRAGMENT_SHADER,e.MEDIUM_FLOAT).precision>0?\"mediump\":\"lowp\"}let l=void 0!==r.precision?r.precision:\"highp\",s=o(l);s!==l&&((0,n.warn)(\"WebGLRenderer:\",l,\"not supported, using\",s,\"instead.\"),l=s);let c=!0===r.logarithmicDepthBuffer,d=!0===r.reversedDepthBuffer&&t.has(\"EXT_clip_control\");return!0===r.reversedDepthBuffer&&!1===d&&(0,n.warn)(\"WebGLRenderer: Unable to use reversed depth buffer due to missing EXT_clip_control extension. Fallback to default depth buffer.\"),{isWebGL2:!0,getMaxAnisotropy:function(){if(void 0!==a)return a;if(!0===t.has(\"EXT_texture_filter_anisotropic\")){let n=t.get(\"EXT_texture_filter_anisotropic\");a=e.getParameter(n.MAX_TEXTURE_MAX_ANISOTROPY_EXT)}else a=0;return a},getMaxPrecision:o,textureFormatReadable:function(t){return t===n.RGBAFormat||i.conver"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 166653,
+    "offset_bytes": 166653,
+    "context": "=s);let c=!0===r.logarithmicDepthBuffer,d=!0===r.reversedDepthBuffer&&t.has(\"EXT_clip_control\");return!0===r.reversedDepthBuffer&&!1===d&&(0,n.warn)(\"WebGLRenderer: Unable to use reversed depth buffer due to missing EXT_clip_control extension. Fallback to default depth buffer.\"),{isWebGL2:!0,getMaxAnisotropy:function(){if(void 0!==a)return a;if(!0===t.has(\"EXT_texture_filter_anisotropic\")){let n=t.get(\"EXT_texture_filter_anisotropic\");a=e.getParameter(n.MAX_TEXTURE_MAX_ANISOTROPY_EXT)}else a=0;return a},getMaxPrecision:o,textureFormatReadable:function(t){return t===n.RGBAFormat||i.convert(t)===e.getParameter(e.IMPLEMENTATION_COLOR_READ_FORMAT)},textureTypeReadable:function(r){let a=r===n.HalfFloatType&&(t.has(\"EXT_color_buffer_half_float\")||t.has(\"EXT_color_buffer_float\"));return r===n.Uns"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 187945,
+    "offset_bytes": 187945,
+    "context": "half_float\"),r(\"WEBGL_multisampled_render_to_texture\"),r(\"WEBGL_render_shared_exponent\")},get:function(e){let t=r(e);return null===t&&(0,n.warnOnce)(\"WebGLRenderer: \"+e+\" extension not supported.\"),t}}}function w(e,t,r,i){let a={},o=new WeakMap;function l(e){let n=e.target;for(let e in null!==n.index&&t.remove(n.index),n.attributes)t.remove(n.attributes[e]);n.removeEventListener(\"dispose\",l),delete a[n.id];let s=o.get(n);s&&(t.remove(s),o.delete(n)),i.releaseStatesOfGeometry(n),!0===n.isInstancedBufferGeometry&&delete n._maxInstanceCount,r.memory.geometries--}function s(e){let r=[],i=e.index,a=e.attributes.position,l=0;if(void 0===a)return;if(null!==i){let e=i.array;l=i.version;for(let n=0,t=e.length;n<t;n+=3){let t=e[n+0],i=e[n+1],a=e[n+2];r.push(t,i,i,a,a,t)}}else{let e=a.array;l=a.versi"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 206129,
+    "offset_bytes": 206129,
+    "context": "/gm;function eJ(e){return e.replace(eQ,e1)}let e0=new Map;function e1(e,t){let r=i[t];if(void 0===r){let e=e0.get(t);if(void 0!==e)r=i[e],(0,n.warn)('WebGLRenderer: Shader chunk \"%s\" has been deprecated. Use \"%s\" instead.',t,e);else throw Error(\"THREE.WebGLProgram: Can not resolve #include <\"+t+\">\")}return eJ(r)}let e3=/#pragma unroll_loop_start\\s+for\\s*\\(\\s*int\\s+i\\s*=\\s*(\\d+)\\s*;\\s*i\\s*<\\s*(\\d+)\\s*;\\s*i\\s*\\+\\+\\s*\\)\\s*{([\\s\\S]+?)}\\s+#pragma unroll_loop_end/g;function e2(e){return e.replace(e3,e4)}function e4(e,n,t,r){let i=\"\";for(let e=parseInt(n);e<parseInt(t);e++)i+=r.replace(/\\[\\s*i\\s*\\]/g,\"[ \"+e+\" ]\").replace(/UNROLLED_LOOP_INDEX/g,e);return i}function e5(e){let n=`precision ${e.precision} float;\n\tprecision ${e.precision} int;\n\tprecision ${e.precision} sampler2D;\n\tprecision ${e.precis"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 262793,
+    "offset_bytes": 262793,
+    "context": "dth),o=Math.floor(i*a.height);void 0===s&&(s=h(r,o));let l=t?h(r,o):s;return l.width=r,l.height=o,l.getContext(\"2d\").drawImage(e,0,0,r,o),(0,n.warn)(\"WebGLRenderer: Texture has been resized from (\"+a.width+\"x\"+a.height+\") to (\"+r+\"x\"+o+\").\"),l}else\"data\"in e&&(0,n.warn)(\"WebGLRenderer: Image in DataTexture is too big (\"+a.width+\"x\"+a.height+\").\");return e}function v(e){return e.generateMipmaps}function S(n){e.generateMipmap(n)}function E(r,i,a,o,l,s=!1){let c;if(null!==r){if(void 0!==e[r])return e[r];(0,n.warn)(\"WebGLRenderer: Attempt to use non-existing WebGL internal format '\"+r+\"'\")}o&&((c=t.get(\"EXT_texture_norm16\"))||(0,n.warn)(\"WebGLRenderer: Unable to use normalized textures without EXT_texture_norm16 extension\"));let d=i;if(i===e.RED&&(a===e.FLOAT&&(d=e.R32F),a===e.HALF_FLOAT&&(d=e"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 262915,
+    "offset_bytes": 262915,
+    "context": "mage(e,0,0,r,o),(0,n.warn)(\"WebGLRenderer: Texture has been resized from (\"+a.width+\"x\"+a.height+\") to (\"+r+\"x\"+o+\").\"),l}else\"data\"in e&&(0,n.warn)(\"WebGLRenderer: Image in DataTexture is too big (\"+a.width+\"x\"+a.height+\").\");return e}function v(e){return e.generateMipmaps}function S(n){e.generateMipmap(n)}function E(r,i,a,o,l,s=!1){let c;if(null!==r){if(void 0!==e[r])return e[r];(0,n.warn)(\"WebGLRenderer: Attempt to use non-existing WebGL internal format '\"+r+\"'\")}o&&((c=t.get(\"EXT_texture_norm16\"))||(0,n.warn)(\"WebGLRenderer: Unable to use normalized textures without EXT_texture_norm16 extension\"));let d=i;if(i===e.RED&&(a===e.FLOAT&&(d=e.R32F),a===e.HALF_FLOAT&&(d=e.R16F),a===e.UNSIGNED_BYTE&&(d=e.R8),a===e.UNSIGNED_SHORT&&c&&(d=c.R16_EXT),a===e.SHORT&&c&&(d=c.R16_SNORM_EXT)),i===e.RED"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 263161,
+    "offset_bytes": 263161,
+    "context": "(e){return e.generateMipmaps}function S(n){e.generateMipmap(n)}function E(r,i,a,o,l,s=!1){let c;if(null!==r){if(void 0!==e[r])return e[r];(0,n.warn)(\"WebGLRenderer: Attempt to use non-existing WebGL internal format '\"+r+\"'\")}o&&((c=t.get(\"EXT_texture_norm16\"))||(0,n.warn)(\"WebGLRenderer: Unable to use normalized textures without EXT_texture_norm16 extension\"));let d=i;if(i===e.RED&&(a===e.FLOAT&&(d=e.R32F),a===e.HALF_FLOAT&&(d=e.R16F),a===e.UNSIGNED_BYTE&&(d=e.R8),a===e.UNSIGNED_SHORT&&c&&(d=c.R16_EXT),a===e.SHORT&&c&&(d=c.R16_SNORM_EXT)),i===e.RED_INTEGER&&(a===e.UNSIGNED_BYTE&&(d=e.R8UI),a===e.UNSIGNED_SHORT&&(d=e.R16UI),a===e.UNSIGNED_INT&&(d=e.R32UI),a===e.BYTE&&(d=e.R8I),a===e.SHORT&&(d=e.R16I),a===e.INT&&(d=e.R32I)),i===e.RG&&(a===e.FLOAT&&(d=e.RG32F),a===e.HALF_FLOAT&&(d=e.RG16F),a="
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 263285,
+    "offset_bytes": 263285,
+    "context": "])return e[r];(0,n.warn)(\"WebGLRenderer: Attempt to use non-existing WebGL internal format '\"+r+\"'\")}o&&((c=t.get(\"EXT_texture_norm16\"))||(0,n.warn)(\"WebGLRenderer: Unable to use normalized textures without EXT_texture_norm16 extension\"));let d=i;if(i===e.RED&&(a===e.FLOAT&&(d=e.R32F),a===e.HALF_FLOAT&&(d=e.R16F),a===e.UNSIGNED_BYTE&&(d=e.R8),a===e.UNSIGNED_SHORT&&c&&(d=c.R16_EXT),a===e.SHORT&&c&&(d=c.R16_SNORM_EXT)),i===e.RED_INTEGER&&(a===e.UNSIGNED_BYTE&&(d=e.R8UI),a===e.UNSIGNED_SHORT&&(d=e.R16UI),a===e.UNSIGNED_INT&&(d=e.R32UI),a===e.BYTE&&(d=e.R8I),a===e.SHORT&&(d=e.R16I),a===e.INT&&(d=e.R32I)),i===e.RG&&(a===e.FLOAT&&(d=e.RG32F),a===e.HALF_FLOAT&&(d=e.RG16F),a===e.UNSIGNED_BYTE&&(d=e.RG8),a===e.UNSIGNED_SHORT&&c&&(d=c.RG16_EXT),a===e.SHORT&&c&&(d=c.RG16_SNORM_EXT)),i===e.RG_INTEGER&"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 267883,
+    "offset_bytes": 267883,
+    "context": "o,s),o.update())),!1===t.isRenderTargetTexture&&!0!==t.isExternalTexture&&t.version>0&&c.__version!==t.version){let e=t.image;if(null===e)(0,n.warn)(\"WebGLRenderer: Texture marked for update but no image data found.\");else{if(!1!==e.complete)return void I(c,t,a);(0,n.warn)(\"WebGLRenderer: Texture marked for update but image is incomplete\")}}else t.isExternalTexture&&(c.__webglTexture=t.sourceTexture?t.sourceTexture:null);r.bindTexture(e.TEXTURE_2D,c.__webglTexture,e.TEXTURE0+a)}let P={[n.RepeatWrapping]:e.REPEAT,[n.ClampToEdgeWrapping]:e.CLAMP_TO_EDGE,[n.MirroredRepeatWrapping]:e.MIRRORED_REPEAT},L={[n.NearestFilter]:e.NEAREST,[n.NearestMipmapNearestFilter]:e.NEAREST_MIPMAP_NEAREST,[n.NearestMipmapLinearFilter]:e.NEAREST_MIPMAP_LINEAR,[n.LinearFilter]:e.LINEAR,[n.LinearMipmapNearestFilter]"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 268008,
+    "offset_bytes": 268008,
+    "context": ";if(null===e)(0,n.warn)(\"WebGLRenderer: Texture marked for update but no image data found.\");else{if(!1!==e.complete)return void I(c,t,a);(0,n.warn)(\"WebGLRenderer: Texture marked for update but image is incomplete\")}}else t.isExternalTexture&&(c.__webglTexture=t.sourceTexture?t.sourceTexture:null);r.bindTexture(e.TEXTURE_2D,c.__webglTexture,e.TEXTURE0+a)}let P={[n.RepeatWrapping]:e.REPEAT,[n.ClampToEdgeWrapping]:e.CLAMP_TO_EDGE,[n.MirroredRepeatWrapping]:e.MIRRORED_REPEAT},L={[n.NearestFilter]:e.NEAREST,[n.NearestMipmapNearestFilter]:e.NEAREST_MIPMAP_NEAREST,[n.NearestMipmapLinearFilter]:e.NEAREST_MIPMAP_LINEAR,[n.LinearFilter]:e.LINEAR,[n.LinearMipmapNearestFilter]:e.LINEAR_MIPMAP_NEAREST,[n.LinearMipmapLinearFilter]:e.LINEAR_MIPMAP_LINEAR},U={[n.NeverCompare]:e.NEVER,[n.AlwaysCompare]:e"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 269250,
+    "offset_bytes": 269250,
+    "context": "rFilter||o.minFilter===n.LinearMipmapNearestFilter||o.minFilter===n.NearestMipmapLinearFilter||o.minFilter===n.LinearMipmapLinearFilter)&&(0,n.warn)(\"WebGLRenderer: Unable to use linear filtering with floating point textures. OES_texture_float_linear not supported on this device.\"),e.texParameteri(r,e.TEXTURE_WRAP_S,P[o.wrapS]),e.texParameteri(r,e.TEXTURE_WRAP_T,P[o.wrapT]),(r===e.TEXTURE_3D||r===e.TEXTURE_2D_ARRAY)&&e.texParameteri(r,e.TEXTURE_WRAP_R,P[o.wrapR]),e.texParameteri(r,e.TEXTURE_MAG_FILTER,L[o.magFilter]),e.texParameteri(r,e.TEXTURE_MIN_FILTER,L[o.minFilter]),o.compareFunction&&(e.texParameteri(r,e.TEXTURE_COMPARE_MODE,e.COMPARE_REF_TO_TEXTURE),e.texParameteri(r,e.TEXTURE_COMPARE_FUNC,U[o.compareFunction])),!0===t.has(\"EXT_texture_filter_anisotropic\"))&&o.magFilter!==n.NearestF"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 274438,
+    "offset_bytes": 274438,
+    "context": ",a,0,0,0,t.width,t.height,i.depth,m,t.data)}else r.compressedTexImage3D(e.TEXTURE_2D_ARRAY,a,h,t.width,t.height,i.depth,0,t.data,0,0);else(0,n.warn)(\"WebGLRenderer: Attempt to load unsupported compressed texture format in .uploadTexture()\");else R?C&&r.texSubImage3D(e.TEXTURE_2D_ARRAY,a,0,0,0,t.width,t.height,i.depth,m,_,t.data):r.texImage3D(e.TEXTURE_2D_ARRAY,a,h,t.width,t.height,i.depth,0,m,_,t.data)}else{R&&A&&r.texStorage2D(e.TEXTURE_2D,b,h,x[0].width,x[0].height);for(let i=0,a=x.length;i<a;i++)t=x[i],l.format!==n.RGBAFormat?null!==m?R?C&&r.compressedTexSubImage2D(e.TEXTURE_2D,i,0,0,t.width,t.height,m,t.data):r.compressedTexImage2D(e.TEXTURE_2D,i,h,t.width,t.height,0,t.data):(0,n.warn)(\"WebGLRenderer: Attempt to load unsupported compressed texture format in .uploadTexture()\"):R?C&&r.te"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 274988,
+    "offset_bytes": 274988,
+    "context": ".compressedTexSubImage2D(e.TEXTURE_2D,i,0,0,t.width,t.height,m,t.data):r.compressedTexImage2D(e.TEXTURE_2D,i,h,t.width,t.height,0,t.data):(0,n.warn)(\"WebGLRenderer: Attempt to load unsupported compressed texture format in .uploadTexture()\"):R?C&&r.texSubImage2D(e.TEXTURE_2D,i,0,0,t.width,t.height,m,_,t.data):r.texImage2D(e.TEXTURE_2D,i,h,t.width,t.height,0,m,_,t.data)}else if(l.isDataArrayTexture)if(R){if(A&&r.texStorage3D(e.TEXTURE_2D_ARRAY,b,h,i.width,i.height,i.depth),C)if(l.layerUpdates.size>0){let t=(0,n.getByteLength)(i.width,i.height,l.format,l.type);for(let n of l.layerUpdates){let a=i.data.subarray(n*t/i.data.BYTES_PER_ELEMENT,(n+1)*t/i.data.BYTES_PER_ELEMENT);r.texSubImage3D(e.TEXTURE_2D_ARRAY,0,0,0,n,i.width,i.height,1,m,_,a)}l.clearLayerUpdates()}else r.texSubImage3D(e.TEXTURE_"
+  },
+  {
+    "file": "17wgqr_xcllvx.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 285340,
+    "offset_bytes": 285340,
+    "context": "E_MAP_POSITIVE_X+i,a,0,0,o.width,o.height,x,o.data):r.compressedTexImage2D(e.TEXTURE_CUBE_MAP_POSITIVE_X+i,a,A,o.width,o.height,0,o.data):(0,n.warn)(\"WebGLRenderer: Attempt to load unsupported compressed texture format in .setTextureCube()\"):C?P&&r.texSubImage2D(e.TEXTURE_CUBE_MAP_POSITIVE_X+i,a,0,0,o.width,o.height,x,R,o.data):r.texImage2D(e.TEXTURE_CUBE_MAP_POSITIVE_X+i,a,A,o.width,o.height,0,x,R,o.data)}}}else{if(t=l.mipmaps,C&&b){t.length>0&&L++;let n=k(h[0]);r.texStorage2D(e.TEXTURE_CUBE_MAP,L,A,n.width,n.height)}for(let n=0;n<6;n++)if(_){C?P&&r.texSubImage2D(e.TEXTURE_CUBE_MAP_POSITIVE_X+n,0,0,0,h[n].width,h[n].height,x,R,h[n].data):r.texImage2D(e.TEXTURE_CUBE_MAP_POSITIVE_X+n,0,A,h[n].width,h[n].height,0,x,R,h[n].data);for(let i=0;i<t.length;i++){let a=t[i].image[n].image;C?P&&r.tex"
+  },
+  {
+    "file": "1-h8xr0vu9wrm.js",
+    "term": "REVISION",
+    "offset_utf16_approx": 255452,
+    "offset_bytes": 255452,
+    "context": "9,\"Quaternion\",0,k,\"QuaternionKeyframeTrack\",0,sU,\"R11_EAC_Format\",0,37488,\"RAD2DEG\",0,S,\"RED_GREEN_RGTC2_Format\",0,36285,\"RED_RGTC1_Format\",0,36283,\"REVISION\",0,\"185\",\"RG11_EAC_Format\",0,37490,\"RGBAFormat\",0,1023,\"RGBAIntegerFormat\",0,1033,\"RGBA_ASTC_10x10_Format\",0,37819,\"RGBA_ASTC_10x5_Format\",0,37816,\"RGBA_ASTC_10x6_Format\",0,37817,\"RGBA_ASTC_10x8_Format\",0,37818,\"RGBA_ASTC_12x10_Format\",0,37820,\"RGBA_ASTC_12x12_Format\",0,37821,\"RGBA_ASTC_4x4_Format\",0,37808,\"RGBA_ASTC_5x4_Format\",0,37809,\"RGBA_ASTC_5x5_Format\",0,37810,\"RGBA_ASTC_6x5_Format\",0,37811,\"RGBA_ASTC_6x6_Format\",0,37812,\"RGBA_ASTC_8x5_Format\",0,37813,\"RGBA_ASTC_8x6_Format\",0,37814,\"RGBA_ASTC_8x8_Format\",0,37815,\"RGBA_BPTC_Format\",0,36492,\"RGBA_ETC2_EAC_Format\",0,37496,\"RGBA_PVRTC_2BPPV1_Format\",0,35843,\"RGBA_PVRTC_4BPPV1_Form"
+  },
+  {
+    "file": "1-h8xr0vu9wrm.js",
+    "term": "WebGLRenderer",
+    "offset_utf16_approx": 224626,
+    "offset_bytes": 224626,
+    "context": "CubeFace(),p=t.getActiveMipmapLevel(),d=t.xr.enabled;t.xr.enabled=!1;let m=i.texture.generateMipmaps;i.texture.generateMipmaps=!1;let y=!1;y=!0===t.isWebGLRenderer?t.state.buffers.depth.getReversed():t.reversedDepthBuffer,t.setRenderTarget(i,0,s),y&&!1===t.autoClear&&t.clearDepth(),t.render(e,r),t.setRenderTarget(i,1,s),y&&!1===t.autoClear&&t.clearDepth(),t.render(e,n),t.setRenderTarget(i,2,s),y&&!1===t.autoClear&&t.clearDepth(),t.render(e,a),t.setRenderTarget(i,3,s),y&&!1===t.autoClear&&t.clearDepth(),t.render(e,o),t.setRenderTarget(i,4,s),y&&!1===t.autoClear&&t.clearDepth(),t.render(e,h),i.texture.generateMipmaps=m,t.setRenderTarget(i,5,s),y&&!1===t.autoClear&&t.clearDepth(),t.render(e,l),t.setRenderTarget(u,c,p),t.xr.enabled=d,i.texture.needsPMREMUpdate=!0}},\"CubeDepthTexture\",0,class e"
+  }
+]

@@ -1,0 +1,63 @@
+- document:
+  - main:
+    - region "Notifications alt+T"
+    - region "Explore Cubicles"
+  - dialog "Controls":
+    - text: A QUICK REFERENCE
+    - heading "Controls" [level=2]
+    - paragraph: Move, meet people, and follow the nearby prompts.
+    - tablist "Control context":
+      - tab "World" [selected]
+      - tab "Editing"
+    - button "Show touch controls": Keyboard
+    - heading "Move & look" [level=3]
+    - strong: Move
+    - text: W A S D
+    - paragraph: Arrows also move. Hold Shift to run; Space jumps.
+    - strong: Double jump
+    - paragraph: Release Space, then press it again right at the peak to front flip. One attempt per jump—timing takes practice.
+    - strong: Camera
+    - paragraph: Click the floor to walk around obstacles. Drag to orbit; scroll or + / − zooms.
+    - strong: First person
+    - text: F
+    - paragraph: Press F to enter first person.
+    - heading "Driving" [level=3]
+    - strong: Get in or out
+    - text: E
+    - paragraph: "Use Enter car: an empty driver seat makes you the driver; otherwise you join as a passenger. Use Exit car to leave."
+    - strong: Cruise around
+    - text: W A S D
+    - paragraph: Steer with movement keys. Hold Shift to boost; Space hops; hold B to brake.
+    - strong: Driving options
+    - paragraph: Use the camera and recovery controls beside the car.
+    - heading "Interact & talk" [level=3]
+    - strong: Interact
+    - text: E
+    - paragraph: E follows the nearby prompt. Double-click an office for links and media.
+    - strong: World chat
+    - text: Enter C Y
+    - paragraph: Enter opens chat and sends your message. C or Y also opens chat; Esc closes.
+    - strong: React
+    - paragraph: Reaction button → choose an emoji.
+    - heading "Fishing" [level=3]
+    - strong: Hold click to cast
+    - paragraph: Aim at water. Hold the left mouse button, then release on gold. G is an optional fallback.
+    - strong: Hold click to reel
+    - paragraph: At the bite, hold click to hook and reel, or hold G. Release during a strong tug; hold again when it settles.
+    - heading "Explore" [level=3]
+    - strong: Map & search
+    - text: M /
+    - paragraph: Open the map to visit a neighborhood. Search people, projects and neighborhoods.
+    - strong: Close / return
+    - text: Esc
+    - paragraph: Esc closes focused panels. Enter world leaves office editing.
+    - contentinfo:
+      - text: Explore as a Visitor. Sign in when you want to own an office.
+      - button "Back to the world"
+    - link "Terms of Service (opens in a new tab)":
+      - /url: /terms
+      - text: Terms of Service
+    - link "Privacy Policy (opens in a new tab)":
+      - /url: /privacy
+      - text: Privacy Policy
+    - button "Close"

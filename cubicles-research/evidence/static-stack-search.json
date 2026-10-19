@@ -1,0 +1,82 @@
+{
+  "search_scope": "All 36 initial downloaded JavaScript files, no lazy chunk or source map fetch",
+  "matches": [
+    {
+      "file": "0fhmirje2wt0f.js",
+      "term": "version=\"",
+      "offset_char": 2438,
+      "offset_bytes": 2438,
+      "context": "&u()){let t=l.twq||function(){t.exe?t.exe.apply(t,Array.from(arguments)):t.queue.push(arguments)};t.version=\"1.1\",t.queue=t.queue||[],l.twq=t,t(\"config\",e.pixelId)}for(let e of n.splice(0))o(...e)},\"trackConversion\",0,o,\"validXPixel\",0,a,\"xTrackingAllowed\",0,u])},728298,(e,t,r)=>{\"use strict\";e.i(247167),Object.defineProperty(r,\"__esModule\",{value:!0}),Object.defineProperty(r,\"useRouterBFCache\",{enumerable:!0,get:function(){return l}});let n=e.r(271645);function l(e,t,r){let[l,a]=(0,n.useState)("
+    },
+    {
+      "file": "3kl4vkbuikvpv.js",
+      "term": "version=\"",
+      "offset_char": 225517,
+      "offset_bytes": 225517,
+      "context": ")))).callback=null,lX(n,a,l),n=l,t.current.lanes=n,eA(t,n),sV(t),e[eK]=t.current,s6(e),new f7(t)},n.version=\"19.3.0-canary-cbb046ab-20260731\"},88014,(e,t,n)=>{\"use strict\";e.i(247167),!function e(){if(\"u\">typeof __REACT_DEVTOOLS_GLOBAL_HOOK__&&\"function\"==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE)try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(e)}catch(e){console.error(e)}}(),t.exports=e.r(146480)},816565,(e,t,n)=>{\"use strict\";Object.defineProperty(n,\"__esModule\",{value:!0});var r={getObjectCl"
+    },
+    {
+      "file": "3dzu48d190e90.js",
+      "term": "RUN_SPEED",
+      "offset_char": 39369,
+      "offset_bytes": 39395,
+      "context": ",o=e.i(958607),s=e.i(261437),l=e.i(511801),d=e.i(370898),c=e.i(67195),h=e.i(784768),u=e.i(275104);h.RUN_SPEED;let p=new Set(u.CAR_SPAWNS.filter(e=>e.rare).map(e=>e.id)),m={speed:14,boostSpeed:21,acceleration:1},f={speed:17.5,boostSpeed:26.25,acceleration:1.3};function x(e){return e&&p.has(e)?f:m}let g=new a.SpatialIndex;for(let e of t.seedCubicles)g.add(e,Math.max(t.PLOT_SIZE.width,t.PLOT_SIZE.depth)/2);let M=new a.SpatialIndex;for(let e of[...(0,i.environmentColliders)().filter(e=>!(0,d.isCarWa"
+    },
+    {
+      "file": "3dzu48d190e90.js",
+      "term": "RUN_SPEED",
+      "offset_char": 100378,
+      "offset_bytes": 100464,
+      "context": "M),vy:o-r*M}}return h},clear:o}}])},784768,e=>{\"use strict\";e.s([\"GRAVITY\",0,18,\"JUMP_SPEED\",0,7.6,\"RUN_SPEED\",0,10,\"WALK_SPEED\",0,5,\"jumpHeight\",0,function(e){return e<0||e>=.8444444444444444?0:7.6*e-9*e*e},\"moveOnFloor\",0,function(e,t,a,i,n,r,o=1/0,s=1){let l=Math.hypot(t,a);if(l<.001||i<=0)return{x:e.x,z:e.z,moved:!1};let d=Math.min((n?10:5)*Math.min(i,.1)*(Number.isFinite(s)?Math.max(0,Math.min(1,s)):0),o),c=Math.max(1,Math.ceil(d/.16)),h=t/l*d/c,u=a/l*d/c,{x:p,z:m}=e;for(let e=0;e<c;e++)r(p"
+    },
+    {
+      "file": "1y0jl7cpc38wf.js",
+      "term": "DecompressionStream",
+      "offset_char": 15342,
+      "offset_bytes": 15346,
+      "context": "t8Array(a.length);for(let e=0;e<a.length;e++)o[e]=a.charCodeAt(e);return o}(e.trim());if(\"u\"<typeof DecompressionStream)throw Error(\"This browser needs gzip stream support for the 3D library.\");let o=new Blob([a]).stream().pipeThrough(new DecompressionStream(\"gzip\")),r=await new Response(o).arrayBuffer();if(r.byteLength>t)throw Error(\"Library byte budget exceeded\");return r}async function n(e){if(!Object.hasOwn(o.HIGGSFIELD_PACKS,e))throw Error(\"Unknown library pack\");return r.has(e)||r.set(e,(a"
+    },
+    {
+      "file": "1y0jl7cpc38wf.js",
+      "term": "DecompressionStream",
+      "offset_char": 15481,
+      "offset_bytes": 15485,
+      "context": "rowser needs gzip stream support for the 3D library.\");let o=new Blob([a]).stream().pipeThrough(new DecompressionStream(\"gzip\")),r=await new Response(o).arrayBuffer();if(r.byteLength>t)throw Error(\"Library byte budget exceeded\");return r}async function n(e){if(!Object.hasOwn(o.HIGGSFIELD_PACKS,e))throw Error(\"Unknown library pack\");return r.has(e)||r.set(e,(async()=>{let r=o.HIGGSFIELD_PACKS[e],n=\"directory\"in r?r.directory:\"higgsfield-r6\",l=await fetch(\"/models/cubicles/\"+n+\"/\"+e+\".glb.gz.b64\")"
+    },
+    {
+      "file": "0llsa4_5p1t45.js",
+      "term": "version=\"",
+      "offset_char": 18194,
+      "offset_bytes": 18194,
+      "context": "run=function(){this.fun.apply(null,this.array)},o.title=\"browser\",o.browser=!0,o.env={},o.argv=[],o.version=\"\",o.versions={},o.on=y,o.addListener=y,o.once=y,o.off=y,o.removeListener=y,o.removeAllListeners=y,o.emit=y,o.prependListener=y,o.prependOnceListener=y,o.listeners=function(e){return[]},o.binding=function(e){throw Error(\"process.binding is not supported\")},o.cwd=function(){return\"/\"},o.chdir=function(e){throw Error(\"process.chdir is not supported\")},o.umask=function(){return 0}}},o={};func"
+    },
+    {
+      "file": "0llsa4_5p1t45.js",
+      "term": "version=\"",
+      "offset_char": 22598,
+      "offset_bytes": 22598,
+      "context": "{return c.H.useFormState(e,t,r)},r.useFormStatus=function(){return c.H.useHostTransitionStatus()},r.version=\"19.3.0-canary-cbb046ab-20260731\"},174080,(e,t,r)=>{\"use strict\";e.i(247167),!function e(){if(\"u\">typeof __REACT_DEVTOOLS_GLOBAL_HOOK__&&\"function\"==typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE)try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(e)}catch(e){console.error(e)}}(),t.exports=e.r(818800)},745689,(e,t,r)=>{\"use strict\";var n=Symbol.for(\"react.transitional.element\");function o(e,t,r){v"
+    },
+    {
+      "file": "0llsa4_5p1t45.js",
+      "term": "version=\"",
+      "offset_char": 31068,
+      "offset_bytes": 31068,
+      "context": "r){return T.H.useSyncExternalStore(e,t,r)},r.useTransition=function(){return T.H.useTransition()},r.version=\"19.3.0-canary-cbb046ab-20260731\"},271645,(e,t,r)=>{\"use strict\";e.i(247167),t.exports=e.r(350740)},954839,(e,t,r)=>{\"use strict\";Object.defineProperty(r,\"__esModule\",{value:!0});var n={METADATA_BOUNDARY_NAME:function(){return u},OUTLET_BOUNDARY_NAME:function(){return a},ROOT_LAYOUT_BOUNDARY_NAME:function(){return s},VIEWPORT_BOUNDARY_NAME:function(){return i}};for(var o in n)Object.define"
+    },
+    {
+      "file": "0pk2_0c34vbky.js",
+      "term": "RUN_SPEED",
+      "offset_char": 81961,
+      "offset_bytes": 81978,
+      "context": "ion(e,t,a,n,i){let o=Math.hypot(t.x,t.z);if(o<1e-6||a<=0)return{...e,moved:!1};let r=Math.min((n?ev.RUN_SPEED:ev.WALK_SPEED)*Math.min(a,.1),t.remaining),s={x:e.x+t.x/o*r,z:e.z+t.z/o*r};return i.clear(e,s,!0)?{...s,moved:(0,eV.distance)(e,s)>1e-5}:{...e,moved:!1}}],141704),e.s([\"WorldWalkPlanner\",0,class{geometry;version=0;stats=null;buildMs=0;searchMs=0;worker=null;id=0;pending=null;constructor(t,a,n){this.geometry=new eV.WalkGeometry(t,a,n);try{this.worker=e.r(823401)(Worker,{type:\"module\"}),th"
+    },
+    {
+      "file": "0pk2_0c34vbky.js",
+      "term": "RUN_SPEED",
+      "offset_char": 137368,
+      "offset_bytes": 137391,
+      "context": ".key??null,r=Math.hypot(a.x-this.target.x,a.z-this.target.z)>Math.max(20,(this.options.maxSpeed??ev.RUN_SPEED)*i/1e3*1.5+2),s=o!==this.seatKey||null!==o||r||n>5e3||i>5e3;if(this.from={...this.sample(t)},this.target=a,this.started=this.received=t,this.updated=e.updated,this.seatKey=o,s){this.from={...a},this.duration=0,this.interval=this.options.interval??1e3;return}this.interval+=.25*(tE(n,100,2e3)-this.interval),this.duration=tE(1.05*this.interval,100,2e3)}sample(e){let t,a,n=Math.max(0,e-this."
+    }
+  ]
+}
