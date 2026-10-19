@@ -4,6 +4,7 @@ import { offices, neighborhoods, spawn, worldBounds } from './data.js';
 import { PUBLIC_AREAS, BASE_PUBLIC_AREAS, ITEMS, sceneHour, withinArea } from './community.js';
 import {GRID,footprint,centerOf,areaForBuilding,transformPoint} from './grid.js';
 import { buildPublicScenes } from './public-scenes.js';
+import { isModelItem, modelAssetId, effectiveSize } from './model-meta.js';
 
 const Y = new THREE.Vector3(0, 1, 0);
 const tmp = new THREE.Object3D();
@@ -188,7 +189,7 @@ export class OfficeWorld extends EventTarget {
     const asset=this.modelAssets?.find(a=>a.id===building.assetId);if(!asset)return;const environment=this.environment,center=centerOf(building),r=footprint(building),root=new THREE.Group();root.name=building.name;root.position.set(center.x,0,center.z);root.rotation.y=building.rotation*Math.PI/180;environment.add(root);
     const placeholder=new THREE.Mesh(new THREE.BoxGeometry(building.width,.15,building.depth),new THREE.MeshBasicMaterial({color:'#a4bd97',wireframe:true}));placeholder.position.y=.15;root.add(placeholder);
     if(building.solid)this.colliders.push({x:center.x,z:center.z,w:r.w/2,d:r.d/2});
-    try{this.importedCache||=new Map();let promise=this.importedCache.get(asset.id);if(!promise){promise=new GLTFLoader().loadAsync(asset.url);this.importedCache.set(asset.id,promise);}const gltf=await promise;if(this.environment!==environment)return;const object=gltf.scene.clone(true),box=new THREE.Box3().setFromObject(object),size=box.getSize(new THREE.Vector3());if(box.isEmpty())throw new Error('模型没有可显示的几何体');const fit=Math.min(building.width/Math.max(size.x,.001),building.depth/Math.max(size.z,.001))*.98;const offset=new THREE.Group();offset.add(object);offset.position.set(-(box.min.x+box.max.x)/2,-box.min.y,-(box.min.z+box.max.z)/2);const scaled=new THREE.Group();scaled.scale.setScalar(fit);scaled.add(offset);object.traverse(m=>{if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});root.remove(placeholder);placeholder.geometry.dispose();placeholder.material.dispose();root.add(scaled);
+    try{this.importedCache||=new Map();let promise=this.importedCache.get(asset.id);if(!promise){promise=new GLTFLoader().loadAsync(asset.url);this.importedCache.set(asset.id,promise);}const gltf=await promise;if(this.environment!==environment)return;const object=gltf.scene.clone(true),box=new THREE.Box3().setFromObject(object),size=box.getSize(new THREE.Vector3());if(box.isEmpty())throw new Error('模型没有可显示的几何体');const nativeMax=Math.max(Number(asset.width)||0,Number(asset.height)||0,Number(asset.depth)||0);const useAssetScale=Number.isFinite(Number(asset.scale))&&nativeMax>0;const fit=useAssetScale?Number(asset.scale)/nativeMax:Math.min(building.width/Math.max(size.x,.001),building.depth/Math.max(size.z,.001))*.98;const offset=new THREE.Group();offset.add(object);offset.position.set(-(box.min.x+box.max.x)/2,-box.min.y,-(box.min.z+box.max.z)/2);const scaled=new THREE.Group();scaled.scale.setScalar(fit);scaled.add(offset);object.traverse(m=>{if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});root.remove(placeholder);placeholder.geometry.dispose();placeholder.material.dispose();root.add(scaled);
     }catch(error){if(this.environment===environment){placeholder.material.color.set('#c48075');this.emit('asset-error',{name:asset.name,message:error.message});}}
   }
   previewLayout(buildings,selected){
@@ -200,11 +201,44 @@ export class OfficeWorld extends EventTarget {
   endLayoutPreview(){if(!this.layoutPreviewActive)return;this.layoutPreviewActive=false;this.previewData=null;this.previewFocus=null;Object.assign(this,this.savedLayoutCamera);this.buildWorld();this.resize();}
   setFurniture(office,furniture) {
     const old=this.furnitureGroups.get(office.id);if(old)this.environment.remove(old);
-    const group=new THREE.Group();group.position.set(office.x,0,office.z);const collisions=[];
-    for(const placed of furniture||[]){const item=ITEMS.find(i=>i.id===placed.itemId);const asset=item&&this.assets.get(item.model);if(!asset)continue;const object=asset.clone(true);object.position.set(placed.x,item.surface==='desk'?.79:0,placed.z);object.rotation.y=placed.rotation*Math.PI/180;object.traverse(m=>{if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});group.add(object);
+    const group=new THREE.Group();group.position.set(office.x,0,office.z);group.userData.officeId=office.id;const collisions=[];
+    for(const placed of furniture||[]){
+      if(isModelItem(placed.itemId)){
+        const model=this.modelAssets?.find(asset=>asset.id===modelAssetId(placed.itemId));
+        if(!model)continue;
+        const size=effectiveSize(model);
+        if(Math.max(size.width,size.height,size.depth)>3.4)continue;
+        const angle=(placed.rotation||0)*Math.PI/180;
+        const hx=Math.abs(Math.cos(angle))*(size.width/2)+Math.abs(Math.sin(angle))*(size.depth/2);
+        const hz=Math.abs(Math.sin(angle))*(size.width/2)+Math.abs(Math.cos(angle))*(size.depth/2);
+        collisions.push({x:office.x+placed.x,z:office.z+placed.z,w:hx,d:hz});
+        this.addCustomFurniture(group,placed,model);
+        continue;
+      }
+      const item=ITEMS.find(i=>i.id===placed.itemId);const asset=item&&this.assets.get(item.model);if(!asset)continue;const object=asset.clone(true);object.position.set(placed.x,item.surface==='desk'?.79:0,placed.z);object.rotation.y=placed.rotation*Math.PI/180;object.traverse(m=>{if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});group.add(object);
       if(item.surface==='floor'&&item.id!=='lamp')collisions.push({x:office.x+placed.x,z:office.z+placed.z,w:item.id==='desk'?.82:item.radius,d:item.id==='desk'?.4:item.radius});
     }
     this.environment.add(group);this.furnitureGroups.set(office.id,group);this.furnitureColliders.set(office.id,collisions);
+  }
+  async addCustomFurniture(group,placed,asset){
+    try{
+      const template=await this.assetObject(asset);
+      if(group.parent!==this.environment)return;
+      const nativeMax=Math.max(Number(asset.width)||0,Number(asset.height)||0,Number(asset.depth)||0)||1;
+      const scale=(Number(asset.scale)||1)/nativeMax;
+      const object=template.clone(true);object.scale.setScalar(scale);
+      const box=new THREE.Box3().setFromObject(object);if(box.isEmpty())return;
+      object.traverse(m=>{if(m.isMesh){m.castShadow=true;m.receiveShadow=true;}});
+      const center=box.getCenter(new THREE.Vector3());
+      const pivot=new THREE.Group();pivot.position.set(placed.x,0,placed.z);pivot.rotation.y=(placed.rotation||0)*Math.PI/180;
+      object.position.set(-center.x,-box.min.y,-center.z);pivot.add(object);group.add(pivot);
+    }catch(error){this.emit('asset-error',{name:asset?.name||'3D 模型',message:error.message});}
+  }
+  assetObject(asset){
+    this.importedCache||=new Map();
+    let promise=this.importedCache.get(asset.id);
+    if(!promise){promise=new GLTFLoader().loadAsync(asset.url);this.importedCache.set(asset.id,promise);}
+    return promise.then(gltf=>gltf.scene);
   }
   setStickers(stickers) {
     this.stickers=stickers;if(this.stickerGroup){this.environment.remove(this.stickerGroup);this.stickerGroup.traverse(m=>{if(m.isMesh){m.geometry.dispose();m.material.map?.dispose();m.material.dispose();}});}this.stickerGroup=new THREE.Group();

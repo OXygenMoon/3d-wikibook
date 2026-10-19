@@ -20,7 +20,7 @@ export async function handleAdminRoutes(req, res, url, session) {
   const path = url.pathname;
 
   if (path === '/api/admin/models' && req.method === 'POST') {
-    const asset = await uploadModel(req, url, session);
+    const asset = await uploadModel(req, url, session, { admin: true });
     sendJson(res, 201, { asset });
     return true;
   }

@@ -4,8 +4,9 @@ import { icon } from './icons.js';
 import {footprint} from './grid.js';
 import {WorldEditor} from './world-editor.js';
 import { CommunityUI } from './community-ui.js';
+import { ModelImporter } from './model-importer.js';
 import { PUBLIC_AREAS, withinOffice } from './community.js';
-let community,layoutEditor;
+let community,layoutEditor,modelImporter;
 
 const $ = selector => document.querySelector(selector);
 const esc = text => String(text ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
@@ -14,7 +15,7 @@ const store = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 const state = {
   profile: read('cubicles.profile', { name:'', avatar:'classic', color:outfits[0] }),
   aura:read('cubicles.aura',0), catches:read('cubicles.catches',[]), panel:null, online:1, visitors:0, messages:[],
-  user:null,zones:[],settings:{timeMode:'auto',hour:20},revision:0, token:sessionStorage.getItem('cubicles.token') || '', entered:false, ready:false, leaderboard:false, leaderboardTab:'工位', chat:false, music:false, musicPlaying:false,
+  user:null,zones:[],myModels:[],settings:{timeMode:'auto',hour:20},revision:0, token:sessionStorage.getItem('cubicles.token') || '', entered:false, ready:false, leaderboard:false, leaderboardTab:'工位', chat:false, music:false, musicPlaying:false,
 };
 const world = new OfficeWorld($('#world'));
 world.outfit = { ...state.profile };
@@ -159,7 +160,7 @@ function enter() {
 }
 
 document.addEventListener('click',async e=>{
-  const el=e.target.closest('[data-action],[data-avatar],[data-color],[data-visit],[data-neighborhood],[data-reaction],[data-office],[data-customize],[data-controltab],[data-leadertab],[data-admin-tab],[data-zone],[data-new-zone],[data-import-sample],[data-placed],[data-select-placed],[data-add-item],[data-remove-item],[data-task],[data-area-visit],[data-world-action],[data-world-building],[data-world-rect],[data-add-world-model]');if(!el)return;
+  const el=e.target.closest('[data-action],[data-avatar],[data-color],[data-visit],[data-neighborhood],[data-reaction],[data-office],[data-customize],[data-controltab],[data-leadertab],[data-admin-tab],[data-zone],[data-new-zone],[data-import-sample],[data-placed],[data-select-placed],[data-add-item],[data-remove-item],[data-task],[data-area-visit],[data-world-action],[data-world-building],[data-world-rect],[data-add-world-model],[data-add-model],[data-delete-model]');if(!el)return;
   if(await layoutEditor.click(el))return;
   if(await community.click(el))return;
   if(el.dataset.visit)return visitOffice(el.dataset.visit);
@@ -174,6 +175,7 @@ document.addEventListener('click',async e=>{
   const action=el.dataset.action;
   if(action==='enter')return enter();
   if(action==='close')return closePanel();
+  if(action==='import-model'){modelImporter.open({context:state.user?.role==='admin'?'admin':'user',onImported:asset=>{state.myModels=[...(state.myModels||[]).filter(item=>item.id!==asset.id),asset];state.modelAssets=[...(state.modelAssets||[]).filter(item=>item.id!==asset.id),asset];world.modelAssets=state.modelAssets;if(state.panel==='world-editor')layoutEditor.rerender();else if(state.panel==='editor')community.renderEditor();else if(state.panel==='backpack')community.open('backpack');}});return;}
   if(['map','controls','character','profile','menu','about','people','aura'].includes(action))return openPanel(action);
   if(action==='camera')return world.toggleCamera();
   if(action==='zoom-in')return world.zoom(-1.2);if(action==='zoom-out')return world.zoom(1.2);
@@ -202,7 +204,7 @@ document.addEventListener('input',e=>{
   if(e.target.id==='volume'){audioVolume=Number(e.target.value);if(audioGain)audioGain.gain.value=audioVolume*.14;}
 });
 document.addEventListener('submit',async e=>{
-  e.preventDefault();if(['model-upload-form','building-transform-form'].includes(e.target.id)){await layoutEditor.submit(e.target);return;}const communityForm=['login-form','zone-form','import-form','time-form','furniture-form','sticker-form'].includes(e.target.id)||e.target.classList.contains('user-assignment');if(communityForm){if(state.saving)return;state.saving=true;lockPanelButtons();try{await community.submit(e.target);}finally{state.saving=false;$('#panels').querySelectorAll('[data-busy-disabled]').forEach(b=>{b.disabled=false;delete b.dataset.busyDisabled;});}return;}const data=new FormData(e.target);
+  e.preventDefault();if(e.target.id==='model-import-form'){await modelImporter.submit(e.target);return;}if(['building-transform-form'].includes(e.target.id)){await layoutEditor.submit(e.target);return;}const communityForm=['login-form','zone-form','import-form','time-form','furniture-form','sticker-form'].includes(e.target.id)||e.target.classList.contains('user-assignment');if(communityForm){if(state.saving)return;state.saving=true;lockPanelButtons();try{await community.submit(e.target);}finally{state.saving=false;$('#panels').querySelectorAll('[data-busy-disabled]').forEach(b=>{b.disabled=false;delete b.dataset.busyDisabled;});}return;}const data=new FormData(e.target);
   if(e.target.id==='profile-form'){state.profile.name=String(data.get('name')).trim().slice(0,24);store('cubicles.profile',state.profile);if(state.user){try{setUser((await request('/api/me',{method:'PATCH',data:state.profile})).user);}catch(err){toast(err.message);return;}}closePanel();updateStats();tick();toast(`很高兴认识你，${state.profile.name}。`);}
   if(e.target.id==='chat-form') {
     const input=e.target.querySelector('input'),button=e.target.querySelector('button');button.disabled=true;
@@ -216,7 +218,7 @@ document.addEventListener('submit',async e=>{
   }
 });
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') {if(state.panel==='welcome'){enter();}else if(state.panel)closePanel();else if(state.chat){state.chat=false;renderChat();}$('#reaction-popover').hidden=true;}
+  if(e.key==='Escape') {if(modelImporter?.isOpen()){modelImporter.close();return;}if(state.panel==='welcome'){enter();}else if(state.panel)closePanel();else if(state.chat){state.chat=false;renderChat();}$('#reaction-popover').hidden=true;}
   if(e.key==='Tab'&&state.panel){const els=[...$('#panels').querySelectorAll('button:not([disabled]),input,[tabindex="0"]')].filter(el=>el.getClientRects().length);if(!els.length)return;if(e.shiftKey&&document.activeElement===els[0]){e.preventDefault();els.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===els.at(-1)){e.preventDefault();els[0].focus();}}
   if(e.target.matches('input,textarea,select')||!state.entered)return;
   if(e.key.toLowerCase()==='b'&&!state.panel){e.preventDefault();community.show(community.canEdit()?'editor':'backpack');}
@@ -267,14 +269,14 @@ world.addEventListener('camera',e=>{const first=e.detail==='first';$('.camera-bu
 world.addEventListener('dance',e=>{$('[data-action=dance]').classList.toggle('active',e.detail);$('[data-action=dance]').setAttribute('aria-pressed',e.detail);});
 world.addEventListener('vehicle',e=>{toast(e.detail?'出发兜风吧，按 E 下车。':'已下车，继续逛逛吧。');updateNearbyPrompt();});
 
-function setUser(user){state.user=user;world.currentUserId=user?.id;if(user){state.profile={name:user.name,avatar:user.avatar,color:user.color};state.aura=user.score;state.catches=user.catches||[];}else{state.profile={name:'',avatar:'classic',color:outfits[0]};state.aura=0;state.catches=[];}world.setOutfit(state.profile);if($('#ui').children.length)hud();}
-async function refreshWorld(force=false,data){data ||=await request('/api/world',{authenticated:false});const geometry=JSON.stringify([data.zones,data.buildings]);const oldGeometry=JSON.stringify([state.zones,state.buildings]);const areasChanged=JSON.stringify(PUBLIC_AREAS)!==JSON.stringify(data.areas);PUBLIC_AREAS.splice(0,PUBLIC_AREAS.length,...data.areas);state.buildings=data.buildings;state.modelAssets=data.modelAssets;state.layoutRevision=data.layoutRevision;const prior=new Map(offices.map(o=>[o.id,JSON.stringify(o)]));offices.splice(0,offices.length,...data.offices);neighborhoods.splice(0,neighborhoods.length,...data.neighborhoods);state.zones=data.zones;state.settings=data.settings;state.revision=data.revision;state.visitors=data.visitors;world.setCommunity(data,{rebuild:force||geometry!==oldGeometry});if(world.ready&&!force&&geometry===oldGeometry){for(const o of offices)if(JSON.stringify(o)!==prior.get(o.id)&&!(state.panel==='editor'&&o.ownerId===state.user?.id))world.updateOffice(o);}
+function setUser(user){state.user=user;world.currentUserId=user?.id;if(user){state.profile={name:user.name,avatar:user.avatar,color:user.color};state.aura=user.score;state.catches=user.catches||[];}else{state.profile={name:'',avatar:'classic',color:outfits[0]};state.aura=0;state.catches=[];state.myModels=[];}world.setOutfit(state.profile);if($('#ui').children.length)hud();}
+async function refreshWorld(force=false,data){data ||=await request('/api/world',{authenticated:false});let myModels=state.myModels||[];if(state.user){try{myModels=(await request('/api/models')).assets;}catch{myModels=[];}}state.myModels=myModels;const merged=[...data.modelAssets];for(const asset of myModels)if(!merged.some(item=>item.id===asset.id))merged.push(asset);data={...data,modelAssets:merged};const geometry=JSON.stringify([data.zones,data.buildings]);const oldGeometry=JSON.stringify([state.zones,state.buildings]);const areasChanged=JSON.stringify(PUBLIC_AREAS)!==JSON.stringify(data.areas);PUBLIC_AREAS.splice(0,PUBLIC_AREAS.length,...data.areas);state.buildings=data.buildings;state.modelAssets=merged;state.layoutRevision=data.layoutRevision;const prior=new Map(offices.map(o=>[o.id,JSON.stringify(o)]));offices.splice(0,offices.length,...data.offices);neighborhoods.splice(0,neighborhoods.length,...data.neighborhoods);state.zones=data.zones;state.settings=data.settings;state.revision=data.revision;state.visitors=data.visitors;world.setCommunity(data,{rebuild:force||geometry!==oldGeometry});if(world.ready&&!force&&geometry===oldGeometry){for(const o of offices)if(JSON.stringify(o)!==prior.get(o.id)&&!(state.panel==='editor'&&o.ownerId===state.user?.id))world.updateOffice(o);}
  if(state.user){const result=await request('/api/me');if(result.user){state.user=result.user;state.aura=result.user.score;}}if(areasChanged)hud();updateStats();}
 async function navigateArea(id){const area=PUBLIC_AREAS.find(a=>a.id===id);if(!area)return toast('该公共区域已收起。');closePanel();world.teleport(area.entry.x,area.entry.z);await tick();toast(`已抵达${area.name}，按 E ${area.hint}。`);}
-community=new CommunityUI({state,world,offices,request,esc,btn,shell:panelShell,open:openPanel,close:closePanel,toast,tick,session,refresh:refreshWorld,setUser});community.bind();layoutEditor=new WorldEditor({state,world,offices,request,esc,open:openPanel,close:closePanel,toast,refresh:refreshWorld});layoutEditor.bind();
+community=new CommunityUI({state,world,offices,request,esc,btn,shell:panelShell,open:openPanel,close:closePanel,toast,tick,session,refresh:refreshWorld,setUser});community.bind();layoutEditor=new WorldEditor({state,world,offices,request,esc,open:openPanel,close:closePanel,toast,refresh:refreshWorld});layoutEditor.bind();modelImporter=new ModelImporter({state,world,request,esc,toast});
 hud();
 if(!read('cubicles.entered',false))openPanel('welcome');else{state.entered=true;world.enter();}
 try{const login=await session();await refreshWorld();if(login.user)world.teleport(login.position.x,login.position.z);else if(offices[0])world.teleport(offices[0].x,offices[0].z+2.5);}catch(error){toast('正在重新连接本地社区。');}
 await world.init();await tick();setInterval(tick,1000);
-window.__cubicles={world,state,openPanel,closePanel,community,inspect:()=>world.inspect()};
+window.__cubicles={world,state,openPanel,closePanel,community,layoutEditor,modelImporter,inspect:()=>world.inspect()};
 if(matchMedia('(pointer: coarse), (max-width: 700px)').matches){touchVisible=true;$('#touch-controls').hidden=false;$('#quick-hint').hidden=true;}

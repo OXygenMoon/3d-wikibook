@@ -4,6 +4,90 @@ const MAX_VERTICES = 500_000
 const MAX_TRIANGLES = 300_000
 const JSON_CHUNK = 0x4e4f534a
 const BIN_CHUNK = 0x004e4942
+
+const identityMatrix = () => [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+function multiplyMatrix(a, b) {
+  const out = new Array(16)
+  for (let col = 0; col < 4; col++) {
+    for (let row = 0; row < 4; row++) {
+      out[col * 4 + row] =
+        a[row] * b[col * 4] +
+        a[4 + row] * b[col * 4 + 1] +
+        a[8 + row] * b[col * 4 + 2] +
+        a[12 + row] * b[col * 4 + 3]
+    }
+  }
+  return out
+}
+function nodeMatrix(node) {
+  if (Array.isArray(node.matrix) && node.matrix.length === 16 && node.matrix.every(Number.isFinite)) return node.matrix
+  const [tx, ty, tz] = Array.isArray(node.translation) ? node.translation : [0, 0, 0]
+  const [qx, qy, qz, qw] = Array.isArray(node.rotation) ? node.rotation : [0, 0, 0, 1]
+  const [sx, sy, sz] = Array.isArray(node.scale) ? node.scale : [1, 1, 1]
+  const x2 = qx + qx, y2 = qy + qy, z2 = qz + qz
+  const xx = qx * x2, xy = qx * y2, xz = qx * z2
+  const yy = qy * y2, yz = qy * z2, zz = qz * z2
+  const wx = qw * x2, wy = qw * y2, wz = qw * z2
+  const m00 = 1 - (yy + zz), m01 = xy - wz, m02 = xz + wy
+  const m10 = xy + wz, m11 = 1 - (xx + zz), m12 = yz - wx
+  const m20 = xz - wy, m21 = yz + wx, m22 = 1 - (xx + yy)
+  if (![m00, m01, m02, m10, m11, m12, m20, m21, m22, tx, ty, tz, sx, sy, sz].every(Number.isFinite)) return identityMatrix()
+  return [
+    m00 * sx, m10 * sx, m20 * sx, 0,
+    m01 * sy, m11 * sy, m21 * sy, 0,
+    m02 * sz, m12 * sz, m22 * sz, 0,
+    tx, ty, tz, 1,
+  ]
+}
+function transformPoint(matrix, x, y, z) {
+  return {
+    x: matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12],
+    y: matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13],
+    z: matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14],
+  }
+}
+function sceneBounds(json, accessors, nodes, scenes, sceneIndex) {
+  const bounds = { minX: Infinity, minY: Infinity, minZ: Infinity, maxX: -Infinity, maxY: -Infinity, maxZ: -Infinity }
+  const stack = (scenes[sceneIndex].nodes ?? []).map(index => ({ index, matrix: identityMatrix() }))
+  while (stack.length) {
+    const { index, matrix } = stack.pop()
+    const node = nodes[index]
+    const world = multiplyMatrix(matrix, nodeMatrix(node))
+    if (node.mesh !== undefined) {
+      for (const primitive of json.meshes[node.mesh].primitives) {
+        const accessor = accessors[primitive.attributes.POSITION]
+        if (!Array.isArray(accessor.min) || !Array.isArray(accessor.max) || accessor.min.length !== 3 || accessor.max.length !== 3) continue
+        for (const x of [accessor.min[0], accessor.max[0]]) {
+          for (const y of [accessor.min[1], accessor.max[1]]) {
+            for (const z of [accessor.min[2], accessor.max[2]]) {
+              const point = transformPoint(world, x, y, z)
+              if (![point.x, point.y, point.z].every(Number.isFinite)) continue
+              bounds.minX = Math.min(bounds.minX, point.x)
+              bounds.minY = Math.min(bounds.minY, point.y)
+              bounds.minZ = Math.min(bounds.minZ, point.z)
+              bounds.maxX = Math.max(bounds.maxX, point.x)
+              bounds.maxY = Math.max(bounds.maxY, point.y)
+              bounds.maxZ = Math.max(bounds.maxZ, point.z)
+            }
+          }
+        }
+      }
+    }
+    for (const child of node.children ?? []) stack.push({ index: child, matrix: world })
+  }
+  if (!Number.isFinite(bounds.minX)) return null
+  const width = bounds.maxX - bounds.minX
+  const height = bounds.maxY - bounds.minY
+  const depth = bounds.maxZ - bounds.minZ
+  return {
+    width: Number(width.toFixed(4)),
+    height: Number(height.toFixed(4)),
+    depth: Number(depth.toFixed(4)),
+    min: [Number(bounds.minX.toFixed(4)), Number(bounds.minY.toFixed(4)), Number(bounds.minZ.toFixed(4))],
+    max: [Number(bounds.maxX.toFixed(4)), Number(bounds.maxY.toFixed(4)), Number(bounds.maxZ.toFixed(4))],
+  }
+}
+
 const compressedExtensions = new Set(['KHR_draco_mesh_compression', 'EXT_meshopt_compression', 'KHR_texture_basisu'])
 const componentBytes = { 5120: 1, 5121: 1, 5122: 2, 5123: 2, 5125: 4, 5126: 4 }
 const typeComponents = { SCALAR: 1, VEC2: 2, VEC3: 3, VEC4: 4, MAT2: 4, MAT3: 9, MAT4: 16 }
@@ -224,5 +308,6 @@ export function validateGLB(input) {
     if (image.bufferView !== undefined) reference(image.bufferView, views, '纹理图片缓冲视图')
     else if (image.uri === undefined) fail('纹理图片缺少内嵌数据。')
   }
-  return { meshCount: meshes.length, nodeCount: nodes.length, triangleCount, bytes }
+  const bounds = sceneBounds(json, accessors, nodes, scenes, json.scene ?? 0)
+  return { meshCount: meshes.length, nodeCount: nodes.length, triangleCount, bytes, bounds }
 }

@@ -18,6 +18,7 @@ import {
 import { getState, getRevision } from './store.mjs';
 import { sessions, onlineUserIds } from './session-store.mjs';
 import { fail } from './http.mjs';
+import { effectiveSize } from '../model-meta.js';
 
 export function findUser(id) {
   return getState().users.find(user => user.id === id);
@@ -71,7 +72,7 @@ export function worldData() {
   return {
     grid: GRID,
     buildings: worldBuildings(),
-    modelAssets: state.modelAssets,
+    modelAssets: state.modelAssets.filter(asset => asset.visibility !== 'private'),
     layoutRevision: state.layoutRevision,
     offices: offices(),
     neighborhoods: state.zones,
@@ -239,8 +240,16 @@ export function validateWorldLayout(data) {
       ) {
         fail(400, '模型占地需要 1–40 格。');
       }
-      if (building.assetId && !state.modelAssets.some(asset => asset.id === building.assetId)) {
+      const asset = building.assetId ? state.modelAssets.find(item => item.id === building.assetId) : null;
+      if (building.assetId && !asset) {
         fail(400, '模型资源不存在，请先导入。');
+      }
+      if (asset?.visibility === 'private') fail(400, '私有模型不能放入公共世界，请使用共享模型。');
+      if (asset && Number.isFinite(Number(asset.scale))) {
+        const size = effectiveSize(asset);
+        if (building.width < Math.max(1, Math.ceil(size.width)) || building.depth < Math.max(1, Math.ceil(size.depth))) {
+          fail(400, `${asset.name} 的占地不能小于模型实际尺寸，请增大宽深或减小缩放。`);
+        }
       }
       if (kind === 'custom' && !building.assetId) fail(400, '自定义建筑必须选择一个已导入模型。');
       if (

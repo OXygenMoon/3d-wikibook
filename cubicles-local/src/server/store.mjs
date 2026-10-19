@@ -118,6 +118,13 @@ export async function normalizeState(value) {
     zone.z = gridZ + depth / 2;
   }
 
+  for (const asset of next.modelAssets) {
+    asset.description ||= '';
+    asset.visibility ||= 'shared';
+    asset.ownerId ||= null;
+    asset.scale = Number.isFinite(Number(asset.scale)) ? Number(asset.scale) : null;
+  }
+
   for (const user of next.users) {
     user.inventory ||= Object.fromEntries(ITEMS.map(item => [item.id, item.limit]));
     user.score ||= 0;

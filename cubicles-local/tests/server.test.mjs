@@ -85,6 +85,21 @@ test('model upload is admin-only, durable and can be placed, validated, removed 
  const wall=removed.data.buildings.find(b=>b.id==='wall');wall.enabled=false;const closed=await call('/api/admin/layout',{baseRevision:removed.data.layoutRevision,buildings:removed.data.buildings},admin,'PUT');assert.equal(closed.status,200);assert.ok(!closed.data.areas.some(a=>a.id==='wall'));await move(admin,0,39);assert.equal((await call('/api/stickers',null,admin)).status,404);
 });
 
+test('personal models stay private, are listed only for their owner, and can be placed on the owner workstation',async()=>{
+ const model=await readFile(new URL('../public/examples/grid-pavilion.glb',import.meta.url));
+ const login=await call('/api/login',{username:'student01',password:'abcdef'});const token=login.data.token,uid=login.data.user.id;
+ const upload=await fetch(base+'/api/models?filename=desk-toy.glb&name='+encodeURIComponent('工位小模型')+'&description=test&scale=1.2',{method:'POST',headers:{'Content-Type':'model/gltf-binary','X-Session-Token':token},body:model});
+ assert.equal(upload.status,201);const asset=(await upload.json()).asset;assert.equal(asset.visibility,'private');assert.equal(asset.ownerId,uid);assert.ok(asset.width>0);
+ const world=(await call('/api/world')).data;assert.ok(!world.modelAssets.some(item=>item.id===asset.id));
+ const mine=await call('/api/models',null,token);assert.ok(mine.data.assets.some(item=>item.id===asset.id));
+ assert.equal((await fetch(base+asset.url)).status,403);assert.equal((await fetch(base+asset.url,{headers:{Cookie:login.cookie.split(';')[0]}})).status,200);
+ const office=world.offices.find(item=>item.ownerId===uid);await move(token,office.x,office.z+2.5);
+ const furniture=[...office.furniture,{id:'personal-model-1',itemId:`model:${asset.id}`,x:0,z:0.5,rotation:0}];
+ const saved=await call(`/api/offices/${office.id}`,{furniture},token,'PATCH');assert.equal(saved.status,200);
+ const after=(await call('/api/world')).data;assert.ok(after.offices.find(item=>item.id===office.id).furniture.some(item=>item.itemId===`model:${asset.id}`));
+ const snapshot=(await call('/api/world')).data;const custom={id:'model-private-test',kind:'custom',name:'私有模型',gridX:-45,gridZ:-30,width:4,depth:4,rotation:0,assetId:asset.id,solid:true,enabled:true};
+ const denied=await call('/api/admin/layout',{baseRevision:snapshot.layoutRevision,buildings:[...snapshot.buildings,custom]},admin,'PUT');assert.equal(denied.status,400);
+});
 test('a public building can use a smaller imported appearance and return to its built-in footprint',async()=>{
  const snapshot=(await call('/api/world')).data,buildings=structuredClone(snapshot.buildings),pond=buildings.find(b=>b.id==='pond');pond.assetId=snapshot.modelAssets[0].id;pond.width=4;pond.depth=4;
  const replaced=await call('/api/admin/layout',{baseRevision:snapshot.layoutRevision,buildings},admin,'PUT');assert.equal(replaced.status,200);const area=replaced.data.areas.find(a=>a.id==='pond');await move(admin,area.entry.x,area.entry.z);assert.equal((await call('/api/fishing/cast',{},admin)).status,200);

@@ -123,7 +123,7 @@ async function handleRequest(req, res) {
     }
 
     if (pathname.startsWith('/uploads/')) {
-      await serveUpload(res, pathname);
+      await serveUpload(req, res, pathname);
       return;
     }
 

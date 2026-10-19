@@ -29,6 +29,7 @@ docker compose up --build
 
 - [项目说明](cubicles-local/README.md)
 - [P0 工程地基：数据库、会话、备份、Compose、E2E](cubicles-local/docs/工程地基.md)
+- [3D 模型导入与工位迷你编辑器](cubicles-local/docs/3D模型与工位编辑器.md)
 - [世界建模与导入](cubicles-local/docs/世界建模与导入.md)
 - [社区长期路线](cubicles-local/COMMUNITY-ROADMAP.md)
 - [历史验证记录](cubicles-local/VALIDATION.md)

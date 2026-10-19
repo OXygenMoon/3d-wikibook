@@ -41,8 +41,14 @@ function invalid(buffer, pattern, status = 400) {
 
 test('接受自包含 GLB 2.0 三角形并返回统计', () => {
   const input = glb()
-  assert.deepEqual(validateGLB(input), { meshCount: 1, nodeCount: 1, triangleCount: 1, bytes: input.length })
+  const stats = validateGLB(input)
+  assert.deepEqual({ ...stats, bounds: undefined }, { meshCount: 1, nodeCount: 1, triangleCount: 1, bytes: input.length, bounds: undefined })
+  assert.deepEqual(stats.bounds, { width: 1, height: 1, depth: 0, min: [0, 0, 0], max: [1, 1, 0] })
   assert.equal(validateGLB(new Uint8Array(input)).triangleCount, 1)
+  const transformed = model()
+  transformed.nodes[0].translation = [1, 0, 0]
+  transformed.nodes[0].scale = [2, 3, 1]
+  assert.deepEqual(validateGLB(glb(transformed)).bounds, { width: 2, height: 3, depth: 0, min: [1, 0, 0], max: [3, 3, 0] })
 })
 test('接受常规内嵌纹理、材质与 data URI 缓冲区', () => {
   const json = model()
