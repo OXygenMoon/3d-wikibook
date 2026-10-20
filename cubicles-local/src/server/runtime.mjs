@@ -2,7 +2,7 @@ import { mkdir } from 'node:fs/promises';
 import { config } from './config.mjs';
 import { initDatabase, closeDatabase } from './db.mjs';
 import { initStore } from './store.mjs';
-import { loadSessions, cleanupSessions } from './session-store.mjs';
+import { loadSessions, cleanupSessions, startSessionPersistence, stopSessionPersistence } from './session-store.mjs';
 import { loadMessages } from './message-store.mjs';
 import { initMonitoring } from './monitoring.mjs';
 
@@ -16,11 +16,12 @@ export async function initApp({ monitoring = true, autoImport, createIfMissing =
   await loadSessions();
   await cleanupSessions();
   await loadMessages();
+  startSessionPersistence();
   if (monitoring) await initMonitoring();
   initialized = true;
 }
 
 export async function shutdownApp() {
-  await closeDatabase();
-  initialized = false;
+  try { await stopSessionPersistence(); }
+  finally { await closeDatabase(); initialized = false; }
 }

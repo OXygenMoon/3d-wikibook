@@ -1,12 +1,14 @@
 import { OfficeWorld } from './world.js';
 import { offices, neighborhoods, outfits, spawn, home } from './data.js';
 import { icon } from './icons.js';
-import {footprint} from './grid.js';
+import {footprint,GRID} from './grid.js';
 import {WorldEditor} from './world-editor.js';
 import { CommunityUI } from './community-ui.js';
 import { ModelImporter } from './model-importer.js';
+import { ClassroomUI } from './classroom-ui.js';
+import { OJPanel, WikiBookPanel } from './oj-panel.js';
 import { PUBLIC_AREAS, withinOffice } from './community.js';
-let community,layoutEditor,modelImporter;
+let community,layoutEditor,modelImporter,classroom,oj,wikibookFishing;
 
 const $ = selector => document.querySelector(selector);
 const esc = text => String(text ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
@@ -15,7 +17,7 @@ const store = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 const state = {
   profile: read('cubicles.profile', { name:'', avatar:'classic', color:outfits[0] }),
   aura:read('cubicles.aura',0), catches:read('cubicles.catches',[]), panel:null, online:1, visitors:0, messages:[],
-  user:null,zones:[],myModels:[],settings:{timeMode:'auto',hour:20},revision:0, token:sessionStorage.getItem('cubicles.token') || '', entered:false, ready:false, leaderboard:false, leaderboardTab:'工位', chat:false, music:false, musicPlaying:false,
+  user:null,zones:[],myModels:[],settings:{timeMode:'auto',hour:20},revision:0, token:sessionStorage.getItem('cubicles.token') || '', entered:false, ready:false, connected:true, leaderboard:false, leaderboardTab:'工位', chat:false, music:false, musicPlaying:false,
 };
 const world = new OfficeWorld($('#world'));
 world.outfit = { ...state.profile };
@@ -29,7 +31,7 @@ function hud() {
     <nav class="account" aria-label="个人资料"><span id="profile-name">${esc(state.profile.name||'访客')}</span>${state.user?btn('account','我的账号'):btn('login','登录')}${state.user?.role==='admin'?btn('admin','管理后台'):''}</nav>
     <div class="top-right">${btn('camera','第一人称','camera','pill camera-button')}<div class="zoom-group"><button data-action="zoom-out" aria-label="缩小视野">${icon('minus')}</button><button data-action="zoom-in" aria-label="放大视野">${icon('plus')}</button></div>${btn('menu','菜单','menu','pill')}</div>
     <div class="left-rail"><div class="visitor-counter"><span>累计到访</span><div id="visitor-digits">${'000001'.split('').map(n=>`<b>${n}</b>`).join('')}</div></div>${btn('aura',`${state.aura} 活力值`,'star','pill aura-button')}<button class="community-pill" data-action="about"><b>邻</b><span>小小工位，大大梦想</span>${icon('external')}</button><section class="radio"><button class="radio-toggle" data-action="music" aria-expanded="false">${icon('sound')}<span>音乐</span>${icon('chevron')}</button><div id="radio-content" hidden></div></section></div>
-    <div class="leaderboard-wrap public-nav"><div id="community-clock" class="pill"></div>${PUBLIC_AREAS.map(a=>`<button class="pill" data-area-visit="${a.id}">${{pond:'🪷',wall:'🗒️',hall:'🏆',lab:'🖥️'}[a.id]} ${esc(a.name)}</button>`).join('')}<div id="leaderboard-content" hidden></div></div>
+    <div class="leaderboard-wrap public-nav"><div id="connection-status" class="pill network-status" role="status" aria-live="polite" hidden></div><div id="community-clock" class="pill"></div>${PUBLIC_AREAS.map(a=>`<button class="pill" data-area-visit="${a.id}">${{pond:'🪷',wall:'🗒️',hall:'🏆',lab:'🖥️'}[a.id]} ${esc(a.name)}</button>`).join('')}<div id="leaderboard-content" hidden></div></div>
     <button class="minimap" data-action="map" aria-label="打开社区地图"><canvas id="minimap" aria-label="社区小地图" width="320" height="320"></canvas><span class="minimap-north" >北</span></button>
     <div id="nearby-prompt" class="nearby-prompt" hidden></div>
     <div class="quick-hint" id="quick-hint"><kbd>WASD</kbd><span>移动 · 也可使用方向键</span>${btn('controls','查看操作','help')}<button data-action="dismiss-hint" aria-label="关闭操作提示">${icon('close')}</button></div>
@@ -49,6 +51,12 @@ function updateStats() {
   $('#visitor-digits').innerHTML=String(state.visitors).padStart(6,'0').slice(-6).split('').map(n=>`<b>${n}</b>`).join('');
   $('.aura-button span').textContent=`${state.aura} 活力值`;
   $('#profile-name').textContent=state.profile.name||'访客';
+  setConnection(state.connected);
+}
+function setConnection(connected) {
+  state.connected=connected;
+  const indicator=$('#connection-status');
+  if(indicator){indicator.hidden=connected;indicator.textContent=connected?'':'连接暂时中断，正在重试…';}
 }
 function award(amount) { updateStats(); }
 
@@ -56,17 +64,26 @@ function panelShell(title,content,{wide=false,eyebrow='',className=''}={}) {
   return `<div class="backdrop"><section class="dialog ${wide?'wide':''} ${className}" role="dialog" aria-modal="true" aria-label="${esc(title)}"><header class="dialog-header"><div>${eyebrow?`<p class="eyebrow">${eyebrow}</p>`:''}<h2>${title}</h2></div><button class="close-button" data-action="close" aria-label="关闭">${icon('close')}</button></header>${content}</section></div>`;
 }
 function lockPanelButtons(){ $('#panels').querySelectorAll('button:not([disabled])').forEach(b=>{b.dataset.busyDisabled='1';b.disabled=true;});}
+function wikiBookPanel(name=state.panel){return name==='oj'?oj:name==='wikibook-fishing'?wikibookFishing:null;}
 function openPanel(name,data) {
   if(document.pointerLockElement)document.exitPointerLock();
-  panelOrigin=document.activeElement;state.panel=name;state.panelData=data;world.paused=true;world.keys.clear();$('#panels').innerHTML=renderPanel(name,data);$('#ui').inert=true;
-  if(state.saving)lockPanelButtons();requestAnimationFrame(()=>$('#panels').querySelector('input,button:not([disabled]),[tabindex="0"]')?.focus({preventScroll:true}));
+  wikiBookPanel()?.hide();
+  const workspace=wikiBookPanel(name);
+  panelOrigin=document.activeElement;state.panel=name;state.panelData=data;world.paused=true;world.keys.clear();world.touch={x:0,z:0};$('#panels').innerHTML=workspace?'':renderPanel(name,data);$('#ui').inert=true;$('#world').inert=Boolean(workspace);
+  if(workspace){world.path=[];world.pointer=null;workspace.show(data);}
+  if(state.saving)lockPanelButtons();requestAnimationFrame(()=>(workspace?.root||$('#panels')).querySelector('input,button:not([disabled]),[tabindex="0"]')?.focus({preventScroll:true}));
   if(name==='map')drawMapPosition();
 }
 function closePanel() {
+  if(layoutEditor?.saving)return;
+  wikiBookPanel()?.hide();
+  $('#world').inert=false;
+  if(state.panel==='editor')world.endPlacement();
   cancelAnimationFrame(fishingFrame);if(state.panel==='world-editor')layoutEditor?.cancel();if(state.panel==='editor'&&community?.draft){const o=community.ownOffice();if(o)world.setFurniture(o,o.furniture);community.draft=null;}state.panel=null;$('#panels').innerHTML='';$('#ui').inert=false;world.paused=false;world.keys.clear();
-  if(panelOrigin?.isConnected)panelOrigin.focus({preventScroll:true});else $('#world').focus();
+  if(panelOrigin?.isConnected&&panelOrigin.getClientRects().length)panelOrigin.focus({preventScroll:true});else $('#world').focus();
 }
 function renderPanel(name,data) {
+  const classPanel=classroom?.render(name);if(classPanel)return classPanel;
   const layout=layoutEditor?.render(name);if(layout)return layout;
   const custom=community?.render(name,data);if(custom)return custom;
   if(name==='welcome') return `<div class="welcome-shade"><section class="welcome-card" role="dialog" aria-modal="true" aria-label="互联网里，有了我们的社区。"><button class="welcome-close" data-action="enter" aria-label="关闭欢迎页面">${icon('close')}</button><div class="welcome-brand">${icon('cube')}<b>格子社区</b></div><h1>互联网里，<br>有了我们的社区。</h1><p>逛逛社区，认识伙伴，<br class="desktop-only">一起创造属于我们的空间。</p><button class="enter-button" data-action="enter" ${state.ready?'':'disabled'}><span>${state.ready?'进入社区':'正在准备你的空间…'}</span>${state.ready?icon('arrow'):'<i class="spinner"></i>'}</button><small>无需注册，自由探索。</small><div class="welcome-bottom"><span class="live-dot"></span> 小小工位，大大梦想 ${icon('external')}</div><div class="load-track"><div id="load-progress" style="width:${state.ready?100:0}%"></div></div></section></div>`;
@@ -77,15 +94,15 @@ function renderPanel(name,data) {
   if(name==='office')return officePanel(data);
   if(name==='menu')return panelShell('欢迎来到自己的小天地。',`<div class="menu-list">${menuItem('map','map','探索社区','发现新区域，认识新伙伴')}${menuItem(state.user?'account':'login','user',state.user?'我的账号':'登录账号','登录后回到自己的工位')}${menuItem('my-office','pin','我的工位','回到自己的空间')}${menuItem('backpack','cube','家具背包','查看拥有的家具与摆件')}${state.user?.role==='admin'?menuItem('admin','edit','管理员后台','账号、班级、工位与昼夜'):''}${menuItem('controls','keyboard','操作指南','了解社区里的各种玩法')}${menuItem('plaza','leaf','逛逛中心广场','找个安静地方歇一歇')}${menuItem('drive','car','开车兜风','小车正停在林荫大道旁')}${menuItem('fishing','fish','去钓鱼','看看荷风池塘有什么收获')}${menuItem('reset-camera','reset','重置视角','回到熟悉的观察角度')}</div><div class="menu-setting"><label for="daylight">日光亮度</label><input id="daylight" type="range" min=".7" max="1.7" step=".05" value="${world.renderer.toneMappingExposure}"></div><p class="subtle center">属于我们的小小社区。</p>`,{eyebrow:'社区菜单',className:'menu-dialog'});
   if(name==='people')return panelShell('伙伴就在身边。',`<p class="dialog-intro">当前有 ${state.online} 位伙伴正在探索社区。</p><div class="person-row"><span class="person-dot" style="background:${state.profile.color}"></span><div><b>${esc(state.profile.name||'访客')}</b><small>这是你 · 中心广场</small></div><span class="tag">在这里</span></div>${[...world.remote.values()].map((p,i)=>`<div class="person-row"><span class="person-dot" style="background:${p.color}"></span><div><b>${esc(state.lastPlayers?.[i]?.name||'伙伴')}</b><small>正在探索社区</small></div></div>`).join('')}<div class="empty-note">在另一个窗口打开这个本地地址，即可一起探索。</div>`,{eyebrow:'社区伙伴'});
-  if(name==='aura')return panelShell('每一份成长，都值得记录。',`<div class="aura-total">${icon('star')}<strong>${state.aura}</strong><span>我的活力值</span></div><p class="dialog-intro center">在机房完成任务，在池塘收获惊喜。<br>活力按账号记录，前往排行榜殿堂查看。</p><div class="reward-row"><span>完成一张机房任务卡（每项一次）</span><b>+5 活力</b></div><div class="reward-row"><span>在池塘钓到一条鱼</span><b>+10 活力</b></div><button class="primary" data-area-visit="hall">前往排行榜殿堂 ${icon('arrow')}</button>`,{eyebrow:'活力与奖励'});
+  if(name==='aura')return panelShell('每一份成长，都值得记录。',`<div class="aura-total">${icon('star')}<strong>${state.aura}</strong><span>我的活力值</span></div><p class="dialog-intro center">活力按社区账号记录，历史奖励保留。<br>WikiBook 钓鱼的鱼饵、渔获、星星与排行独立保存，暂不换算为社区活力。</p><div class="reward-row"><span>完成一张社区任务卡（每项一次）</span><b>+5 活力</b></div><button class="primary" data-area-visit="hall">前往排行榜殿堂 ${icon('arrow')}</button>`,{eyebrow:'活力与奖励'});
   if(name==='fishing')return panelShell('给自己一点慢时光。',`<p class="dialog-intro">在荷风池塘坐一坐，不必着急。</p><div class="fishing-scene"><span class="fish-cloud one"></span><span class="fish-cloud two"></span><span class="fishing-sun"></span><span class="fishing-pier"></span><span class="fishing-line"></span><span class="fishing-bobber"></span><span class="water-lines">∿ &nbsp; ∿ &nbsp; ∿ &nbsp; ∿</span></div><div id="fishing-status"><h3>看看今天有什么收获。</h3><p>先抛竿，再在指针进入绿色区域时收线。</p><div class="fishing-meter"><i class="sweet-spot"></i><b id="fishing-cursor"></b></div><button class="primary" data-action="cast">抛竿 ${icon('fish')}</button></div><p class="subtle center" id="fishing-best">最佳收获：${state.catches.length?Math.max(...state.catches.map(c=>c.weight)).toFixed(1)+' 千克':'还在等待第一条鱼'}</p>`,{eyebrow:'荷风池塘',className:'fishing-dialog'});
   return panelShell('小小工位，装下大大梦想。',`<div class="about-cube">${icon('cube')}</div><p class="about-copy">互联网里，有了我们的社区。</p><p class="dialog-intro center">这里有热爱创造的伙伴，也有等待实现的想法。走一走、聊一聊，让每一次相遇都带来一点新灵感。</p><div class="about-stats"><div><b>${offices.length}</b><span>个探索工位</span></div><div><b>${neighborhoods.length+PUBLIC_AREAS.length}</b><span>个社区区域</span></div><div><b>∞</b><span>种可能</span></div></div><button class="primary" data-action="map">找到我的位置 ${icon('arrow')}</button>`,{eyebrow:'欢迎来到格子社区'});
 }
 function menuItem(action,ico,title,desc) { return `<button data-action="${action}" class="menu-item">${icon(ico)}<div><strong>${title}</strong><small>${desc}</small></div>${icon('chevron')}</button>`; }
 function controlsContent(editing=false) {
   const item=(ico,title,keys,desc)=>`<article class="control-item">${icon(ico)}<div><div class="control-title"><strong>${title}</strong>${keys?`<div>${keys.split(' ').map(k=>`<kbd>${({Space:'空格',Enter:'回车',Esc:'退出'})[k]||k}</kbd>`).join('')}</div>`:''}</div><p>${desc}</p></div></article>`;
-  if(editing)return `<div class="editing-guide">${item('edit','布置我的工位','','登录并抵达自己的工位，按 B 打开编辑。拖动家具平面图，实时预览和保存。')}${item('check','保存修改','','家具、资料和角色按账号保存在本地服务器。')}${item('home','继续探索','Esc','关闭工位面板，继续逛逛社区。')}</div>`;
-  return `<div class="control-columns"><section><h3 class="eyebrow">移动与视角</h3>${item('compass','移动','W A S D','方向键也可移动。按住 Shift 奔跑，空格键跳跃。')}${item('plus','二段跳','Space','松开空格，在接近跳跃顶点时再按一次，即可前空翻。')}${item('camera','镜头','','点击地面自动绕行。拖拽旋转视角，滚轮或 + / − 调整远近。')}${item('camera','第一人称','F','按 F 切换第一人称。移动鼠标观察四周；无法锁定鼠标时，可拖拽查看。')}<h3 class="eyebrow">互动与聊天</h3>${item('user','互动','E','按 E 触发附近互动。双击工位查看介绍。')}${item('chat','社区聊天','Enter','按回车键打开聊天，向社区伙伴打个招呼。')}${item('star','表情','','点击挥手按钮，选择一个表情。')}</section><section><h3 class="eyebrow">驾驶</h3>${item('car','上下车','E','找到路边的小车，按 E 上车或下车。')}${item('compass','驾驶小车','W A S D','用移动键驾驶，按住 Shift 加速。')}<h3 class="eyebrow section-space">池塘钓鱼</h3>${item('fish','放松片刻','','到达荷风池塘区域后按 E。抛竿后，在指针进入绿色区域时收线。')}<h3 class="eyebrow section-space">探索</h3>${item('map','地图与搜索','M','前往不同区域，搜索伙伴、工位和感兴趣的地方。')}${item('close','关闭面板','Esc','随时返回社区，继续探索。')}</section></div>`;
+  if(editing)return `<div class="editing-guide">${item('edit','布置我的工位','','登录并抵达自己的工位，按 B 打开编辑。直接点选 3D 家具并拖动，R 旋转、Delete 收回背包；也可使用侧栏按钮。')}${item('check','保存修改','','家具、资料和角色按账号保存在本地服务器。')}${item('home','继续探索','Esc','关闭工位面板，继续逛逛社区。')}</div>`;
+  return `<div class="control-columns"><section><h3 class="eyebrow">移动与视角</h3>${item('compass','移动','W A S D','方向键也可移动。按住 Shift 奔跑，空格键跳跃。')}${item('plus','二段跳','Space','松开空格，在空中再按一次可二段跳；可落在桌面等实体表面，落地后恢复跳跃次数。')}${item('camera','镜头','','点击地面自动绕行。拖拽旋转视角，滚轮或 + / − 调整远近。')}${item('camera','第一人称','F','按 F 切换第一人称。移动鼠标观察四周；无法锁定鼠标时，可拖拽查看。')}<h3 class="eyebrow">互动与聊天</h3>${item('user','互动','E','按 E 触发附近互动。双击工位查看介绍。')}${item('chat','社区聊天','Enter','按回车键打开聊天，向社区伙伴打个招呼。')}${item('star','表情','','点击挥手按钮，选择一个表情。')}</section><section><h3 class="eyebrow">驾驶</h3>${item('car','上下车','E','找到路边的小车，按 E 上车或下车。')}${item('compass','驾驶小车','W A S D','用移动键驾驶，按住 Shift 加速。')}<h3 class="eyebrow section-space">池塘钓鱼</h3>${item('fish','放松片刻','','到达荷风池塘区域后按 E。抛竿后，在指针进入绿色区域时收线。')}<h3 class="eyebrow section-space">探索</h3>${item('map','地图与搜索','M','前往不同区域，搜索伙伴、工位和感兴趣的地方。')}${item('close','关闭面板','Esc','随时返回社区，继续探索。')}</section></div>`;
 }
 function characterCards() {
   return `<div class="character-options">${['classic','smooth'].map(type=>`<button class="character-option ${state.profile.avatar===type?'selected':''}" data-avatar="${type}" aria-pressed="${state.profile.avatar===type}"><div class="avatar-stage ${type}"><div class="mini-avatar" style="--shirt:${state.profile.color}"><i></i><b></b><span></span></div><span class="avatar-shadow"></span></div><div class="character-option-title"><strong>${type==='classic'?'经典':'圆润'}</strong>${state.profile.avatar===type?`<span class="current-tag">${icon('check')} 已选择</span>`:''}</div><p>${type==='classic'?'方方正正，经典的格子社区造型。':'圆润柔和，换一种可爱的风格。'}</p></button>`).join('')}</div>`;
@@ -95,9 +112,9 @@ function officePanel(office) {
   return panelShell(esc(office.name),`<div class="office-banner" style="--brand:${office.color}"><div>${esc(office.monogram)}</div><p>${esc(office.tagline)}</p></div><div class="office-facts"><span>${icon('pin')} ${esc(neighborhoods.find(z=>z.id===office.zoneId)?.name||'班级区域')}</span><span>${icon('user')} ${esc(office.owner)}</span><span>${office.ownerId?(office.online?'🟢 在线':'⚪ 离线'):'待分配工位'}</span></div><p class="dialog-intro">${own?'这是你的个人空间。到达工位后，可布置家具、修改名称与配色。':'欢迎来串门。只有工位主人可以修改这里的布置。'}</p><div class="office-actions"><button class="primary" data-visit="${office.id}">前往工位 ${icon('arrow')}</button>${can?btn('editor','布置我的工位','edit','secondary'):own?'<span class="subtle">抵达后开放编辑</span>':''}</div>`,{eyebrow:own?'我的工位':'社区工位',className:'office-dialog'});
 }
 function mapSVG() {
- const px=x=>380+x*5,py=z=>255+z*3.5;
+ const px=x=>380+x*(700/GRID.size),py=z=>255+z*(490/GRID.size);
  const buildings=(state.buildings||[]).filter(b=>b.enabled!==false);
- return `<svg viewBox="0 0 760 510" aria-label="社区网格分布地图"><defs><pattern id="community-map-grid" width="5" height="3.5" patternUnits="userSpaceOnUse"><path d="M5 0H0V3.5" fill="none" stroke="#92a789" stroke-width=".3"/></pattern></defs><rect width="760" height="510" fill="#c3d1b6"/><rect x="30" y="10" width="700" height="490" fill="url(#community-map-grid)"/>${buildings.filter(b=>b.kind!=='office').map(b=>{const r=footprint(b),area=PUBLIC_AREAS.find(a=>a.id===b.id);return `<g ${area?`data-area-visit="${b.id}" role="button" tabindex="0" aria-label="前往${esc(b.name)}"`:''}><rect x="${px(r.x)}" y="${py(r.z)}" width="${r.w*5}" height="${r.d*3.5}" fill="${b.kind==='class'?'#8fae87':b.kind==='custom'?'#d6bd83':'#eceddb'}" stroke="#6d8c75" opacity=".8"/><text x="${px(r.x+r.w/2)}" y="${py(r.z+r.d/2)}" text-anchor="middle" font-size="9" fill="#405a48">${esc(b.name)}</text></g>`;}).join('')}${offices.map(o=>`<g data-visit="${o.id}" tabindex="0" role="button" aria-label="前往${esc(o.name)}"><rect class="map-office" x="${px(o.x-2.5)}" y="${py(o.z-2.5)}" width="25" height="17.5" fill="${o.ownerId?o.color:'#dbe3ce'}" stroke="#f8f7e8"/><circle cx="${px(o.x)+5}" cy="${py(o.z)-4}" r="2" fill="${o.online?'#4d9b59':'#9ba894'}"/></g>`).join('')}<circle id="map-player" cx="${px(world.position.x)}" cy="${py(world.position.z)}" r="5" fill="#fffdf2" stroke="#42674c" stroke-width="2"/></svg>`;
+ return `<svg viewBox="0 0 760 510" aria-label="社区网格分布地图"><defs><pattern id="community-map-grid" width="5" height="3.5" patternUnits="userSpaceOnUse"><path d="M5 0H0V3.5" fill="none" stroke="#92a789" stroke-width=".3"/></pattern></defs><rect width="760" height="510" fill="#c3d1b6"/><rect x="30" y="10" width="700" height="490" fill="url(#community-map-grid)"/>${buildings.filter(b=>b.kind!=='office').map(b=>{const r=footprint(b),area=PUBLIC_AREAS.find(a=>a.id===b.id);return `<g ${area?`data-area-visit="${b.id}" role="button" tabindex="0" aria-label="前往${esc(b.name)}"`:''}><rect x="${px(r.x)}" y="${py(r.z)}" width="${r.w*(700/GRID.size)}" height="${r.d*(490/GRID.size)}" fill="${b.kind==='class'?'#8fae87':b.kind==='custom'?'#d6bd83':'#eceddb'}" stroke="#6d8c75" opacity=".8"/><text x="${px(r.x+r.w/2)}" y="${py(r.z+r.d/2)}" text-anchor="middle" font-size="9" fill="#405a48">${esc(b.name)}</text></g>`;}).join('')}${offices.map(o=>`<g data-visit="${o.id}" tabindex="0" role="button" aria-label="前往${esc(o.name)}"><rect class="map-office" x="${px(o.x-2.5)}" y="${py(o.z-2.5)}" width="${5*(700/GRID.size)}" height="${5*(490/GRID.size)}" fill="${o.ownerId?o.color:'#dbe3ce'}" stroke="#f8f7e8"/><circle cx="${px(o.x)+5}" cy="${py(o.z)-4}" r="2" fill="${o.online?'#4d9b59':'#9ba894'}"/></g>`).join('')}<circle id="map-player" cx="${px(world.position.x)}" cy="${py(world.position.z)}" r="5" fill="#fffdf2" stroke="#42674c" stroke-width="2"/></svg>`;
 }
 function mapResults(query='') {
   const q=query.trim().toLowerCase();if(!q)return `<div class="neighborhood-grid">${neighborhoods.map((n,i)=>`<button data-neighborhood="${i}"><i style="background:${n.color}"></i>${n.name}${icon('arrow')}</button>`).join('')}</div>`;
@@ -139,13 +156,15 @@ async function session() {
   const data=await request('/api/session',{method:'POST',authenticated:false,data:{token:state.token}});state.token=data.token;state.visitors=data.visitors;sessionStorage.setItem('cubicles.token',state.token);setUser(data.user);return data;
 }
 async function tick() {
-  if(!state.token||tickBusy)return;tickBusy=true;
+  if(tickBusy)return;tickBusy=true;
   try {
-    const data=await request('/api/tick',{method:'POST',data:{x:world.position.x,z:world.position.z,rotation:world.rotation,dancing:world.dancing,...state.profile,reaction}});reaction='';
-    state.online=data.online;state.visitors=data.visitors;state.lastPlayers=data.players;world.setPlayers(data.players);world.updatePresence(data.onlineUserIds);world.settings=data.settings;updateStats();if(data.revision!==state.revision)await refreshWorld(false);
+    if(!state.token)await session();
+    const data=await request('/api/tick',{method:'POST',data:{x:world.position.x,y:world.position.y,z:world.position.z,rotation:world.rotation,dancing:world.dancing,...state.profile,reaction}});reaction='';
+    const recovering=!state.connected;setConnection(true);
+    state.online=data.online;state.visitors=data.visitors;state.lastPlayers=data.players;world.setPlayers(data.players);world.updatePresence(data.onlineUserIds);world.settings=data.settings;updateStats();if(recovering){await world.reloadMissingAssets();await refreshWorld(true);}else if(data.revision!==state.revision)await refreshWorld(false);
     const changed=JSON.stringify(state.messages)!==JSON.stringify(data.messages);state.messages=data.messages;
     if(changed&&state.chat){const el=$('.chat-messages');if(el){el.innerHTML=chatMessages();el.scrollTop=el.scrollHeight;}}
-  } catch(error) { if(error.status===401&&!reconnecting){reconnecting=true;try{await session();}finally{reconnecting=false;}} }
+  } catch(error) { setConnection(false);if(error.status===401&&!reconnecting){reconnecting=true;try{await session();await refreshWorld(true);}catch{}finally{reconnecting=false;}} }
   finally {tickBusy=false;}
 }
 function visitOffice(id) {
@@ -160,8 +179,9 @@ function enter() {
 }
 
 document.addEventListener('click',async e=>{
-  const el=e.target.closest('[data-action],[data-avatar],[data-color],[data-visit],[data-neighborhood],[data-reaction],[data-office],[data-customize],[data-controltab],[data-leadertab],[data-admin-tab],[data-zone],[data-new-zone],[data-import-sample],[data-placed],[data-select-placed],[data-add-item],[data-remove-item],[data-task],[data-area-visit],[data-world-action],[data-world-building],[data-world-rect],[data-add-world-model],[data-add-model],[data-delete-model]');if(!el)return;
+  const el=e.target.closest('[data-editor-action],[data-action],[data-avatar],[data-color],[data-visit],[data-neighborhood],[data-reaction],[data-office],[data-customize],[data-controltab],[data-leadertab],[data-admin-tab],[data-zone],[data-new-zone],[data-import-sample],[data-placed],[data-select-placed],[data-add-item],[data-remove-item],[data-task],[data-area-visit],[data-world-action],[data-world-building],[data-world-rect],[data-add-world-model],[data-add-world-prop],[data-add-model],[data-delete-model]');if(!el)return;
   if(await layoutEditor.click(el))return;
+  if(await classroom.click(el))return;
   if(await community.click(el))return;
   if(el.dataset.visit)return visitOffice(el.dataset.visit);
   if(el.dataset.neighborhood!==undefined)return visitNeighborhood(el.dataset.neighborhood);
@@ -175,7 +195,16 @@ document.addEventListener('click',async e=>{
   const action=el.dataset.action;
   if(action==='enter')return enter();
   if(action==='close')return closePanel();
-  if(action==='import-model'){modelImporter.open({context:state.user?.role==='admin'?'admin':'user',onImported:asset=>{state.myModels=[...(state.myModels||[]).filter(item=>item.id!==asset.id),asset];state.modelAssets=[...(state.modelAssets||[]).filter(item=>item.id!==asset.id),asset];world.modelAssets=state.modelAssets;if(state.panel==='world-editor')layoutEditor.rerender();else if(state.panel==='editor')community.renderEditor();else if(state.panel==='backpack')community.open('backpack');}});return;}
+  if(action==='import-model'||action==='edit-model'){
+    const asset=action==='edit-model'?state.myModels.find(candidate=>candidate.id===el.dataset.modelId):null;
+    if(action==='edit-model'&&!asset)return toast('模型不存在，请刷新后重试。');
+    modelImporter.open({context:state.user?.role==='admin'?'admin':'user',asset,onImported:async imported=>{
+      await refreshWorld(true);
+      if(state.panel==='world-editor')layoutEditor.rerender();
+      else if(state.panel==='editor')community.renderEditor();
+      else if(state.panel==='backpack')community.open('backpack');
+    }});return;
+  }
   if(['map','controls','character','profile','menu','about','people','aura'].includes(action))return openPanel(action);
   if(action==='camera')return world.toggleCamera();
   if(action==='zoom-in')return world.zoom(-1.2);if(action==='zoom-out')return world.zoom(1.2);
@@ -204,7 +233,7 @@ document.addEventListener('input',e=>{
   if(e.target.id==='volume'){audioVolume=Number(e.target.value);if(audioGain)audioGain.gain.value=audioVolume*.14;}
 });
 document.addEventListener('submit',async e=>{
-  e.preventDefault();if(e.target.id==='model-import-form'){await modelImporter.submit(e.target);return;}if(['building-transform-form'].includes(e.target.id)){await layoutEditor.submit(e.target);return;}const communityForm=['login-form','zone-form','import-form','time-form','furniture-form','sticker-form'].includes(e.target.id)||e.target.classList.contains('user-assignment');if(communityForm){if(state.saving)return;state.saving=true;lockPanelButtons();try{await community.submit(e.target);}finally{state.saving=false;$('#panels').querySelectorAll('[data-busy-disabled]').forEach(b=>{b.disabled=false;delete b.dataset.busyDisabled;});}return;}const data=new FormData(e.target);
+  e.preventDefault();if(classroom?.handles(e.target)){await classroom.submit(e.target,e.submitter);return;}if(e.target.id==='model-import-form'){await modelImporter.submit(e.target);return;}if(['building-transform-form'].includes(e.target.id)){await layoutEditor.submit(e.target);return;}const communityForm=['wikibook-preflight-form','login-form','zone-form','import-form','time-form','furniture-form','sticker-form'].includes(e.target.id)||e.target.classList.contains('user-assignment');if(communityForm){if(state.saving)return;state.saving=true;lockPanelButtons();try{await community.submit(e.target);}finally{state.saving=false;$('#panels').querySelectorAll('[data-busy-disabled]').forEach(b=>{b.disabled=false;delete b.dataset.busyDisabled;});}return;}const data=new FormData(e.target);
   if(e.target.id==='profile-form'){state.profile.name=String(data.get('name')).trim().slice(0,24);store('cubicles.profile',state.profile);if(state.user){try{setUser((await request('/api/me',{method:'PATCH',data:state.profile})).user);}catch(err){toast(err.message);return;}}closePanel();updateStats();tick();toast(`很高兴认识你，${state.profile.name}。`);}
   if(e.target.id==='chat-form') {
     const input=e.target.querySelector('input'),button=e.target.querySelector('button');button.disabled=true;
@@ -218,7 +247,8 @@ document.addEventListener('submit',async e=>{
   }
 });
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') {if(modelImporter?.isOpen()){modelImporter.close();return;}if(state.panel==='welcome'){enter();}else if(state.panel)closePanel();else if(state.chat){state.chat=false;renderChat();}$('#reaction-popover').hidden=true;}
+  if(wikiBookPanel()){wikiBookPanel().keydown(e);return;}
+  if(e.key==='Escape') {if(state.saving)return;if(modelImporter?.isOpen()){modelImporter.close();return;}if(state.panel==='welcome'){enter();}else if(state.panel)closePanel();else if(state.chat){state.chat=false;renderChat();}$('#reaction-popover').hidden=true;}
   if(e.key==='Tab'&&state.panel){const els=[...$('#panels').querySelectorAll('button:not([disabled]),input,[tabindex="0"]')].filter(el=>el.getClientRects().length);if(!els.length)return;if(e.shiftKey&&document.activeElement===els[0]){e.preventDefault();els.at(-1).focus();}else if(!e.shiftKey&&document.activeElement===els.at(-1)){e.preventDefault();els[0].focus();}}
   if(e.target.matches('input,textarea,select')||!state.entered)return;
   if(e.key.toLowerCase()==='b'&&!state.panel){e.preventDefault();community.show(community.canEdit()?'editor':'backpack');}
@@ -250,12 +280,12 @@ function drawMiniMap(position,yaw) {
   const canvas=$('#minimap');if(!canvas)return;const c=canvas.getContext('2d'),w=320;c.clearRect(0,0,w,w);c.fillStyle='#c5d1b9';c.fillRect(0,0,w,w);
   c.save();c.translate(w/2,w/2);c.rotate(yaw);const scale=7;
   c.translate(-position.x*scale,-position.z*scale);
-  c.strokeStyle='#b5c3aa';c.lineWidth=.5;c.beginPath();for(let cell=-70;cell<=70;cell++){c.moveTo(cell*scale,-70*scale);c.lineTo(cell*scale,70*scale);c.moveTo(-70*scale,cell*scale);c.lineTo(70*scale,cell*scale);}c.stroke();for(const b of (state.buildings||[]).filter(b=>b.enabled!==false&&b.kind!=='office')){const r=footprint(b);c.fillStyle=b.kind==='class'?'#afc0a4':b.kind==='custom'?'#d6bd83':'#9abbb0';c.fillRect(r.x*scale,r.z*scale,r.w*scale,r.d*scale);c.strokeStyle='#718e73';c.strokeRect(r.x*scale,r.z*scale,r.w*scale,r.d*scale);}
+  c.strokeStyle='#b5c3aa';c.lineWidth=.5;c.beginPath();for(let cell=GRID.min;cell<=GRID.max;cell++){c.moveTo(cell*scale,GRID.min*scale);c.lineTo(cell*scale,GRID.max*scale);c.moveTo(GRID.min*scale,cell*scale);c.lineTo(GRID.max*scale,cell*scale);}c.stroke();for(const b of (state.buildings||[]).filter(b=>b.enabled!==false&&b.kind!=='office')){const r=footprint(b);c.fillStyle=b.kind==='class'?'#afc0a4':b.kind==='custom'?'#d6bd83':'#9abbb0';c.fillRect(r.x*scale,r.z*scale,r.w*scale,r.d*scale);c.strokeStyle='#718e73';c.strokeRect(r.x*scale,r.z*scale,r.w*scale,r.d*scale);}
   for(const o of offices){c.fillStyle='#a3b99b';c.fillRect((o.x-1.9)*scale,(o.z-1.9)*scale,3.8*scale,3.8*scale);c.strokeStyle='#dfe8d5';c.lineWidth=1.3;c.strokeRect((o.x-1.9)*scale,(o.z-1.9)*scale,3.8*scale,3.8*scale);}
   c.fillStyle='#aa91c4';for(const p of state.lastPlayers||[]){c.beginPath();c.arc(p.x*scale,p.z*scale,4,0,Math.PI*2);c.fill();}c.restore();
   c.beginPath();c.moveTo(160,144);c.lineTo(152,165);c.lineTo(160,161);c.lineTo(168,165);c.closePath();c.fillStyle='#fbfcf2';c.strokeStyle='#42614d';c.lineWidth=2.5;c.fill();c.stroke();
 }
-function drawMapPosition() { const dot=$('#map-player');if(dot){dot.setAttribute('cx',380+world.position.x*5);dot.setAttribute('cy',255+world.position.z*3.5);} }
+function drawMapPosition() { const dot=$('#map-player');if(dot){dot.setAttribute('cx',380+world.position.x*(700/GRID.size));dot.setAttribute('cy',255+world.position.z*(490/GRID.size));} }
 world.onFrame=(position,yaw)=>{if(performance.now()-lastMapTime>100){drawMiniMap(position,yaw);drawMapPosition();updateNearbyPrompt();document.body.classList.toggle('night',world.night>.5);const clock=$('#community-clock');if(clock)clock.textContent=`${world.night>.5?'🌙':'☀️'} ${String(world.hour??0).padStart(2,'0')}:00 · ${world.night>.5?'夜间':'日间'} · 网格 ${Math.floor(position.x)},${Math.floor(position.z)}`;lastMapTime=performance.now();}};
 world.addEventListener('loading',e=>{const bar=$('#load-progress');if(bar)bar.style.width=`${e.detail*100}%`;});
 world.addEventListener('ready',()=>{state.ready=true;if(state.panel==='welcome'){$('#panels').innerHTML=renderPanel('welcome');$('.enter-button').focus();}else if(read('cubicles.entered',false)){state.entered=true;world.enter();}});
@@ -270,10 +300,15 @@ world.addEventListener('dance',e=>{$('[data-action=dance]').classList.toggle('ac
 world.addEventListener('vehicle',e=>{toast(e.detail?'出发兜风吧，按 E 下车。':'已下车，继续逛逛吧。');updateNearbyPrompt();});
 
 function setUser(user){state.user=user;world.currentUserId=user?.id;if(user){state.profile={name:user.name,avatar:user.avatar,color:user.color};state.aura=user.score;state.catches=user.catches||[];}else{state.profile={name:'',avatar:'classic',color:outfits[0]};state.aura=0;state.catches=[];state.myModels=[];}world.setOutfit(state.profile);if($('#ui').children.length)hud();}
-async function refreshWorld(force=false,data){data ||=await request('/api/world',{authenticated:false});let myModels=state.myModels||[];if(state.user){try{myModels=(await request('/api/models')).assets;}catch{myModels=[];}}state.myModels=myModels;const merged=[...data.modelAssets];for(const asset of myModels)if(!merged.some(item=>item.id===asset.id))merged.push(asset);data={...data,modelAssets:merged};const geometry=JSON.stringify([data.zones,data.buildings]);const oldGeometry=JSON.stringify([state.zones,state.buildings]);const areasChanged=JSON.stringify(PUBLIC_AREAS)!==JSON.stringify(data.areas);PUBLIC_AREAS.splice(0,PUBLIC_AREAS.length,...data.areas);state.buildings=data.buildings;state.modelAssets=merged;state.layoutRevision=data.layoutRevision;const prior=new Map(offices.map(o=>[o.id,JSON.stringify(o)]));offices.splice(0,offices.length,...data.offices);neighborhoods.splice(0,neighborhoods.length,...data.neighborhoods);state.zones=data.zones;state.settings=data.settings;state.revision=data.revision;state.visitors=data.visitors;world.setCommunity(data,{rebuild:force||geometry!==oldGeometry});if(world.ready&&!force&&geometry===oldGeometry){for(const o of offices)if(JSON.stringify(o)!==prior.get(o.id)&&!(state.panel==='editor'&&o.ownerId===state.user?.id))world.updateOffice(o);}
+async function refreshWorld(force=false,data){data ||=await request('/api/world',{authenticated:false});let myModels=state.myModels||[];if(state.user){try{myModels=(await request('/api/models')).assets;}catch{myModels=[];}}state.myModels=myModels;const merged=[...data.modelAssets];for(const asset of myModels)if(!merged.some(item=>item.id===asset.id))merged.push(asset);data={...data,modelAssets:merged};const assetGeometry=assets=>(assets||[]).map(asset=>[asset.id,asset.width,asset.height,asset.depth,asset.scale]);const geometry=JSON.stringify([data.zones,data.buildings,assetGeometry(merged)]);const oldGeometry=JSON.stringify([state.zones,state.buildings,assetGeometry(state.modelAssets)]);const areasChanged=JSON.stringify(PUBLIC_AREAS)!==JSON.stringify(data.areas);PUBLIC_AREAS.splice(0,PUBLIC_AREAS.length,...data.areas);state.buildings=data.buildings;state.modelAssets=merged;state.layoutRevision=data.layoutRevision;const prior=new Map(offices.map(o=>[o.id,JSON.stringify(o)]));offices.splice(0,offices.length,...data.offices);neighborhoods.splice(0,neighborhoods.length,...data.neighborhoods);state.zones=data.zones;state.settings=data.settings;state.revision=data.revision;state.visitors=data.visitors;world.setCommunity(data,{rebuild:force||geometry!==oldGeometry});if(world.ready&&!force&&geometry===oldGeometry){for(const o of offices)if(JSON.stringify(o)!==prior.get(o.id)&&!(state.panel==='editor'&&o.ownerId===state.user?.id))world.updateOffice(o);}
+  if(state.panel==='editor'&&community?.draft&&world.ready)world.setFurniture(community.ownOffice(),community.draft.furniture);
  if(state.user){const result=await request('/api/me');if(result.user){state.user=result.user;state.aura=result.user.score;}}if(areasChanged)hud();updateStats();}
 async function navigateArea(id){const area=PUBLIC_AREAS.find(a=>a.id===id);if(!area)return toast('该公共区域已收起。');closePanel();world.teleport(area.entry.x,area.entry.z);await tick();toast(`已抵达${area.name}，按 E ${area.hint}。`);}
+oj=new OJPanel({esc,close:closePanel,tasks:()=>openPanel('lab')});
+wikibookFishing=new WikiBookPanel({esc,close:closePanel,module:'fishing'});
 community=new CommunityUI({state,world,offices,request,esc,btn,shell:panelShell,open:openPanel,close:closePanel,toast,tick,session,refresh:refreshWorld,setUser});community.bind();layoutEditor=new WorldEditor({state,world,offices,request,esc,open:openPanel,close:closePanel,toast,refresh:refreshWorld});layoutEditor.bind();modelImporter=new ModelImporter({state,world,request,esc,toast});
+classroom=new ClassroomUI({state,request,esc,shell:panelShell,open:openPanel,toast,refresh:refreshWorld,parseCSV:text=>community.parseCSV(text),showAdmin:async()=>{const data=await request('/api/admin');if(state.panel==='admin'){community.admin=data;openPanel('admin');}}});
+community.roleForm=user=>classroom.roleForm(user);
 hud();
 if(!read('cubicles.entered',false))openPanel('welcome');else{state.entered=true;world.enter();}
 try{const login=await session();await refreshWorld();if(login.user)world.teleport(login.position.x,login.position.z);else if(offices[0])world.teleport(offices[0].x,offices[0].z+2.5);}catch(error){toast('正在重新连接本地社区。');}

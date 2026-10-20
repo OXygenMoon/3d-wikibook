@@ -6,11 +6,13 @@ import { migrate as migratePglite } from 'drizzle-orm/pglite/migrator';
 import * as schema from './db/schema.mjs';
 import { config } from './config.mjs';
 import { logger } from './logger.mjs';
+import { acquireDatabaseLock } from './database-lock.mjs';
 
 let driver = null;
 let pool = null;
 let pglite = null;
 let db = null;
+let releaseLock = null;
 
 export function getDb() {
   if (!db) throw new Error('database has not been initialized');
@@ -19,6 +21,13 @@ export function getDb() {
 
 export function getDriver() {
   return driver;
+}
+
+export async function migrateDatabase() {
+  const migrationsFolder = path.join(config.root, 'drizzle');
+  if (driver === 'postgres') await migratePostgres(getDb(), { migrationsFolder });
+  else if (driver === 'pglite') await migratePglite(getDb(), { migrationsFolder });
+  else throw new Error('database has not been initialized');
 }
 
 export async function rawQuery(text, params = []) {
@@ -40,34 +49,39 @@ async function resetSchema() {
   await rawQuery('CREATE SCHEMA public');
 }
 
-export async function initDatabase() {
+export async function initDatabase({ migrate = true, reset = config.dbReset, access = 'writer' } = {}) {
   if (db) return db;
-  const migrationsFolder = path.join(config.root, 'drizzle');
+  releaseLock = await acquireDatabaseLock(access);
 
-  if (config.databaseUrl) {
-    const { Pool } = await import('pg');
-    pool = new Pool({
-      connectionString: config.databaseUrl,
-      max: Number(process.env.PG_POOL_MAX || 10),
-      connectionTimeoutMillis: 5000,
-    });
-    pool.on('error', error => logger.error({ err: error }, 'postgres pool error'));
-    db = drizzle(pool, { schema });
-    driver = 'postgres';
-    if (config.dbReset) await resetSchema();
-    await migratePostgres(db, { migrationsFolder });
-  } else {
-    const { PGlite } = await import('@electric-sql/pglite');
-    pglite = new PGlite(config.pgliteDir);
-    await pglite.waitReady;
-    db = drizzlePglite(pglite, { schema });
-    driver = 'pglite';
-    if (config.dbReset) await resetSchema();
-    await migratePglite(db, { migrationsFolder });
+  try {
+    if (config.databaseUrl) {
+      const { Pool } = await import('pg');
+      pool = new Pool({
+        connectionString: config.databaseUrl,
+        max: Number(process.env.PG_POOL_MAX || 10),
+        connectionTimeoutMillis: 5000,
+      });
+      pool.on('error', error => logger.error({ err: error }, 'postgres pool error'));
+      db = drizzle(pool, { schema });
+      driver = 'postgres';
+      if (reset) await resetSchema();
+      if (migrate) await migrateDatabase();
+    } else {
+      const { PGlite } = await import('@electric-sql/pglite');
+      pglite = new PGlite(config.pgliteDir);
+      await pglite.waitReady;
+      db = drizzlePglite(pglite, { schema });
+      driver = 'pglite';
+      if (reset) await resetSchema();
+      if (migrate) await migrateDatabase();
+    }
+
+    logger.info({ driver, databaseUrl: config.databaseUrl ? 'configured' : 'embedded-pglite' }, 'database ready');
+    return db;
+  } catch (error) {
+    await closeDatabase();
+    throw error;
   }
-
-  logger.info({ driver, databaseUrl: config.databaseUrl ? 'configured' : 'embedded-pglite' }, 'database ready');
-  return db;
 }
 
 export async function healthCheck() {
@@ -87,4 +101,6 @@ export async function closeDatabase() {
   pglite = null;
   db = null;
   driver = null;
+  if (releaseLock) await releaseLock();
+  releaseLock = null;
 }

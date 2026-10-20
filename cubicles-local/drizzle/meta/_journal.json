@@ -8,6 +8,20 @@
       "when": 1792415672219,
       "tag": "0000_unusual_shiva",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792432785421,
+      "tag": "0001_stormy_imperial_guard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792454526795,
+      "tag": "0002_shocking_master_chief",
+      "breakpoints": true
     }
   ]
 }

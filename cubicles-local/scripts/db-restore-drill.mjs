@@ -3,63 +3,28 @@ import { spawnSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { config } from '../src/server/config.mjs';
-import { initApp, shutdownApp } from '../src/server/runtime.mjs';
-import { writeBackup } from '../src/server/store.mjs';
+import { initDatabase, closeDatabase } from '../src/server/db.mjs';
+import { writeFullBackup } from '../src/server/backup.mjs';
 
 const temp = await mkdtemp(path.join(tmpdir(), 'cubicles-restore-drill-'));
-let backup = null;
-
 try {
-  await initApp({ monitoring: false, autoImport: false });
-  backup = await writeBackup('drill-source');
-  if (!backup) throw new Error('no community state to back up');
-  await shutdownApp();
-
+  await initDatabase({ migrate: false, reset: false, access: 'reader' });
+  const backup = await writeFullBackup('drill-source');
+  await closeDatabase();
   const env = {
-    ...process.env,
-    NODE_ENV: 'test',
-    LOG_LEVEL: 'silent',
-    AUTO_IMPORT: 'false',
-    CUBICLES_DATA_DIR: path.join(temp, 'data'),
-    PGLITE_DIR: path.join(temp, 'pglite'),
-    DATABASE_URL: '',
+    ...process.env, NODE_ENV: 'test', LOG_LEVEL: 'silent', AUTO_IMPORT: 'false',
+    CUBICLES_DATA_DIR: path.join(temp, 'data'), PGLITE_DIR: path.join(temp, 'pglite'),
+    CUBICLES_BACKUP_DIR: path.join(temp, 'backups'), DATABASE_URL: '', CUBICLES_DB_RESET: '0',
   };
-
-  const importRun = spawnSync(process.execPath, ['scripts/db-import.mjs', '--file', backup, '--force'], {
-    cwd: config.root,
-    env: { ...env, CUBICLES_DB_RESET: '1' },
-    encoding: 'utf8',
-  });
-  if (importRun.status !== 0) {
-    throw new Error(`import step failed:\n${importRun.stdout}\n${importRun.stderr}`);
+  for (const command of ['scripts/db-rollback.mjs', 'scripts/db-verify.mjs']) {
+    const result = spawnSync(process.execPath, [command, backup], { cwd: config.root, env, encoding: 'utf8', timeout: 120_000 });
+    if (result.status !== 0) throw new Error(`${command} failed:\n${result.stdout}\n${result.stderr}`);
   }
-
-  const verifyRun = spawnSync(process.execPath, ['scripts/db-verify.mjs', backup], {
-    cwd: config.root,
-    env,
-    encoding: 'utf8',
-  });
-  if (verifyRun.status !== 0) {
-    throw new Error(`verify step failed:\n${verifyRun.stdout}\n${verifyRun.stderr}`);
-  }
-
-  console.log(
-    JSON.stringify(
-      {
-        ok: true,
-        backup,
-        restoredInto: temp,
-        import: importRun.stdout.trim(),
-        verify: verifyRun.stdout.trim(),
-      },
-      null,
-      2,
-    ),
-  );
+  console.log(JSON.stringify({ ok: true, backup, verified: ['community', 'models', 'sessions', 'messages', 'audit'] }, null, 2));
 } catch (error) {
   console.error(`restore drill failed: ${error.message}`);
   process.exitCode = 1;
 } finally {
-  await shutdownApp().catch(() => {});
+  await closeDatabase().catch(() => {});
   await rm(temp, { recursive: true, force: true });
 }

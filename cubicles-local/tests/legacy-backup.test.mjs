@@ -1,0 +1,30 @@
+import { test, after } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { sql } from 'drizzle-orm';
+const directory=await mkdtemp(path.join(tmpdir(),'cubicles-legacy-backup-'));
+Object.assign(process.env,{CUBICLES_DATA_DIR:directory,PGLITE_DIR:path.join(directory,'pglite'),CUBICLES_BACKUP_DIR:path.join(directory,'backups'),DATABASE_URL:'',AUTO_IMPORT:'false',LOG_LEVEL:'silent',CUBICLES_DB_RESET:'0'});
+const {initDatabase,closeDatabase,getDb}=await import('../src/server/db.mjs');
+const {createDefaultState}=await import('../src/server/store.mjs');
+const {writeFullBackup,verifyFullBackup}=await import('../src/server/backup.mjs');
+const {communityState}=await import('../src/server/db/schema.mjs');
+after(async()=>{await closeDatabase();await rm(directory,{recursive:true,force:true});});
+
+test('pre-upgrade databases can be fully backed up without creating new domain tables or changing state',async()=>{
+ await initDatabase({migrate:false,reset:false,access:'reader'});
+ const migration=await readFile(new URL('../drizzle/0000_unusual_shiva.sql',import.meta.url),'utf8');
+ for(const statement of migration.split('--> statement-breakpoint'))if(statement.trim())await getDb().execute(sql.raw(statement));
+ const legacy=await createDefaultState();
+ await mkdir(path.join(directory,'models'));
+ await getDb().insert(communityState).values({id:1,version:2,revision:9,data:legacy});
+ const before=(await getDb().select().from(communityState))[0];
+ const backup=await writeFullBackup('pre-upgrade');
+ const verified=await verifyFullBackup(backup);
+ assert.equal(verified.tables.communityState[0].revision,9);
+ assert.deepEqual(verified.tables.users,[]);
+ assert.deepEqual((await getDb().select().from(communityState))[0],before);
+ const tables=await getDb().execute(sql`SELECT table_name FROM information_schema.tables WHERE table_schema='public'`);
+ assert.ok(!tables.rows.some(row=>row.table_name==='users'));
+});

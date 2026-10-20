@@ -1,0 +1,50 @@
+import { test, expect } from '@playwright/test';
+
+test('admin previews WikiBook identities and capacity without importing students', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('.enter-button').click({ timeout: 90_000 });
+  await page.locator('.account [data-action="login"]').click();
+  await page.locator('#login-form input[name="username"]').fill('lzy');
+  await page.locator('#login-form input[name="password"]').fill('123456');
+  await page.locator('#login-form button[type="submit"]').click();
+  await expect(page.locator('#profile-name')).toHaveText('社区管理员');
+  const before = await (await page.request.get('/api/admin')).json();
+  await page.locator('.account [data-action="admin"]').click();
+  await page.locator('[data-admin-tab="wikibook"]').click();
+  const form = page.locator('#wikibook-preflight-form');
+  await expect(form).toBeVisible();
+  await form.locator('button[type="submit"]').click();
+  await expect(form.locator('#wikibook-preflight-result')).toContainText('预检可规划 · 尚未导入');
+  const payload = JSON.parse(await form.locator('textarea').inputValue());
+  payload.students[0].username = 'lzy';
+  await form.locator('textarea').fill(JSON.stringify(payload));
+  await form.locator('button[type="submit"]').click();
+  await expect(form.locator('#wikibook-preflight-result')).toContainText('存在异常');
+  await expect(form.locator('#wikibook-preflight-result')).toContainText('不会按姓名或账号自动合并');
+  const after = await (await page.request.get('/api/admin')).json();
+  expect(after.users).toEqual(before.users);
+  expect(after.zones).toEqual(before.zones);
+  expect(after.layoutRevision).toBe(before.layoutRevision);
+  await page.screenshot({ path: 'test-results/wikibook-preflight.png' });
+});
+
+test('a migrated Unicode account logs in with its original password and retains one office after reload', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('.enter-button').click({ timeout: 90_000 });
+  await page.locator('.account [data-action="login"]').click();
+  await page.locator('#login-form input[name="username"]').fill('迁移样本');
+  await page.locator('#login-form input[name="password"]').fill('迁移Password123!');
+  await page.locator('#login-form button[type="submit"]').click();
+  await expect(page.locator('#profile-name')).toHaveText('迁移样本');
+  const before = (await (await page.request.get('/api/me')).json()).user;
+  expect(before.passwordHash).toBeUndefined();
+  expect(before.credentialFormat).toBeUndefined();
+  const world = await (await page.request.get('/api/world')).json();
+  expect(world.offices.filter(office => office.ownerId === before.id)).toHaveLength(1);
+  await page.reload();
+  await expect(page.locator('#profile-name')).toHaveText('迁移样本');
+  const after = (await (await page.request.get('/api/me')).json()).user;
+  expect(after.id).toBe(before.id);
+  expect(after.officeId).toBe(before.officeId);
+  await page.screenshot({ path: 'test-results/wikibook-migrated-student.png' });
+});

@@ -4,6 +4,7 @@ import { persistSession } from '../session-store.mjs';
 import { requireUser, publicUser } from '../auth.mjs';
 import { nearbyArea } from '../domain.mjs';
 import { writeAudit } from '../audit.mjs';
+import { config } from '../config.mjs';
 
 const TASKS = [
   { id: 'orientation', title: '社区探索入门', description: '阅读任务卡，了解自己的班级与工位。', reward: 5 },
@@ -27,6 +28,13 @@ export async function handleLearningRoutes(req, res, url, session) {
         .sort((a, b) => b.score - a.score)
         .slice(0, 20),
     });
+    return true;
+  }
+
+  if (path === '/api/pond' && req.method === 'GET') {
+    if (!session) fail(401, '会话已过期，请重新进入社区。');
+    nearbyArea(session, 'pond');
+    sendJson(res, 200, { fishing: { url: config.wikibookFishingUrl } });
     return true;
   }
 
@@ -67,7 +75,7 @@ export async function handleLearningRoutes(req, res, url, session) {
   if (path === '/api/lab' && req.method === 'GET') {
     if (!session) fail(401, '会话已过期，请重新进入社区。');
     nearbyArea(session, 'lab');
-    sendJson(res, 200, { tasks: TASKS });
+    sendJson(res, 200, { tasks: TASKS, oj: { url: config.wikibookOjUrl } });
     return true;
   }
 

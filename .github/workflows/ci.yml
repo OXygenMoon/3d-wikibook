@@ -47,6 +47,9 @@ jobs:
       - name: Unit and integration tests (PostgreSQL)
         run: npm test
 
+      - name: PostgreSQL recovery, domain and classroom tests
+        run: npm run test:postgres
+
       - name: Build browser assets
         run: npm run build
 
@@ -54,7 +57,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Browser smoke tests
-        run: npm run test:e2e
+        run: E2E_PRODUCTION=1 npm run test:e2e
 
       - name: Upload failure artifacts
         if: failure()

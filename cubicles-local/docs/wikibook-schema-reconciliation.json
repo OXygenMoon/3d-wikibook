@@ -1,0 +1,72 @@
+{
+  "kind": "wikibook-schema-reconciliation",
+  "version": 1,
+  "readOnly": true,
+  "userRowsRead": false,
+  "actualTables": 185,
+  "declaredTables": 170,
+  "actualOnly": [
+    "alembic_version",
+    "comment",
+    "gacha_pool",
+    "gacha_pool_item",
+    "gacha_purchase",
+    "oj_training_chapter",
+    "oj_training_classes",
+    "oj_training_edge",
+    "oj_training_groups",
+    "oj_training_managers",
+    "oj_training_node",
+    "oj_training_project",
+    "oj_training_reward",
+    "oj_training_task",
+    "oj_training_users"
+  ],
+  "declaredOnly": [],
+  "columnDifferences": [
+    {
+      "table": "fishing_profile",
+      "actualOnly": [],
+      "declaredOnly": [
+        "rigs",
+        "equipped_rig"
+      ]
+    },
+    {
+      "table": "note",
+      "actualOnly": [
+        "comment_enabled"
+      ],
+      "declaredOnly": []
+    },
+    {
+      "table": "sticker_gacha_pool",
+      "actualOnly": [
+        "soft_pity_enabled",
+        "soft_pity_boost_rate"
+      ],
+      "declaredOnly": []
+    },
+    {
+      "table": "sticker_star_purchase",
+      "actualOnly": [
+        "pity_kind"
+      ],
+      "declaredOnly": []
+    },
+    {
+      "table": "user",
+      "actualOnly": [
+        "free_gacha_draws"
+      ],
+      "declaredOnly": []
+    },
+    {
+      "table": "wiki_page",
+      "actualOnly": [
+        "comment_enabled"
+      ],
+      "declaredOnly": []
+    }
+  ]
+}

@@ -19,6 +19,13 @@ const num = (value, fallback) => {
 const production = process.argv.includes('--production') || process.env.NODE_ENV === 'production';
 const dataDir = path.resolve(ROOT, process.env.CUBICLES_DATA_DIR || '.local-data');
 
+export function ojUrl(value, env = 'WIKIBOOK_OJ_URL') {
+  if (!value?.trim()) return '';
+  const url = new URL(value);
+  if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) throw new Error(`${env} 必须是不含账号密码的 HTTP(S) 地址。`);
+  return url.href;
+}
+
 export const config = Object.freeze({
   root: ROOT,
   production,
@@ -34,6 +41,7 @@ export const config = Object.freeze({
   autoImport: bool(process.env.AUTO_IMPORT, true),
   importFile: path.resolve(process.env.CUBICLES_IMPORT_FILE || path.join(dataDir, 'community.json')),
   sessionTtlMs: num(process.env.SESSION_TTL_DAYS, 7) * 86400000,
+  sessionPersistIntervalMs: Math.max(0, num(process.env.SESSION_PERSIST_INTERVAL_MS, 2000)),
   cookieSecure: bool(process.env.COOKIE_SECURE, false),
   bodyLimit: num(process.env.REQUEST_BODY_LIMIT, 500000),
   modelLimit: num(process.env.MODEL_UPLOAD_LIMIT, 20 * 1024 * 1024),
@@ -43,5 +51,7 @@ export const config = Object.freeze({
   adminUsername: (process.env.DEFAULT_ADMIN_USERNAME || 'lzy').toLowerCase(),
   adminPassword: process.env.DEFAULT_ADMIN_PASSWORD || '123456',
   publicOrigin: process.env.PUBLIC_ORIGIN || '',
+  wikibookOjUrl: ojUrl(process.env.WIKIBOOK_OJ_URL ?? 'http://127.0.0.1:5009/oj/problems'),
+  wikibookFishingUrl: ojUrl(process.env.WIKIBOOK_FISHING_URL ?? 'http://127.0.0.1:5009/fishing', 'WIKIBOOK_FISHING_URL'),
   staticDir: production ? path.join(ROOT, 'dist') : ROOT,
 });

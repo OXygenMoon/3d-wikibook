@@ -1,5 +1,10 @@
 export const MODEL_ITEM_PREFIX = 'model:';
 
+export function canUseModel(asset, user) {
+  if (asset.visibility === 'private') return asset.ownerId === user?.id;
+  return asset.access !== 'reward' || user?.role === 'admin' || (user?.unlockedModelIds || []).includes(asset.id);
+}
+
 export function isModelItem(itemId) {
   return typeof itemId === 'string' && itemId.startsWith(MODEL_ITEM_PREFIX);
 }

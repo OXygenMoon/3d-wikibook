@@ -27,10 +27,11 @@ export function buildPublicScenes(THREE, areas = []) {
   function shape(geometry, color, x, y, z, sx = 1, sy = 1, sz = 1, rx = 0, ry = 0, rz = 0) {
     const material = typeof color === 'string' ? mat(color) : color;
     const key = `${geometry.uuid}:${material.uuid}`;
-    if (!batches.has(key)) batches.set(key, { geometry, material, matrices: [] });
+    if (!batches.has(key)) batches.set(key, { geometry, material, matrices: [], placementIds: [] });
     matrixObject.position.set(x,y,z);
     matrixObject.rotation.set(rx, ry, rz); matrixObject.scale.set(sx, sy, sz); matrixObject.updateMatrix();
     batches.get(key).matrices.push(new THREE.Matrix4().multiplyMatrices(originMatrix,matrixObject.matrix));
+    batches.get(key).placementIds.push(origin.id);
   }
   const box = (color, x, y, z, w, h, d, ry = 0) => shape(boxGeometry, color, x, y, z, w, h, d, 0, ry);
   const cyl = (color, x, y, z, radius, h, ry = 0) => shape(cylinderGeometry, color, x, y, z, radius, h, radius, 0, ry);
@@ -48,7 +49,7 @@ export function buildPublicScenes(THREE, areas = []) {
     const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 4; textures.add(texture);
     const material = ownMaterial(new THREE.MeshStandardMaterial({ map: texture, roughness: 1, side: THREE.DoubleSide }));
     const board = new THREE.Mesh(ownGeometry(new THREE.PlaneGeometry(width, height)), material);
-    board.position.set(x,y,z);board.applyMatrix4(originMatrix);group.add(board);
+    board.userData.placementId=origin.id;board.position.set(x,y,z);board.applyMatrix4(originMatrix);group.add(board);
     return board;
   }
   function postSign(title, subtitle, x, z, width = 3) {
@@ -227,13 +228,14 @@ export function buildPublicScenes(THREE, areas = []) {
     for (const x of [-5.2,5.2]) lamp(x,-4.45,2.6,x>0);
   }
   for (const area of areas) {
-    origin={x:Number(area.x)||0,z:Number(area.z)||0,rotation:area.rotation||0};originMatrix.makeRotationY(origin.rotation*Math.PI/180);originMatrix.setPosition(origin.x,0,origin.z);
+    origin={id:area.id,x:Number(area.x)||0,z:Number(area.z)||0,rotation:area.rotation||0};originMatrix.makeRotationY(origin.rotation*Math.PI/180);originMatrix.setPosition(origin.x,0,origin.z);
     const builder = { pond, wall, hall, lab }[area.kind];
     if (builder) builder(area);
   }
-  for (const { geometry, material, matrices } of batches.values()) {
+  for (const { geometry, material, matrices, placementIds } of batches.values()) {
     const instance = new THREE.InstancedMesh(geometry, material, matrices.length);
     matrices.forEach((matrix, index) => instance.setMatrixAt(index, matrix));
+    instance.userData.placementIds=placementIds;
     instance.castShadow = true; instance.receiveShadow = true; instance.computeBoundingSphere(); group.add(instance);
   }
   batches.clear();

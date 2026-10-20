@@ -1,4 +1,12 @@
-export const GRID={cellSize:1,min:-70,max:70,size:140};
+export const GRID={cellSize:1,min:-140,max:140,size:280};
+export const WORLD_PROPS={tree:{name:'树木',width:3,depth:3},streetlight:{name:'路灯',width:1,depth:1}};
+export function defaultWorldProps(){
+ const result=[];
+ const add=(kind,x,z)=>{const definition=WORLD_PROPS[kind];result.push({id:`prop-legacy-${result.length}`,kind,name:definition.name,gridX:Math.round(x-definition.width/2),gridZ:Math.round(z-definition.depth/2),width:definition.width,depth:definition.depth,rotation:0,enabled:true,solid:false,assetId:null});};
+ for(let index=-7;index<=7;index++)for(const side of [-1,1]){add('tree',index*8,side*61);if(Math.abs(index)>2)add('tree',side*61,index*8);}
+ for(let index=-5;index<=5;index++)for(const side of [-1,1])add('streetlight',side*48.8,index*10);
+ return result;
+}
 export const quarter=angle=>((Math.round(Number(angle||0)/90)*90)%360+360)%360;
 export function footprint(b){const swap=quarter(b.rotation)%180!==0;return {x:b.gridX,z:b.gridZ,w:swap?b.depth:b.width,d:swap?b.width:b.depth};}
 export function centerOf(b){const r=footprint(b);return {x:r.x+r.w/2,z:r.z+r.d/2};}
@@ -15,4 +23,4 @@ export function layoutErrors(buildings){const errors=[],ids=new Set(),active=bui
  for(let i=0;i<active.length;i++)for(let j=i+1;j<active.length;j++){const a=active[i],b=active[j];if(a.parentId===b.id||b.parentId===a.id)continue;if(rectanglesOverlap(footprint(a),footprint(b)))errors.push(`${a.name} 与 ${b.name} 占地重叠。`);}
  return [...new Set(errors)];
 }
-export function firstFree(buildings,width,depth){for(let radius=0;radius<=70;radius+=2)for(let z=-radius;z<=radius;z+=2)for(let x=-radius;x<=radius;x+=2){if(Math.abs(x)!==radius&&Math.abs(z)!==radius)continue;const b={id:'candidate',name:'新建筑',kind:'custom',gridX:x,gridZ:z,width,depth,rotation:0,enabled:true};if(!layoutErrors([...buildings,b]).length)return {gridX:x,gridZ:z};}return null;}
+export function firstFree(buildings,width,depth){const occupied=buildings.filter(building=>building.enabled!==false).map(footprint);for(let radius=0;radius<=GRID.max;radius+=2)for(let z=-radius;z<=radius;z+=2)for(let x=-radius;x<=radius;x+=2){if(Math.abs(x)!==radius&&Math.abs(z)!==radius)continue;const candidate={x,z,w:width,d:depth};if(x<GRID.min||z<GRID.min||x+width>GRID.max||z+depth>GRID.max)continue;if(!occupied.some(rect=>rectanglesOverlap(rect,candidate)))return {gridX:x,gridZ:z};}return null;}

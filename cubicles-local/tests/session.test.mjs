@@ -17,10 +17,37 @@ const { initApp, shutdownApp } = await import('../src/server/runtime.mjs');
 const { getState } = await import('../src/server/store.mjs');
 const { freshSession } = await import('../src/server/auth.mjs');
 const { sessions, loadSessions, persistSession, deleteSession } = await import('../src/server/session-store.mjs');
+const { persistHeartbeat, flushSessions, sessionPersistenceStats } = await import('../src/server/session-store.mjs');
+const { getDb } = await import('../src/server/db.mjs');
+const { sessions: sessionsTable } = await import('../src/server/db/schema.mjs');
+const { eq } = await import('drizzle-orm');
 
 after(async () => {
   await shutdownApp();
   await rm(directory, { recursive: true, force: true });
+});
+
+test('heartbeats coalesce to the latest position and logout cannot be undone by a pending write', async () => {
+  await initApp({ monitoring: false, autoImport: false });
+  const session = await freshSession(getState().users[0]);
+  const before = sessionPersistenceStats();
+  const original = session.x;
+  session.x = 5;
+  await persistHeartbeat(session);
+  session.x = 8;
+  await persistHeartbeat(session);
+  const row = (await getDb().select().from(sessionsTable).where(eq(sessionsTable.id,session.id)))[0];
+  assert.equal(row.x,original);
+  await flushSessions();
+  assert.equal((await getDb().select().from(sessionsTable).where(eq(sessionsTable.id,session.id)))[0].x,8);
+  assert.equal(sessionPersistenceStats().rows-before.rows,1);
+  session.x=10;
+  await persistHeartbeat(session);
+  await Promise.all([flushSessions(),deleteSession(session.id)]);
+  await persistHeartbeat(session);
+  await assert.rejects(persistSession(session),error=>error.status===401);
+  assert.equal((await getDb().select().from(sessionsTable).where(eq(sessionsTable.id,session.id))).length,0);
+  assert.equal(sessions.has(session.id),false);
 });
 
 test('sessions survive a cache reload and can be revoked from the database', async () => {

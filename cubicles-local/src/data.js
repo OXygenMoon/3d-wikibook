@@ -1,9 +1,10 @@
 import { DEFAULT_ZONES, generateOffices } from './community.js';
+import { GRID } from './grid.js';
 export const neighborhoods = DEFAULT_ZONES.map(z=>({...z}));
 export const offices = generateOffices(DEFAULT_ZONES);
 export const home = offices[0];
 export const spawn = {x:home.x,z:home.z+2.5};
-export const worldBounds=70;
+export const worldBounds=GRID.max;
 
 export const outfits = ['#a6b79a', '#b6a4cc', '#87a8b8', '#d2aa86', '#beca78', '#c58d83'];
 export const seedMessages = [

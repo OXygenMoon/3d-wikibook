@@ -3,13 +3,15 @@ import { getState, saveState, bumpRevision } from '../store.mjs';
 import { sessions, persistSession, deleteSession } from '../session-store.mjs';
 import { freshSession, loginByPassword, publicUser, requireUser } from '../auth.mjs';
 import { userOf } from '../domain.mjs';
+import { config } from '../config.mjs';
 
 export async function handleAuthRoutes(req, res, url, session) {
   const path = url.pathname;
 
   if (path === '/api/session' && req.method === 'POST') {
     const data = await readJson(req);
-    const old = session || sessions.get(clean(data.token, 100));
+    const candidate = sessions.get(clean(data.token, 100));
+    const old = session || (candidate && Date.now() - candidate.createdAt <= config.sessionTtlMs ? candidate : null);
     const current = old || (await freshSession(null));
     if (!old) {
       getState().visitors += 1;
@@ -29,7 +31,7 @@ export async function handleAuthRoutes(req, res, url, session) {
 
   if (path === '/api/login' && req.method === 'POST') {
     const data = await readJson(req);
-    const username = clean(data.username, 32).toLowerCase();
+    const username = clean(data.username, 80);
     const user = await loginByPassword(username, data.password, session, req.socket.remoteAddress);
     if (session) await deleteSession(session.id);
     const next = await freshSession(user);

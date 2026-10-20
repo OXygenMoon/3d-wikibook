@@ -19,7 +19,11 @@
     "db:import": "node scripts/db-import.mjs",
     "db:rollback": "node scripts/db-rollback.mjs",
     "db:backup": "node scripts/db-backup.mjs",
-    "db:restore-drill": "node scripts/db-restore-drill.mjs"
+    "db:restore-drill": "node scripts/db-restore-drill.mjs",
+    "test:deployment": "node scripts/deployment-check.mjs",
+    "test:performance": "node scripts/performance-check.mjs",
+    "test:postgres": "node scripts/postgres-check.mjs",
+    "wikibook:import": "node scripts/wikibook-import.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.10",

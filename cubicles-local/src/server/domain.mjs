@@ -1,5 +1,6 @@
 import {
   GRID,
+  WORLD_PROPS,
   zoneRect,
   zoneBuilding,
   officeBuilding,
@@ -97,6 +98,7 @@ export function players(exclude) {
         userId: user?.id,
         name: user?.name || session.name,
         x: session.x,
+        y: session.y||0,
         z: session.z,
         rotation: session.rotation,
         avatar: user?.avatar || session.avatar,
@@ -152,8 +154,8 @@ export function validateZone(data, id) {
   const zone = {
     id,
     name: typeof data.name === 'string' ? data.name.trim().slice(0, 24) : '',
-    x: number('x', -60, 60),
-    z: number('z', -60, 60),
+    x: number('x', GRID.min, GRID.max),
+    z: number('z', GRID.min, GRID.max),
     columns: number('columns', 1, 8),
     rows: number('rows', 1, 8),
     spacing: number('spacing', 6, 10),
@@ -198,11 +200,14 @@ export function validateWorldLayout(data) {
   const list = [];
 
   for (const raw of data.buildings) {
+    if (!raw || typeof raw !== 'object') fail(400, '建筑记录格式不正确。');
     if (typeof raw.id !== 'string' || seen.has(raw.id)) fail(400, '建筑编号无效或重复。');
     seen.add(raw.id);
     const old = known.get(raw.id);
-    if (!old && !/^model-[a-z0-9-]{8,64}$/.test(raw.id)) fail(400, '新建筑编号无效。');
-    const kind = old?.kind || 'custom';
+    if (!old && !/^(model|prop)-[a-z0-9-]{8,64}$/.test(raw.id)) fail(400, '新建筑编号无效。');
+    const kind = old?.kind || (raw.id.startsWith('prop-') && Object.hasOwn(WORLD_PROPS,raw.kind) ? raw.kind : 'custom');
+    const collisionMode=raw.collisionMode??old?.collisionMode??'mesh';
+    if(!['mesh','solid','none'].includes(collisionMode))fail(400,'碰撞模式不正确。');
     const building = {
       id: raw.id,
       kind,
@@ -215,8 +220,13 @@ export function validateWorldLayout(data) {
       enabled: raw.enabled !== false,
       solid: Boolean(raw.solid),
       assetId: raw.assetId || null,
+      ...(raw.assetId?{collisionMode,solid:collisionMode==='solid'}:{}),
     };
-    if (kind === 'class' || kind === 'office') {
+    if (Object.hasOwn(WORLD_PROPS,kind) && !building.assetId) {
+      const definition=WORLD_PROPS[kind];
+      if(building.width!==definition.width||building.depth!==definition.depth)fail(400,'内置景观占地尺寸固定。');
+      building.solid=false;
+    } else if (kind === 'class' || kind === 'office') {
       if (!old) fail(400, '班级或工位不存在。');
       if (raw.width !== old.width || raw.depth !== old.depth || raw.rotation !== 0 || !building.enabled) {
         fail(400, '班级与工位的大小请在班级区域设置中调整。');
@@ -245,7 +255,7 @@ export function validateWorldLayout(data) {
         fail(400, '模型资源不存在，请先导入。');
       }
       if (asset?.visibility === 'private') fail(400, '私有模型不能放入公共世界，请使用共享模型。');
-      if (asset && Number.isFinite(Number(asset.scale))) {
+      if (asset && Number.isFinite(Number(asset.scale)) && Number(asset.scale) > 0) {
         const size = effectiveSize(asset);
         if (building.width < Math.max(1, Math.ceil(size.width)) || building.depth < Math.max(1, Math.ceil(size.depth))) {
           fail(400, `${asset.name} 的占地不能小于模型实际尺寸，请增大宽深或减小缩放。`);
@@ -264,7 +274,7 @@ export function validateWorldLayout(data) {
   }
 
   for (const old of current) {
-    if (old.kind !== 'custom' && !seen.has(old.id)) {
+    if (old.kind !== 'custom' && !Object.hasOwn(WORLD_PROPS,old.kind) && !seen.has(old.id)) {
       fail(400, '不能移除班级或工位；公共建筑可通过关闭显示来收起。');
     }
   }

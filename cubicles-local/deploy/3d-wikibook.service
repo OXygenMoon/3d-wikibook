@@ -1,0 +1,23 @@
+[Unit]
+Description=3D WikiBook community
+After=network.target
+
+[Service]
+Type=simple
+User=wikibook3d
+Group=wikibook3d
+WorkingDirectory=/srv/3d-wikibook/cubicles-local
+EnvironmentFile=/etc/3d-wikibook.env
+ExecStart=/usr/bin/node server.mjs --production
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=45
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/3d-wikibook /var/backups/3d-wikibook
+
+[Install]
+WantedBy=multi-user.target

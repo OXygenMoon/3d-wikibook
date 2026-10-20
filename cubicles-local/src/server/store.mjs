@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile, readdir, unlink } from 'node:fs/promises';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
+import { AsyncLocalStorage } from 'node:async_hooks';
 import { eq } from 'drizzle-orm';
 import { communityState } from './db/schema.mjs';
 import { getDb } from './db.mjs';
@@ -8,15 +9,29 @@ import { config } from './config.mjs';
 import { logger } from './logger.mjs';
 import { hashPassword } from './password.mjs';
 import { DEFAULT_ZONES, DEFAULT_SETTINGS, PUBLIC_AREAS, ITEMS } from '../community.js';
-import { defaultBuildings } from '../grid.js';
+import { defaultBuildings, defaultWorldProps, layoutErrors, zoneBuilding, officeBuilding } from '../grid.js';
+import { generateOffices } from '../community.js';
+import { splitState, inflateState, readDomainRows, writeDomainRows } from './db/domains.mjs';
+import { HttpError } from './http.mjs';
 
 let state = null;
 let revision = 1;
 let writeQueue = Promise.resolve();
+let persistedRows = null;
+let committedState = null;
+let committedRevision = 1;
+let writeEpoch = 0;
+const requestContext = new AsyncLocalStorage();
+
+export function withStateContext(operation) {
+  return requestContext.run({ epoch: writeEpoch }, operation);
+}
 
 const PUBLIC_TEMPLATES = structuredClone(PUBLIC_AREAS);
 
 export function getState() {
+  const context = requestContext.getStore();
+  if (context && context.epoch !== writeEpoch) throw new HttpError(503, '上一次写入失败，状态已恢复，请重试。');
   if (!state) throw new Error('community state has not been initialized');
   return state;
 }
@@ -47,12 +62,16 @@ function defaultUser() {
     name: '社区管理员',
     passwordHash: null,
     role: 'admin',
+    teachingClassIds: [],
+    unlockedModelIds: [],
     classId: 1,
     officeId: 1001,
     avatar: 'classic',
     color: '#a6b79a',
     inventory: Object.fromEntries(ITEMS.map(item => [item.id, item.limit])),
     score: 0,
+    catches: [],
+    completedTasks: [],
     createdAt: Date.now(),
   };
 }
@@ -68,9 +87,18 @@ export async function createDefaultState() {
     settings: { ...DEFAULT_SETTINGS },
     officeStyles: {},
     stickers: [],
-    buildings: defaultBuildings(PUBLIC_TEMPLATES),
+    buildings: [...defaultBuildings(PUBLIC_TEMPLATES),...defaultWorldProps()],
+    worldPropsVersion: 1,
     officePositions: {},
     modelAssets: [],
+    classAnnouncements: [],
+    classTasks: [],
+    classSubmissions: [],
+    rewardGrants: [],
+    sourceClasses: [],
+    sourceIdentities: [],
+    sourceGroups: [],
+    sourceMemberships: [],
     layoutRevision: 1,
   };
 }
@@ -98,11 +126,30 @@ export async function normalizeState(value) {
   next.stickers ||= [];
   next.officePositions ||= {};
   next.modelAssets ||= [];
+  next.classAnnouncements ||= [];
+  next.classTasks ||= [];
+  next.classSubmissions ||= [];
+  next.rewardGrants ||= [];
+  next.sourceClasses ||= [];
+  next.sourceIdentities ||= [];
+  next.sourceGroups ||= [];
+  next.sourceMemberships ||= [];
   next.layoutRevision ||= 1;
 
   if (!next.buildings) {
     await backupBeforeGridMigration(structuredClone(next));
     next.buildings = defaultBuildings(PUBLIC_TEMPLATES);
+  }
+
+  if (!next.worldPropsVersion) {
+    const occupied=[...next.zones.map(zoneBuilding),...generateOffices(next.zones,next.officePositions).map(officeBuilding),...next.buildings];
+    for(const prop of defaultWorldProps()){
+      if(next.buildings.some(building=>building.id===prop.id))continue;
+      if(layoutErrors([...occupied,prop]).length)prop.enabled=false;
+      next.buildings.push(prop);occupied.push(prop);
+    }
+    next.worldPropsVersion=1;
+    next.layoutRevision+=1;
   }
 
   for (const zone of next.zones) {
@@ -122,10 +169,13 @@ export async function normalizeState(value) {
     asset.description ||= '';
     asset.visibility ||= 'shared';
     asset.ownerId ||= null;
-    asset.scale = Number.isFinite(Number(asset.scale)) ? Number(asset.scale) : null;
+    const scale = Number(asset.scale);
+    asset.scale = Number.isFinite(scale) && scale > 0 ? scale : null;
   }
 
   for (const user of next.users) {
+    user.teachingClassIds ||= [];
+    user.unlockedModelIds ||= [];
     user.inventory ||= Object.fromEntries(ITEMS.map(item => [item.id, item.limit]));
     user.score ||= 0;
     user.catches ||= [];
@@ -142,33 +192,38 @@ export async function normalizeState(value) {
 
 async function upsertState(nextState, nextRevision = revision) {
   const db = getDb();
-  await db
-    .insert(communityState)
-    .values({
-      id: 1,
-      version: Number(nextState.version) || 2,
-      revision: nextRevision,
-      data: nextState,
-      updatedAt: new Date(),
-    })
-    .onConflictDoUpdate({
+  const next = splitState(nextState);
+  const previous = persistedRows || await readDomainRows(db);
+  await db.transaction(async transaction => {
+    await writeDomainRows(transaction, next.rows, previous);
+    await transaction.insert(communityState).values({
+      id: 1, version: Number(nextState.version) || 2, revision: nextRevision,
+      data: next.metadata, updatedAt: new Date(),
+    }).onConflictDoUpdate({
       target: communityState.id,
-      set: {
-        version: Number(nextState.version) || 2,
-        revision: nextRevision,
-        data: nextState,
-        updatedAt: new Date(),
-      },
+      set: { version: Number(nextState.version) || 2, revision: nextRevision, data: next.metadata, updatedAt: new Date() },
     });
+  });
+  persistedRows = structuredClone(next.rows);
+  committedState = structuredClone(nextState);
+  committedRevision = nextRevision;
 }
 
 export async function saveState() {
-  const snapshot = state;
+  const epoch = requestContext.getStore()?.epoch ?? writeEpoch;
+  if (epoch !== writeEpoch) throw new HttpError(503, '上一次写入失败，状态已恢复，请重试。');
+  const snapshot = structuredClone(state);
   const nextRevision = revision;
   writeQueue = writeQueue
     .catch(() => {})
     .then(async () => {
-      await upsertState(snapshot, nextRevision);
+      if (epoch !== writeEpoch) throw new HttpError(503, '上一次写入失败，状态已恢复，请重试。');
+      try { await upsertState(snapshot, nextRevision); }
+      catch (error) {
+        writeEpoch += 1;
+        if (committedState) { state = structuredClone(committedState); revision = committedRevision; }
+        throw error;
+      }
     });
   await writeQueue;
 }
@@ -177,7 +232,16 @@ export async function dumpState() {
   if (state) return { version: Number(state.version) || 2, revision, data: structuredClone(state), exportedAt: new Date().toISOString() };
   const row = (await getDb().select().from(communityState).where(eq(communityState.id, 1)).limit(1))[0];
   if (!row) return null;
-  return { version: Number(row.version) || 2, revision: Number(row.revision) || 1, data: structuredClone(row.data), exportedAt: new Date().toISOString() };
+  return { version: Number(row.version) || 2, revision: Number(row.revision) || 1, data: inflateState(row.data, await readDomainRows(getDb())), exportedAt: new Date().toISOString() };
+}
+
+export async function commitImportedState(next, expectedRevision) {
+  getState();
+  if (revision !== expectedRevision) throw new HttpError(409, '目标社区已改变，请重新生成导入计划。');
+  validateState(next);
+  state = structuredClone(next);
+  bumpRevision();
+  await saveState();
 }
 
 export async function writeBackup(reason = 'manual') {
@@ -246,6 +310,7 @@ export async function restoreStateFile(file) {
 }
 
 export async function initStore({ autoImport = config.autoImport, createIfMissing = true } = {}) {
+  persistedRows = null;
   const db = getDb();
   let row = (await db.select().from(communityState).where(eq(communityState.id, 1)).limit(1))[0];
 
@@ -272,12 +337,21 @@ export async function initStore({ autoImport = config.autoImport, createIfMissin
   }
 
   revision = Number(row.revision) || 1;
-  state = await normalizeState(structuredClone(row.data));
+  persistedRows = await readDomainRows(db);
+  committedState = inflateState(row.data, persistedRows);
+  committedRevision = revision;
+  state = await normalizeState(structuredClone(committedState));
+  if(state.layoutRevision!==committedState.layoutRevision)revision+=1;
+  if (row.data.domainStorage !== 1) await writeBackup('pre-domain-migration');
   await saveState();
   logger.info({ users: state.users.length, zones: state.zones.length, revision }, 'community state loaded');
 }
 
 export async function resetStoreForTests() {
+  committedState = null;
+  committedRevision = 1;
+  writeEpoch = 0;
+  persistedRows = null;
   state = null;
   revision = 1;
   writeQueue = Promise.resolve();

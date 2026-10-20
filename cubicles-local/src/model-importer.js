@@ -36,8 +36,11 @@ class ModelPreview {
   }
 
   async load(file) {
-    const buffer = await file.arrayBuffer();
+    const loading = Symbol();
+    this.loading = loading;
+    const buffer = typeof file === 'string' ? await (await fetch(file)).arrayBuffer() : await file.arrayBuffer();
     const gltf = await this.loader.parseAsync(buffer, '');
+    if (!this.running || this.loading !== loading) return null;
     const object = gltf.scene.clone(true);
     const box = new THREE.Box3().setFromObject(object);
     if (box.isEmpty()) throw new Error('模型没有可显示的几何体。');
@@ -48,6 +51,8 @@ class ModelPreview {
     this.group.clear();
     const fit = new THREE.Group();
     fit.scale.setScalar(2 / max);
+    this.fit = fit;
+    this.nativeMax = max;
     fit.add(object);
     this.group.add(fit);
     object.traverse(mesh => {
@@ -60,6 +65,24 @@ class ModelPreview {
     this.camera.lookAt(0, 0.75, 0);
     this.native = { width: size.x, height: size.y, depth: size.z };
     return this.native;
+  }
+
+  setScale(scale) {
+    if (!this.fit) return;
+    this.fit.scale.setScalar(scale / this.nativeMax);
+    const distance = Math.max(2.5, scale);
+    this.camera.position.set(distance * 1.04, distance * .84, distance * 1.28);
+    this.camera.lookAt(0, scale * .35, 0);
+  }
+
+  thumbnail() {
+    if (!this.fit) return null;
+    this.renderer.render(this.scene, this.camera);
+    const canvas = document.createElement('canvas');
+    canvas.width = 160;
+    canvas.height = 120;
+    canvas.getContext('2d').drawImage(this.canvas, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL('image/png');
   }
 
   animate() {
@@ -96,33 +119,36 @@ export class ModelImporter {
     this.native = null;
     this.onImported = null;
     this.trigger = null;
+    this.saving = false;
   }
 
   isOpen() {
     return Boolean(this.overlay);
   }
 
-  open({ context = 'user', onImported = null } = {}) {
+  open({ context = 'user', asset = null, onImported = null } = {}) {
+    if (this.saving) return;
     if (!this.state.user) {
       this.toast('请先登录账号。');
       return;
     }
     if (this.overlay) this.close();
     this.context = context;
+    this.asset = asset;
     this.onImported = onImported;
     this.trigger = document.activeElement;
     this.file = null;
     this.native = null;
-    const admin = context === 'admin';
+    const admin = asset ? asset.visibility !== 'private' : context === 'admin';
     const min = admin ? 0.5 : 0.1;
     const max = admin ? 32 : 3.5;
-    const value = admin ? 4 : 1;
+    const value = Number(asset?.scale) || (admin ? 4 : 1);
     const overlay = document.createElement('div');
     overlay.className = 'model-import-overlay';
     overlay.innerHTML = `
       <section class="model-import-dialog" role="dialog" aria-modal="true" aria-label="导入 3D 模型">
         <header class="dialog-header">
-          <div><p class="eyebrow">${admin ? '世界模型库' : '我的 3D 模型'}</p><h2>把一个想法带进社区。</h2></div>
+          <div><p class="eyebrow">${admin ? '世界模型库' : '我的 3D 模型'}</p><h2>${asset?'调整你的模型。':'把一个想法带进社区。'}</h2></div>
           <button type="button" class="close-button" data-model-import-close aria-label="关闭">×</button>
         </header>
         <div class="model-import-grid">
@@ -132,14 +158,15 @@ export class ModelImporter {
             <div class="model-preview-meta" id="model-preview-meta">尚未选择模型</div>
           </div>
           <form id="model-import-form">
-            <label class="form-label">模型名称<input name="name" maxlength="40" required placeholder="例如：我的小书架"></label>
-            <label class="form-label">描述<textarea name="description" maxlength="160" rows="3" placeholder="它是什么？适合放在哪里？"></textarea></label>
+            <label class="form-label">模型名称<input name="name" maxlength="40" required placeholder="例如：我的小书架" value="${this.esc(asset?.name||'')}"></label>
+            <label class="form-label">描述<textarea name="description" maxlength="160" rows="3" placeholder="它是什么？适合放在哪里？">${this.esc(asset?.description||'')}</textarea></label>
             <label class="form-label model-scale-label"><span>缩放倍率 <output id="model-scale-output">${value.toFixed(2)}×</output></span><input id="model-scale" name="scale" type="range" min="${min}" max="${max}" step="0.05" value="${value}"></label>
             <p class="subtle">1.0 = 模型最长边 1 米；按比例缩放，不会拉伸。${admin ? '世界建筑最大 32 米。' : '工位模型最大 3.5 米。'}</p>
-            <label class="form-label">GLB 文件<input id="model-file" name="file" type="file" accept=".glb,model/gltf-binary" required></label>
+            ${admin?`<label class="form-label">使用范围<select name="access"><option value="all" ${asset?.access!=='reward'?'selected':''}>所有社区用户可使用</option><option value="reward" ${asset?.access==='reward'?'selected':''}>完成班级任务后解锁</option></select></label>`:''}
+            ${asset?'<p class="subtle">修改已有模型，无需重新上传。已有摆放必须仍在边界内。</p>':'<label class="form-label">GLB 文件<input id="model-file" name="file" type="file" accept=".glb,model/gltf-binary" required></label>'}
             <p class="subtle">${admin ? '自包含 GLB，≤20 MiB、≤30 万三角形。' : '自包含 GLB，≤5 MiB、≤8 万三角形。个人模型仅自己可见。'}</p>
             <p class="form-error" id="model-import-error" role="alert"></p>
-            <footer class="dialog-footer"><span>导入后即可放入${admin ? '世界' : '工位'}。</span><div class="model-import-actions"><button type="button" class="secondary" data-model-import-close>取消</button><button type="submit" class="primary">导入并保存</button></div></footer>
+            <footer class="dialog-footer"><span>${asset?'保存后同步更新已有摆放。':`导入后即可放入${admin ? '世界' : '工位'}。`}</span><div class="model-import-actions"><button type="button" class="secondary" data-model-import-close>取消</button><button type="submit" class="primary">${asset?'保存模型':'导入并保存'}</button></div></footer>
           </form>
         </div>
       </section>`;
@@ -149,15 +176,28 @@ export class ModelImporter {
     this.world.keys.clear();
     this.preview = new ModelPreview(overlay.querySelector('#model-preview-canvas'));
     overlay.querySelectorAll('[data-model-import-close]').forEach(button => button.addEventListener('click', () => this.close()));
-    overlay.querySelector('#model-file').addEventListener('change', event => this.handleFile(event.target.files[0]));
+    overlay.querySelector('#model-file')?.addEventListener('change', event => this.handleFile(event.target.files[0]));
     overlay.querySelector('#model-scale').addEventListener('input', event => this.updateScale(Number(event.target.value)));
     requestAnimationFrame(() => {
+      if (this.overlay !== overlay) return;
       this.preview.resize();
       overlay.querySelector('input[name="name"]')?.focus({ preventScroll: true });
     });
+    if (asset) {
+      const preview = this.preview;
+      preview.load(asset.url).then(native => {
+        if (this.preview !== preview) return;
+        this.native = native;
+        overlay.querySelector('#model-preview-empty').hidden = true;
+        this.updateScale(value);
+      }).catch(error => {
+        if (this.overlay === overlay) overlay.querySelector('#model-import-error').textContent = error.message;
+      });
+    }
   }
 
   close() {
+    if (this.saving) return;
     if (!this.overlay) return;
     this.preview?.dispose();
     this.preview = null;
@@ -176,6 +216,7 @@ export class ModelImporter {
     if (output) output.textContent = `${scale.toFixed(2)}×`;
     const meta = this.overlay?.querySelector('#model-preview-meta');
     if (!meta || !this.native) return;
+    this.preview?.setScale(scale);
     const asset = { ...this.native, scale };
     meta.innerHTML = `原始 ${this.native.width.toFixed(2)} × ${this.native.height.toFixed(2)} × ${this.native.depth.toFixed(2)} 米<br><b>导入后 ${formatModelSize(asset)}</b>`;
   }
@@ -194,8 +235,11 @@ export class ModelImporter {
       return;
     }
     try {
+      const preview = this.preview;
+      const native = await preview.load(file);
+      if (!native || this.preview !== preview) return;
       this.file = file;
-      this.native = await this.preview.load(file);
+      this.native = native;
       const empty = this.overlay?.querySelector('#model-preview-empty');
       if (empty) empty.hidden = true;
       const name = this.overlay?.querySelector('input[name="name"]');
@@ -209,7 +253,8 @@ export class ModelImporter {
   }
 
   async submit(form) {
-    if (!this.file || !this.native) {
+    const editing = Boolean(this.asset);
+    if ((!this.file && !this.asset) || !this.native) {
       const error = form.querySelector('#model-import-error');
       if (error) error.textContent = '请先选择一个可预览的 GLB 文件。';
       return;
@@ -224,11 +269,13 @@ export class ModelImporter {
     const button = form.querySelector('button[type="submit"]');
     const error = form.querySelector('#model-import-error');
     button.disabled = true;
-    button.textContent = '正在上传…';
+    this.saving = true;
+    this.overlay.querySelectorAll('input,textarea,select,[data-model-import-close]').forEach(control => control.disabled = true);
+    button.textContent = '正在保存…';
     try {
       const endpoint = this.context === 'admin' ? '/api/admin/models' : '/api/models';
       const params = new URLSearchParams({
-        filename: this.file.name,
+        filename: this.file?.name || '',
         name,
         description: String(data.get('description') || ''),
         scale: String(scale),
@@ -236,22 +283,35 @@ export class ModelImporter {
         height: String(this.native.height),
         depth: String(this.native.depth),
       });
-      const response = await fetch(`${endpoint}?${params}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'model/gltf-binary', 'X-Session-Token': this.state.token },
-        body: this.file,
-      });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.error || '模型导入失败。');
+      let result;
+      if (!this.asset) {
+        const response = await fetch(`${endpoint}?${params}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'model/gltf-binary', 'X-Session-Token': this.state.token },
+          body: this.file,
+        });
+        result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || '模型导入失败。');
+        this.asset = result.asset;
+      }
+      const thumbnail = this.preview.thumbnail();
+      result = await this.request(`/api/models/${this.asset.id}`, { method: 'PATCH', data: {
+        name, description: String(data.get('description') || ''), scale,
+        ...(data.has('access') ? { access: String(data.get('access')) } : {}),
+        ...(thumbnail ? { thumbnail } : {}),
+      } });
       const asset = result.asset;
       const callback = this.onImported;
+      this.saving = false;
       this.close();
-      callback?.(asset);
-      this.toast(this.context === 'admin' ? '模型已保存，可以放入世界了。' : '模型已保存，可以在工位里摆放了。');
+      await callback?.(asset);
+      this.toast(editing ? '模型信息已更新。' : this.context === 'admin' ? '模型已保存，可以放入世界了。' : '模型已保存，可以在工位里摆放了。');
     } catch (err) {
+      this.saving = false;
+      this.overlay?.querySelectorAll('input,textarea,select,[data-model-import-close]').forEach(control => control.disabled = false);
       if (error) error.textContent = err.message;
       button.disabled = false;
-      button.textContent = '导入并保存';
+      button.textContent = this.asset ? '保存模型' : '导入并保存';
     }
   }
 }

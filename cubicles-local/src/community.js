@@ -1,10 +1,10 @@
 import {zoneRect} from './grid.js';
 // Shared scene and server contracts. Coordinates are in world metres.
 export const PUBLIC_AREAS = [
-  {id:'pond',kind:'pond',name:'荷风池塘',x:-34,z:35,radius:8,entry:{x:-34,z:42},hint:'开始钓鱼'},
+  {id:'pond',kind:'pond',name:'荷风池塘',x:-34,z:35,radius:8,entry:{x:-34,z:42},hint:'打开 WikiBook 钓鱼'},
   {id:'wall',kind:'wall',name:'共创贴纸墙',x:0,z:35,radius:7,entry:{x:0,z:39},hint:'查看与留下贴纸'},
   {id:'hall',kind:'hall',name:'排行榜殿堂',x:30,z:35,radius:8,entry:{x:30,z:40},hint:'查看社区荣誉'},
-  {id:'lab',kind:'lab',name:'云端机房',x:0,z:-34,radius:8,entry:{x:0,z:-28},hint:'打开机房任务'},
+  {id:'lab',kind:'lab',name:'云端机房',x:0,z:-34,radius:8,entry:{x:0,z:-28},hint:'打开 WikiBook OJ'},
 ];
 export const BASE_PUBLIC_AREAS=structuredClone(PUBLIC_AREAS);
 export const DEFAULT_ZONES=[{id:1,name:'创想一班',x:0,z:0,columns:6,rows:4,spacing:7,color:'#91ad83'}];

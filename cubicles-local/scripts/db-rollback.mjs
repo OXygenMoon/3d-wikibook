@@ -1,4 +1,7 @@
 import path from 'node:path';
+import { stat } from 'node:fs/promises';
+import { initDatabase, closeDatabase } from '../src/server/db.mjs';
+import { restoreFullBackup } from '../src/server/backup.mjs';
 import { initApp, shutdownApp } from '../src/server/runtime.mjs';
 import { restoreStateFile } from '../src/server/store.mjs';
 
@@ -9,12 +12,20 @@ if (!file) {
 }
 
 try {
-  await initApp({ monitoring: false, autoImport: false });
-  const result = await restoreStateFile(path.resolve(file));
+  const directory = (await stat(file)).isDirectory();
+  let result;
+  if (directory) {
+    await initDatabase();
+    result = await restoreFullBackup(path.resolve(file));
+  } else {
+    await initApp({ monitoring: false, autoImport: false });
+    result = await restoreStateFile(path.resolve(file));
+  }
   console.log(JSON.stringify({ ok: true, restored: path.resolve(file), ...result }, null, 2));
 } catch (error) {
   console.error(`rollback failed: ${error.message}`);
   process.exitCode = 1;
 } finally {
   await shutdownApp().catch(() => {});
+  await closeDatabase().catch(() => {});
 }

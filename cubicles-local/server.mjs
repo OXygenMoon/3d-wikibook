@@ -11,6 +11,7 @@ import { getState, getRevision } from './src/server/store.mjs';
 import { initApp, shutdownApp } from './src/server/runtime.mjs';
 import { handleApi } from './src/server/api.mjs';
 import { getSession } from './src/server/auth.mjs';
+import { sessionPersistenceStats } from './src/server/session-store.mjs';
 import { serveUpload } from './src/server/resources.mjs';
 import {
   fail,
@@ -29,6 +30,7 @@ function healthPayload() {
     driver: getDriver(),
     uptime: Number(process.uptime().toFixed(1)),
     monitoring: monitoringStatus(),
+    sessionPersistence: sessionPersistenceStats(),
     revision: getRevision(),
     users: getState().users.length,
     zones: getState().zones.length,
@@ -86,6 +88,7 @@ async function serveStatic(req, res, pathname) {
 async function handleRequest(req, res) {
   const requestId = req.headers['x-request-id'] || randomUUID();
   const started = performance.now();
+  const remoteAddress = req.socket?.remoteAddress;
   let pathname = '/';
   res.setHeader('X-Request-Id', requestId);
   securityHeaders(res);
@@ -97,7 +100,7 @@ async function handleRequest(req, res) {
         path: pathname,
         status: res.statusCode,
         ms: Math.round(performance.now() - started),
-        ip: req.socket.remoteAddress,
+        ip: remoteAddress,
       },
       'http request',
     );

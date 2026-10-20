@@ -92,6 +92,7 @@ test('5. 管理员在世界编辑器中移动班级并保存', async ({ page }) 
   await page.locator('.account [data-action="admin"]').click();
   await page.locator('[data-admin-tab="world"]').click();
   await page.locator('[data-action="world-editor"]').click();
+  await page.locator('[data-world-action="preview"]').click();
   await expect(page.locator('#world-layout-map')).toBeVisible({ timeout: 20_000 });
 
   await page.locator('[data-world-rect="class-1"]').click();
@@ -100,9 +101,13 @@ test('5. 管理员在世界编辑器中移动班级并保存', async ({ page }) 
   const oldX = Number(await input.inputValue());
   await input.fill(String(oldX + 1));
   await input.press('Tab');
+  await expect(input).toHaveValue(String(oldX + 1));
+  await expect(page.locator('[data-world-action="undo"]')).toBeEnabled();
   await expect(page.locator('#layout-validation')).toContainText('有效');
 
+  const savedRequest = page.waitForRequest(request => request.url().endsWith('/api/admin/layout') && request.method() === 'PUT');
   await page.locator('[data-world-action="save"]').click();
+  expect((await savedRequest).postDataJSON().buildings.find(item => item.id === 'class-1').gridX).toBe(oldX + 1);
   await expect(page.locator('.toast').filter({ hasText: '世界布局已保存' })).toBeVisible({ timeout: 20_000 });
 
   const after = await (await page.request.get('/api/world')).json();
@@ -158,6 +163,7 @@ test('7. 管理员把导入的模型放入世界布局', async ({ page }) => {
   await page.locator('.account [data-action="admin"]').click();
   await page.locator('[data-admin-tab="world"]').click();
   await page.locator('[data-action="world-editor"]').click();
+  await page.locator('[data-world-action="preview"]').click();
   await expect(page.locator('#world-layout-map')).toBeVisible({ timeout: 20_000 });
   await page.locator(`[data-add-world-model="${asset.id}"]`).click();
   await expect(page.locator('#building-transform-form')).toBeVisible();

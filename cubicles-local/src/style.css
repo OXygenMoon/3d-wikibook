@@ -59,3 +59,43 @@ textarea,select{font:inherit;color:var(--ink);border:1px solid var(--line);backg
 #model-import-form textarea{width:100%;padding:11px 12px;border:1px solid #cdd8bf;background:#fffef7;border-radius:8px;font:inherit;font-size:12px;line-height:1.6;resize:vertical;min-height:70px}
 #model-import-form input[type="file"]{font-size:11px;color:#617651}
 #model-import-form input[type="file"]::file-selector-button{margin-right:9px;border:1px solid #cbd7b9;border-radius:7px;background:#e7edd9;color:#4f6a48;padding:8px 10px;font:inherit;font-size:10px;cursor:pointer}
+.model-thumbnail{width:72px;height:54px;object-fit:contain;border-radius:8px;background:#edf1e8;flex-shrink:0}
+.model-card-actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.editor-tools{flex-wrap:wrap;gap:8px}
+.editor-tools label{display:flex;align-items:center;gap:5px;font-size:12px}
+.editor-tools input{width:auto}
+.classroom-section{margin-top:24px;padding-top:20px;border-top:1px solid #d6dfcf}
+.classroom-task,.classroom-announcement,.classroom-members>article{margin:12px 0;padding:16px;background:#f1f4eb;border-radius:12px}
+.classroom-task header,.classroom-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.classroom-task p,.classroom-announcement p{white-space:pre-wrap;overflow-wrap:anywhere}
+.classroom-task h4{margin:0;font-size:17px}
+.classroom-review-list>article{padding:12px;margin:12px 0;background:#fff;border-radius:8px}
+.classroom-members{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.classroom-members small{display:block;margin:6px 0}
+.role-settings{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0 20px;border-bottom:1px solid #d6dfcf}
+.role-settings label{display:flex;flex-direction:column;gap:6px;font-size:12px}
+.role-settings select{padding:8px;border:1px solid #cbd5c2;border-radius:6px;background:#fff}
+.classroom-create summary,.classroom-section details summary{cursor:pointer;padding:12px 0}
+.reward-settings{border:1px solid #ced9c5;border-radius:10px;padding:14px;margin:16px 0}
+.reward-settings legend{padding:0 8px;font-size:14px;font-weight:600}
+.task-rewards{font-size:13px;color:#526d3c;background:#e2edd5;padding:10px;border-radius:8px}
+.publish-choice{display:flex;align-items:center;gap:8px;font-size:13px;margin:12px 0}
+.publish-choice input{width:auto}
+.classroom-works{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.classroom-works article,.learning-records article{padding:14px;background:#edf2e6;border-radius:10px;margin:8px 0}
+.classroom-works p{white-space:pre-wrap;overflow-wrap:anywhere}
+.network-status{max-width:240px;background:#f4dfc4!important;color:#855734!important;white-space:normal}
+.network-status[hidden]{display:none}
+.world-prop-library{padding:16px 0;border-bottom:1px solid var(--line)}.world-prop-library h3{margin:0;font-size:16px}.world-prop-library button{padding:9px 14px;font-size:12px}.is-preview .world-layout-window{height:calc(100dvh - 24px)}.is-preview .world-layout-header h2{max-width:280px}.is-preview .world-layout-footer{color:#526648}.editor-scene-tip{max-width:calc(100vw - 430px);line-height:1.7;pointer-events:none}.world-preview-hint{max-width:calc(100vw - 420px);white-space:normal;line-height:1.7}.editor-dock input[type=range]{accent-color:#527a54}.placed-list button:focus-visible,.world-layout-actions button:focus-visible,.world-prop-library button:focus-visible{outline:2px solid #426b4b;outline-offset:3px}
+@media(max-width:700px){.editor-dock{top:auto;bottom:8px;right:8px;width:calc(100% - 16px);max-height:44dvh;padding:16px}.editor-scene-tip{top:12px;bottom:auto;left:12px;max-width:calc(100% - 24px);transform:none;padding:8px 12px;font-size:10px}.is-preview .world-layout-window{width:100%;height:44dvh;max-height:44dvh}.is-preview .world-layout-header{flex-direction:row;flex-wrap:wrap}.is-preview .world-layout-actions>button:last-child{top:20px;right:20px;margin:0}.is-preview .world-layout-header h2{display:none}.world-prop-library{padding:12px 0}}
+body:has(.editor-overlay) #ui{opacity:0;pointer-events:none}body:has(.editor-overlay) #nearby-prompt{display:none}.editor-dock{animation:none}.editor-details{border-block:1px solid var(--line);padding:12px 0;margin:12px 0}.editor-details summary{font-size:12px;cursor:pointer}.editor-details[open] summary{margin-bottom:16px}
+
+[data-wikibook-workspace]{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px;background:#24392a80;backdrop-filter:blur(5px)}
+.oj-shell{width:min(1440px,100%);height:calc(100dvh - 48px);display:flex;flex-direction:column;min-height:0;background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.oj-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid var(--line);flex-shrink:0}
+.oj-title span{font-size:10px;letter-spacing:2px;color:var(--muted)}.oj-title h2{margin:4px 0 0;font-size:20px}.oj-toolbar nav{display:flex;gap:8px}.oj-toolbar .primary,.oj-toolbar .secondary{width:auto;margin:0;white-space:nowrap;padding:11px 16px}
+.oj-connection{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 20px;font-size:11px;color:var(--muted);flex-shrink:0}.oj-connection>div{display:flex;gap:14px;align-items:center}.oj-connection a{color:var(--green)}.oj-connection button{padding:6px 0;text-decoration:underline}
+.wikibook-frame{display:block;flex:1;width:100%;min-height:0;border:0;background:white}.oj-empty{flex:1;display:grid;place-items:center;padding:24px;text-align:center}.oj-shell footer{padding:9px 20px;font-size:10px;line-height:1.7;color:var(--muted);flex-shrink:0}.oj-shell footer span{display:block}
+.wikibook-login-note{margin:0;padding:8px 20px;font-size:11px;line-height:1.6;color:#755a2d;background:#f3e7ca;flex-shrink:0}
+[data-wikibook-workspace].immersive,[data-wikibook-workspace]:fullscreen{padding:0;backdrop-filter:none;background:var(--paper)}[data-wikibook-workspace].immersive .oj-shell,[data-wikibook-workspace]:fullscreen .oj-shell{width:100%;height:100dvh;border:0;border-radius:0;box-shadow:none}
+@media(max-width:700px){[data-wikibook-workspace]{padding:8px}.oj-shell{height:calc(100dvh - 16px);border-radius:12px}.oj-toolbar{gap:8px;padding:10px}.oj-title h2{font-size:15px}.oj-title span{font-size:9px;letter-spacing:0}.oj-toolbar nav{gap:5px}.oj-toolbar .primary,.oj-toolbar .secondary{font-size:11px;padding:10px 9px;min-height:44px}.oj-connection{padding:6px 10px}.oj-connection button,.oj-connection a{min-height:36px;display:inline-flex;align-items:center}.oj-shell footer{padding:6px 10px}.oj-shell footer span{display:none}.wikibook-login-note{padding:6px 10px}#wikibook-fishing-workspace .oj-shell footer span:first-of-type{display:block}}

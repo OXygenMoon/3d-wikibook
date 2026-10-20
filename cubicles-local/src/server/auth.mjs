@@ -10,7 +10,7 @@ export const attempts = new Map();
 
 export function publicUser(user) {
   if (!user) return null;
-  const { passwordHash, ...safe } = user;
+  const { passwordHash, credentialFormat, ...safe } = user;
   return safe;
 }
 
@@ -72,12 +72,13 @@ export async function loginByPassword(username, password, session, remoteAddress
   if (attempt && attempt.count >= 10 && Date.now() - attempt.at < 60000) {
     fail(429, '尝试次数过多，请一分钟后再试。');
   }
-  const user = getState().users.find(item => item.username === username);
+  const user = getState().users.find(item => item.username === username) || getState().users.find(item => item.credentialFormat !== 'werkzeug' && item.username === username.toLowerCase());
   if (!user || typeof password !== 'string' || !(await verifyPassword(password, user.passwordHash))) {
     attempts.set(key, { count: (attempt?.count || 0) + 1, at: Date.now() });
     fail(401, '账号或密码不正确。');
   }
   attempts.delete(key);
+  if (!getState().users.some(item => item.id === user.id && item.passwordHash === user.passwordHash)) fail(401, '账号状态已更新，请重新登录。');
   if (session) sessions.delete(session.id);
   return user;
 }

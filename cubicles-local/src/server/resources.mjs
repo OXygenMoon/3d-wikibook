@@ -74,7 +74,7 @@ export async function serveUpload(req, res, pathname) {
   res.writeHead(200, {
     'Content-Type': 'model/gltf-binary',
     'X-Content-Type-Options': 'nosniff',
-    'Cache-Control': 'public,max-age=31536000,immutable',
+    'Cache-Control': asset.visibility === 'private' ? 'private, no-store' : 'public,max-age=31536000,immutable',
   });
   res.end(await readFile(path.join(config.modelsDir, `${id}.glb`)));
 }
