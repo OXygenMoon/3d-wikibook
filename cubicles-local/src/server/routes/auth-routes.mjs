@@ -12,6 +12,12 @@ export async function handleAuthRoutes(req, res, url, session) {
     const data = await readJson(req);
     const candidate = sessions.get(clean(data.token, 100));
     const old = session || (candidate && Date.now() - candidate.createdAt <= config.sessionTtlMs ? candidate : null);
+    if (config.requireLogin && !userOf(old)) {
+      if (old) await deleteSession(old.id);
+      clearSessionCookie(res);
+      sendJson(res, 200, { token: '', user: null, loginRequired: true, visitors: 0 });
+      return true;
+    }
     const current = old || (await freshSession(null));
     if (!old) {
       getState().visitors += 1;
@@ -23,6 +29,7 @@ export async function handleAuthRoutes(req, res, url, session) {
     sendJson(res, old ? 200 : 201, {
       token: current.id,
       user: publicUser(userOf(current)),
+      loginRequired: config.requireLogin,
       visitors: getState().visitors,
       position: { x: current.x, z: current.z },
     });

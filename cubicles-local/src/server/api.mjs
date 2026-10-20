@@ -9,6 +9,7 @@ import { handleAdminRoutes } from './routes/admin-routes.mjs';
 import { handleClassroomRoutes } from './routes/classroom-routes.mjs';
 import { withStateContext } from './store.mjs';
 import { handleWikibookRoutes } from './routes/wikibook-routes.mjs';
+import { requireUser } from './auth.mjs';
 
 function checkOrigin(req) {
   const origin = req.headers.origin;
@@ -25,6 +26,7 @@ export function handleApi(req, res, url, session) {
 async function dispatchApi(req, res, url, session) {
   checkOrigin(req);
   if (await handleAuthRoutes(req, res, url, session)) return;
+  if (config.requireLogin) requireUser(session);
   if (await handleWorldRoutes(req, res, url, session)) return;
   if (!session) fail(401, '会话已过期，请重新进入社区。');
   if (await handleSocialRoutes(req, res, url, session)) return;

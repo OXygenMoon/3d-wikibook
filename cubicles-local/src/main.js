@@ -3,10 +3,10 @@ import { offices, neighborhoods, outfits, spawn, home } from './data.js';
 import { icon } from './icons.js';
 import {footprint,GRID} from './grid.js';
 import {WorldEditor} from './world-editor.js';
-import { CommunityUI } from './community-ui.js';
+import { CommunityUI } from './community-ui.js?v=20261020-account-link';
 import { ModelImporter } from './model-importer.js';
 import { ClassroomUI } from './classroom-ui.js';
-import { OJPanel, WikiBookPanel } from './oj-panel.js';
+import { OJPanel, WikiBookPanel } from './oj-panel.js?v=20261020-account-link';
 import { PUBLIC_AREAS, withinOffice } from './community.js';
 let community,layoutEditor,modelImporter,classroom,oj,wikibookFishing;
 
@@ -17,7 +17,7 @@ const store = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 const state = {
   profile: read('cubicles.profile', { name:'', avatar:'classic', color:outfits[0] }),
   aura:read('cubicles.aura',0), catches:read('cubicles.catches',[]), panel:null, online:1, visitors:0, messages:[],
-  user:null,zones:[],myModels:[],settings:{timeMode:'auto',hour:20},revision:0, token:sessionStorage.getItem('cubicles.token') || '', entered:false, ready:false, connected:true, leaderboard:false, leaderboardTab:'工位', chat:false, music:false, musicPlaying:false,
+  user:null,loginRequired:true,zones:[],myModels:[],settings:{timeMode:'auto',hour:20},revision:0, token:sessionStorage.getItem('cubicles.token') || '', entered:false, ready:false, connected:true, leaderboard:false, leaderboardTab:'工位', chat:false, music:false, musicPlaying:false,
 };
 const world = new OfficeWorld($('#world'));
 world.outfit = { ...state.profile };
@@ -66,6 +66,7 @@ function panelShell(title,content,{wide=false,eyebrow='',className=''}={}) {
 function lockPanelButtons(){ $('#panels').querySelectorAll('button:not([disabled])').forEach(b=>{b.dataset.busyDisabled='1';b.disabled=true;});}
 function wikiBookPanel(name=state.panel){return name==='oj'?oj:name==='wikibook-fishing'?wikibookFishing:null;}
 function openPanel(name,data) {
+  if(state.loginRequired&&!state.user)name='login';
   if(document.pointerLockElement)document.exitPointerLock();
   wikiBookPanel()?.hide();
   const workspace=wikiBookPanel(name);
@@ -75,6 +76,7 @@ function openPanel(name,data) {
   if(name==='map')drawMapPosition();
 }
 function closePanel() {
+  if(state.loginRequired&&!state.user)return;
   if(layoutEditor?.saving)return;
   wikiBookPanel()?.hide();
   $('#world').inert=false;
@@ -150,12 +152,13 @@ function toggleMusic() {
 
 async function request(path,{method='GET',data,authenticated=true}={}) {
   const res=await fetch(path,{method,headers:{...(data?{'Content-Type':'application/json'}:{}),...(authenticated?{'X-Session-Token':state.token}:{})},...(data?{body:JSON.stringify(data)}:{})});
-  const json=await res.json();if(!res.ok){const err=new Error(json.error||'暂时无法连接社区，请稍后重试。');err.status=res.status;throw err;}return json;
+  const json=await res.json();if(!res.ok){if(res.status===401&&state.loginRequired&&state.user&&authenticated){state.token='';sessionStorage.removeItem('cubicles.token');setUser(null);openPanel('login');}const err=new Error(json.error||'暂时无法连接社区，请稍后重试。');err.status=res.status;throw err;}return json;
 }
 async function session() {
-  const data=await request('/api/session',{method:'POST',authenticated:false,data:{token:state.token}});state.token=data.token;state.visitors=data.visitors;sessionStorage.setItem('cubicles.token',state.token);setUser(data.user);return data;
+  const data=await request('/api/session',{method:'POST',authenticated:false,data:{token:state.token}});state.loginRequired=data.loginRequired!==false;state.token=data.token;state.visitors=data.visitors;sessionStorage.setItem('cubicles.token',state.token);setUser(data.user);return data;
 }
 async function tick() {
+  if(state.loginRequired&&!state.user)return;
   if(tickBusy)return;tickBusy=true;
   try {
     if(!state.token)await session();
@@ -175,6 +178,7 @@ function visitNeighborhood(index) {
   const n=neighborhoods[Number(index)];if(!n)return;closePanel();world.teleport(n.x,n.z);if(!world.canMove(n.x,n.z)) { const o=offices.find(o=>o.neighborhood===Number(index));if(o)world.teleport(o.x,o.z+1.35); }toast(`你已来到${n.name}。`);
 }
 function enter() {
+  if(state.loginRequired&&!state.user)return openPanel('login');
   if(!state.ready)return;state.entered=true;store('cubicles.entered',true);closePanel();world.enter();if(!read('cubicles.firstAura',false)){award(5);store('cubicles.firstAura',true);}
 }
 
@@ -288,7 +292,7 @@ function drawMiniMap(position,yaw) {
 function drawMapPosition() { const dot=$('#map-player');if(dot){dot.setAttribute('cx',380+world.position.x*(700/GRID.size));dot.setAttribute('cy',255+world.position.z*(490/GRID.size));} }
 world.onFrame=(position,yaw)=>{if(performance.now()-lastMapTime>100){drawMiniMap(position,yaw);drawMapPosition();updateNearbyPrompt();document.body.classList.toggle('night',world.night>.5);const clock=$('#community-clock');if(clock)clock.textContent=`${world.night>.5?'🌙':'☀️'} ${String(world.hour??0).padStart(2,'0')}:00 · ${world.night>.5?'夜间':'日间'} · 网格 ${Math.floor(position.x)},${Math.floor(position.z)}`;lastMapTime=performance.now();}};
 world.addEventListener('loading',e=>{const bar=$('#load-progress');if(bar)bar.style.width=`${e.detail*100}%`;});
-world.addEventListener('ready',()=>{state.ready=true;if(state.panel==='welcome'){$('#panels').innerHTML=renderPanel('welcome');$('.enter-button').focus();}else if(read('cubicles.entered',false)){state.entered=true;world.enter();}});
+world.addEventListener('ready',()=>{state.ready=true;if(state.loginRequired&&!state.user)return;if(state.panel==='welcome'){$('#panels').innerHTML=renderPanel('welcome');$('.enter-button').focus();}else if(read('cubicles.entered',false)){state.entered=true;world.enter();}});
 world.addEventListener('office',e=>openPanel('office',e.detail));
 world.addEventListener('asset-error',e=>toast(`${e.detail.name}加载失败：${e.detail.message}`));
 world.addEventListener('area',e=>community.show(e.detail.id));
@@ -299,19 +303,23 @@ world.addEventListener('camera',e=>{const first=e.detail==='first';$('.camera-bu
 world.addEventListener('dance',e=>{$('[data-action=dance]').classList.toggle('active',e.detail);$('[data-action=dance]').setAttribute('aria-pressed',e.detail);});
 world.addEventListener('vehicle',e=>{toast(e.detail?'出发兜风吧，按 E 下车。':'已下车，继续逛逛吧。');updateNearbyPrompt();});
 
-function setUser(user){state.user=user;world.currentUserId=user?.id;if(user){state.profile={name:user.name,avatar:user.avatar,color:user.color};state.aura=user.score;state.catches=user.catches||[];}else{state.profile={name:'',avatar:'classic',color:outfits[0]};state.aura=0;state.catches=[];state.myModels=[];}world.setOutfit(state.profile);if($('#ui').children.length)hud();}
+function setUser(user){state.user=user;world.currentUserId=user?.id;const locked=state.loginRequired&&!user;document.body.classList.toggle('login-locked',locked);if(locked){state.entered=false;world.entered=false;world.paused=true;world.keys.clear();world.path=[];world.touch={x:0,z:0};oj?.reset();wikibookFishing?.reset();}if(user){state.profile={name:user.name,avatar:user.avatar,color:user.color};state.aura=user.score;state.catches=user.catches||[];}else{state.profile={name:'',avatar:'classic',color:outfits[0]};state.aura=0;state.catches=[];state.myModels=[];}world.setOutfit(state.profile);if($('#ui').children.length)hud();}
+let worldInitialization;
+async function startCommunity(position){if(state.loginRequired&&!state.user)return;await refreshWorld();if(state.loginRequired&&!state.user)return;if(!world.ready){worldInitialization ||= world.init().catch(error=>{worldInitialization=null;throw error;});await worldInitialization;}if(position)world.teleport(position.x,position.z);else if(offices[0])world.teleport(offices[0].x,offices[0].z+2.5);}
+async function afterLogin(position){await startCommunity(position);if(state.loginRequired&&!state.user)return;state.entered=true;store('cubicles.entered',true);closePanel();world.enter();await tick();}
 async function refreshWorld(force=false,data){data ||=await request('/api/world',{authenticated:false});let myModels=state.myModels||[];if(state.user){try{myModels=(await request('/api/models')).assets;}catch{myModels=[];}}state.myModels=myModels;const merged=[...data.modelAssets];for(const asset of myModels)if(!merged.some(item=>item.id===asset.id))merged.push(asset);data={...data,modelAssets:merged};const assetGeometry=assets=>(assets||[]).map(asset=>[asset.id,asset.width,asset.height,asset.depth,asset.scale]);const geometry=JSON.stringify([data.zones,data.buildings,assetGeometry(merged)]);const oldGeometry=JSON.stringify([state.zones,state.buildings,assetGeometry(state.modelAssets)]);const areasChanged=JSON.stringify(PUBLIC_AREAS)!==JSON.stringify(data.areas);PUBLIC_AREAS.splice(0,PUBLIC_AREAS.length,...data.areas);state.buildings=data.buildings;state.modelAssets=merged;state.layoutRevision=data.layoutRevision;const prior=new Map(offices.map(o=>[o.id,JSON.stringify(o)]));offices.splice(0,offices.length,...data.offices);neighborhoods.splice(0,neighborhoods.length,...data.neighborhoods);state.zones=data.zones;state.settings=data.settings;state.revision=data.revision;state.visitors=data.visitors;world.setCommunity(data,{rebuild:force||geometry!==oldGeometry});if(world.ready&&!force&&geometry===oldGeometry){for(const o of offices)if(JSON.stringify(o)!==prior.get(o.id)&&!(state.panel==='editor'&&o.ownerId===state.user?.id))world.updateOffice(o);}
   if(state.panel==='editor'&&community?.draft&&world.ready)world.setFurniture(community.ownOffice(),community.draft.furniture);
  if(state.user){const result=await request('/api/me');if(result.user){state.user=result.user;state.aura=result.user.score;}}if(areasChanged)hud();updateStats();}
 async function navigateArea(id){const area=PUBLIC_AREAS.find(a=>a.id===id);if(!area)return toast('该公共区域已收起。');closePanel();world.teleport(area.entry.x,area.entry.z);await tick();toast(`已抵达${area.name}，按 E ${area.hint}。`);}
-oj=new OJPanel({esc,close:closePanel,tasks:()=>openPanel('lab')});
-wikibookFishing=new WikiBookPanel({esc,close:closePanel,module:'fishing'});
-community=new CommunityUI({state,world,offices,request,esc,btn,shell:panelShell,open:openPanel,close:closePanel,toast,tick,session,refresh:refreshWorld,setUser});community.bind();layoutEditor=new WorldEditor({state,world,offices,request,esc,open:openPanel,close:closePanel,toast,refresh:refreshWorld});layoutEditor.bind();modelImporter=new ModelImporter({state,world,request,esc,toast});
+oj=new OJPanel({esc,close:closePanel,tasks:()=>openPanel('lab'),request,getUser:()=>state.user});
+wikibookFishing=new WikiBookPanel({esc,close:closePanel,module:'fishing',request,getUser:()=>state.user});
+community=new CommunityUI({state,world,offices,request,esc,btn,shell:panelShell,open:openPanel,close:closePanel,toast,tick,session,refresh:refreshWorld,setUser,afterLogin});community.bind();layoutEditor=new WorldEditor({state,world,offices,request,esc,open:openPanel,close:closePanel,toast,refresh:refreshWorld});layoutEditor.bind();modelImporter=new ModelImporter({state,world,request,esc,toast});
 classroom=new ClassroomUI({state,request,esc,shell:panelShell,open:openPanel,toast,refresh:refreshWorld,parseCSV:text=>community.parseCSV(text),showAdmin:async()=>{const data=await request('/api/admin');if(state.panel==='admin'){community.admin=data;openPanel('admin');}}});
 community.roleForm=user=>classroom.roleForm(user);
 hud();
-if(!read('cubicles.entered',false))openPanel('welcome');else{state.entered=true;world.enter();}
-try{const login=await session();await refreshWorld();if(login.user)world.teleport(login.position.x,login.position.z);else if(offices[0])world.teleport(offices[0].x,offices[0].z+2.5);}catch(error){toast('正在重新连接本地社区。');}
-await world.init();await tick();setInterval(tick,1000);
+openPanel('login');
+try{const login=await session();if(!state.loginRequired||state.user){if(!read('cubicles.entered',false))openPanel('welcome');else{state.entered=true;closePanel();world.enter();}await startCommunity(login.position);await tick();}else openPanel('login');}catch(error){openPanel('login');toast('暂时无法连接社区，请稍后重试登录。');}
+if(new URL(location.href).searchParams.get('wikibook')==='linked'&&state.user){const url=new URL(location.href);url.searchParams.delete('wikibook');history.replaceState(null,'',url.pathname+url.search+url.hash);await community.show('account');if(community.wikiAccount?.linked)toast('WikiBook 账号已关联，进入机房或池塘即可免登录。');}
+setInterval(tick,1000);
 window.__cubicles={world,state,openPanel,closePanel,community,layoutEditor,modelImporter,inspect:()=>world.inspect()};
 if(matchMedia('(pointer: coarse), (max-width: 700px)').matches){touchVisible=true;$('#touch-controls').hidden=false;$('#quick-hint').hidden=true;}

@@ -12,15 +12,16 @@ const MODULES = {
 };
 
 export class WikiBookPanel {
-  constructor({ esc, close, tasks, module = 'oj' }) {
+  constructor({ esc, close, tasks, request, getUser, module = 'oj' }) {
     if (!MODULES[module]) throw new Error('未知 WikiBook 模块。');
-    Object.assign(this, { esc, close, tasks, module, definition: MODULES[module] });
+    Object.assign(this, { esc, close, tasks, request, getUser, module, definition: MODULES[module] });
     this.root = document.createElement('div');
     this.root.id = this.definition.root;
     this.root.dataset.wikibookWorkspace = module;
     this.root.hidden = true;
     document.body.append(this.root);
     this.root.addEventListener('click', event => {
+      if(event.target.closest('a')&&this.linked){event.preventDefault();this.openExternal();return;}
       const action = event.target.closest(`[${this.definition.action}]`)?.getAttribute(this.definition.action);
       if (action === 'return') this.close();
       if (action === 'immersive') this.toggleImmersive();
@@ -35,7 +36,10 @@ export class WikiBookPanel {
 
   show(data) {
     const url = data?.[this.module]?.url || '';
-    if (url !== this.url || !this.root.children.length) {
+    const identity = this.getUser?.()?.id || '';
+    this.ssoEnabled = Boolean(data?.wikibookSsoEnabled && identity && this.request);
+    if (url !== this.url || identity !== this.identity || !this.root.children.length) {
+      this.identity = identity;
       clearTimeout(this.loadingTimer);
       this.url = url;
       const { title, area, place, env, prefix, action, frame } = this.definition;
@@ -58,10 +62,36 @@ export class WikiBookPanel {
 
   status(message) { this.root.querySelector('[role="status"]').textContent = message; }
 
-  load() {
+  async openExternal() {
+    const tab = window.open('about:blank', '_blank');
+    if (!tab) { this.status('请允许本站打开独立标签页，然后重试。'); return; }
+    tab.opener = null;
+    try {
+      const result = await this.request('/api/wikibook/launch', { method: 'POST', data: { module: this.module, embedded: false } });
+      tab.location = result.url;
+    } catch (error) { tab.close(); this.status(error.message); }
+  }
+
+  async load() {
+    const generation = this.generation = (this.generation || 0) + 1;
     clearTimeout(this.loadingTimer);
     this.status(`正在连接 ${this.definition.title}…`);
-    this.root.querySelector('iframe').src = embeddedWikiBookUrl(this.url, this.module);
+    this.linked = false;
+    let target = embeddedWikiBookUrl(this.url, this.module);
+    try {
+      if(this.ssoEnabled){
+        const account = await this.request('/api/wikibook/account');
+        if(generation !== this.generation)return;
+        this.linked = account.linked;
+        if(account.linked){
+          const result = await this.request('/api/wikibook/launch', { method: 'POST', data: { module: this.module, embedded: true } });
+          target = result.url;
+        }
+      }
+      if(generation !== this.generation)return;
+      this.root.querySelector('iframe').src = target;
+      this.root.querySelector('footer').firstChild.textContent = (this.linked ? '已通过关联的 WikiBook 账号免登录进入。解除关联可在社区“我的账号”中操作。' : 'WikiBook 使用自己的登录；在社区“我的账号”关联后，可免登录进入 OJ 和钓鱼。') + '若空白或连接失败，请使用“独立标签页打开”。';
+    } catch(error){if(generation === this.generation)this.status(error.message);return;}
     this.loadingTimer = setTimeout(() => this.status('WikiBook 加载较慢。请确认服务已启动；若仍空白，请在独立标签页打开。'), 12000);
   }
 
@@ -98,6 +128,16 @@ export class WikiBookPanel {
   hide() {
     this.root.hidden = true;
     this.exitImmersive();
+  }
+
+  reset() {
+    this.hide();
+    clearTimeout(this.loadingTimer);
+    this.generation = (this.generation || 0) + 1;
+    this.root.replaceChildren();
+    this.url = '';
+    this.identity = '';
+    this.linked = false;
   }
 
   keydown(event) {

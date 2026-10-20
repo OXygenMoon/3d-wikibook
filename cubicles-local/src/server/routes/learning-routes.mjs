@@ -5,6 +5,7 @@ import { requireUser, publicUser } from '../auth.mjs';
 import { nearbyArea } from '../domain.mjs';
 import { writeAudit } from '../audit.mjs';
 import { config } from '../config.mjs';
+import { ssoEnabled } from '../wikibook-sso.mjs';
 
 const TASKS = [
   { id: 'orientation', title: '社区探索入门', description: '阅读任务卡，了解自己的班级与工位。', reward: 5 },
@@ -34,7 +35,7 @@ export async function handleLearningRoutes(req, res, url, session) {
   if (path === '/api/pond' && req.method === 'GET') {
     if (!session) fail(401, '会话已过期，请重新进入社区。');
     nearbyArea(session, 'pond');
-    sendJson(res, 200, { fishing: { url: config.wikibookFishingUrl } });
+    sendJson(res, 200, { fishing: { url: config.wikibookFishingUrl }, wikibookSsoEnabled: ssoEnabled() });
     return true;
   }
 
@@ -75,7 +76,7 @@ export async function handleLearningRoutes(req, res, url, session) {
   if (path === '/api/lab' && req.method === 'GET') {
     if (!session) fail(401, '会话已过期，请重新进入社区。');
     nearbyArea(session, 'lab');
-    sendJson(res, 200, { tasks: TASKS, oj: { url: config.wikibookOjUrl } });
+    sendJson(res, 200, { tasks: TASKS, oj: { url: config.wikibookOjUrl }, wikibookSsoEnabled: ssoEnabled() });
     return true;
   }
 

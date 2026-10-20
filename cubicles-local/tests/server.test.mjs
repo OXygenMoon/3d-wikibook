@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdtemp,rm,readFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join} from 'node:path';
 const directory=await mkdtemp(join(tmpdir(),'cubicles-community-'));process.env.CUBICLES_DATA_DIR=directory;process.env.PGLITE_DIR=join(directory,'pglite');process.env.CUBICLES_DB_RESET='1';process.env.AUTO_IMPORT='false';process.env.NODE_ENV='test';
+process.env.REQUIRE_LOGIN='false';
 const {server,getCommunityState}=await import('../server.mjs');await new Promise(r=>server.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${server.address().port}`;
 const {shutdownApp}=await import('../src/server/runtime.mjs');
 after(async()=>{await new Promise(r=>server.close(r));await shutdownApp();await rm(directory,{recursive:true,force:true});});

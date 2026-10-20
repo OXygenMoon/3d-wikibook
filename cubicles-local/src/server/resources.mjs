@@ -62,6 +62,7 @@ export async function uploadModel(req, url, session, { admin = false } = {}) {
 }
 
 export async function serveUpload(req, res, pathname) {
+  if (config.requireLogin) requireUser(getSession(req));
   if (!/^\/uploads\/[a-f0-9-]{36}\.glb$/.test(pathname)) fail(404, '模型不存在。');
   const id = pathname.split('/').pop().slice(0, -4);
   const asset = getState().modelAssets.find(item => item.id === id);
@@ -74,7 +75,7 @@ export async function serveUpload(req, res, pathname) {
   res.writeHead(200, {
     'Content-Type': 'model/gltf-binary',
     'X-Content-Type-Options': 'nosniff',
-    'Cache-Control': asset.visibility === 'private' ? 'private, no-store' : 'public,max-age=31536000,immutable',
+    'Cache-Control': config.requireLogin || asset.visibility === 'private' ? 'private, no-store' : 'public,max-age=31536000,immutable',
   });
   res.end(await readFile(path.join(config.modelsDir, `${id}.glb`)));
 }

@@ -1,0 +1,546 @@
+diff --git a/frontend/src/views/LoginView.vue b/frontend/src/views/LoginView.vue
+index 86f0f85..725c2b9 100644
+--- a/frontend/src/views/LoginView.vue
++++ b/frontend/src/views/LoginView.vue
+@@ -18,7 +18,7 @@ const submitting = ref(false);
+ const errorMessage = ref('');
+ const redirectTarget = computed(() => resolveSafeNextPath(route.query.next));
+ function finishLogin() {
+-  if (redirectTarget.value.startsWith('/account-link/')) {
++  if (redirectTarget.value.startsWith('/account-link/') || redirectTarget.value.startsWith('/community-sso/')) {
+     window.location.assign(redirectTarget.value);
+     return;
+   }
+diff --git a/gunicorn.conf.py b/gunicorn.conf.py
+index 4b3f7b6..830f5e9 100644
+--- a/gunicorn.conf.py
++++ b/gunicorn.conf.py
+@@ -17,6 +17,7 @@ keepalive = int(os.environ.get("GUNICORN_KEEPALIVE", "5"))
+ 
+ # Logging
+ accesslog = os.environ.get("GUNICORN_ACCESSLOG", "-")
++access_log_format = '%(h)s %(t)s "%(m)s %(U)s %(H)s" %(s)s %(b)s'
+ errorlog = os.environ.get("GUNICORN_ERRORLOG", "-")
+ loglevel = os.environ.get("GUNICORN_LOGLEVEL", "info")
+ 
+diff --git a/wikibook_app/blueprints/auth.py b/wikibook_app/blueprints/auth.py
+index 7840ac7..cdb55fa 100644
+--- a/wikibook_app/blueprints/auth.py
++++ b/wikibook_app/blueprints/auth.py
+@@ -114,6 +114,8 @@ def login():
+                 )
+             except Exception:
+                 pass
++        if session.get('_community_link_request'):
++            return redirect('/community-sso/authorize')
+         if session.get('account_link_pending'):
+             return redirect(url_for('account_link.authorize'))
+         return redirect(url_for("index"))
+diff --git a/wikibook_app/factory.py b/wikibook_app/factory.py
+index e727d4e..83941ba 100644
+--- a/wikibook_app/factory.py
++++ b/wikibook_app/factory.py
+@@ -34,6 +34,8 @@ def create_app(legacy_blueprints=None):
+ 
+     from flask import url_for
+     from .models import User
++    from .integrations.community_sso import init_community_sso
++    init_community_sso(app)
+     from .integrations.account_link import init_account_link
+     init_account_link(
+         app, 'wikibook', lambda user_id: db.session.get(User, user_id),
+diff --git a/wikibook_app/integrations/community_sso.py b/wikibook_app/integrations/community_sso.py
+new file mode 100644
+index 0000000..5655a29
+--- /dev/null
++++ b/wikibook_app/integrations/community_sso.py
+@@ -0,0 +1,267 @@
++import base64
++import hashlib
++import hmac
++import json
++import os
++import re
++import secrets
++import time
++from urllib.parse import urlencode, urlsplit
++
++from flask import Blueprint, current_app, jsonify, redirect, render_template, request, session
++from flask_login import current_user, login_user, logout_user
++from sqlalchemy.exc import IntegrityError
++
++from wikibook_app.extensions import db
++from wikibook_app.models import User
++
++
++class CommunityAccount(db.Model):
++    __tablename__ = 'community_account_link'
++    community_id = db.Column(db.String(80), primary_key=True)
++    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), unique=True, nullable=False)
++    link_id = db.Column(db.String(64), nullable=False)
++    created_at = db.Column(db.BigInteger, nullable=False)
++
++
++class CommunityCode(db.Model):
++    __tablename__ = 'community_auth_code'
++    digest = db.Column(db.String(64), primary_key=True)
++    expires = db.Column(db.BigInteger, nullable=False, index=True)
++    purpose = db.Column(db.String(16), nullable=False)
++    payload = db.Column(db.JSON, nullable=False)
++
++
++class SsoError(Exception):
++    def __init__(self, message, status=400):
++        super().__init__(message)
++        self.status = status
++
++
++def community_origin():
++    value = current_app.config.get('COMMUNITY_SSO_ORIGIN', '').rstrip('/')
++    parsed = urlsplit(value)
++    if (parsed.scheme not in {'http', 'https'} or not parsed.netloc
++            or parsed.path or parsed.query or parsed.fragment or parsed.username or parsed.password):
++        raise SsoError('3D 社区地址配置无效。', 503)
++    return value
++
++
++def secret():
++    value = current_app.config.get('COMMUNITY_SSO_SECRET', '')
++    if len(value) < 32:
++        raise SsoError('社区账号关联尚未配置。', 503)
++    community_origin()
++    return value
++
++
++def user_version(user):
++    if not user or not user.is_active or getattr(user, 'must_change_password', False):
++        raise SsoError('WikiBook 账号不可用，请先完成密码更新。', 403)
++    return hashlib.sha256((user.password_hash + ':' + str(getattr(user, 'session_version', 0))).encode()).hexdigest()
++
++
++def token_valid(value):
++    return isinstance(value, str) and re.fullmatch(r'[A-Za-z0-9_-]{43}', value) is not None
++
++
++def verify_link(value):
++    try:
++        if not isinstance(value, str) or len(value) > 2000:
++            raise ValueError()
++        body, signature = value.split('.')
++        expected = base64.urlsafe_b64encode(hmac.new(secret().encode(), body.encode(), hashlib.sha256).digest()).decode().rstrip('=')
++        if not hmac.compare_digest(signature, expected):
++            raise ValueError()
++        payload = json.loads(base64.urlsafe_b64decode(body + '=' * (-len(body) % 4)))
++        if (not isinstance(payload, dict) or not isinstance(payload.get('communityId'), str)
++                or not 1 <= len(payload['communityId']) <= 80
++                or not isinstance(payload.get('username'), str) or len(payload['username']) > 80
++                or not token_valid(payload.get('state'))
++                or not re.fullmatch(r'[a-f0-9]{64}', str(payload.get('challenge', '')))
++                or type(payload.get('expires')) is not int
++                or not time.time() < payload['expires'] <= time.time() + 310):
++            raise ValueError()
++        return payload
++    except (ValueError, TypeError, UnicodeError):
++        raise SsoError('关联请求已失效，请回到社区重新发起。') from None
++
++
++def issue_code(purpose, payload):
++    code = secrets.token_urlsafe(32)
++    CommunityCode.query.filter(CommunityCode.expires < int(time.time())).delete()
++    db.session.add(CommunityCode(digest=hashlib.sha256(code.encode()).hexdigest(), purpose=purpose,
++                                 expires=int(time.time()) + 60, payload=payload))
++    db.session.commit()
++    return code
++
++
++def consume_code(code, purpose):
++    if not token_valid(code):
++        raise SsoError('一次性凭证无效。')
++    digest = hashlib.sha256(code.encode()).hexdigest()
++    row = db.session.execute(db.delete(CommunityCode).where(
++        CommunityCode.digest == digest, CommunityCode.purpose == purpose,
++        CommunityCode.expires > int(time.time())).returning(CommunityCode.payload)).first()
++    if not row:
++        raise SsoError('一次性凭证已使用或过期，请重新发起。')
++    return row[0]
++
++
++def callback_url(path, **params):
++    return community_origin() + path + ('?' + urlencode(params) if params else '')
++
++
++def init_community_sso(app):
++    app.config.setdefault('COMMUNITY_SSO_SECRET', os.environ.get('COMMUNITY_SSO_SECRET', ''))
++    app.config.setdefault('COMMUNITY_SSO_ORIGIN', os.environ.get('COMMUNITY_SSO_ORIGIN', ''))
++    bp = Blueprint('community_sso', __name__)
++
++    @bp.after_request
++    def private(response):
++        response.headers['Cache-Control'] = 'no-store'
++        response.headers['Referrer-Policy'] = 'no-referrer'
++        if request.endpoint in {'community_sso.prepare', 'community_sso.callback'}:
++            response.headers.pop('X-Frame-Options', None)
++            try:
++                response.headers['Content-Security-Policy'] = "frame-ancestors 'self' " + community_origin()
++            except SsoError:
++                response.headers['Content-Security-Policy'] = "frame-ancestors 'none'"
++        else:
++            response.headers['X-Frame-Options'] = 'DENY'
++        return response
++
++    @bp.errorhandler(SsoError)
++    def error(exc):
++        db.session.rollback()
++        if request.path.startswith('/internal/'):
++            return jsonify(ok=False, error=str(exc)), exc.status
++        return render_template('community_sso.html', error=str(exc)), exc.status
++
++    @bp.get('/community-sso/authorize')
++    def authorize():
++        value = request.args.get('request') or session.get('_community_link_request')
++        payload = verify_link(value)
++        session['_community_link_request'] = value
++        if not current_user.is_authenticated:
++            return redirect('/login?' + urlencode({'next': '/community-sso/authorize'}))
++        user_version(current_user)
++        session['_community_link_actor'] = {'id': current_user.id, 'version': user_version(current_user)}
++        csrf = secrets.token_urlsafe(32)
++        session['_community_link_csrf'] = csrf
++        return render_template('community_sso.html', source=payload['username'], local=current_user.username, csrf=csrf)
++
++    @bp.post('/community-sso/authorize')
++    def confirm():
++        if not current_user.is_authenticated:
++            raise SsoError('请先登录 WikiBook。', 401)
++        csrf = session.pop('_community_link_csrf', '')
++        if not csrf or not hmac.compare_digest(csrf, request.form.get('csrf', '')):
++            raise SsoError('页面已过期，请重新发起关联。')
++        actor = session.pop('_community_link_actor', {})
++        if actor.get('id') != current_user.id or actor.get('version') != user_version(current_user):
++            raise SsoError('WikiBook 登录账号已切换，请重新确认关联。', 403)
++        payload = verify_link(session.pop('_community_link_request', None))
++        code = issue_code('link', {**payload, 'wikiId': current_user.id, 'version': user_version(current_user)})
++        return redirect(callback_url('/api/wikibook/link/callback', code=code, state=payload['state']), code=303)
++
++    @bp.post('/community-sso/cancel')
++    def cancel():
++        csrf = session.pop('_community_link_csrf', '')
++        if not csrf or not hmac.compare_digest(csrf, request.form.get('csrf', '')):
++            raise SsoError('页面已过期，请返回社区。')
++        session.pop('_community_link_request', None)
++        session.pop('_community_link_actor', None)
++        return redirect(community_origin(), code=303)
++
++    @bp.get('/community-sso/prepare')
++    def prepare():
++        secret()
++        nonce, purpose = request.args.get('nonce'), request.args.get('purpose')
++        if not token_valid(nonce) or purpose not in {'launch-oj-true', 'launch-oj-false', 'launch-fishing-true', 'launch-fishing-false'}:
++            raise SsoError('跳转请求无效。')
++        state = secrets.token_urlsafe(32)
++        targets = {key: value for key, value in session.get('_community_sso_targets', {}).items() if value > time.time()}
++        if len(targets) >= 8:
++            targets.pop(next(iter(targets)))
++        targets[state] = time.time() + 120
++        session['_community_sso_targets'] = targets
++        return redirect(callback_url('/api/wikibook/continue', nonce=nonce, state=state, purpose=purpose))
++
++    @bp.get('/community-sso/callback')
++    def callback():
++        state = request.args.get('state', '')
++        targets = session.pop('_community_sso_targets', {})
++        if not token_valid(state) or targets.pop(state, 0) < time.time():
++            raise SsoError('跳转来自其他浏览器或已过期，请重新发起。')
++        payload = consume_code(request.args.get('code'), 'login')
++        if not hmac.compare_digest(payload['state'], state):
++            raise SsoError('跳转状态不一致。')
++        link = db.session.get(CommunityAccount, payload['communityId'])
++        if not link or link.link_id != payload['linkId'] or link.user_id != payload['wikiId']:
++            raise SsoError('账号关联已解除，请重新关联。', 403)
++        user = db.session.get(User, link.user_id)
++        if user_version(user) != payload['version']:
++            raise SsoError('账号凭证已更新，请重新发起。', 403)
++        db.session.commit()
++        logout_user()
++        session.clear()
++        session['_remember'] = 'clear'
++        session['_community_sso_targets'] = targets
++        login_user(user, remember=False, fresh=True)
++        path = '/oj/problems' if payload['module'] == 'oj' else '/fishing'
++        if payload['embedded']:
++            path += '?' + urlencode({'embed': 'community-' + payload['module']})
++        return redirect(path, code=303)
++
++    @bp.post('/internal/community-sso')
++    def internal():
++        expected = 'Bearer ' + secret()
++        if not hmac.compare_digest(request.headers.get('Authorization', '').encode(), expected.encode()):
++            raise SsoError('服务认证失败。', 401)
++        data = request.get_json(silent=True)
++        if not isinstance(data, dict) or not isinstance(data.get('communityId'), str) or not 1 <= len(data['communityId']) <= 80:
++            raise SsoError('账号标识无效。')
++        community_id, action = data['communityId'], data.get('action')
++        link = db.session.get(CommunityAccount, community_id)
++        if action == 'status':
++            user = db.session.get(User, link.user_id) if link else None
++            return jsonify(ok=True, linked=bool(user), username=user.username if user else None)
++        if action == 'unlink':
++            if link:
++                db.session.delete(link)
++            CommunityCode.query.filter(CommunityCode.payload['communityId'].as_string() == community_id).delete(synchronize_session=False)
++            db.session.commit()
++            return jsonify(ok=True)
++        if action == 'link_redeem':
++            payload = consume_code(data.get('code'), 'link')
++            verifier = data.get('verifier')
++            if (payload['communityId'] != community_id or not token_valid(verifier)
++                    or not hmac.compare_digest(payload['challenge'], hashlib.sha256(verifier.encode()).hexdigest())):
++                raise SsoError('关联验证失败。', 403)
++            user = db.session.get(User, payload['wikiId'])
++            if user_version(user) != payload['version']:
++                raise SsoError('账号凭证已更新，请重新发起。', 403)
++            other = CommunityAccount.query.filter_by(user_id=user.id).first()
++            if (link and link.user_id != user.id) or (other and other.community_id != community_id):
++                raise SsoError('其中一个账号已有关联，请先解除原关联。', 409)
++            if not link:
++                db.session.add(CommunityAccount(community_id=community_id, user_id=user.id, link_id=secrets.token_urlsafe(32), created_at=int(time.time())))
++            try:
++                db.session.commit()
++            except IntegrityError:
++                db.session.rollback()
++                raise SsoError('账号已有关联，请刷新后重试。', 409) from None
++            return jsonify(ok=True, linked=True, username=user.username)
++        if action == 'login_issue':
++            if not link:
++                raise SsoError('请先关联 WikiBook 账号。', 409)
++            if not token_valid(data.get('state')) or data.get('module') not in {'oj', 'fishing'} or type(data.get('embedded')) is not bool:
++                raise SsoError('跳转页面无效。')
++            user = db.session.get(User, link.user_id)
++            code = issue_code('login', {'communityId': community_id, 'linkId': link.link_id, 'wikiId': user.id,
++                                       'version': user_version(user), 'state': data['state'], 'module': data['module'], 'embedded': data['embedded']})
++            return jsonify(ok=True, code=code)
++        raise SsoError('未知账号操作。')
++
++    app.register_blueprint(bp)
+diff --git a/templates/community_sso.html b/templates/community_sso.html
+new file mode 100644
+index 0000000..6825455
+--- /dev/null
++++ b/templates/community_sso.html
+@@ -0,0 +1,7 @@
++<!doctype html>
++<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>关联 3D 社区与 WikiBook</title>
++<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f5f3ee;color:#242520;font:16px/1.7 system-ui,sans-serif}main{box-sizing:border-box;max-width:520px;width:calc(100% - 32px);padding:32px;border:1px solid #d8dbd2;border-radius:20px;background:white}h1{font-size:26px}button,a{display:inline-block;padding:12px 18px;font:inherit}button{background:#315d47;color:white;border:0;border-radius:10px;cursor:pointer}a{color:#315d47}strong{overflow-wrap:anywhere}button:focus-visible,a:focus-visible{outline:3px solid #b3cabd;outline-offset:3px}.error{color:#a52d25}</style></head><body><main>
++{% if error %}<h1>暂时无法完成操作</h1><p class="error" role="alert">{{ error }}</p><p>请回到 3D 社区“我的账号”，重新发起。</p>
++{% else %}<h1>确认关联账号</h1><p>3D 社区账号：<strong>{{ source }}</strong></p><p>WikiBook 账号：<strong>{{ local }}</strong></p><p>确认两个账号都属于你。关联后，从社区进入 OJ 或钓鱼将登录这个 WikiBook 账号，替换浏览器中当前的 WikiBook 登录身份。</p>
++<form method="post"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">确认关联这两个账号</button></form><p>密码、角色和学习数据独立保留，不会复制密码或合并权限。每个账号只能关联一个对方账号。</p><form method="post" action="/community-sso/cancel"><input type="hidden" name="csrf" value="{{ csrf }}"><button type="submit">取消并返回社区</button></form><p>账号不正确？请先取消，在 WikiBook 退出当前账号后重新关联。</p>
++{% endif %}</main></body></html>
+diff --git a/scripts/init_community_sso.py b/scripts/init_community_sso.py
+new file mode 100644
+index 0000000..a0e3d55
+--- /dev/null
++++ b/scripts/init_community_sso.py
+@@ -0,0 +1,10 @@
++from wikibook_app.factory import create_app
++from wikibook_app.extensions import db
++from wikibook_app.integrations.community_sso import CommunityAccount, CommunityCode
++
++
++app = create_app()
++with app.app_context():
++    CommunityAccount.__table__.create(db.engine, checkfirst=True)
++    CommunityCode.__table__.create(db.engine, checkfirst=True)
++    print('Community SSO tables ready; existing tables and accounts unchanged.')
+diff --git a/tests/test_community_sso.py b/tests/test_community_sso.py
+new file mode 100644
+index 0000000..4b767d9
+--- /dev/null
++++ b/tests/test_community_sso.py
+@@ -0,0 +1,187 @@
++import base64
++import hashlib
++import hmac
++import json
++import secrets
++import time
++from urllib.parse import parse_qs, urlsplit
++
++import pytest
++
++from wikibook_app.extensions import db, login_manager
++from wikibook_app.factory import create_app
++from wikibook_app.models import User
++from wikibook_app.integrations.community_sso import CommunityAccount, CommunityCode
++
++
++@pytest.fixture
++def app(monkeypatch):
++    monkeypatch.setenv('DATABASE_URL', 'sqlite:///:memory:')
++    monkeypatch.setenv('COMMUNITY_SSO_SECRET', 'test-community-sso-secret-at-least-32-characters')
++    monkeypatch.setenv('COMMUNITY_SSO_ORIGIN', 'http://127.0.0.1:4173')
++    app = create_app()
++    app.config.update(TESTING=True, SESSION_COOKIE_SECURE=False)
++    previous_loader = login_manager._user_callback
++
++    @login_manager.user_loader
++    def load(value):
++        user = db.session.get(User, int(value.partition(':')[0]))
++        return user if user and user.get_id() == value else None
++
++    with app.app_context():
++        db.create_all()
++        for user_id in (1, 2):
++            user = User(id=user_id, username=f'wiki-{user_id}', email=f'{user_id}@test.invalid')
++            user.set_password('only-a-fixture-password')
++            db.session.add(user)
++        db.session.commit()
++    yield app
++    login_manager.user_loader(previous_loader)
++    with app.app_context():
++        db.session.remove()
++        db.drop_all()
++
++
++def login(client, user_id=1):
++    with client.session_transaction() as session:
++        session['_user_id'] = f'{user_id}:0'
++        session['_fresh'] = True
++
++
++def internal(client, app, action, community='community-1', **payload):
++    return client.post('/internal/community-sso', json={'action': action, 'communityId': community, **payload},
++                       headers={'Authorization': 'Bearer ' + app.config['COMMUNITY_SSO_SECRET']})
++
++
++def link_request(app, community='community-1', **overrides):
++    verifier = secrets.token_urlsafe(32)
++    payload = {'communityId': community, 'username': community, 'state': secrets.token_urlsafe(32),
++               'challenge': hashlib.sha256(verifier.encode()).hexdigest(), 'expires': int(time.time()) + 290, **overrides}
++    body = base64.urlsafe_b64encode(json.dumps(payload).encode()).decode().rstrip('=')
++    signature = base64.urlsafe_b64encode(hmac.new(app.config['COMMUNITY_SSO_SECRET'].encode(), body.encode(), hashlib.sha256).digest()).decode().rstrip('=')
++    return body + '.' + signature, verifier
++
++
++def consent(client, app, community='community-1'):
++    signed, verifier = link_request(app, community)
++    assert client.get('/community-sso/authorize', query_string={'request': signed}).status_code == 200
++    with client.session_transaction() as session:
++        csrf = session['_community_link_csrf']
++    response = client.post('/community-sso/authorize', data={'csrf': csrf})
++    assert response.status_code == 303
++    query = parse_qs(urlsplit(response.location).query)
++    return query['code'][0], verifier
++
++
++def linked(client, app):
++    login(client)
++    code, verifier = consent(client, app)
++    assert internal(client, app, 'link_redeem', code=code, verifier=verifier).status_code == 200
++
++
++def test_link_requires_both_logins_signed_request_consent_and_pkce(app):
++    client = app.test_client()
++    signed, verifier = link_request(app)
++    response = client.get('/community-sso/authorize', query_string={'request': signed})
++    assert response.status_code == 302 and response.location.startswith('/login?next=')
++    login(client)
++    assert client.get('/community-sso/authorize').status_code == 200
++    assert client.post('/community-sso/authorize', data={'csrf': 'wrong'}).status_code == 400
++    code, verifier = consent(client, app)
++    assert internal(client, app, 'link_redeem', code=code, verifier='x' * 43).status_code == 403
++    assert not internal(client, app, 'status').json['linked']
++    assert internal(client, app, 'link_redeem', code=code, verifier=verifier).status_code == 200
++    assert internal(client, app, 'link_redeem', code=code, verifier=verifier).status_code == 400
++    assert internal(client, app, 'status').json['username'] == 'wiki-1'
++    assert client.get('/community-sso/authorize', query_string={'request': signed[:-3] + 'bad'}).status_code == 400
++    expired, _ = link_request(app, expires=int(time.time()) - 1)
++    assert client.get('/community-sso/authorize', query_string={'request': expired}).status_code == 400
++    assert client.post('/internal/community-sso', json={'communityId': 'community-1', 'action': 'status'}).status_code == 401
++
++
++def test_one_to_one_conflict_and_unlink(app):
++    client = app.test_client()
++    linked(client, app)
++    code, verifier = consent(client, app, 'community-2')
++    assert internal(client, app, 'link_redeem', 'community-2', code=code, verifier=verifier).status_code == 409
++    login(client, 2)
++    code, verifier = consent(client, app)
++    assert internal(client, app, 'link_redeem', code=code, verifier=verifier).status_code == 409
++    assert internal(client, app, 'unlink').status_code == 200
++    assert not internal(client, app, 'status').json['linked']
++    code, verifier = consent(client, app)
++    assert internal(client, app, 'link_redeem', code=code, verifier=verifier).status_code == 200
++
++
++def ticket(client, app, module='fishing', embedded=True):
++    nonce = secrets.token_urlsafe(32)
++    response = client.get('/community-sso/prepare', query_string={'nonce': nonce, 'purpose': f'launch-{module}-{str(embedded).lower()}'})
++    assert response.status_code == 302
++    state = parse_qs(urlsplit(response.location).query)['state'][0]
++    issued = internal(client, app, 'login_issue', state=state, module=module, embedded=embedded)
++    assert issued.status_code == 200
++    return issued.json['code'], state
++
++
++def test_login_is_browser_bound_single_use_and_preserves_embed(app):
++    client = app.test_client()
++    linked(client, app)
++    code, state = ticket(client, app)
++    assert app.test_client().get('/community-sso/callback', query_string={'code': code, 'state': state}).status_code == 400
++    login(client, 2)
++    response = client.get('/community-sso/callback', query_string={'code': code, 'state': state})
++    assert response.status_code == 303 and response.location == '/fishing?embed=community-fishing'
++    with client.session_transaction() as session:
++        assert session['_user_id'] == '1:0'
++        assert session['_fresh']
++    assert client.get('/community-sso/callback', query_string={'code': code, 'state': state}).status_code == 400
++    code, state = ticket(client, app, 'oj', False)
++    response = client.get('/community-sso/callback', query_string={'code': code, 'state': state})
++    assert response.location == '/oj/problems'
++
++
++@pytest.mark.parametrize('change', ['password', 'unlink', 'expire', 'state'])
++def test_invalidated_or_tampered_ticket_cannot_login(app, change):
++    client = app.test_client()
++    linked(client, app)
++    code, state = ticket(client, app)
++    if change == 'password':
++        with app.app_context():
++            db.session.get(User, 1).set_password('changed-fixture-password')
++            db.session.commit()
++    if change == 'unlink':
++        internal(client, app, 'unlink')
++    if change == 'expire':
++        with app.app_context():
++            CommunityCode.query.update({'expires': 1})
++            db.session.commit()
++    if change == 'state':
++        state = secrets.token_urlsafe(32)
++    response = client.get('/community-sso/callback', query_string={'code': code, 'state': state})
++    assert response.status_code in (400, 403)
++
++
++def test_disabled_service_and_cancel_do_not_create_relationships(app):
++    client = app.test_client()
++    login(client)
++    signed, _ = link_request(app)
++    client.get('/community-sso/authorize', query_string={'request': signed})
++    with client.session_transaction() as session:
++        csrf = session['_community_link_csrf']
++    assert client.post('/community-sso/cancel', data={'csrf': csrf}).status_code == 303
++    with app.app_context():
++        assert CommunityAccount.query.count() == 0
++    app.config['COMMUNITY_SSO_SECRET'] = ''
++    app.config['COMMUNITY_SSO_ORIGIN'] = ''
++    assert client.get('/community-sso/prepare').status_code == 503
++
++
++def test_account_switch_between_consent_page_and_submission_is_rejected(app):
++    client = app.test_client()
++    login(client)
++    signed, _ = link_request(app)
++    client.get('/community-sso/authorize', query_string={'request': signed})
++    with client.session_transaction() as session:
++        csrf = session['_community_link_csrf']
++    login(client, 2)
++    assert client.post('/community-sso/authorize', data={'csrf': csrf}).status_code == 403

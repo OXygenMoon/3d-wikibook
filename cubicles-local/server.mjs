@@ -10,7 +10,7 @@ import { getDriver, healthCheck } from './src/server/db.mjs';
 import { getState, getRevision } from './src/server/store.mjs';
 import { initApp, shutdownApp } from './src/server/runtime.mjs';
 import { handleApi } from './src/server/api.mjs';
-import { getSession } from './src/server/auth.mjs';
+import { getSession, requireUser } from './src/server/auth.mjs';
 import { sessionPersistenceStats } from './src/server/session-store.mjs';
 import { serveUpload } from './src/server/resources.mjs';
 import {
@@ -80,7 +80,7 @@ async function serveStatic(req, res, pathname) {
   if (!info?.isFile()) fail(404, '没有找到内容。');
   res.writeHead(200, {
     'Content-Type': mimeFor(file),
-    'Cache-Control': config.production && pathname !== '/' ? 'public,max-age=3600' : 'no-cache',
+    'Cache-Control': config.requireLogin && file.endsWith('.glb') ? 'private, no-store' : config.production && pathname !== '/' ? 'public,max-age=3600' : 'no-cache',
   });
   res.end(await readFile(file));
 }
@@ -129,6 +129,8 @@ async function handleRequest(req, res) {
       await serveUpload(req, res, pathname);
       return;
     }
+
+    if (config.requireLogin && (pathname.startsWith('/models/') || pathname.startsWith('/examples/'))) requireUser(getSession(req));
 
     if (req.method !== 'GET' && req.method !== 'HEAD') fail(405, '只支持读取静态资源。');
     await serveStatic(req, res, pathname);

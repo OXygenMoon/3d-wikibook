@@ -105,7 +105,7 @@ test('teacher-approved rewards unlock furniture and models exactly once and resp
   assert.equal((await call(`/api/models/${asset.id}`, admin.token, { access: 'reward' }, 'PATCH')).status, 200);
   assert.equal((await call(`/api/models/${asset.id}`, teacher.token, { access: 'all' }, 'PATCH')).status, 403);
   assert.ok(!(await call('/api/models', student.token)).data.assets.some(candidate=>candidate.id===asset.id));
-  const world = (await call('/api/world')).data;
+  const world = (await call('/api/world', admin.token)).data;
   const office = world.offices.find(candidate=>candidate.ownerId===student.user.id);
   await call('/api/tick', student.token, { x: office.x, z: office.z + 1.5 });
   const furniture = [...office.furniture,{id:'reward-placement',itemId:`model:${asset.id}`,x:0,z:.5,rotation:0}];

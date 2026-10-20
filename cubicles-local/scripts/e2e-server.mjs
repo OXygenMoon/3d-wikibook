@@ -8,6 +8,7 @@ await rm(temp, { recursive: true, force: true });
 await mkdir(path.join(temp, 'data'), { recursive: true });
 
 process.env.NODE_ENV = 'test';
+process.env.REQUIRE_LOGIN = process.env.E2E_REQUIRE_LOGIN || 'false';
 process.env.LOG_LEVEL = process.env.LOG_LEVEL || 'warn';
 process.env.AUTO_IMPORT = 'false';
 process.env.CUBICLES_DB_RESET = '1';

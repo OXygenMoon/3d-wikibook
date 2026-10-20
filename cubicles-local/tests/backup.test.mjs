@@ -60,7 +60,7 @@ test('full backup restores models, layouts, sessions, messages and audit across 
   const model = await fetch(`${base}/uploads/${id}.glb`, { headers: { Cookie: `community_session=${session.id}` } });
   assert.equal(model.status, 200);
   assert.deepEqual(Buffer.from(await model.arrayBuffer()), bytes);
-  const world = await (await fetch(`${base}/api/world`)).json();
+  const world = await (await fetch(`${base}/api/world`, { headers: { Cookie: `community_session=${session.id}` } })).json();
   assert.equal(world.offices.find(office => office.id === admin.officeId).furniture[0].itemId, `model:${id}`);
   const login = await fetch(`${base}/api/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: admin.username, password: '123456' }) });
   assert.equal(login.status, 200);
